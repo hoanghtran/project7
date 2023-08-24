@@ -5,6 +5,5 @@ package com.act.java06.project07;
  * @author Tran Huy Hoang
  */
 public interface IAirline {
-
-    double statisticize_turnOver();
+    double statisticize_turnOver(Flight[] fl, int choose, int option);
 }

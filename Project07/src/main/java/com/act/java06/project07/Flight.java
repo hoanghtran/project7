@@ -6,46 +6,53 @@ import java.time.LocalDateTime;
  *
  * @author ADMIN
  */
-public class Flight implements IFlight{
+public class Flight implements IFlight {
+
     private String flightCode;
     private String planeCode;
     private LocalDateTime departureTime;
     private LocalDateTime arrivalTime;
     private String departure;
-    private String arrival;
+    private String destination;
     private int usedEconomySeats;
     private int usedBusinessSeats;
     private double economyFare;
     private double businessFare;
+
     public Flight() {
     }
 
-    public Flight(String flightCode, String planeCode, LocalDateTime departureTime, LocalDateTime arrivalTime, String departure, String arrival, int usedEconomySeats, int usedBusinessSeats) {
+    public Flight(String flightCode, String planeCode, LocalDateTime departureTime,
+            LocalDateTime arrivalTime, String departure, String destination,
+            int usedEconomySeats, int usedBusinessSeats, double economyFare,
+            double businessFare, BusinessClass bs, EconomyClass ec) {
         this.flightCode = flightCode;
         this.planeCode = planeCode;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
         this.departure = departure;
-        this.arrival = arrival;
+        this.destination = destination;
         this.usedEconomySeats = usedEconomySeats;
         this.usedBusinessSeats = usedBusinessSeats;
+        economyFare = ec.getFare();
+        businessFare = bs.getFare();
     }
-    
+
     @Override
     public void add() {
-        }
+    }
 
     @Override
     public void remote() {
-        }
+    }
 
     @Override
     public void edit() {
-        }
+    }
 
     @Override
     public void selectAvailableFlight() {
-        }
+    }
 
     public String getFlightCode() {
         return flightCode;
@@ -87,12 +94,12 @@ public class Flight implements IFlight{
         this.departure = departure;
     }
 
-    public String getArrival() {
-        return arrival;
+    public String getDestination() {
+        return destination;
     }
 
-    public void setArrival(String arrival) {
-        this.arrival = arrival;
+    public void setDestination(String destination) {
+        this.destination = destination;
     }
 
     public int getUsedEconomySeats() {
@@ -126,5 +133,5 @@ public class Flight implements IFlight{
     public void setBusinessFare(double businessFare) {
         this.businessFare = businessFare;
     }
-    
+
 }
