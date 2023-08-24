@@ -6,6 +6,7 @@ package com.act.java06.project07;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.*;
 
 /**
  *
@@ -14,12 +15,13 @@ import java.util.Scanner;
 public class Passenger_Main {
 
     static void menu() {
+        System.out.println("Menu:");
+        System.out.println("    1: hanh khach");
+        System.out.println("    2: ve");
+        System.out.println("    3: chuyen bay");
+        System.out.println("    4: hang hang khong");
+        System.out.println("    5: thoat");
         System.out.println("Vui long nhap so ban chon:");
-        System.out.println("1: hanh khach");
-        System.out.println("2: ve");
-        System.out.println("3: chuyen bay");
-        System.out.println("4: hang hang khong");
-        System.out.println("5: thoat");
     }
 
     static void hanhKhach() {
@@ -33,34 +35,42 @@ public class Passenger_Main {
     }
 
     public static void main(String[] args) {
+        
         Scanner sc = new Scanner(System.in);
         ArrayList<Passenger> passengers = new ArrayList<>();
         ArrayList<Flight> chuyenBay = new ArrayList<>();
         ArrayList<FlightTicket> Ve = new ArrayList<>();
         menu();
         int luaChon = sc.nextInt();
+        sc.nextLine();
         switch (luaChon) {
             case 1: {
                 hanhKhach();
+                sc.nextLine();
                 int luaChon1 = sc.nextInt();
+                sc.nextLine();
                 switch (luaChon1) {
                     case 1: {
                         System.out.println("Nhap ten hanh khach:");
+                        sc.nextLine();
                         String hoTen = sc.nextLine();
                         System.out.println("Nhap can cuoc cong dan hanh khach:");
                         String ID = sc.nextLine();
                         System.out.println("Nhap ma ve:");
                         String maVe = sc.nextLine();
                         passengers.add(new Passenger(ID, hoTen, maVe));
+                        
                     }
                     case 2: {
                         System.out.println("Nhap ID can sua doi:");
+                        sc.nextLine();
                         String suaDoi = sc.nextLine();
                         for (int i = 0; i < passengers.size(); i++) {
                             if (passengers.get(i).getID().equals(suaDoi)) {
                                 System.out.println("chon muc can doi");
                                 System.out.println("1: ten hanh khach");
                                 System.out.println("2: ma ve:");
+                                sc.nextLine();
                                 int luaChon2 = sc.nextInt();
                                 
                             }
@@ -68,6 +78,7 @@ public class Passenger_Main {
                     }
                     case 3: {
                         System.out.println("Nhap ID can xoa");
+                        sc.nextLine();
                         String xoa = sc.nextLine();
                         for (int i = 0; i < passengers.size(); i++) {
                             if (passengers.get(i).getID().equals(xoa)) {
@@ -77,6 +88,7 @@ public class Passenger_Main {
                     }
                     case 4: {
                         System.out.println("nhap so hieu chuyen bay:");
+                        sc.nextLine();
                         String soHieu = sc.nextLine();
                         for (int i = 0; i < chuyenBay.size(); i++) {
                             //người nào có mã vé của vé có số hiệu máy bay = sohieu thì chọn
