@@ -31,7 +31,6 @@ public class Passenger_Main {
         System.out.println("2: sua hanh khach");
         System.out.println("3: xoa hanh khach");
         System.out.println("4: chon loc hanh khach tu chuyen bay");
-
     }
 
     public static void main(String[] args) {
