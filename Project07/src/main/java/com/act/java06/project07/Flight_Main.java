@@ -62,7 +62,13 @@ public class Flight_Main {
                     System.out.println("Nhap so hieu chuyen bay");
                     String cdFlight = sc.nextLine();
                     System.out.println("Lua chon thao tac");
-                    System.out.println("1.");
+                    System.out.println("1. Sua diem xuat phat");
+                    System.out.println("2. Sua diem den");
+                    System.out.println("3. Sua thoi gian di");
+                    System.out.println("4. Sua thoi gian den");
+                    System.out.println("5. Sua so luong cho ngoi hang thuong gia");
+                    System.out.println("6. Sua so luong cho ngoi hang pho thong");
+                    System.out.println("7. ");
                     
                     
                     
