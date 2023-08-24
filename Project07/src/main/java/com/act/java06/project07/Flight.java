@@ -11,26 +11,47 @@ import java.time.LocalDateTime;
  * @author ADMIN
  */
 public class Flight implements IFlight{
-    String flightCode;
-    String planeCode;
-    LocalDateTime departureTime;
-    LocalDateTime arrivalTime;
-    String departure;
-    String arrival;
-    int usedEconomySeats;
-    int usedBusinessSeats;
+    private String flightCode;
+    private String planeCode;
+    private LocalDateTime departureTime;
+    private LocalDateTime arrivalTime;
+    private String departure;
+    private String arrival;
+    private int usedEconomySeats;
+    private int usedBusinessSeats;
 
     public Flight() {
     }
 
-    public Flight(String flightCode, String planeCode, LocalDateTime departureTime, LocalDateTime arrivalTime, String departure, String arrival) {
+    public Flight(String flightCode, String planeCode, LocalDateTime departureTime, LocalDateTime arrivalTime, String departure, String arrival, int usedEconomySeats, int usedBusinessSeats) {
         this.flightCode = flightCode;
         this.planeCode = planeCode;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
         this.departure = departure;
         this.arrival = arrival;
+        this.usedEconomySeats = usedEconomySeats;
+        this.usedBusinessSeats = usedBusinessSeats;
     }
+
+ 
+    
+    
+    @Override
+    public void add() {
+        }
+
+    @Override
+    public void remote() {
+        }
+
+    @Override
+    public void edit() {
+        }
+
+    @Override
+    public void selectAvailableFlight() {
+        }
 
     public String getFlightCode() {
         return flightCode;
@@ -80,20 +101,20 @@ public class Flight implements IFlight{
         this.arrival = arrival;
     }
 
-    @Override
-    public void add() {
-        }
+    public int getUsedEconomySeats() {
+        return usedEconomySeats;
+    }
 
-    @Override
-    public void remote() {
-        }
+    public void setUsedEconomySeats(int usedEconomySeats) {
+        this.usedEconomySeats = usedEconomySeats;
+    }
 
-    @Override
-    public void edit() {
-        }
+    public int getUsedBusinessSeats() {
+        return usedBusinessSeats;
+    }
 
-    @Override
-    public void selectAvailableFlight() {
-        }
+    public void setUsedBusinessSeats(int usedBusinessSeats) {
+        this.usedBusinessSeats = usedBusinessSeats;
+    }
     
 }
