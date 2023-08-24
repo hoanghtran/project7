@@ -1,17 +1,16 @@
 package com.act.java06.project07;
-
 /**
  *
  * @author Tran Huy Hoang
  */
-public class Airline implements IAirline{
+public class Airline implements IAirline {
 
     private String brandname;
     private String code;
     private int numOfPlanes;
+    private Plane[] listOfPlanes;
     private int numOfFlights;
-    Plane[] listOfPlanes;
-
+    private Flight[] listOfFlights;
 
     public Airline(String brandname, String code, int numOfPlanes, int numOfFlights) {
         this.brandname = brandname;
@@ -23,11 +22,24 @@ public class Airline implements IAirline{
     public Airline() {
     }
 
+    //Scanner sc = new Scanner(System.in);
     @Override
-    public double statisticize_turnOver() {
+    public double statisticize_turnOver(Flight[] fl, int choose, int option) {
         double turnOver = 0;
-        
-        
+
+        for (Flight flight : fl) {
+            if (choose == 1) { // tinh doanh thu theo thang
+                if (flight.getArrivalTime().getMonth().getValue() == option) {
+                    turnOver += flight.getUsedEconomySeats() * flight.getEconomyFare()
+                            + flight.getUsedBusinessSeats() * flight.getBusinessFare();
+                }
+            } else if (choose == 2) { // tinh doanh thu theo nam
+                if (flight.getArrivalTime().getYear() == option) {
+                    turnOver += flight.getUsedEconomySeats() * flight.getEconomyFare()
+                            + flight.getUsedBusinessSeats() * flight.getBusinessFare();
+                }
+            }
+        }
         return turnOver;
     }
 
@@ -53,7 +65,7 @@ public class Airline implements IAirline{
 
     public void setNumOfPlanes(int numOfPlanes) {
         this.numOfPlanes = numOfPlanes;
-    }    
+    }
 
     public int getNumOfFlights() {
         return numOfFlights;

@@ -6,7 +6,8 @@ import java.time.LocalDateTime;
  *
  * @author ADMIN
  */
-public class Flight implements IFlight{
+public class Flight implements IFlight {
+
     private String flightCode;
     private String planeCode;
     private LocalDateTime departureTime;
@@ -17,10 +18,13 @@ public class Flight implements IFlight{
     private int usedBusinessSeats;
     private double economyFare;
     private double businessFare;
+
     public Flight() {
     }
 
-    public Flight(String flightCode, String planeCode, LocalDateTime departureTime, LocalDateTime arrivalTime, String departure, String arrival, int usedEconomySeats, int usedBusinessSeats) {
+    public Flight(String flightCode, String planeCode, LocalDateTime departureTime,
+            LocalDateTime arrivalTime, String departure, String arrival,
+            int usedEconomySeats, int usedBusinessSeats, EconomyClass ec, BusinessClass bs) {
         this.flightCode = flightCode;
         this.planeCode = planeCode;
         this.departureTime = departureTime;
@@ -29,23 +33,25 @@ public class Flight implements IFlight{
         this.arrival = arrival;
         this.usedEconomySeats = usedEconomySeats;
         this.usedBusinessSeats = usedBusinessSeats;
+        economyFare = ec.getFare();
+        businessFare = bs.getFare();
     }
-    
+
     @Override
     public void add() {
-        }
+    }
 
     @Override
     public void remote() {
-        }
+    }
 
     @Override
     public void edit() {
-        }
+    }
 
     @Override
     public void selectAvailableFlight() {
-        }
+    }
 
     public String getFlightCode() {
         return flightCode;
@@ -126,5 +132,5 @@ public class Flight implements IFlight{
     public void setBusinessFare(double businessFare) {
         this.businessFare = businessFare;
     }
-    
+
 }
