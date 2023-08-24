@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.act.java06.project07;
 
 /**
@@ -23,17 +19,17 @@ public class BusinessClass extends FlightTicket{
 
     @Override
     public void add() {
-        super.add(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        super.add(); 
     }
 
     @Override
     public void edit() {
-        super.edit(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        super.edit(); 
     }
 
     @Override
     public void delete() {
-        super.delete(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        super.delete(); 
     }
     
 }
