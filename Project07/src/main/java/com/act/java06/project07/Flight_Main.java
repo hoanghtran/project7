@@ -62,7 +62,7 @@ public class Flight_Main {
                     System.out.println("Nhap so hieu chuyen bay");
                     String cdFlight = sc.nextLine();
                     System.out.println("Lua chon thao tac");
-                    
+                    System.out.println("1.");
                     
                     
                     
