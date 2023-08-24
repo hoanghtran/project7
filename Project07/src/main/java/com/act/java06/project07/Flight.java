@@ -18,14 +18,15 @@ public class Flight implements IFlight {
     private int usedBusinessSeats;
     private double economyFare;
     private double businessFare;
+    private int totalSeats;
 
     public Flight() {
     }
 
     public Flight(String flightCode, String planeCode, LocalDateTime departureTime,
             LocalDateTime arrivalTime, String departure, String destination,
-            int usedEconomySeats, int usedBusinessSeats, double economyFare,
-            double businessFare, BusinessClass bs, EconomyClass ec) {
+            int usedEconomySeats, int usedBusinessSeats, double economyFare, double businessFare, int totalSeats,
+            BusinessClass bs, EconomyClass ec) {
         this.flightCode = flightCode;
         this.planeCode = planeCode;
         this.departureTime = departureTime;
@@ -34,9 +35,12 @@ public class Flight implements IFlight {
         this.destination = destination;
         this.usedEconomySeats = usedEconomySeats;
         this.usedBusinessSeats = usedBusinessSeats;
-        economyFare = ec.getFare();
-        businessFare = bs.getFare();
+        this.economyFare = ec.getFare();
+        this.businessFare = bs.getFare();
+        this.totalSeats = totalSeats;
     }
+
+    
 
     @Override
     public void add() {
@@ -133,5 +137,15 @@ public class Flight implements IFlight {
     public void setBusinessFare(double businessFare) {
         this.businessFare = businessFare;
     }
+
+    public int getTotalSeats() {
+        return totalSeats;
+    }
+
+    public void setTotalSeats(int totalSeats) {
+        this.totalSeats = totalSeats;
+    }
+
+    
 
 }
