@@ -10,19 +10,19 @@ package com.act.java06.project07;
  */
 public class Plane {
     private String planeCode;
-    private int numOfSeat;
+    private int numOfSeats;
 
     public Plane(String planeCode, int numOfSeat) {
         this.planeCode = planeCode;
-        this.numOfSeat = numOfSeat;
+        this.numOfSeats = numOfSeat;
     }
 
     public int getNumOfSeat() {
-        return numOfSeat;
+        return numOfSeats;
     }
 
     public void setNumOfSeat(int numOfSeat) {
-        this.numOfSeat = numOfSeat;
+        this.numOfSeats = numOfSeat;
     }
 
     public String getPlaneCode() {

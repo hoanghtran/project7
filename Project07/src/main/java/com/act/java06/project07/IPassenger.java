@@ -9,6 +9,6 @@ package com.act.java06.project07;
  * @author Admin
  */
 public interface IPassenger {
-    void show();
+    
     void selectionPassenger();
 }

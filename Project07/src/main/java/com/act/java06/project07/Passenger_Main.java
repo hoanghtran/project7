@@ -29,12 +29,14 @@ public class Passenger_Main {
         System.out.println("2: sua hanh khach");
         System.out.println("3: xoa hanh khach");
         System.out.println("4: chon loc hanh khach tu chuyen bay");
-        
+
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         ArrayList<Passenger> passengers = new ArrayList<>();
+        ArrayList<Flight> chuyenBay = new ArrayList<>();
+        ArrayList<FlightTicket> Ve = new ArrayList<>();
         menu();
         int luaChon = sc.nextInt();
         switch (luaChon) {
@@ -43,48 +45,49 @@ public class Passenger_Main {
                 int luaChon1 = sc.nextInt();
                 switch (luaChon1) {
                     case 1: {
-                        System.out.println("tuy chon hanh khach:");
-                        System.out.println("1: them hanh khach");
-                        System.out.println("2: sua hanh khach");
-                        System.out.println("3: xoa hanh khach");
-                        int luaChon2 = sc.nextInt();
-                        switch (luaChon2) {
-                            case 1: {
-                                System.out.println("Nhap ten hanh khach:");
-                                String hoTen = sc.nextLine();
-                                System.out.println("Nhap can cuoc cong dan hanh khach:");
-                                String ID = sc.nextLine();
-                                System.out.println("Nhap ma ve:");
-                                String maVe = sc.nextLine();
-                                passengers.add(new Passenger(ID, hoTen, maVe));
+                        System.out.println("Nhap ten hanh khach:");
+                        String hoTen = sc.nextLine();
+                        System.out.println("Nhap can cuoc cong dan hanh khach:");
+                        String ID = sc.nextLine();
+                        System.out.println("Nhap ma ve:");
+                        String maVe = sc.nextLine();
+                        passengers.add(new Passenger(ID, hoTen, maVe));
+                    }
+                    case 2: {
+                        System.out.println("Nhap ID can sua doi:");
+                        String suaDoi = sc.nextLine();
+                        for (int i = 0; i < passengers.size(); i++) {
+                            if (passengers.get(i).getID().equals(suaDoi)) {
+                                System.out.println("chon muc can doi");
+                                System.out.println("1: ten hanh khach");
+                                System.out.println("2: ma ve:");
+                                int luaChon2 = sc.nextInt();
+                                
                             }
-                            case 2:{
-                                System.out.println("Nhap ID can sua doi:");
-                                String suaDoi = sc.nextLine();
-                                for(int i=0; i<passengers.size(); i++){
-                                    if(passengers.get(i).getID().equals(suaDoi)){
-                                        
-                                    }
-                                }
+                        }
+                    }
+                    case 3: {
+                        System.out.println("Nhap ID can xoa");
+                        String xoa = sc.nextLine();
+                        for (int i = 0; i < passengers.size(); i++) {
+                            if (passengers.get(i).getID().equals(xoa)) {
+                                passengers.remove(i);
                             }
-                            case 3:{
-                                System.out.println("Nhap ID can xoa");
-                                String xoa = sc.nextLine();
-                                for(int i=0; i<passengers.size(); i++){
-                                    if(passengers.get(i).getID().equals(xoa)){
-                                        passengers.remove(i);
-                                    }
-                                }
-                            }
-                            case 4:{
-                                System.out.println("nhap so hieu chuyen bay:");
-                                String soHieu = sc.nextLine();
-                                for(int i=0; i<passengers.size(); i++){
-                                    //sohieu = số hiệu máy bay, vé nào có số hiệu máy bay = 
+                        }
+                    }
+                    case 4: {
+                        System.out.println("nhap so hieu chuyen bay:");
+                        String soHieu = sc.nextLine();
+                        for (int i = 0; i < chuyenBay.size(); i++) {
+                            //người nào có mã vé của vé có số hiệu máy bay = sohieu thì chọn
+                            for (int j = 0; j < passengers.size(); j++) {
+                                if (passengers.get(j).getTicketCode().equals(Ve.get(i).getTicketCode())) {
+                                    passengers.get(i).toString();
                                 }
                             }
                         }
                     }
+
                 }
             }
         }

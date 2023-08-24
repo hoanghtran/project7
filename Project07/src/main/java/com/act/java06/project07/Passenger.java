@@ -44,8 +44,11 @@ public class Passenger implements IPassenger{
     }
 
     @Override
-    public void show(){
+    public String toString() {
+        return "Passenger{" + "ID=" + ID + ", fullName=" + fullName + ", ticketCode=" + ticketCode + '}';
     }
+    
+    
 
     @Override
     public void selectionPassenger() {
