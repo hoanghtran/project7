@@ -28,6 +28,7 @@ public class Passenger_Main {
         System.out.println("1: them hanh khach");
         System.out.println("2: sua hanh khach");
         System.out.println("3: xoa hanh khach");
+        System.out.println("4: chon loc hanh khach tu chuyen bay");
         
     }
 
@@ -73,6 +74,13 @@ public class Passenger_Main {
                                     if(passengers.get(i).getID().equals(xoa)){
                                         passengers.remove(i);
                                     }
+                                }
+                            }
+                            case 4:{
+                                System.out.println("nhap so hieu chuyen bay:");
+                                String soHieu = sc.nextLine();
+                                for(int i=0; i<passengers.size(); i++){
+                                    //sohieu = số hiệu máy bay, vé nào có số hiệu máy bay = 
                                 }
                             }
                         }
