@@ -1,7 +1,5 @@
 package com.act.java06.project07;
 
-import java.time.LocalDateTime;
-
 /**
  *
  * @author Tran Huy Hoang
@@ -13,11 +11,10 @@ public class Airline implements IAirline{
     private int numOfPlanes;
     Plane[] listOfPlanes;
 
-    public Airline(String brand, String code, int numOfPlanes, int listOfPlanes) {
+    public Airline(String brand, String code, int numOfPlanes) {
         this.brand = brand;
         this.code = code;
         this.numOfPlanes = numOfPlanes;
-        this.listOfPlanes = listOfPlanes;
     }
 
     public Airline() {
