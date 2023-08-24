@@ -15,7 +15,8 @@ public class Flight implements IFlight{
     private String arrival;
     private int usedEconomySeats;
     private int usedBusinessSeats;
-
+    private double economyFare;
+    private double businessFare;
     public Flight() {
     }
 
@@ -29,9 +30,6 @@ public class Flight implements IFlight{
         this.usedEconomySeats = usedEconomySeats;
         this.usedBusinessSeats = usedBusinessSeats;
     }
-
- 
-    
     
     @Override
     public void add() {
@@ -111,6 +109,22 @@ public class Flight implements IFlight{
 
     public void setUsedBusinessSeats(int usedBusinessSeats) {
         this.usedBusinessSeats = usedBusinessSeats;
+    }
+
+    public double getEconomyFare() {
+        return economyFare;
+    }
+
+    public void setEconomyFare(double economyFare) {
+        this.economyFare = economyFare;
+    }
+
+    public double getBusinessFare() {
+        return businessFare;
+    }
+
+    public void setBusinessFare(double businessFare) {
+        this.businessFare = businessFare;
     }
     
 }
