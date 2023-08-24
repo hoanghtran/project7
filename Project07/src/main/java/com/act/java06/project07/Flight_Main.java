@@ -32,10 +32,13 @@ public class Flight_Main {
                     Flight flight = new Flight();
                     System.out.println("Nhap so hieu chuyen bay");
                     flight.getFlightCode();
+                    sc.nextLine();
                     System.out.println("Nhap so hieu may bay");
                     flight.getPlaneCode();
+                    sc.nextLine();
                     System.out.println("Nhap diem xuat phat");
                     flight.getDeparture();
+                    sc.nextLine();
                     System.out.println("Nhap diem den");
                     flight.getDestination();
                     System.out.println("Nhap thoi gian di");
@@ -56,7 +59,7 @@ public class Flight_Main {
                     listFlight.add(flight);
                     break;
                 case 2:
-                    System.out.println("Nhap so hieu chuyen bay.");
+                    System.out.println("Nhap so hieu chuyen bay");
                     String cdFlight = sc.nextLine();
                     System.out.println("Lua chon thao tac");
                     
