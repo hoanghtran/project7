@@ -12,6 +12,7 @@ public class Airline implements IAirline{
     private int numOfFlights;
     Plane[] listOfPlanes;
 
+
     public Airline(String brandname, String code, int numOfPlanes, int numOfFlights) {
         this.brandname = brandname;
         this.code = code;
@@ -24,7 +25,7 @@ public class Airline implements IAirline{
 
     @Override
     public double statisticize_turnOver() {
-        double turnOver;
+        double turnOver = 0;
         
         
         return turnOver;
