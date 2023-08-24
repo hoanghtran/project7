@@ -14,11 +14,12 @@ public class FlightTicket implements IFlightTicket {
     private String arrivalTime;
     private String ticketClass;
     private double fare;
+    private String SeatNumber;
 
     public FlightTicket() {
     }
 
-    public FlightTicket(String ticketCode, String flightNumber, String departure, String destination, String departureTime, String arrivalTime, String ticketClass, double fare) {
+    public FlightTicket(String ticketCode, String flightNumber, String departure, String destination, String departureTime, String arrivalTime, String ticketClass, double fare, String SeatNumber) {
         this.ticketCode = ticketCode;
         this.flightNumber = flightNumber;
         this.departure = departure;
@@ -27,25 +28,11 @@ public class FlightTicket implements IFlightTicket {
         this.arrivalTime = arrivalTime;
         this.ticketClass = ticketClass;
         this.fare = fare;
+        this.SeatNumber = SeatNumber;
     }
 
     @Override
-    public void showTicketClassRemaining() {
-
-    }
-
-    @Override
-    public void add() {
-
-    }
-
-    @Override
-    public void edit() {
-
-    }
-
-    @Override
-    public void delete() {
+    public void showTicketClassRemaining(Flight fl, Plane p) {
 
     }
 
@@ -81,6 +68,10 @@ public class FlightTicket implements IFlightTicket {
         return fare;
     }
 
+    public String getSeatNumber() {
+        return SeatNumber;
+    }
+
     public void setTicketCode(String ticketCode) {
         this.ticketCode = ticketCode;
     }
@@ -112,4 +103,9 @@ public class FlightTicket implements IFlightTicket {
     public void setFare(double fare) {
         this.fare = fare;
     }
+
+    public void setSeatNumber(String SeatNumber) {
+        this.SeatNumber = SeatNumber;
+    }
+
 }

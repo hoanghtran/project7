@@ -9,8 +9,7 @@ package com.act.java06.project07;
  * @author Admin
  */
 public interface IFlightTicket {
-    public void showTicketClassRemaining();
-    void add();
-    void edit();
-    void delete();
+
+    public void showTicketClassRemaining(Flight fl, Plane p);
+
 }
