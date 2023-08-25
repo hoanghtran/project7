@@ -91,7 +91,7 @@ public class Project07 {
                                 System.out.println("chon muc can doi");
                                 System.out.println("1: ten hanh khach");
                                 System.out.println("2: ma ve:");
-                                sc.nextLine();
+                                
                                 int passenger2 = sc.nextInt();
 
                             }
@@ -137,6 +137,7 @@ public class Project07 {
                 
                 switch (flightTicket1) {
                     case 1: {
+                        sc.nextLine();
                         System.out.printf(" -Nhap ma ve: ");
                         String ticketCode = sc.nextLine();
                         System.out.printf(" -Nhap so hieu chuyen bay: ");
@@ -151,16 +152,17 @@ public class Project07 {
                         String arrivalTime = sc.nextLine();
                         System.out.printf(" -Nhap hang ve may bay: ");
                         String ticketClass = sc.nextLine();
-                        sc.next();
+                        
                         System.out.printf(" -Nhap gia ve: ");
                         double fare = sc.nextDouble();
-                        sc.next();
+                        sc.nextLine();
                         System.out.printf(" -Nhap so hieu ghe ngoi: ");
                         String SeatNumber = sc.nextLine();
                         LTicket.add(new FlightTicket(ticketCode, flightNumber, departure, destination, departureTime, arrivalTime, ticketClass, fare, SeatNumber));
                         break;
                     }
                     case 2: {
+                        sc.nextLine();
                         System.out.printf("Nhap ma ve can sua: ");
                         String maVe = sc.nextLine();
                         for (int i = 0; i < LTicket.size(); i++) {
@@ -173,6 +175,7 @@ public class Project07 {
                         break;
                     }
                     case 3: {
+                        sc.nextLine();
                         System.out.printf("Nhap ma ve can sua: ");
                         String maVe = sc.nextLine();
                         for (int i = 0; i < LTicket.size(); i++) {
