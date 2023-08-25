@@ -21,7 +21,7 @@ public class Passenger_Main {
         System.out.println("    3: chuyen bay");
         System.out.println("    4: hang hang khong");
         System.out.println("    5: thoat");
-        System.out.println("Vui long nhap so ban chon:");
+        System.out.print("Vui long nhap so ban chon:");
     }
 
     static void hanhKhach() {

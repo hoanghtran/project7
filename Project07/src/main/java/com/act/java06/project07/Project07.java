@@ -18,7 +18,7 @@ public class Project07 {
         System.out.println("3: Thêm/Sửa/Xóa chuyen bay");
         System.out.println("4: Thêm/Sửa/Xóa hãng hàng khong");
         System.out.println("5: Thoát chương trình");
-        System.out.println("Vui lòng nhập lựa chọn của bạn: ");
+        System.out.print("Vui lòng nhập lựa chọn của bạn: ");
     }
 
     static void passengerMenu() {
@@ -28,7 +28,7 @@ public class Project07 {
         System.out.println("3: Xóa hành khách");
         System.out.println("4: Chọn lọc hành khách từ chuyến bay");
         System.out.println("5: Thoát menu");
-        System.out.println("Vui lòng nhập lựa chọn của bạn: ");
+        System.out.print("Vui lòng nhập lựa chọn của bạn: ");
     }
 
     static void flightTicketMenu() {
@@ -38,7 +38,7 @@ public class Project07 {
         System.out.println("3: Xóa vé máy bay");
         System.out.println("4: Hiển thị số vé còn lại");
         System.out.println("5: Thoát menu");
-        System.out.println("Vui lòng nhập lựa chọn của bạn: ");
+        System.out.print("Vui lòng nhập lựa chọn của bạn: ");
     }
 
     static void flightMenu() {
@@ -46,14 +46,15 @@ public class Project07 {
         System.out.println("1: Thêm một chuyến bay");
         System.out.println("2: Sửa thông tin một chuyến bay");
         System.out.println("3: Thoát menu   ");
+        System.out.print("Vui lòng nhập lựa chọn của bạn: ");
     }
 
     public static void main(String[] args) {
         
         //khai báo danh sách với cú pháp L[name] ví dụ: LPassengers nhé
-        ArrayList<Passenger> passengers = new ArrayList<>();
-        ArrayList<FlightTicket> dsve = new ArrayList<>();
-        ArrayList<Flight> listFlight = new ArrayList<>();
+        ArrayList<Passenger> LPassengers = new ArrayList<>();
+        ArrayList<FlightTicket> LTicket = new ArrayList<>();
+        ArrayList<Flight> LFlight = new ArrayList<>();
         
         
         menu();
@@ -62,9 +63,9 @@ public class Project07 {
         switch (luaChon) {
             case 1: {
                 passengerMenu();
-                sc.nextLine();
+                
                 int passenger1 = sc.nextInt();
-                sc.nextLine();
+                
                 switch (passenger1) {
                     case 1: {
                         System.out.println("Nhap ten hanh khach:");
@@ -74,7 +75,7 @@ public class Project07 {
                         String ID = sc.nextLine();
                         System.out.println("Nhap ma ve:");
                         String maVe = sc.nextLine();
-                        passengers.add(new Passenger(ID, hoTen, maVe));
+                        LPassengers.add(new Passenger(ID, hoTen, maVe));
                         System.out.println("Da them thanh cong:");
                         System.out.println("ID: " + ID);
                         System.out.println("Ho ten: " + hoTen);
@@ -85,8 +86,8 @@ public class Project07 {
                         System.out.println("Nhap ID can sua doi:");
                         sc.nextLine();
                         String suaDoi = sc.nextLine();
-                        for (int i = 0; i < passengers.size(); i++) {
-                            if (passengers.get(i).getID().equals(suaDoi)) {
+                        for (int i = 0; i < LPassengers.size(); i++) {
+                            if (LPassengers.get(i).getID().equals(suaDoi)) {
                                 System.out.println("chon muc can doi");
                                 System.out.println("1: ten hanh khach");
                                 System.out.println("2: ma ve:");
@@ -101,9 +102,9 @@ public class Project07 {
                         System.out.println("Nhap ID can xoa");
                         sc.nextLine();
                         String xoa = sc.nextLine();
-                        for (int i = 0; i < passengers.size(); i++) {
-                            if (passengers.get(i).getID().equals(xoa)) {
-                                passengers.remove(i);
+                        for (int i = 0; i < LPassengers.size(); i++) {
+                            if (LPassengers.get(i).getID().equals(xoa)) {
+                                LPassengers.remove(i);
                             }
                         }
                         System.out.println("Da xoa ID: " + xoa);
@@ -113,11 +114,11 @@ public class Project07 {
                         System.out.println("nhap so hieu chuyen bay:");
                         sc.nextLine();
                         String soHieu = sc.nextLine();
-                        for (int i = 0; i < listFlight.size(); i++) {
+                        for (int i = 0; i < LFlight.size(); i++) {
                             //người nào có mã vé của vé có số hiệu máy bay = sohieu thì chọn
-                            for (int j = 0; j < passengers.size(); j++) {
-                                if (passengers.get(j).getTicketCode().equals(dsve.get(i).getTicketCode())) {
-                                    passengers.get(i).toString();
+                            for (int j = 0; j < LPassengers.size(); j++) {
+                                if (LPassengers.get(j).getTicketCode().equals(LTicket.get(i).getTicketCode())) {
+                                    LPassengers.get(i).toString();
                                 }
                             }
                         }
@@ -131,9 +132,9 @@ public class Project07 {
             }
             case 2: {
                 flightTicketMenu();
-                sc.nextLine();
+                
                 int flightTicket1 = sc.nextInt();
-                sc.nextLine();
+                
                 switch (flightTicket1) {
                     case 1: {
                         System.out.printf(" -Nhap ma ve: ");
@@ -156,14 +157,14 @@ public class Project07 {
                         sc.next();
                         System.out.printf(" -Nhap so hieu ghe ngoi: ");
                         String SeatNumber = sc.nextLine();
-                        dsve.add(new FlightTicket(ticketCode, flightNumber, departure, destination, departureTime, arrivalTime, ticketClass, fare, SeatNumber));
+                        LTicket.add(new FlightTicket(ticketCode, flightNumber, departure, destination, departureTime, arrivalTime, ticketClass, fare, SeatNumber));
                         break;
                     }
                     case 2: {
                         System.out.printf("Nhap ma ve can sua: ");
                         String maVe = sc.nextLine();
-                        for (int i = 0; i < dsve.size(); i++) {
-                            if (dsve.get(i).getTicketCode().equals(maVe)) {
+                        for (int i = 0; i < LTicket.size(); i++) {
+                            if (LTicket.get(i).getTicketCode().equals(maVe)) {
 
                             } else {
                                 System.out.println("Khong the sua do khong tim thay ma ve!!!");
@@ -174,9 +175,9 @@ public class Project07 {
                     case 3: {
                         System.out.printf("Nhap ma ve can sua: ");
                         String maVe = sc.nextLine();
-                        for (int i = 0; i < dsve.size(); i++) {
-                            if (dsve.get(i).getTicketCode().equals(maVe)) {
-                                dsve.remove(i);
+                        for (int i = 0; i < LTicket.size(); i++) {
+                            if (LTicket.get(i).getTicketCode().equals(maVe)) {
+                                LTicket.remove(i);
                             } else {
                                 System.out.println("Khong the xoa do khong tim thay ma ve!!!");
                             }
@@ -195,9 +196,9 @@ public class Project07 {
             }
             case 3: {
                 flightMenu();
-                sc.nextLine();
+                
                 int flight1 = sc.nextInt();
-                sc.nextLine();
+                
                 switch (flight1) {
                     case 1: {
                         Flight flight = new Flight();
@@ -227,7 +228,7 @@ public class Project07 {
                         System.out.println("Nhap gia ve hang pho thong");
                         flight.getEconomyFare();
                         // so luong ve ban ra
-                        listFlight.add(flight);
+                        LFlight.add(flight);
                         break;
                     }
                     case 2: {
