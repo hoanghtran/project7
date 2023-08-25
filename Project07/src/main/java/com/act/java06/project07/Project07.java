@@ -49,12 +49,16 @@ public class Project07 {
     }
 
     public static void main(String[] args) {
+        
+        //khai báo danh sách với cú pháp L[name] ví dụ: LPassengers nhé
         ArrayList<Passenger> passengers = new ArrayList<>();
         ArrayList<FlightTicket> dsve = new ArrayList<>();
         ArrayList<Flight> listFlight = new ArrayList<>();
+        
+        
         menu();
         int luaChon = sc.nextInt();
-        sc.nextLine();
+        
         switch (luaChon) {
             case 1: {
                 passengerMenu();
