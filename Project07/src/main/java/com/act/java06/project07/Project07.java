@@ -1,5 +1,6 @@
 package com.act.java06.project07;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -16,7 +17,7 @@ public class Project07 {
         System.out.println("1: Thêm/Sửa/Xóa hành khách");
         System.out.println("2: Thêm/Sửa/Xóa vé bay");
         System.out.println("3: Thêm/Sửa/Xóa chuyen bay");
-        System.out.println("4: Thêm/Sửa/Xóa hãng hàng khong");
+        System.out.println("4: Thêm/Sửa/Xóa hãng hàng không");
         System.out.println("5: Thoát chương trình");
         System.out.print("Vui lòng nhập lựa chọn của bạn: ");
     }
@@ -56,6 +57,18 @@ public class Project07 {
         System.out.println("3: Xóa thông tin một hãng hàng không");
         System.out.println("4: Thoát menu   ");
         System.out.print("Vui lòng nhập lựa chọn của bạn: ");
+    }
+
+    static void menuFlightEdit() {
+        System.out.println("Lua chon thao tac");
+        System.out.println("1. Sua diem xuat phat");
+        System.out.println("2. Sua diem den");
+        System.out.println("3. Sua thoi gian di");
+        System.out.println("4. Sua thoi gian den");
+        System.out.println("5. Sua so luong cho ngoi hang thuong gia");
+        System.out.println("6. Sua so luong cho ngoi hang pho thong");
+        System.out.println("7. Nhap gia ve hang thuong gia");
+        System.out.println("8. Nhap gia ve hang pho thong");
     }
 
     public static void main(String[] args) {
@@ -112,16 +125,102 @@ public class Project07 {
                             break;
                         }
                         case 3: {
-                            System.out.println("Nhap ID can xoa");
-                            sc.nextLine();
-                            String xoa = sc.nextLine();
-                            for (int i = 0; i < LPassengers.size(); i++) {
-                                if (LPassengers.get(i).getID().equals(xoa)) {
-                                    LPassengers.remove(i);
+                            flightMenu();
+
+                            int flight1 = sc.nextInt();
+
+                            switch (flight1) {
+                                case 1: {
+
+                                    System.out.println(" -Nhap so hieu chuyen bay");
+                                    String soHieuCb = sc.nextLine();
+
+                                    System.out.println(" -Nhap so hieu may bay");
+                                    String soHieuMb = sc.nextLine();
+
+                                    System.out.println(" -Nhap diem xuat phat");
+                                    String diemXp = sc.nextLine();
+
+                                    System.out.println(" -Nhap diem den");
+                                    String diemDen = sc.nextLine();
+
+                                    System.out.println(" -Nhap thoi gian di");
+                                    String tgDi = sc.nextLine();
+
+                                    System.out.println(" -Nhap thoi gian den");
+                                    String tgDen = sc.nextLine();
+
+                                    System.out.println(" -Nhap so luong cho ngoi hang thuong gia");
+                                    int soluongTg = sc.nextInt();
+
+                                    System.out.println(" -Nhap so luong cho ngoi hang pho thuong");
+                                    int soluongPt = sc.nextInt();
+
+                                    System.out.println(" -Nhap gia ve hang thuong gia");
+                                    double giaVeTg = sc.nextDouble();
+
+                                    System.out.println(" -Nhap gia ve hang pho thong");
+                                    double giaVePt = sc.nextDouble();
+
+                                    LFlight.add(new Flight(soHieuCb, soHieuMb, LocalDateTime.parse(tgDi), LocalDateTime.parse(tgDen), diemXp, diemDen, soluongTg, soluongPt, giaVeTg, giaVePt));
+                                    break;
                                 }
+                                case 2: {
+                                    System.out.println("Nhap so hieu chuyen bay");
+                                    String flightCd = sc.nextLine();
+                                    System.out.println("Nhap 1 thong tin can sua:");
+                                    String information = sc.nextLine();
+                                    menuFlightEdit();
+                                    int chonSua = sc.nextInt();
+                                    int point = 0;
+                                    int non = 0;
+                                    for (int i = 0; i < LFlight.size(); i++) {
+                                        if (LFlight.get(i).getFlightCode().equals(flightCd)) {
+                                            point = i;
+                                            non = 1;
+                                        }
+                                    }
+                                    if (non == 0) {
+                                        System.out.println("Khong tim thay thong tin!!!");
+                                        break;
+                                    }
+                                    switch (chonSua) {
+                                        case 1:
+                                            LFlight.get(point).setDeparture(information);
+                                            break;
+                                        case 2:
+                                            LFlight.get(point).setDestination(information);
+                                            break;
+                                        case 3:
+                                            LFlight.get(point).setDepartureTime(LocalDateTime.parse(information));
+                                            break;
+                                        case 4:
+                                            LFlight.get(point).setArrivalTime(LocalDateTime.parse(information));
+                                            break;
+                                        case 5:
+                                            LFlight.get(point).setUsedBusinessSeats(Integer.parseInt(information));
+                                            break;
+                                        case 6:
+                                            LFlight.get(point).setUsedEconomySeats(Integer.parseInt(information));
+                                            break;
+                                        case 7:
+                                            LFlight.get(point).setBusinessFare(Integer.parseInt(information));
+                                            break;
+                                        case 8:
+                                            LFlight.get(point).setEconomyFare(Integer.parseInt(information));
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                    break;
+                                }
+
+                                case 3:
+                                    break;
+                                default:
+                                    break;
+
                             }
-                            System.out.println("Da xoa ID: " + xoa);
-                            break;
                         }
                         case 4: {
                             System.out.println("nhap so hieu chuyen bay:");
