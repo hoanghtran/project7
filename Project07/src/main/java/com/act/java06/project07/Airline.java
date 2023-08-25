@@ -12,11 +12,10 @@ public class Airline implements IAirline {
     private int numOfFlights;
     private Flight[] listOfFlights;
 
-    public Airline(String brandname, String code, int numOfPlanes, int numOfFlights) {
+    public Airline(String brandname, String code, int numOfPlanes) {
         this.brandname = brandname;
         this.code = code;
         this.numOfPlanes = numOfPlanes;
-        this.numOfFlights = numOfFlights;
     }
 
     public Airline() {
