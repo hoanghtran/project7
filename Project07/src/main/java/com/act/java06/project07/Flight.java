@@ -43,6 +43,19 @@ public class Flight implements IFlight {
         this.totalBusinessSeats = totalBusinessSeats;
     }
 
+    public Flight(String flightCode, String planeCode, LocalDateTime departureTime, LocalDateTime arrivalTime, String departure, String destination, int usedEconomySeats, int usedBusinessSeats, double economyFare, double businessFare) {
+        this.flightCode = flightCode;
+        this.planeCode = planeCode;
+        this.departureTime = departureTime;
+        this.arrivalTime = arrivalTime;
+        this.departure = departure;
+        this.destination = destination;
+        this.usedEconomySeats = usedEconomySeats;
+        this.usedBusinessSeats = usedBusinessSeats;
+        this.economyFare = economyFare;
+        this.businessFare = businessFare;
+    }
+    
     
 
     
