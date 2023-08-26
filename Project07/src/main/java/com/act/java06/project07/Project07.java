@@ -34,7 +34,7 @@ public class Project07 {
 
     static void flightTicketMenu() {
         System.out.println("==============Menu==============");
-        System.out.println("1: Them vé may bay");
+        System.out.println("1: Them ve may bay");
         System.out.println("2: Sua ve may bay");
         System.out.println("3: Xoa ve may bay");
         System.out.println("4: Hien thi so ve con lai");
@@ -66,9 +66,9 @@ public class Project07 {
         System.out.println("============= Airline Menu =============");
         System.out.println("1: Them mot hang hang khong");
         System.out.println("2: Sua thong tin mot hang hang khong");
-        System.out.println("3: Xóa thong tin mot hang hang khong");
-        System.out.println("4. Hien thi thong tin mot hang hang khong");
-        System.out.println("5. Tra cuu thong tin mot hang hang khong");
+        System.out.println("3: Xoa thong tin mot hang hang khong");
+        System.out.println("4. Hien thi thong tin cac hang hang khong");
+        System.out.println("5. Tra cuu thong tin cac hang hang khong");
         System.out.println("6: Thoat menu");
         System.out.print("Vui long nhap lua chon cua ban: ");
     }
@@ -116,15 +116,17 @@ public class Project07 {
                                 if (LPassengers.get(i).getID().equals(suaDoi)) {
                                     System.out.println("==============Menu==============");
                                     System.out.println("1: ten hanh khach");
-                                    System.out.println("2: ma ve:");
-                                    System.out.print("chon muc can doi:");
+                                    System.out.println("2: ma ve");
+                                    System.out.print("Chon muc can doi:");
                                     int passenger2 = sc.nextInt();
                                     if (passenger2 == 1) {
-                                        System.out.print("nhap ten moi: ");
+                                        sc.nextLine();
+                                        System.out.print("Nhap ten moi: ");
                                         String tenMoi = sc.nextLine();
                                         LPassengers.get(i).setFullName(tenMoi);
 
                                     } else if (passenger2 == 2) {
+                                        sc.nextLine();
                                         System.out.print("Nhap ma ve moi: ");
                                         String veMoi = sc.nextLine();
                                         LPassengers.get(i).setTicketCode(veMoi);
@@ -148,10 +150,23 @@ public class Project07 {
                         case 4: {
                             System.out.println("Tuy chon:");
                             System.out.println("1: hien tat ca");
-                            System.out.println("2: hien hanh khach :");
+                            System.out.println("2: hien hanh khach");
                             System.out.print("Nhap lua chon: ");
                             int passenger3 = sc.nextInt();
-
+                            if (passenger3 == 1) {
+                                for (int i = 0; i < LPassengers.size(); i++) {
+                                    LPassengers.get(i).toString();
+                                }
+                            } else if (passenger3 == 2) {
+                                sc.nextLine();
+                                System.out.print("Nhap ID muon hien thi: ");
+                                String passenger4 = sc.nextLine();
+                                for (int i = 0; i < LPassengers.size(); i++) {
+                                    if (LPassengers.get(i).getID().equals(passenger4)) {
+                                        LPassengers.get(i).toString();
+                                    }
+                                }
+                            }
                         }
                         case 5: {
                             System.out.print("Nhap so hieu chuyen bay: ");
