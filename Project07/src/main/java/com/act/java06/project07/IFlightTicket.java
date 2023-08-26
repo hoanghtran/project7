@@ -10,6 +10,6 @@ package com.act.java06.project07;
  */
 public interface IFlightTicket {
 
-    public void showTicketClassRemaining(Flight fl, Plane p);
+    public void showTicketClassRemaining(Flight fl);
 
 }

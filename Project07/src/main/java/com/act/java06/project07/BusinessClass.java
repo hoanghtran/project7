@@ -14,7 +14,7 @@ public class BusinessClass extends FlightTicket {
     }
 
     @Override
-    public void showTicketClassRemaining(Flight fl, Plane p) {
+    public void showTicketClassRemaining(Flight fl) {
         int avaBusiTicket = fl.getUsedBusinessSeats();
         int totalBusi = fl.getTotalBusinessSeats();
         System.out.println("So ve hang thuong gia: "+(totalBusi - avaBusiTicket));

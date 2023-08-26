@@ -18,7 +18,7 @@ public class EconomyClass extends FlightTicket {
     }
 
     @Override
-    public void showTicketClassRemaining(Flight fl, Plane p) {
+    public void showTicketClassRemaining(Flight fl) {
         int avaEcoTicket = fl.getUsedEconomySeats();
         int totalEco = fl.getTotalEconomySeats();
         System.out.println("So ve hang pho thong: "+(totalEco - avaEcoTicket));
