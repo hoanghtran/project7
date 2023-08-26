@@ -14,41 +14,41 @@ public class Project07 {
 
     static void menu() {
         System.out.println("===============Menu===============");
-        System.out.println("1: Thêm/Sửa/Xóa/Hiển thị/Tra cứu hành khách");
-        System.out.println("2: Thêm/Sửa/Xóa/Hiển thị/Tra cứu vé bay");
-        System.out.println("3: Thêm/Sửa/Xóa/Hiển thị/Tra cứu chuyen bay");
-        System.out.println("4: Thêm/Sửa/Xóa/Hiển thị/Tra cứu hãng hàng không");
-        System.out.println("5: Thoát chương trình");
-        System.out.print("Vui lòng nhập lựa chọn của bạn: ");
+        System.out.println("1: Them/Sua/Xoa/Hien thi/Tra cuu hanh khach");
+        System.out.println("2: Them/Sua/Xoa/Hien thi/Tra cuu ve bay");
+        System.out.println("3: Them/Sua/Xoa/Hien thi/Tra cuu chuyen bay");
+        System.out.println("4: Them/Sua/Xoa/Hien thi/Tra cuu hang hang khong");
+        System.out.println("5: Thoat chuong trinh");
+        System.out.print("Vui long nhap lua chon cua ban: ");
     }
 
     static void passengerMenu() {
         System.out.println("=================Menu=================");
-        System.out.println("1: Thêm hành khách");
-        System.out.println("2: Sửa hành khách");
-        System.out.println("3: Xóa hành khách");
-        System.out.println("4: Chọn lọc hành khách từ chuyến bay");
-        System.out.println("5: Thoát menu");
-        System.out.print("Vui lòng nhập lựa chọn của bạn: ");
+        System.out.println("1: Them hanh khach");
+        System.out.println("2: Sua hanh khach");
+        System.out.println("3: Xoa hanh khach");
+        System.out.println("4: Chon loc hanh khach tu chuyen bay");
+        System.out.println("5: Thoat menu");
+        System.out.print("Vui long nhap lua chon cua ban: ");
     }
 
     static void flightTicketMenu() {
         System.out.println("==============Menu==============");
-        System.out.println("1: Thêm vé máy bay");
-        System.out.println("2: Sửa vé máy bay");
-        System.out.println("3: Xóa vé máy bay");
-        System.out.println("4: Hiển thị số vé còn lại");
+        System.out.println("1: Them ve may bay");
+        System.out.println("2: Sua ve may bay");
+        System.out.println("3: Xoa ve may bay");
+        System.out.println("4: Hien thi so ve con lai");
 
-        System.out.println("5: Thoát menu");
-        System.out.print("Vui lòng nhập lựa chọn của bạn: ");
+        System.out.println("5: Thoat menu");
+        System.out.print("Vui long nhap lua chon cua ban: ");
     }
 
     static void flightMenu() {
         System.out.println("==============Menu==============");
-        System.out.println("1: Thêm một chuyến bay");
-        System.out.println("2: Sửa thông tin một chuyến bay");
-        System.out.println("3: Thoát menu   ");
-        System.out.print("Vui lòng nhập lựa chọn của bạn: ");
+        System.out.println("1: Them mot chuyen bay");
+        System.out.println("2: Sua thong tin mot chuyen bay");
+        System.out.println("3: Thoat menu   ");
+        System.out.print("Vui long nhap lua chon cua ban: ");
     }
 
     static void menuFlightEdit() {
@@ -65,13 +65,13 @@ public class Project07 {
 
     static void AirlineMenu() {
         System.out.println("============= Airline Menu =============");
-        System.out.println("1: Thêm một hãng hàng không");
-        System.out.println("2: Sửa thông tin một hãng hàng không");
-        System.out.println("3: Xóa thông tin một hãng hàng không");
-        System.out.println("4. Hiển thị thông tin các hãng hàng không");
-        System.out.println("5. Tra cứu thông tin các hãng hàng không");
-        System.out.println("6: Thoát menu");
-        System.out.print("Vui lòng nhập lựa chọn của bạn: ");
+        System.out.println("1: Them mot hang hang khong");
+        System.out.println("2: Sua thong tin mot hang hang khong");
+        System.out.println("3: Xoa thong tin mot hang hang khong");
+        System.out.println("4. Hien thi thong tin cac hang hang khong");
+        System.out.println("5. Tra cuu thong tin cac hang hang khong");
+        System.out.println("6: Thoat menu");
+        System.out.print("Vui long nhap lua chon cua ban: ");
     }
 
     public static void main(String[] args) {
@@ -121,11 +121,13 @@ public class Project07 {
                                     System.out.print("chon muc can doi:");
                                     int passenger2 = sc.nextInt();
                                     if (passenger2 == 1) {
+                                        sc.nextLine();
                                         System.out.print("nhap ten moi: ");
                                         String tenMoi = sc.nextLine();
                                         LPassengers.get(i).setFullName(tenMoi);
 
                                     } else if (passenger2 == 2) {
+                                        sc.nextLine();
                                         System.out.print("Nhap ma ve moi: ");
                                         String veMoi = sc.nextLine();
                                         LPassengers.get(i).setTicketCode(veMoi);
