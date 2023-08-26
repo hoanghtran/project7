@@ -32,7 +32,7 @@ public class FlightTicket implements IFlightTicket {
     }
 
     @Override
-    public void showTicketClassRemaining(Flight fl, Plane p) {
+    public void showTicketClassRemaining(Flight fl) {
 
     }
 
@@ -107,5 +107,4 @@ public class FlightTicket implements IFlightTicket {
     public void setSeatNumber(String SeatNumber) {
         this.SeatNumber = SeatNumber;
     }
-
 }

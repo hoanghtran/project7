@@ -38,6 +38,7 @@ public class Project07 {
         System.out.println("2: Sửa vé máy bay");
         System.out.println("3: Xóa vé máy bay");
         System.out.println("4: Hiển thị số vé còn lại");
+        
         System.out.println("5: Thoát menu");
         System.out.print("Vui lòng nhập lựa chọn của bạn: ");
     }
@@ -177,30 +178,47 @@ public class Project07 {
                     flightTicketMenu();
 
                     int flightTicket1 = sc.nextInt();
-
+                    String ticketCode = "";
+                    String flightNumber = "";
+                    String departure = "";
+                    String destination = "";
+                    String departureTime = "";
+                    String arrivalTime = "";
+                    String ticketClass = "";
+                    double fare = 0;
+                    String SeatNumber = "";
                     switch (flightTicket1) {
                         case 1: {
                             sc.nextLine();
+
                             System.out.printf(" -Nhap ma ve: ");
-                            String ticketCode = sc.nextLine();
+                            ticketCode = sc.nextLine();
+
                             System.out.printf(" -Nhap so hieu chuyen bay: ");
-                            String flightNumber = sc.nextLine();
+                            flightNumber = sc.nextLine();
+
                             System.out.printf(" -Nhap diem khoi hanh: ");
-                            String departure = sc.nextLine();
+                            departure = sc.nextLine();
+
                             System.out.printf(" -Nhap diem den: ");
-                            String destination = sc.nextLine();
+                            destination = sc.nextLine();
+
                             System.out.printf(" -Nhap thoi gian khoi hanh: ");
-                            String departureTime = sc.nextLine();
+                            departureTime = sc.nextLine();
+
                             System.out.printf(" -Nhap thoi gian den: ");
-                            String arrivalTime = sc.nextLine();
+                            arrivalTime = sc.nextLine();
+
                             System.out.printf(" -Nhap hang ve may bay: ");
-                            String ticketClass = sc.nextLine();
+                            ticketClass = sc.nextLine();
 
                             System.out.printf(" -Nhap gia ve: ");
-                            double fare = sc.nextDouble();
+                            fare = sc.nextDouble();
                             sc.nextLine();
+
                             System.out.printf(" -Nhap so hieu ghe ngoi: ");
-                            String SeatNumber = sc.nextLine();
+                            SeatNumber = sc.nextLine();
+
                             LTicket.add(new FlightTicket(ticketCode, flightNumber, departure, destination, departureTime, arrivalTime, ticketClass, fare, SeatNumber));
                             break;
                         }
@@ -208,6 +226,7 @@ public class Project07 {
                             sc.nextLine();
                             System.out.printf("Nhap ma ve can sua: ");
                             String maVe = sc.nextLine();
+
                             for (int i = 0; i < LTicket.size(); i++) {
                                 if (LTicket.get(i).getTicketCode().equals(maVe)) {
 
@@ -215,12 +234,14 @@ public class Project07 {
                                     System.out.println("Khong the sua do khong tim thay ma ve!!!");
                                 }
                             }
+
                             break;
                         }
                         case 3: {
                             sc.nextLine();
                             System.out.printf("Nhap ma ve can sua: ");
                             String maVe = sc.nextLine();
+
                             for (int i = 0; i < LTicket.size(); i++) {
                                 if (LTicket.get(i).getTicketCode().equals(maVe)) {
                                     LTicket.remove(i);
@@ -231,14 +252,24 @@ public class Project07 {
                             break;
                         }
                         case 4: {
-                            
+                            Flight fl = new Flight(flightNumber, ticketCode, LocalDateTime.MIN, LocalDateTime.MIN, departure, destination, flightTicket1, flightTicket1, fare, fare);
+
+                            BusinessClass business = new BusinessClass(ticketCode, flightNumber, departure, destination, departureTime, arrivalTime, ticketClass, fare, SeatNumber);
+                            business.showTicketClassRemaining(fl);
+
+                            EconomyClass economy = new EconomyClass(ticketCode, flightNumber, departure, destination, departureTime, arrivalTime, ticketClass, fare, SeatNumber);
+                            economy.showTicketClassRemaining(fl);
                             break;
+                        }
+                        case 5: {
+                               break;
                         }
 
                         default: {
                             break;
                         }
                     }
+                    break;
                 }
 
                 case 3: { // case 3 tổng
