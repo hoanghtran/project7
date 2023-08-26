@@ -9,7 +9,7 @@ public class Airline implements IAirline {
     private String code;
     private int numOfPlanes;
     private Plane[] listOfPlanes;
-    private int numOfFlights;
+    private int numOfFlights = 0;
     private Flight[] listOfFlights;
 
     public Airline(String brandname, String code, int numOfPlanes) {

@@ -55,10 +55,6 @@ public class Flight implements IFlight {
         this.economyFare = economyFare;
         this.businessFare = businessFare;
     }
-    
-    
-
-    
 
     @Override
     public void add() {
@@ -171,9 +167,5 @@ public class Flight implements IFlight {
     public void setTotalBusinessSeats(int totalBusinessSeats) {
         this.totalBusinessSeats = totalBusinessSeats;
     }
-
-
-
-    
 
 }

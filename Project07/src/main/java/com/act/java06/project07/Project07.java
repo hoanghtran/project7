@@ -14,10 +14,10 @@ public class Project07 {
 
     static void menu() {
         System.out.println("===============Menu===============");
-        System.out.println("1: Thêm/Sửa/Xóa hành khách");
-        System.out.println("2: Thêm/Sửa/Xóa vé bay");
-        System.out.println("3: Thêm/Sửa/Xóa chuyen bay");
-        System.out.println("4: Thêm/Sửa/Xóa hãng hàng không");
+        System.out.println("1: Thêm/Sửa/Xóa/Hiển thị/Tra cứu hành khách");
+        System.out.println("2: Thêm/Sửa/Xóa/Hiển thị/Tra cứu vé bay");
+        System.out.println("3: Thêm/Sửa/Xóa/Hiển thị/Tra cứu chuyen bay");
+        System.out.println("4: Thêm/Sửa/Xóa/Hiển thị/Tra cứu hãng hàng không");
         System.out.println("5: Thoát chương trình");
         System.out.print("Vui lòng nhập lựa chọn của bạn: ");
     }
@@ -38,7 +38,7 @@ public class Project07 {
         System.out.println("2: Sửa vé máy bay");
         System.out.println("3: Xóa vé máy bay");
         System.out.println("4: Hiển thị số vé còn lại");
-        
+
         System.out.println("5: Thoát menu");
         System.out.print("Vui lòng nhập lựa chọn của bạn: ");
     }
@@ -64,11 +64,13 @@ public class Project07 {
     }
 
     static void AirlineMenu() {
-        System.out.println("==============Menu==============");
+        System.out.println("============= Airline Menu =============");
         System.out.println("1: Thêm một hãng hàng không");
         System.out.println("2: Sửa thông tin một hãng hàng không");
         System.out.println("3: Xóa thông tin một hãng hàng không");
-        System.out.println("4: Thoát menu   ");
+        System.out.println("4. Hiển thị thông tin các hãng hàng không");
+        System.out.println("5. Tra cứu thông tin các hãng hàng không");
+        System.out.println("6: Thoát menu");
         System.out.print("Vui lòng nhập lựa chọn của bạn: ");
     }
 
@@ -262,7 +264,7 @@ public class Project07 {
                             break;
                         }
                         case 5: {
-                               break;
+                            break;
                         }
 
                         default: {
@@ -451,6 +453,17 @@ public class Project07 {
                                 }
                             }
                             break;
+                        }
+                        case 4: {
+                            System.out.println("STT\tHãng hàng không\tMã hãng\tSố máy bay\tSố chuyên bay");
+                            int stt = 0;
+                            for (int i = 0; i < LAirline.size(); i++) {
+                                Airline tmp = LAirline.get(i);
+                                System.out.println(stt++ + "\t" + tmp.getBrand()
+                                        + "\t" + tmp.getCode() + "\t" + tmp.getNumOfPlanes()
+                                        + "\t" + tmp.getNumOfFlights());
+                            }
+                            System.out.println("========================== Hết ==========================");
                         }
                         default:
                             break;
