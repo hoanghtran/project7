@@ -1,9 +1,10 @@
 package com.act.java06.project07;
 
-
+import static com.fasterxml.uuid.impl.UUIDUtil.uuid;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.UUID;
 
 /**
  *
@@ -80,7 +81,7 @@ public class Main {
                     int opt_for_airline_menu = sc.nextInt();
                     switch (opt_for_airline_menu) {
                         case 1: {
-                            
+
                         }
                     }
 
@@ -123,21 +124,29 @@ public class Main {
                                             break;
                                         case 3: // truy cập một chuyến bay có sẵn
                                             add_edit_remove_a_passenger(); // menu thêm sửa xóa
-                                            int opt_for_passenger = sc.nextInt(); // một hành khách
+                                            int opt_for_passenger; // một hành khách
                                             do {
+                                                add_edit_remove_a_passenger(); // menu thêm sửa xóa
+                                                 opt_for_passenger = sc.nextInt();
                                                 switch (opt_for_passenger) {
-                                                    case 1:
+                                                    case 1: {
                                                         System.out.print("Ban muon them bao nhieu hanh khach:");
                                                         int passenger1 = sc.nextInt();
                                                         for (int i = 1; i <= passenger1; i++) {
-                                                            System.out.print("Nhap ten khach hang thu" + i + ": ");
+                                                            System.out.print("Nhap ten khach hang thu " + i + ": ");
                                                             sc.nextLine();
                                                             String hoTen = sc.nextLine();
                                                             System.out.print("Nhap ID: ");
                                                             String ID = sc.nextLine();
-
+                                                            UUID maVe = UUID.randomUUID();
+                                                            String maVeString = maVe.toString().toUpperCase();
+                                                            String maVeEdit = maVeString.replace("-", "").substring(0, 8);
+                                                            System.out.println("Ma ve cua ban la: " + maVeEdit);
+                                                            LPassengers.add(new Passenger(ID, hoTen, maVeEdit));
                                                         }
                                                         break;
+                                                    }
+
                                                     case 2: // xóa 1 hành khách
                                                         // exception sai CCCD
                                                         System.out.print("Nhap ID hanh khach muon xoa: ");
@@ -170,7 +179,7 @@ public class Main {
                                                         break;
 
                                                 }
-                                            } while (opt_for_passenger != 3); // loop cho mục khách
+                                            } while (opt_for_passenger != 4); // loop cho mục khách
                                             break;                           // tier 4
 
                                         case 4: // tính doanh thu của 1 hãng hàng không 
