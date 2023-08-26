@@ -1,7 +1,6 @@
 package com.act.java06.project07;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -157,7 +156,6 @@ public class Main {
                                                         sc.nextLine();
                                                         String soHieu = sc.nextLine();
                                                         for (int i = 0; i < LFlight.size(); i++) {
-                                                            //người nào có mã vé của vé có số hiệu máy bay = sohieu thì chọn
                                                             if (LFlight.get(i).getFlightCode().equals(soHieu)) {
                                                                 for (int j = 0; j < LPassengers.size(); j++) {
                                                                     if (LPassengers.get(j).getTicketCode().equals(LTicket.get(i).getTicketCode())) {
