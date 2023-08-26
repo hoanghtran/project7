@@ -1,6 +1,9 @@
 package com.act.java06.project07;
 
 import java.util.Scanner;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -11,9 +14,21 @@ public class Main {
     static Scanner sc = new Scanner(System.in);
 
     static void navigator() {
-        System.out.println("======= Điều hướng =======");
-        System.out.println("1. Khách hàng\n2. Quản lý\n3. Thoát chương trình");
-        System.out.print("Bạn là: ");
+        System.out.println("======= Đieu huong =======");
+        System.out.println("1. Khach hang\n2. Quan ly\n3. Thoat chuong trinh");
+        System.out.print("Ban la: ");
+    }
+
+    static void airline_menu() { //ArrayList<Airline> LAirline){
+        System.out.println("====== Hang hang khong ======");
+        System.out.println("1. Bamboo Airways");
+        System.out.println("2. Vietnam Airlines");
+
+        // Hàm duyệt hiển thị các hãng hàng không
+//        for(int i = 0; i < LAirline.size(); i++){
+//            int stt = 0;
+//            System.out.println(stt++ + ". " + LAirline.get(i).getBrand());
+//        }
     }
 
     static void modify_or_access_an_airline_option() {
@@ -55,8 +70,14 @@ public class Main {
             switch (option) {
                 case 1: // case cho khách hàng
 
-                    ///???????????????????
-                    // chèn code vào đây
+                    airline_menu();
+                    int opt_for_airline_menu = sc.nextInt();
+                    switch (opt_for_airline_menu) {
+                        case 1: {
+                            
+                        }
+                    }
+
                     break; // break case 1 - case cho khách hàng
 
                 case 2: // case cho quản lý
@@ -117,9 +138,9 @@ public class Main {
                                                 }
                                             } while (opt_for_passenger != 3); // loop cho mục khách
                                             break;                           // tier 4
-                                            
+
                                         case 4: // tính doanh thu của 1 hãng hàng không 
-                                            
+
                                             break;
                                         case 5: // thoát chương trình
                                             break;
