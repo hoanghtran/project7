@@ -27,7 +27,7 @@ public class Project07 {
         System.out.println("1: Them hanh khach");
         System.out.println("2: Sua hanh khach");
         System.out.println("3: Xoa hanh khach");
-        System.out.println("4: Chon loc hanh khach từ chuyen bay");
+        System.out.println("4: Chon loc hanh khach tu chuyen bay");
         System.out.println("5: Thoat menu");
         System.out.print("Vui long nhap lua chon cua ban: ");
     }
