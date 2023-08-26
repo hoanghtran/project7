@@ -21,7 +21,8 @@ public class Main {
         System.out.println("1. Tao mot hang hang khong");
         System.out.println("2. Xoa mot hang hang khong");
         System.out.println("3. Truy cap hang hang khong");
-        System.out.println("4. Thoat chuong trinh");
+        System.out.println("4. Tinh doanh thu hang hang khong");
+        System.out.println("5. Thoat chuong trinh");
         System.out.print("Vui long nhap lua chon cua ban: ");
     }
 
@@ -54,6 +55,7 @@ public class Main {
             switch (option) {
                 case 1: // case cho khách hàng
 
+                    ///???????????????????
                     // chèn code vào đây
                     break; // break case 1 - case cho khách hàng
 
@@ -115,7 +117,11 @@ public class Main {
                                                 }
                                             } while (opt_for_passenger != 3); // loop cho mục khách
                                             break;                           // tier 4
-                                        case 4: // thoát chương trình
+                                            
+                                        case 4: // tính doanh thu của 1 hãng hàng không 
+                                            
+                                            break;
+                                        case 5: // thoát chương trình
                                             break;
                                         default:
                                             break;
