@@ -14,6 +14,8 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import JSON.*;
+
 /**
  *
  * @author Yatth
@@ -77,10 +79,13 @@ public class Main {
             fr = new FileReader(file_path);
             Gson gson = new Gson();
 
-            List<Airline> airlines = gson.fromJson(fr, new TypeToken<List<Airline>>() {
+//            List<Airline> airlines = gson.fromJson(fr, new TypeToken<List<Airline>>() {
+//            }.getType());
+
+            List<JSON.ListOfAirline> airlines = gson.fromJson(fr, new TypeToken<List<ListOfAirline>>() {
             }.getType());
 
-            for (Airline airline : airlines) {
+            for (JSON. airline : airlines) {
                 int stt = 0;
                 System.out.println(stt++ + ". " + airline.getBrand());
             }
