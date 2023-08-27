@@ -4,6 +4,7 @@ import static com.fasterxml.uuid.impl.UUIDUtil.uuid;
 import java.util.UUID;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -11,8 +12,6 @@ import java.io.IOException;
 
 import java.time.LocalDateTime;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -72,9 +71,7 @@ public class Main {
 
     static void read_airlines_file(String file_path) throws IOException {
 
-        FileReader fr = null;
-        try {
-            fr = new FileReader(file_path);
+        try (FileReader fr = new FileReader(file_path)) {
             Gson gson = new Gson();
 
             List<Airline> airlines = gson.fromJson(fr, new TypeToken<List<Airline>>() {
@@ -84,15 +81,17 @@ public class Main {
                 int stt = 0;
                 System.out.println(stt++ + ". " + airline.getBrand());
             }
-
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            if (fr != null) {
-                fr.close();
-            }
         }
 
+    }
+
+    static void openLocalDateTimeForReadingJsonFilePurpose() {
+        // Create a GsonBuilder and register the custom TypeAdapter
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeTypeAdapter());
+
+        // Create a Gson instance from the GsonBuilder
+        Gson gson = gsonBuilder.create();
     }
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
@@ -104,6 +103,9 @@ public class Main {
         ArrayList<Airline> LAirline = new ArrayList<>();
 
         int option, opt_for_airline;
+
+        //regulate some rules:
+        openLocalDateTimeForReadingJsonFilePurpose();
 
         do {
             navigator(); // menu điều hướng

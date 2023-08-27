@@ -17,6 +17,9 @@ public class Plane {
         this.numOfSeats = numOfSeat;
     }
 
+    public Plane() {
+    }
+    
     public int getNumOfSeat() {
         return numOfSeats;
     }
