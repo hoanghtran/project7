@@ -1,0 +1,67 @@
+[
+  {
+    "brandname": "Vietnam Airlines",
+    "code": "VN",
+    "numOfPlanes": 69,
+    "listOfPlanes": [
+      {
+        "planeCode": "ZQX",
+        "numOfSeats": 211
+      },
+      {
+        "planeCode": "QYH",
+        "numOfSeats": 290
+      },
+      {
+        "planeCode": "XZC",
+        "numOfSeats": 440
+      },
+      ...
+      {
+        "planeCode": "JQW",
+        "numOfSeats": 149
+      }
+    ],
+    "numOfFlights": 6,
+    "listOfFlights": [
+      {
+        "flightCode": "VN348",
+        "planeCode": "ZQX",
+        "departureTime": {
+          "date": {
+            "year": 2023,
+            "month": 9,
+            "day": 25
+          },
+          "time": {
+            "hour": 14,
+            "minute": 11,
+            "second": 0,
+            "nano": 0
+          }
+        },
+        "arrivalTime": {
+          "date": {
+            "year": 2023,
+            "month": 9,
+            "day": 25
+          },
+          "time": {
+            "hour": 18,
+            "minute": 23,
+            "second": 0,
+            "nano": 0
+          }
+        },
+        "departure": "HAN",
+        "destination": "DAD",
+        "usedEconomySeats": 42,
+        "usedBusinessSeats": 19,
+        "economyFare": 1407.0,
+        "businessFare": 2805.0,
+        "totalEconomySeats": 105,
+        "totalBusinessSeats": 106
+      }
+    ]
+  }
+]

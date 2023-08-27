@@ -1,9 +1,18 @@
 package com.act.java06.project07;
 
-import java.util.Scanner;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
+import static com.fasterxml.uuid.impl.UUIDUtil.uuid;
+import java.util.UUID;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+import java.time.LocalDateTime;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -12,23 +21,18 @@ import java.util.ArrayList;
 public class Main {
 
     static Scanner sc = new Scanner(System.in);
+    static String Json_file_path = "F:\\Data\\runner\\List_of_Airlines_Json.json";
 
     static void navigator() {
-        System.out.println("======= Đieu huong =======");
+        System.out.println("======= Dieu huong =======");
         System.out.println("1. Khach hang\n2. Quan ly\n3. Thoat chuong trinh");
         System.out.print("Ban la: ");
     }
 
-    static void airline_menu() { //ArrayList<Airline> LAirline){
+    static <E> void airline_menu() throws IOException {//ArrayList<Airline> LAirline){
         System.out.println("====== Hang hang khong ======");
-        System.out.println("1. Bamboo Airways");
-        System.out.println("2. Vietnam Airlines");
-
-        // Hàm duyệt hiển thị các hãng hàng không
-//        for(int i = 0; i < LAirline.size(); i++){
-//            int stt = 0;
-//            System.out.println(stt++ + ". " + LAirline.get(i).getBrand());
-//        }
+        //Hàm duyệt hiển thị các hãng hàng không
+        read_airlines_file(Json_file_path);
     }
 
     static void modify_or_access_an_airline_option() {
@@ -59,7 +63,39 @@ public class Main {
         System.out.print("Vui long nhap lua chon cua ban: ");
     }
 
-    public static void main(String[] args) {
+    static <E> void show(List<E> list) {
+        System.out.println("=========================");
+        for (Object item : list) {
+            System.out.println(item.toString());
+        }
+    }
+
+    static void read_airlines_file(String file_path) throws IOException {
+
+        FileReader fr = null;
+        try {
+            fr = new FileReader(file_path);
+            Gson gson = new Gson();
+
+            List<Airline> airlines = gson.fromJson(fr, new TypeToken<List<Airline>>() {
+            }.getType());
+
+            for (Airline airline : airlines) {
+                int stt = 0;
+                System.out.println(stt++ + ". " + airline.getBrand());
+            }
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (fr != null) {
+                fr.close();
+            }
+        }
+
+    }
+
+    public static void main(String[] args) throws FileNotFoundException, IOException {
 
         //global variables:
         ArrayList<Passenger> LPassengers = new ArrayList<>();
@@ -80,7 +116,7 @@ public class Main {
                     int opt_for_airline_menu = sc.nextInt();
                     switch (opt_for_airline_menu) {
                         case 1: {
-                            
+
                         }
                     }
 
@@ -123,21 +159,29 @@ public class Main {
                                             break;
                                         case 3: // truy cập một chuyến bay có sẵn
                                             add_edit_remove_a_passenger(); // menu thêm sửa xóa
-                                            int opt_for_passenger = sc.nextInt(); // một hành khách
+                                            int opt_for_passenger; // một hành khách
                                             do {
+                                                add_edit_remove_a_passenger(); // menu thêm sửa xóa
+                                                opt_for_passenger = sc.nextInt();
                                                 switch (opt_for_passenger) {
-                                                    case 1:
+                                                    case 1: {
                                                         System.out.print("Ban muon them bao nhieu hanh khach:");
                                                         int passenger1 = sc.nextInt();
                                                         for (int i = 1; i <= passenger1; i++) {
-                                                            System.out.print("Nhap ten khach hang thu" + i + ": ");
+                                                            System.out.print("Nhap ten khach hang thu " + i + ": ");
                                                             sc.nextLine();
                                                             String hoTen = sc.nextLine();
                                                             System.out.print("Nhap ID: ");
                                                             String ID = sc.nextLine();
-
+                                                            UUID maVe = UUID.randomUUID();
+                                                            String maVeString = maVe.toString().toUpperCase();
+                                                            String maVeEdit = maVeString.replace("-", "").substring(0, 8);
+                                                            System.out.println("Ma ve cua ban la: " + maVeEdit);
+                                                            LPassengers.add(new Passenger(ID, hoTen, maVeEdit));
                                                         }
                                                         break;
+                                                    }
+
                                                     case 2: // xóa 1 hành khách
                                                         // exception sai CCCD
                                                         System.out.print("Nhap ID hanh khach muon xoa: ");
@@ -156,7 +200,6 @@ public class Main {
                                                         sc.nextLine();
                                                         String soHieu = sc.nextLine();
                                                         for (int i = 0; i < LFlight.size(); i++) {
-                                                            //người nào có mã vé của vé có số hiệu máy bay = sohieu thì chọn
                                                             if (LFlight.get(i).getFlightCode().equals(soHieu)) {
                                                                 for (int j = 0; j < LPassengers.size(); j++) {
                                                                     if (LPassengers.get(j).getTicketCode().equals(LTicket.get(i).getTicketCode())) {
@@ -171,7 +214,7 @@ public class Main {
                                                         break;
 
                                                 }
-                                            } while (opt_for_passenger != 3); // loop cho mục khách
+                                            } while (opt_for_passenger != 4); // loop cho mục khách
                                             break;                           // tier 4
 
                                         case 4: // tính doanh thu của 1 hãng hàng không 
