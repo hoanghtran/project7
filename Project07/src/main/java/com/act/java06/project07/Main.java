@@ -62,11 +62,12 @@ public class Main {
     }
 
     static void add_edit_remove_a_passenger() {
-        System.out.println("============== Hanh khach ==============");
+        System.out.println("============== Hanh khach va Ve ==============");
         System.out.println("1. Them hanh khach ");
         System.out.println("2. Xoa mot hanh khach");
         System.out.println("3. chon loc hanh khach cua 1 chuyen bay:");
-        System.out.println("4. Thoat chuong trinh");
+        System.out.println("4. Sua ve");
+        System.out.println("5. Thoat chuong trinh");
         System.out.print("Vui long nhap lua chon cua ban: ");
     }
 
@@ -263,10 +264,10 @@ public class Main {
                                                 for (int i = 0; i < LFlight.size(); i++) {
                                                     if (LFlight.get(i).getFlightCode().equals(ctFlightCode)) {
                                                         pointRemote = i;
-                                                        for(int j = 0;j<LTicket.size();j++){
-                                                            if (LTicket.get(j).getFlightNumber().equals(ctFlightCode)){
-                                                                for(int k = 0;k<LPassengers.size();k++){
-                                                                    if (LPassengers.get(k).getTicketCode().equals(LTicket.get(j).getTicketCode())){
+                                                        for (int j = 0; j < LTicket.size(); j++) {
+                                                            if (LTicket.get(j).getFlightNumber().equals(ctFlightCode)) {
+                                                                for (int k = 0; k < LPassengers.size(); k++) {
+                                                                    if (LPassengers.get(k).getTicketCode().equals(LTicket.get(j).getTicketCode())) {
                                                                         LPassengers.remove(k);
                                                                     }
                                                                 }
@@ -318,6 +319,11 @@ public class Main {
                                                         String IDxoa = sc.nextLine();
                                                         for (int i = 0; i < LPassengers.size(); i++) {
                                                             if (LPassengers.get(i).getID().equals(IDxoa)) {
+                                                                for (int j = 0; j < LTicket.size(); j++) {
+                                                                    if (LTicket.get(j).getTicketCode().equals(LPassengers.get(i).getTicketCode())) {
+                                                                        LTicket.remove(j);
+                                                                    }
+                                                                }
                                                                 LPassengers.remove(i);
                                                             }
                                                         }
@@ -338,10 +344,36 @@ public class Main {
                                                             }
                                                         }
 
-                                                    
+                                                    case 4:
+                                                        System.out.printf("Nhap ma ve can sua: ");
+                                                        String maVe = sc.nextLine();
+                                                        for (int i = 0; i < LTicket.size(); i++) {
+                                                            if (LTicket.get(i).getTicketCode().equals(maVe)) {
+                                                                for (int j = 0; j < LFlight.size(); j++) {
+                                                                    if (LFlight.get(j).getFlightCode().equals(LTicket.get(i).getFlightNumber())) {
+                                                                        System.out.printf("Chon hang ve: ");
+                                                                        System.out.printf("1.Thuong gia");
+                                                                        System.out.printf("2.Pho Thong");
+                                                                        int luaChon = sc.nextInt();
+                                                                        switch (luaChon) {
+                                                                            case 1: {
+                                                                                LTicket.get(i).setFare(LFlight.get(j).getBusinessFare());
+                                                                                break;
+                                                                            }
+                                                                            case 2: {
+                                                                                LTicket.get(i).setFare(LFlight.get(j).getEconomyFare());
+                                                                                break;
+                                                                            }
+                                                                            default:
+                                                                                break;
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
 
-
-                                                    case 4: // thoát chương trình
+                                                    case 5:
+                                                        // thoát chương trình                                                     
                                                         break;
                                                     default:
                                                         break;
@@ -381,7 +413,7 @@ public class Main {
                                                         System.out.println(" -Nhap gia ve hang pho thong");
                                                         double giaVePt = sc.nextDouble();
                                                         LFlight.get(pointEdit).setEconomyFare(giaVePt);
-                                                        System.out.println("Thong bao thay doi den hanh khach co so hieu chuyen bay: " +ctFlightCode);
+                                                        System.out.println("Thong bao thay doi den hanh khach co so hieu chuyen bay: " + ctFlightCode);
                                                         break;
                                                     }
                                                 }
