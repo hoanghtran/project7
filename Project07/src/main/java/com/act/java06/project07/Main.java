@@ -15,6 +15,7 @@ import java.util.*;
 
 import JSON.*;
 import java.io.File;
+import java.io.FileWriter;
 import java.lang.reflect.Type;
 import java.time.format.DateTimeFormatter;
 
@@ -91,6 +92,18 @@ public class Main {
                 System.out.println(stt + ". " + airline.getBrandname());
                 stt++;
             }
+        }
+        System.out.println("============ Het ============");
+
+    }
+    
+    
+    static void write_airlines_file(String file_path, List<Airline> list) throws IOException {
+
+        try (FileWriter fw = new FileWriter(file_path)) {
+            Gson gson = new Gson();
+            String data = gson.toJson(list);
+            fw.write(data);
         }
         System.out.println("============ Het ============");
 
