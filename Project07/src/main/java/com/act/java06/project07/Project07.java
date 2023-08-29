@@ -428,7 +428,7 @@ public class Project07 {
                                                 sc.nextLine();
                                                 String new_name = sc.nextLine();
 
-                                                LAirline.get(i).setBrand(new_name);
+                                                LAirline.get(i).setBrandname(new_name);
                                                 break;
                                             }
                                             case 2: {
@@ -475,7 +475,7 @@ public class Project07 {
                             int stt = 0;
                             for (int i = 0; i < LAirline.size(); i++) {
                                 Airline tmp = LAirline.get(i);
-                                System.out.println(stt++ + "\t" + tmp.getBrand()
+                                System.out.println(stt++ + "\t" + tmp.getBrandname()
                                         + "\t" + tmp.getCode() + "\t" + tmp.getNumOfPlanes()
                                         + "\t" + tmp.getNumOfFlights());
                             }

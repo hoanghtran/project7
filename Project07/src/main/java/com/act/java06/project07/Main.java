@@ -37,7 +37,7 @@ public class Main {
         System.out.print("Ban la: ");
     }
 
-    static <E> void airline_menu() throws IOException {//ArrayList<Airline> LAirline){
+    static <E> void airline_menu() throws IOException {
         System.out.println("====== Hang hang khong ======");
         //Hàm duyệt hiển thị các hãng hàng không
         read_airlines_file(Json_file_path);
@@ -45,11 +45,10 @@ public class Main {
 
     static void modify_or_access_an_airline_option() {
         System.out.println("============== Hang hang khong ==============");
-        System.out.println("1. Tao mot hang hang khong");
-        System.out.println("2. Xoa mot hang hang khong");
+        System.out.println("1. Tao mot hang hang khong"); //Done
+        System.out.println("2. Xoa mot hang hang khong"); //Done
         System.out.println("3. Truy cap hang hang khong");
-        System.out.println("4. Tinh doanh thu hang hang khong");
-        System.out.println("5. Thoat chuong trinh");
+        System.out.println("4. Thoat chuong trinh");
         System.out.print("Vui long nhap lua chon cua ban: ");
     }
 
@@ -156,13 +155,37 @@ public class Main {
 
                         switch (opt_for_airline) {
                             case 1: // tạo một hãng hàng không 
+                                System.out.print("Nhập tên hãng hàng không: ");
+                                sc.nextLine();
+                                String brandname = sc.nextLine();
 
-                                // chèn code vào đây 
+                                System.out.print("Nhập mã hãng hàng không: ");
+                                String code = sc.nextLine();
+
+                                System.out.print("Nhập số máy bay hãng sở hữu: ");
+                                int numOfPlanes = sc.nextInt();
+
+                                LAirline.add(new Airline(brandname, code, numOfPlanes));
                                 break;
                             case 2: // xóa một hãng hàng không 
                                 //exception mã hãng hàng không sai thì sao?
 
-                                // chèn code vào đây 
+                                System.out.print("Nhập mã hãng hàng không cần xóa: ");
+                                sc.nextLine();
+                                code = sc.nextLine();
+
+                                int check = 0;
+
+                                for (int i = 0; i < LAirline.size(); i++) {
+                                    if (LAirline.get(i).getCode().equals(code)) {
+                                        LAirline.remove(i);
+                                        check = 1;
+                                        break;
+                                    }
+                                }
+                                if (check == 0) {
+                                    System.out.println("Không tìm thấy mã hãng hàng không cần xóa");
+                                }
                                 break;
                             case 3: // truy cập một hãng hàng không
 
@@ -316,6 +339,9 @@ public class Main {
                                                             }
                                                         }
 
+                                                    
+
+
                                                     case 4: // thoát chương trình
                                                         break;
                                                     default:
@@ -367,6 +393,37 @@ public class Main {
                                                 System.out.println("Da xay ra loi khia nhap ma chuyen bay!!!");
                                             }
 
+                                            System.out.println("Nhập mã hãng hàng không cần tính doanh thu: ");
+                                            code = sc.nextLine();
+                                            check = 0;
+
+                                            for (int i = 0; i < LAirline.size(); i++) {
+                                                if (LAirline.get(i).getCode().equals(code)) {
+                                                    check = 1;
+                                                    int month = 0, year = 0;
+
+                                                    System.out.println("Tính doanh thu theo");
+                                                    System.out.println("1. Tháng");
+                                                    System.out.println("2. Năm");
+                                                    System.out.println("Lựa chọn của bạn là: ");
+                                                    int x = sc.nextInt();
+                                                    if (x == 1) {
+                                                        System.out.println("Tháng bạn cần tính doanh thu: ");
+                                                        month = sc.nextInt();
+                                                        System.out.println("Năm bạn cần tính doanh thu: ");
+                                                        year = sc.nextInt();
+                                                    } else {
+                                                        System.out.println("Năm bạn cần tính doanh thu: ");
+                                                        year = sc.nextInt();
+                                                    }
+
+                                                    LAirline.get(i).statisticize_turnOver(LAirline.get(i).getListOfFlights(), x, month, year);
+                                                    break;
+                                                }
+                                            }
+                                            if (check == 0) {
+                                                System.out.println("Không tìm thấy mã hãng hàng không cần tính");
+                                            }
                                             break;
                                         /*case 4: // tính doanh thu của 1 hãng hàng không 
 
