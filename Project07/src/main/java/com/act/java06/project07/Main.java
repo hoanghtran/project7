@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 import JSON.*;
+import java.lang.reflect.Type;
 
 /**
  *
@@ -75,18 +76,18 @@ public class Main {
 
         try (FileReader fr = new FileReader(file_path)) {
             Gson gson = new Gson();
+            
+            Type type = new TypeToken<List<JSON.Airline>>(){}.getType();
 
-//            List<Airline> airlines = gson.fromJson(fr, new TypeToken<List<Airline>>() {
-//            }.getType());
+            List<JSON.Airline> airlines = gson.fromJson(fr, type);
 
-            List<JSON.ListOfAirline> airlines = gson.fromJson(fr, new TypeToken<List<ListOfAirline>>() {
-            }.getType());
-
-            for (JSON. airline : airlines) {
-                int stt = 0;
-                System.out.println(stt++ + ". " + airline.getBrand());
+            for (JSON.Airline airline : airlines) {
+                int stt = 1;
+                System.out.println(stt + ". " + airline.getBrandname());
+                stt++;
             }
         }
+        System.out.println("============ Het ============");
 
     }
 

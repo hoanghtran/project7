@@ -5,7 +5,7 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ListOfAirline {
+public class Airline {
 
     @SerializedName("brandname")
     @Expose
@@ -77,7 +77,7 @@ public class ListOfAirline {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(ListOfAirline.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append(Airline.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("brandname");
         sb.append('=');
         sb.append(((this.brandname == null)?"<null>":this.brandname));
