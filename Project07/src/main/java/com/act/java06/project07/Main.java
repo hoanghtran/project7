@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 import JSON.*;
+import java.io.File;
 import java.lang.reflect.Type;
 
 /**
@@ -23,7 +24,10 @@ import java.lang.reflect.Type;
 public class Main {
 
     static Scanner sc = new Scanner(System.in);
-    static String Json_file_path = "F:\\Data\\runner\\List_of_Airlines_Json.json";
+
+    private static final String current = System.getProperty("user.dir");
+    private static final String separator = File.separator;
+    static String Json_file_path = current + separator + "data" + separator + "List_of_Airlines_Json.json";
 
     static void navigator() {
         System.out.println("======= Dieu huong =======");
@@ -76,13 +80,13 @@ public class Main {
 
         try (FileReader fr = new FileReader(file_path)) {
             Gson gson = new Gson();
-            
-            Type type = new TypeToken<List<JSON.Airline>>(){}.getType();
+
+            Type type = new TypeToken<List<JSON.Airline>>() {
+            }.getType();
 
             List<JSON.Airline> airlines = gson.fromJson(fr, type);
-
+            int stt = 1;
             for (JSON.Airline airline : airlines) {
-                int stt = 1;
                 System.out.println(stt + ". " + airline.getBrandname());
                 stt++;
             }
