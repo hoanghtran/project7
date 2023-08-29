@@ -27,13 +27,9 @@ public class Main {
 
     static Scanner sc = new Scanner(System.in);
 
-
-
-
     private static final String current = System.getProperty("user.dir");
     private static final String separator = File.separator;
     static String Json_file_path = current + separator + "data" + separator + "List_of_Airlines_Json.json";
-
 
     static void navigator() {
         System.out.println("======= Dieu huong =======");
@@ -301,20 +297,56 @@ public class Main {
                                                 opt_for_passenger = sc.nextInt();
                                                 switch (opt_for_passenger) {
                                                     case 1: {
-                                                        System.out.print("Ban muon them bao nhieu hanh khach:");
-                                                        int passenger1 = sc.nextInt();
-                                                        for (int i = 1; i <= passenger1; i++) {
-                                                            System.out.print("Nhap ten khach hang thu " + i + ": ");
-                                                            sc.nextLine();
-                                                            String hoTen = sc.nextLine();
-                                                            System.out.print("Nhap ID: ");
-                                                            String ID = sc.nextLine();
-                                                            UUID maVe = UUID.randomUUID();
-                                                            String maVeString = maVe.toString().toUpperCase();
-                                                            String maVeEdit = maVeString.replace("-", "").substring(0, 8);
-                                                            System.out.println("Ma ve cua ban la: " + maVeEdit);
-                                                            LPassengers.add(new Passenger(ID, hoTen, maVeEdit));
+                                                        System.out.print("Vui long nhap ma chuyen bay:");
+                                                        sc.nextLine();
+                                                        String luaChonCB = sc.nextLine();
+                                                        for (int a = 0; a < LFlight.size(); a++) {
+                                                            if (LFlight.get(a).getFlightCode().equals(luaChonCB)) {
+                                                                System.out.print("Ban muon them bao nhieu hanh khach:");
+                                                                int passenger1 = sc.nextInt();
+                                                                for (int i = 1; i <= passenger1; i++) {
+                                                                    System.out.print("Nhap ten khach hang thu " + i + ": ");
+                                                                    sc.nextLine();
+                                                                    String hoTen = sc.nextLine();
+                                                                    System.out.print("Nhap ID: ");
+                                                                    String ID = sc.nextLine();
+                                                                    
+                                                                    System.out.println("Chon hang ve: ");
+                                                                    System.out.println("1.Thuong gia");
+                                                                    System.out.println("2.Pho Thong");
+                                                                    System.out.print("Nhap lua chon cua ban:");
+                                                                    int luaChon = sc.nextInt();
+                                                                    UUID maVe = UUID.randomUUID();
+                                                                    String maVeString = maVe.toString().toUpperCase();
+                                                                    String maVeEdit = maVeString.replace("-", "").substring(0, 8);
+                                                                    System.out.println("Ma ve cua ban la: " + maVeEdit);
+                                                                    switch (luaChon) {
+                                                                        case 1: {
+                                                                            LTicket.add(new FlightTicket(maVeEdit, LFlight.get(a).getFlightCode()
+                                                                                    , LFlight.get(a).getDeparture(), LFlight.get(a).getDestination()
+                                                                                    , LFlight.get(a).getDepartureTime()
+                                                                                    , LFlight.get(a).getArrivalTime()
+                                                                                    , "Thuong gia", LFlight.get(a).getBusinessFare()));
+                                                                            
+                                                                            break;
+                                                                        }
+                                                                        case 2: {
+                                                                            LTicket.add(new FlightTicket(maVeEdit, LFlight.get(a).getFlightCode()
+                                                                                    , LFlight.get(a).getDeparture(), LFlight.get(a).getDestination()
+                                                                                    , LFlight.get(a).getDepartureTime()
+                                                                                    , LFlight.get(a).getArrivalTime()
+                                                                                    , "Pho thong", LFlight.get(a).getEconomyFare()));
+                                                                            break;
+                                                                        }
+                                                                        default:
+                                                                            break;
+                                                                    }
+
+                                                                    LPassengers.add(new Passenger(ID, hoTen, maVeEdit));
+                                                                }
+                                                            }
                                                         }
+
                                                         break;
                                                     }
 
@@ -357,9 +389,10 @@ public class Main {
                                                             if (LTicket.get(i).getTicketCode().equals(maVe)) {
                                                                 for (int j = 0; j < LFlight.size(); j++) {
                                                                     if (LFlight.get(j).getFlightCode().equals(LTicket.get(i).getFlightNumber())) {
-                                                                        System.out.printf("Chon hang ve: ");
-                                                                        System.out.printf("1.Thuong gia");
-                                                                        System.out.printf("2.Pho Thong");
+                                                                        System.out.println("Chon hang ve: ");
+                                                                        System.out.println("1.Thuong gia");
+                                                                        System.out.println("2.Pho Thong");
+                                                                        System.out.print("nhap lua chon cua ban:");
                                                                         int luaChon = sc.nextInt();
                                                                         switch (luaChon) {
                                                                             case 1: {

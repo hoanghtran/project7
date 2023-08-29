@@ -1,5 +1,7 @@
 package com.act.java06.project07;
 
+import java.time.LocalDateTime;
+
 /**
  *
  * @author Admin
@@ -9,8 +11,8 @@ public class BusinessClass extends FlightTicket {
     public BusinessClass() {
     }
 
-    public BusinessClass(String ticketCode, String flightNumber, String departure, String destination, String departureTime, String arrivalTime, String ticketClass, double fare, String SeatNumber) {
-        super(ticketCode, flightNumber, departure, destination, departureTime, arrivalTime, ticketClass, fare, SeatNumber);
+    public BusinessClass(String ticketCode, String flightNumber, String departure, String destination, LocalDateTime departureTime, LocalDateTime arrivalTime, String ticketClass, double fare) {
+        super(ticketCode, flightNumber, departure, destination, departureTime, arrivalTime, ticketClass, fare);
     }
 
     

@@ -1,5 +1,7 @@
 package com.act.java06.project07;
 
+import java.time.LocalDateTime;
+
 /**
  *
  * @author Admin
@@ -10,16 +12,16 @@ public class FlightTicket implements IFlightTicket {
     private String flightNumber;
     private String departure;
     private String destination;
-    private String departureTime;
-    private String arrivalTime;
+    private LocalDateTime departureTime;
+    private LocalDateTime arrivalTime;
     private String ticketClass;
     private double fare;
-    private String SeatNumber;
+
 
     public FlightTicket() {
     }
 
-    public FlightTicket(String ticketCode, String flightNumber, String departure, String destination, String departureTime, String arrivalTime, String ticketClass, double fare, String SeatNumber) {
+    public FlightTicket(String ticketCode, String flightNumber, String departure, String destination, LocalDateTime departureTime, LocalDateTime arrivalTime, String ticketClass, double fare) {
         this.ticketCode = ticketCode;
         this.flightNumber = flightNumber;
         this.departure = departure;
@@ -28,8 +30,9 @@ public class FlightTicket implements IFlightTicket {
         this.arrivalTime = arrivalTime;
         this.ticketClass = ticketClass;
         this.fare = fare;
-        this.SeatNumber = SeatNumber;
     }
+
+    
 
     @Override
     public void showTicketClassRemaining(Flight fl) {
@@ -52,11 +55,11 @@ public class FlightTicket implements IFlightTicket {
         return destination;
     }
 
-    public String getDepartureTime() {
+    public LocalDateTime getDepartureTime() {
         return departureTime;
     }
 
-    public String getArrivalTime() {
+    public LocalDateTime getArrivalTime() {
         return arrivalTime;
     }
 
@@ -68,9 +71,7 @@ public class FlightTicket implements IFlightTicket {
         return fare;
     }
 
-    public String getSeatNumber() {
-        return SeatNumber;
-    }
+
 
     public void setTicketCode(String ticketCode) {
         this.ticketCode = ticketCode;
@@ -88,11 +89,11 @@ public class FlightTicket implements IFlightTicket {
         this.destination = destination;
     }
 
-    public void setDepartureTime(String departureTime) {
+    public void setDepartureTime(LocalDateTime departureTime) {
         this.departureTime = departureTime;
     }
 
-    public void setArrivalTime(String arrivalTime) {
+    public void setArrivalTime(LocalDateTime arrivalTime) {
         this.arrivalTime = arrivalTime;
     }
 
@@ -104,7 +105,5 @@ public class FlightTicket implements IFlightTicket {
         this.fare = fare;
     }
 
-    public void setSeatNumber(String SeatNumber) {
-        this.SeatNumber = SeatNumber;
-    }
+    
 }
