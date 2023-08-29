@@ -23,7 +23,7 @@ import java.lang.reflect.Type;
 public class Main {
 
     static Scanner sc = new Scanner(System.in);
-    static String Json_file_path = "F:\\Data\\runner\\List_of_Airlines_Json.json";
+    static String Json_file_path = "C:\\Project7\\List_of_Airlines_Json.json";
 
     static void navigator() {
         System.out.println("======= Dieu huong =======");
@@ -80,9 +80,8 @@ public class Main {
             Type type = new TypeToken<List<JSON.Airline>>(){}.getType();
 
             List<JSON.Airline> airlines = gson.fromJson(fr, type);
-
+            int stt = 1;
             for (JSON.Airline airline : airlines) {
-                int stt = 1;
                 System.out.println(stt + ". " + airline.getBrandname());
                 stt++;
             }
