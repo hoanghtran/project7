@@ -58,7 +58,8 @@ public class Main {
         System.out.println("1. Them chuyen bay");
         System.out.println("2. Xoa mot chuyen bay");
         System.out.println("3. Truy cap mot chuyen bay");
-        System.out.println("4. Thoat chuong trinh");
+        System.out.println("4. Sua thong tin mot chuyen bay");
+        System.out.println("5. Thoat chuong trinh");
         System.out.print("Vui long nhap lua chon cua ban: ");
     }
 
@@ -96,8 +97,7 @@ public class Main {
         System.out.println("============ Het ============");
 
     }
-    
-    
+
     static void write_airlines_file(String file_path, List<Airline> list) throws IOException {
 
         try (FileWriter fw = new FileWriter(file_path)) {
@@ -217,7 +217,7 @@ public class Main {
                                                             System.out.println(" -Nhap gia ve hang pho thong");
                                                             double giaVePt = sc.nextDouble();
 
-                                                            LFlight.add(new Flight(soHieuCb, soHieuMb, LocalDateTime.parse(tgDi, formatter), LocalDateTime.parse(tgDen, formatter), diemXp, diemDen, soluongTg, soluongPt, giaVeTg, giaVePt));
+                                                            LFlight.add(new Flight(soHieuCb, soHieuMb, LocalDateTime.parse(tgDi, formatter), LocalDateTime.parse(tgDen, formatter), diemXp, diemDen, giaVeTg, giaVePt, soluongTg, soluongPt));
                                                         }
                                                     } else {
                                                         System.out.println("Loi nhap so luong!!!!!!");
@@ -241,8 +241,18 @@ public class Main {
                                                 for (int i = 0; i < LFlight.size(); i++) {
                                                     if (LFlight.get(i).getFlightCode().equals(ctFlightCode)) {
                                                         pointRemote = i;
+                                                        for(int j = 0;j<LTicket.size();j++){
+                                                            if (LTicket.get(j).getFlightNumber().equals(ctFlightCode)){
+                                                                for(int k = 0;k<LPassengers.size();k++){
+                                                                    if (LPassengers.get(k).getTicketCode().equals(LTicket.get(j).getTicketCode())){
+                                                                        LPassengers.remove(k);
+                                                                    }
+                                                                }
+                                                                LTicket.remove(j);
+                                                            }
+                                                        }
                                                         LFlight.remove(pointRemote);
-                                            break;
+                                                        break;
                                                     }
                                                 }
                                                 if (pointRemote == -1) {
@@ -305,50 +315,8 @@ public class Main {
                                                                 }
                                                             }
                                                         }
-                                                    case 4: // sua thong tin 1 chuyen bay
-                                                        int pointEdit = -1;
-                                                        System.out.println("Nhap so hieu chuyen bay can sua: ");
-                                                        String ctFlightCode = sc.nextLine();
-                                                        try {
-                                                            for (int i = 0; i < LFlight.size(); i++) {
-                                                                if (LFlight.get(i).getFlightCode().equals(ctFlightCode)) {
-                                                                    pointEdit = i;
-                                                                    System.out.println(" -Nhap diem xuat phat: ");
-                                                                    String diemXp = sc.nextLine();
-                                                                    LFlight.get(pointEdit).setDeparture(diemXp);
-                                                                    System.out.println(" -Nhap diem den: ");
-                                                                    String diemDen = sc.nextLine();
-                                                                    LFlight.get(pointEdit).setDestination(diemDen);
-                                                                    System.out.println(" -Nhap thoi gian di (Theo dinh dang yyyy-MM-dd HH:mm:ss): ");
-                                                                    String tgDi = sc.nextLine();
-                                                                    LFlight.get(pointEdit).setDepartureTime(LocalDateTime.parse(tgDi));
-                                                                    System.out.println(" -Nhap thoi gian den (Theo dinh dang yyyy-MM-dd HH:mm:ss): ");
-                                                                    String tgDen = sc.nextLine();
-                                                                    LFlight.get(pointEdit).setArrivalTime(LocalDateTime.parse(tgDen));
-                                                                    System.out.println(" -Nhap so luong cho ngoi hang thuong gia: ");
-                                                                    int soluongTg = sc.nextInt();
-                                                                    LFlight.get(pointEdit).setUsedBusinessSeats(soluongTg);
-                                                                    System.out.println(" -Nhap so luong cho ngoi hang pho thuong: ");
-                                                                    int soluongPt = sc.nextInt();
-                                                                    LFlight.get(pointEdit).setUsedEconomySeats(soluongPt);
-                                                                    System.out.println(" -Nhap gia ve hang thuong gia");
-                                                                    double giaVeTg = sc.nextDouble();
-                                                                    LFlight.get(pointEdit).setBusinessFare(giaVeTg);
-                                                                    System.out.println(" -Nhap gia ve hang pho thong");
-                                                                    double giaVePt = sc.nextDouble();
-                                                                    LFlight.get(pointEdit).setEconomyFare(giaVePt);
-                                                        break;
-                                                                }
-                                                            }
-                                                            if(pointEdit == -1 ){
-                                                                System.out.println("Khong ton tai ma chuyen bay nay!!!");
-                                                            }
-                                                        } catch (Exception ex) {
-                                                            System.out.println("Da xay ra loi khia nhap ma chuyen bay!!!");
-                                                        }
 
-                                                        break;
-                                                    case 5: // thoát chương trình
+                                                    case 4: // thoát chương trình
                                                         break;
                                                     default:
                                                         break;
@@ -356,10 +324,53 @@ public class Main {
                                                 }
                                             } while (opt_for_passenger != 4); // loop cho mục khách
                                             break;                           // tier 4
-
-                                        case 4: // tính doanh thu của 1 hãng hàng không 
+                                        case 4: // sua thong tin 1 chuyen bay
+                                            int pointEdit = -1;
+                                            System.out.println("Nhap so hieu chuyen bay can sua: ");
+                                            String ctFlightCode = sc.nextLine();
+                                            try {
+                                                for (int i = 0; i < LFlight.size(); i++) {
+                                                    if (LFlight.get(i).getFlightCode().equals(ctFlightCode)) {
+                                                        pointEdit = i;
+                                                        System.out.println(" -Nhap diem xuat phat: ");
+                                                        String diemXp = sc.nextLine();
+                                                        LFlight.get(pointEdit).setDeparture(diemXp);
+                                                        System.out.println(" -Nhap diem den: ");
+                                                        String diemDen = sc.nextLine();
+                                                        LFlight.get(pointEdit).setDestination(diemDen);
+                                                        System.out.println(" -Nhap thoi gian di (Theo dinh dang yyyy-MM-dd HH:mm:ss): ");
+                                                        String tgDi = sc.nextLine();
+                                                        LFlight.get(pointEdit).setDepartureTime(LocalDateTime.parse(tgDi));
+                                                        System.out.println(" -Nhap thoi gian den (Theo dinh dang yyyy-MM-dd HH:mm:ss): ");
+                                                        String tgDen = sc.nextLine();
+                                                        LFlight.get(pointEdit).setArrivalTime(LocalDateTime.parse(tgDen));
+                                                        System.out.println(" -Nhap so luong cho ngoi hang thuong gia: ");
+                                                        int soluongTg = sc.nextInt();
+                                                        LFlight.get(pointEdit).setUsedBusinessSeats(soluongTg);
+                                                        System.out.println(" -Nhap so luong cho ngoi hang pho thuong: ");
+                                                        int soluongPt = sc.nextInt();
+                                                        LFlight.get(pointEdit).setUsedEconomySeats(soluongPt);
+                                                        System.out.println(" -Nhap gia ve hang thuong gia");
+                                                        double giaVeTg = sc.nextDouble();
+                                                        LFlight.get(pointEdit).setBusinessFare(giaVeTg);
+                                                        System.out.println(" -Nhap gia ve hang pho thong");
+                                                        double giaVePt = sc.nextDouble();
+                                                        LFlight.get(pointEdit).setEconomyFare(giaVePt);
+                                                        System.out.println("Thong bao thay doi den hanh khach co so hieu chuyen bay: " +ctFlightCode);
+                                                        break;
+                                                    }
+                                                }
+                                                if (pointEdit == -1) {
+                                                    System.out.println("Khong ton tai ma chuyen bay nay!!!");
+                                                }
+                                            } catch (Exception ex) {
+                                                System.out.println("Da xay ra loi khia nhap ma chuyen bay!!!");
+                                            }
 
                                             break;
+                                        /*case 4: // tính doanh thu của 1 hãng hàng không 
+
+                                            break;*/
                                         case 5: // thoát chương trình
                                             break;
                                         default:

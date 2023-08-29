@@ -43,18 +43,20 @@ public class Flight implements IFlight {
         this.totalBusinessSeats = totalBusinessSeats;
     }
 
-    public Flight(String flightCode, String planeCode, LocalDateTime departureTime, LocalDateTime arrivalTime, String departure, String destination, int usedEconomySeats, int usedBusinessSeats, double economyFare, double businessFare) {
+    public Flight(String flightCode, String planeCode, LocalDateTime departureTime, LocalDateTime arrivalTime, String departure, String destination, double economyFare, double businessFare, int totalEconomySeats, int totalBusinessSeats) {
         this.flightCode = flightCode;
         this.planeCode = planeCode;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
         this.departure = departure;
         this.destination = destination;
-        this.usedEconomySeats = usedEconomySeats;
-        this.usedBusinessSeats = usedBusinessSeats;
         this.economyFare = economyFare;
         this.businessFare = businessFare;
+        this.totalEconomySeats = totalEconomySeats;
+        this.totalBusinessSeats = totalBusinessSeats;
     }
+
+    
 
     @Override
     public void add() {
