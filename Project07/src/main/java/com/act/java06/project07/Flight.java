@@ -1,6 +1,7 @@
 package com.act.java06.project07;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  *
@@ -20,7 +21,12 @@ public class Flight implements IFlight {
     private double businessFare;
     private int totalEconomySeats;
     private int totalBusinessSeats;
-
+    private int numOfPassengers;
+    private int numOfBusiness;
+    private int numOfEconomic;
+    private List<Passenger> listOfPassengers;
+    private List<BusinessClass> listOfBusiness;
+    private List<EconomyClass> listOfEconomic;
     public Flight() {
     }
 
