@@ -42,7 +42,7 @@ public class Flight_Main {
             int chon = sc.nextInt();
             switch (chon) {
                 case 1:
-                    Flight flight = new Flight();
+                    Flight flight = new Flight(soHieuCb, soHieuMb, LocalDateTime.parse(tgDi, formatter), LocalDateTime.parse(tgDen, formatter), diemXp, diemDen, giaVeTg, giaVePt, soluongTg, soluongPt);
                     System.out.println("Nhap so hieu chuyen bay");
                     flight.getFlightCode();
                     sc.nextLine();

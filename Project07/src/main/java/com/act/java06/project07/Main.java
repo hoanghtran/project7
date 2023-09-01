@@ -114,7 +114,7 @@ public class Main {
         }
     }
 
-    static void write_airlines_file(String file_path, List<Airline> list) throws IOException {
+    static void write_airlines_file(String file_path, List<JSON.Airline> list) throws IOException {
 
         try (FileWriter fw = new FileWriter(file_path)) {
             Gson gson = new Gson();
@@ -166,8 +166,8 @@ public class Main {
                                 System.out.print("Nhập số máy bay hãng sở hữu: ");
                                 int numOfPlanes = sc.nextInt();
 
-                                List<JSON.ListOfPlane> listOfPlanes = new ArrayList<>();
-                                JSON.ListOfPlane plane = new ListOfPlane();
+                                List<JSON.Plane> listOfPlanes = new ArrayList<>();
+                                JSON.Plane plane = new JSON.Plane();
                                 for (int n = 0; n < numOfPlanes; n++) {
                                     System.out.print("Nhập mã máy bay của bạn: ");
                                     String PlaneCode = sc.nextLine();
@@ -177,7 +177,7 @@ public class Main {
                                     plane.setNumOfSeats(num);
                                 }
 
-                                database.add(new JSON.Airline(brandname, code, numOfPlanes, listOfPlanes));
+                                database.add(new JSON.Airline(brandname, code, numOfPlanes, listOfPlanes, numOfPlanes, flights));
                                 write_airlines_file(Json_file_path, database);
                                 break;
                             case 2: // xóa một hãng hàng không 
@@ -261,7 +261,7 @@ public class Main {
                                                             System.out.println(" -Nhap gia ve hang pho thong");
                                                             double giaVePt = sc.nextDouble();
 
-                                                            LFlight.add(new Flight(soHieuCb, soHieuMb, LocalDateTime.parse(tgDi, formatter), LocalDateTime.parse(tgDen, formatter), diemXp, diemDen, giaVeTg, giaVePt, soluongTg, soluongPt));
+                                                            database.add(new Flight(soHieuCb, soHieuMb, LocalDateTime.parse(tgDi, formatter), LocalDateTime.parse(tgDen, formatter), diemXp, diemDen, giaVeTg, giaVePt, soluongTg, soluongPt));
                                                         }
                                                     } else {
                                                         System.out.println("Loi nhap so luong!!!!!!");
@@ -316,11 +316,13 @@ public class Main {
                                                 opt_for_passenger = sc.nextInt();
                                                 switch (opt_for_passenger) {
                                                     case 1: {
+                                                        int checkCodeCB = 0;
                                                         System.out.print("Vui long nhap ma chuyen bay:");
                                                         sc.nextLine();
                                                         String luaChonCB = sc.nextLine();
                                                         for (int a = 0; a < LFlight.size(); a++) {
                                                             if (LFlight.get(a).getFlightCode().equals(luaChonCB)) {
+                                                                checkCodeCB = 1;
                                                                 System.out.print("Ban muon them bao nhieu hanh khach:");
                                                                 int passenger1 = sc.nextInt();
                                                                 for (int i = 1; i <= passenger1; i++) {
@@ -365,17 +367,21 @@ public class Main {
                                                                 }
                                                             }
                                                         }
-
+                                                        if (checkCodeCB == 0) {
+                                                            System.out.println("Khong tim thay ma chuyen bay");
+                                                        }
                                                         break;
                                                     }
 
                                                     case 2: // xóa 1 hành khách
                                                         // exception sai CCCD
+                                                        int checkID = 0;
                                                         System.out.print("Nhap ID hanh khach muon xoa: ");
                                                         sc.nextLine();
                                                         String IDxoa = sc.nextLine();
                                                         for (int i = 0; i < LPassengers.size(); i++) {
                                                             if (LPassengers.get(i).getID().equals(IDxoa)) {
+                                                                checkID = 1;
                                                                 for (int j = 0; j < LTicket.size(); j++) {
                                                                     if (LTicket.get(j).getTicketCode().equals(LPassengers.get(i).getTicketCode())) {
                                                                         LTicket.remove(j);
@@ -384,15 +390,21 @@ public class Main {
                                                                 LPassengers.remove(i);
                                                             }
                                                         }
-                                                        System.out.println("Da xoa ID : " + IDxoa);
+                                                        if (checkID == 1) {
+                                                            System.out.println("Da xoa ID : " + IDxoa);
+                                                        } else {
+                                                            System.out.println("Khong tim thay ID: " + IDxoa);
+                                                        }
                                                         break;
                                                     case 3:// chọn lọc hành khách của 1 chuyến bay
                                                         //exception sai ten chuyen bay
+                                                        int checkFlCode = 0;
                                                         System.out.print("Nhap so hieu chuyen bay: ");
                                                         sc.nextLine();
                                                         String soHieu = sc.nextLine();
                                                         for (int i = 0; i < LFlight.size(); i++) {
                                                             if (LFlight.get(i).getFlightCode().equals(soHieu)) {
+                                                                checkFlCode=1;
                                                                 for (int j = 0; j < LPassengers.size(); j++) {
                                                                     if (LPassengers.get(j).getTicketCode().equals(LTicket.get(i).getTicketCode())) {
                                                                         LPassengers.get(i).toString();
@@ -400,14 +412,18 @@ public class Main {
                                                                 }
                                                             }
                                                         }
-
+                                                        if(checkFlCode==0){
+                                                            System.out.println("Khong tim thay so hieu chuyen bay: "+soHieu);
+                                                        }
                                                     case 4:
+                                                        int checkMave=0;
                                                         System.out.printf("Nhap ma ve can sua: ");
                                                         String maVe = sc.nextLine();
                                                         for (int i = 0; i < LTicket.size(); i++) {
                                                             if (LTicket.get(i).getTicketCode().equals(maVe)) {
                                                                 for (int j = 0; j < LFlight.size(); j++) {
                                                                     if (LFlight.get(j).getFlightCode().equals(LTicket.get(i).getFlightNumber())) {
+                                                                        checkMave=1;
                                                                         System.out.println("Chon hang ve: ");
                                                                         System.out.println("1.Thuong gia");
                                                                         System.out.println("2.Pho Thong");
@@ -429,7 +445,9 @@ public class Main {
                                                                 }
                                                             }
                                                         }
-
+                                                        if(checkMave==0){
+                                                            System.out.println("Khong tim thay ma ve: "+checkMave);
+                                                        }
                                                     case 5:
                                                         // thoát chương trình                                                     
                                                         break;

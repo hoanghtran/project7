@@ -19,6 +19,28 @@ public class Time__1 {
     @Expose
     private int nano;
 
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public Time__1() {
+    }
+
+    /**
+     * 
+     * @param hour
+     * @param nano
+     * @param minute
+     * @param second
+     */
+    public Time__1(int hour, int minute, int second, int nano) {
+        super();
+        this.hour = hour;
+        this.minute = minute;
+        this.second = second;
+        this.nano = nano;
+    }
+
     public int getHour() {
         return hour;
     }
