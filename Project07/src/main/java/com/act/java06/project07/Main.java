@@ -17,6 +17,8 @@ import JSON.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.lang.reflect.Type;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -64,7 +66,8 @@ public class Main {
         System.out.println("2. Xoa mot chuyen bay");
         System.out.println("3. Truy cap mot chuyen bay");
         System.out.println("4. Sua thong tin mot chuyen bay");
-        System.out.println("5. Thoat chuong trinh");
+        System.out.println("5. Loc thong tin cac chuyen bay(theo dia diem di/den, thoi gian di/den)");
+        System.out.println("6. Thoat chuong trinh");
         System.out.print("Vui long nhap lua chon cua ban: ");
     }
 
@@ -483,11 +486,105 @@ public class Main {
                                                 System.out.println("Không tìm thấy mã hãng hàng không cần tính");
                                             }
                                             break;
-                                        /*case 4: // tính doanh thu của 1 hãng hàng không 
 
-                                            break;*/
-                                        case 5: // thoát chương trình
+                                        case 5: // loc thong tin 1 chuyen bay // Phan tra cuu thong tin
+                                            System.out.println("Vui long chon thong tin ban muon loc: ");
+                                            System.out.println("1. Loc theo dia diem di");
+                                            System.out.println("2. Loc theo dia diem den");
+                                            System.out.println("3. Loc theo ngay di(Theo dinh dang yyyy-MM-dd)");
+                                            System.out.println("4. Loc theo ngay den(Theo dinh dang yyyy-MM-dd)");
+                                            System.out.println("5. Loc theo gio di(Theo dinh dang yyyy-MM-dd)");
+                                            System.out.println("6. Loc theo gio den(Theo dinh dang yyyy-MM-dd)");
+                                            System.out.println("Nhap lua chon cua ban: ");
+                                            ArrayList<Flight> list = new ArrayList<>();
+                                            int luaChon = sc.nextInt();
+                                            sc.nextLine();
+                                            System.out.println("Nhap thong tin muon loc: ");
+                                            String information = sc.nextLine();
+                                            switch (luaChon) {
+                                                case 1:
+
+                                                    for (int i = 0; i < LFlight.size(); i++) {
+                                                        if (LFlight.get(i).getDeparture().equals(information)) {
+                                                            list.add(LFlight.get(i));
+                                                        }
+                                                    }
+                                                    Collections.sort(list, new NameComparator());
+                                                    for (int i = 0; i < list.size(); i++) {
+                                                        System.out.println(list.get(i).getFlightCode());
+                                                    }
+                                                    list.clear();
+                                                    break;
+                                                case 2:
+                                                    for (int i = 0; i < LFlight.size(); i++) {
+                                                        if (LFlight.get(i).getDestination().equals(information)) {
+                                                            list.add(LFlight.get(i));
+                                                        }
+                                                    }
+                                                    Collections.sort(list, new NameComparator());
+                                                    for (int i = 0; i < list.size(); i++) {
+                                                        System.out.println(list.get(i).getFlightCode());
+                                                    }
+                                                    list.clear();
+                                                    break;
+                                                case 3:
+                                                    LocalDate dateF = LocalDate.parse(information);
+                                                    for (int i = 0; i < LFlight.size(); i++) {
+                                                        if (LFlight.get(i).getDepartureTime().toLocalDate().isEqual(dateF)) {
+                                                            list.add(LFlight.get(i));
+                                                        }
+                                                    }
+                                                    Collections.sort(list, new NameComparator());
+                                                    for (int i = 0; i < list.size(); i++) {
+                                                        System.out.println(list.get(i).getFlightCode());
+                                                    }
+                                                    list.clear();
+                                                    break;
+                                                case 4:
+                                                    LocalDate dateL = LocalDate.parse(information);
+                                                    for (int i = 0; i < LFlight.size(); i++) {
+                                                        if (LFlight.get(i).getArrivalTime().toLocalDate().isEqual(dateL)) {
+                                                            list.add(LFlight.get(i));
+                                                        }
+                                                    }
+                                                    Collections.sort(list, new NameComparator());
+                                                    for (int i = 0; i < list.size(); i++) {
+                                                        System.out.println(list.get(i).getFlightCode());
+                                                    }
+                                                    list.clear();
+                                                    break;
+                                                case 5:
+                                                    LocalTime timeF = LocalTime.parse(information);
+                                                    for (int i = 0; i < LFlight.size(); i++) {
+                                                        if (LFlight.get(i).getDepartureTime().toLocalTime().equals(timeF)) {
+                                                            list.add(LFlight.get(i));
+                                                        }
+                                                    }
+                                                    Collections.sort(list, new NameComparator());
+                                                    for (int i = 0; i < list.size(); i++) {
+                                                        System.out.println(list.get(i).getFlightCode());
+                                                    }
+                                                    list.clear();
+                                                    break;
+                                                case 6:
+                                                    LocalTime timeL = LocalTime.parse(information);
+                                                    for (int i = 0; i < LFlight.size(); i++) {
+                                                        if (LFlight.get(i).getArrivalTime().toLocalTime().equals(timeL)) {
+                                                            list.add(LFlight.get(i));
+                                                        }
+                                                    }
+                                                    Collections.sort(list, new NameComparator());
+                                                    for (int i = 0; i < list.size(); i++) {
+                                                        System.out.println(list.get(i).getFlightCode());
+                                                    }
+                                                    list.clear();
+                                                    break;
+                                                default:
+                                                    break;
+                                            }
+
                                             break;
+                                        case 6: //thoat chuong trinh
                                         default:
                                             break;
                                     }
