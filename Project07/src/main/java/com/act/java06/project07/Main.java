@@ -320,53 +320,57 @@ public class Main {
                                                         System.out.print("Vui long nhap ma chuyen bay:");
                                                         sc.nextLine();
                                                         String luaChonCB = sc.nextLine();
-                                                        for (int a = 0; a < LFlight.size(); a++) {
-                                                            if (LFlight.get(a).getFlightCode().equals(luaChonCB)) {
-                                                                checkCodeCB = 1;
-                                                                System.out.print("Ban muon them bao nhieu hanh khach:");
-                                                                int passenger1 = sc.nextInt();
-                                                                for (int i = 1; i <= passenger1; i++) {
-                                                                    System.out.print("Nhap ten khach hang thu " + i + ": ");
-                                                                    sc.nextLine();
-                                                                    String hoTen = sc.nextLine();
-                                                                    System.out.print("Nhap ID: ");
-                                                                    String ID = sc.nextLine();
+                                                        for (int a = 0; a < database.size(); a++) {
+                                                            for (int b = 0; b < database.get(a).getFlights().size(); b++) {
+                                                                if (database.get(a).getFlights().get(b).getFlightCode().equals(luaChonCB)) {
 
-                                                                    System.out.println("Chon hang ve: ");
-                                                                    System.out.println("1.Thuong gia");
-                                                                    System.out.println("2.Pho Thong");
-                                                                    System.out.print("Nhap lua chon cua ban:");
-                                                                    int luaChon = sc.nextInt();
-                                                                    UUID maVe = UUID.randomUUID();
-                                                                    String maVeString = maVe.toString().toUpperCase();
-                                                                    String maVeEdit = maVeString.replace("-", "").substring(0, 8);
-                                                                    System.out.println("Ma ve cua ban la: " + maVeEdit);
-                                                                    switch (luaChon) {
-                                                                        case 1: {
-                                                                            LTicket.add(new FlightTicket(maVeEdit, LFlight.get(a).getFlightCode(),
-                                                                                    LFlight.get(a).getDeparture(), LFlight.get(a).getDestination(),
-                                                                                    LFlight.get(a).getDepartureTime(),
-                                                                                    LFlight.get(a).getArrivalTime(),
-                                                                                    "Thuong gia", LFlight.get(a).getBusinessFare()));
+                                                                    checkCodeCB = 1;
+                                                                    System.out.print("Ban muon them bao nhieu hanh khach:");
+                                                                    int passenger1 = sc.nextInt();
+                                                                    for (int i = 1; i <= passenger1; i++) {
+                                                                        System.out.print("Nhap ten khach hang thu " + i + ": ");
+                                                                        sc.nextLine();
+                                                                        String hoTen = sc.nextLine();
+                                                                        System.out.print("Nhap ID: ");
+                                                                        String ID = sc.nextLine();
 
-                                                                            break;
+                                                                        System.out.println("Chon hang ve: ");
+                                                                        System.out.println("1.Thuong gia");
+                                                                        System.out.println("2.Pho Thong");
+                                                                        System.out.print("Nhap lua chon cua ban:");
+                                                                        int luaChon = sc.nextInt();
+                                                                        UUID maVe = UUID.randomUUID();
+                                                                        String maVeString = maVe.toString().toUpperCase();
+                                                                        String maVeEdit = maVeString.replace("-", "").substring(0, 8);
+                                                                        System.out.println("Ma ve cua ban la: " + maVeEdit);
+                                                                        switch (luaChon) {
+                                                                            case 1: {
+                                                                                LTicket.add(new FlightTicket(maVeEdit, LFlight.get(a).getFlightCode(),
+                                                                                        LFlight.get(a).getDeparture(), LFlight.get(a).getDestination(),
+                                                                                        LFlight.get(a).getDepartureTime(),
+                                                                                        LFlight.get(a).getArrivalTime(),
+                                                                                        "Thuong gia", LFlight.get(a).getBusinessFare()));
+
+                                                                                break;
+                                                                            }
+                                                                            case 2: {
+                                                                                LTicket.add(new FlightTicket(maVeEdit, LFlight.get(a).getFlightCode(),
+                                                                                        LFlight.get(a).getDeparture(), LFlight.get(a).getDestination(),
+                                                                                        LFlight.get(a).getDepartureTime(),
+                                                                                        LFlight.get(a).getArrivalTime(),
+                                                                                        "Pho thong", LFlight.get(a).getEconomyFare()));
+                                                                                break;
+                                                                            }
+                                                                            default:
+                                                                                break;
                                                                         }
-                                                                        case 2: {
-                                                                            LTicket.add(new FlightTicket(maVeEdit, LFlight.get(a).getFlightCode(),
-                                                                                    LFlight.get(a).getDeparture(), LFlight.get(a).getDestination(),
-                                                                                    LFlight.get(a).getDepartureTime(),
-                                                                                    LFlight.get(a).getArrivalTime(),
-                                                                                    "Pho thong", LFlight.get(a).getEconomyFare()));
-                                                                            break;
-                                                                        }
-                                                                        default:
-                                                                            break;
+
+                                                                        database.get(a).getFlights().get(b).getPassengers().add(new JSON.Passenger(ID, hoTen, maVeEdit));
                                                                     }
-
-                                                                    LPassengers.add(new Passenger(ID, hoTen, maVeEdit));
                                                                 }
                                                             }
                                                         }
+
                                                         if (checkCodeCB == 0) {
                                                             System.out.println("Khong tim thay ma chuyen bay");
                                                         }
@@ -379,15 +383,20 @@ public class Main {
                                                         System.out.print("Nhap ID hanh khach muon xoa: ");
                                                         sc.nextLine();
                                                         String IDxoa = sc.nextLine();
-                                                        for (int i = 0; i < LPassengers.size(); i++) {
-                                                            if (LPassengers.get(i).getID().equals(IDxoa)) {
-                                                                checkID = 1;
-                                                                for (int j = 0; j < LTicket.size(); j++) {
-                                                                    if (LTicket.get(j).getTicketCode().equals(LPassengers.get(i).getTicketCode())) {
-                                                                        LTicket.remove(j);
+                                                        for (int a = 0; a < database.size(); a++) {
+                                                            for (int b = 0; b < database.get(a).getFlights().size(); b++) {
+                                                                for (int c = 0; c < database.get(a).getFlights().get(b).getPassengers().size(); c++) {
+
+                                                                    if (database.get(a).getFlights().get(b).getPassengers().get(c).getId().equals(IDxoa)) {
+                                                                        checkID = 1;
+                                                                        for (int j = 0; j < LTicket.size(); j++) {
+                                                                            if (LTicket.get(j).getTicketCode().equals(LPassengers.get(i).getTicketCode())) {
+                                                                                LTicket.remove(j);
+                                                                            }
+                                                                        }
+                                                                        database.get(a).getFlights().get(b).getPassengers().remove(c);
                                                                     }
                                                                 }
-                                                                LPassengers.remove(i);
                                                             }
                                                         }
                                                         if (checkID == 1) {
@@ -402,28 +411,30 @@ public class Main {
                                                         System.out.print("Nhap so hieu chuyen bay: ");
                                                         sc.nextLine();
                                                         String soHieu = sc.nextLine();
-                                                        for (int i = 0; i < LFlight.size(); i++) {
-                                                            if (LFlight.get(i).getFlightCode().equals(soHieu)) {
-                                                                checkFlCode=1;
-                                                                for (int j = 0; j < LPassengers.size(); j++) {
-                                                                    if (LPassengers.get(j).getTicketCode().equals(LTicket.get(i).getTicketCode())) {
-                                                                        LPassengers.get(i).toString();
+                                                        for (int a = 0; a < database.size(); a++) {
+                                                            for (int b = 0; b < database.get(a).getFlights().size(); b++) {
+                                                            if (database.get(a).getFlights().get(b).getFlightCode().equals(soHieu)) {
+                                                                checkFlCode = 1;
+                                                                for (int c = 0; c < database.get(a).getFlights().get(b).getPassengers().size(); c++) {
+                                                                    if (database.get(a).getFlights().get(b).getPassengers().get(c).getTicketCode().equals(LTicket.get(i).getTicketCode())) {
+                                                                        database.get(a).getFlights().get(b).getPassengers().get(c).toString();
                                                                     }
                                                                 }
                                                             }
                                                         }
-                                                        if(checkFlCode==0){
-                                                            System.out.println("Khong tim thay so hieu chuyen bay: "+soHieu);
+                                                        }
+                                                        if (checkFlCode == 0) {
+                                                            System.out.println("Khong tim thay so hieu chuyen bay: " + soHieu);
                                                         }
                                                     case 4:
-                                                        int checkMave=0;
+                                                        int checkMave = 0;
                                                         System.out.printf("Nhap ma ve can sua: ");
                                                         String maVe = sc.nextLine();
                                                         for (int i = 0; i < LTicket.size(); i++) {
                                                             if (LTicket.get(i).getTicketCode().equals(maVe)) {
                                                                 for (int j = 0; j < LFlight.size(); j++) {
                                                                     if (LFlight.get(j).getFlightCode().equals(LTicket.get(i).getFlightNumber())) {
-                                                                        checkMave=1;
+                                                                        checkMave = 1;
                                                                         System.out.println("Chon hang ve: ");
                                                                         System.out.println("1.Thuong gia");
                                                                         System.out.println("2.Pho Thong");
@@ -445,8 +456,8 @@ public class Main {
                                                                 }
                                                             }
                                                         }
-                                                        if(checkMave==0){
-                                                            System.out.println("Khong tim thay ma ve: "+checkMave);
+                                                        if (checkMave == 0) {
+                                                            System.out.println("Khong tim thay ma ve: " + checkMave);
                                                         }
                                                     case 5:
                                                         // thoát chương trình                                                     
