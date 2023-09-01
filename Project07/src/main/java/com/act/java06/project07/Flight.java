@@ -1,6 +1,7 @@
 package com.act.java06.project07;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  *
@@ -20,15 +21,65 @@ public class Flight implements IFlight {
     private double businessFare;
     private int totalEconomySeats;
     private int totalBusinessSeats;
+    private int numOfPassengers;
+    private int numOfBusiness;
+    private int numOfEconomic;
+    private List<Passenger> listOfPassengers;
+    private List<BusinessClass> listOfBusiness;
+    private List<EconomyClass> listOfEconomic;
 
     public Flight() {
     }
 
-    public Flight(String flightCode, String planeCode, LocalDateTime departureTime,
-            LocalDateTime arrivalTime, String departure, String destination,
-            int usedEconomySeats, int usedBusinessSeats, double economyFare,
-            double businessFare, int totalEconomySeats, int totalBusinessSeats,
-            BusinessClass bs, EconomyClass ec) {
+    public int getNumOfPassengers() {
+        return numOfPassengers;
+    }
+
+    public void setNumOfPassengers(int numOfPassengers) {
+        this.numOfPassengers = numOfPassengers;
+    }
+
+    public int getNumOfBusiness() {
+        return numOfBusiness;
+    }
+
+    public void setNumOfBusiness(int numOfBusiness) {
+        this.numOfBusiness = numOfBusiness;
+    }
+
+    public int getNumOfEconomic() {
+        return numOfEconomic;
+    }
+
+    public void setNumOfEconomic(int numOfEconomic) {
+        this.numOfEconomic = numOfEconomic;
+    }
+
+    public List<Passenger> getListOfPassengers() {
+        return listOfPassengers;
+    }
+
+    public void setListOfPassengers(List<Passenger> listOfPassengers) {
+        this.listOfPassengers = listOfPassengers;
+    }
+
+    public List<BusinessClass> getListOfBusiness() {
+        return listOfBusiness;
+    }
+
+    public void setListOfBusiness(List<BusinessClass> listOfBusiness) {
+        this.listOfBusiness = listOfBusiness;
+    }
+
+    public List<EconomyClass> getListOfEconomic() {
+        return listOfEconomic;
+    }
+
+    public void setListOfEconomic(List<EconomyClass> listOfEconomic) {
+        this.listOfEconomic = listOfEconomic;
+    }
+
+    public Flight(String flightCode, String planeCode, LocalDateTime departureTime, LocalDateTime arrivalTime, String departure, String destination, int usedEconomySeats, int usedBusinessSeats, double economyFare, double businessFare, int totalEconomySeats, int totalBusinessSeats, int numOfPassengers, int numOfBusiness, int numOfEconomic, List<Passenger> listOfPassengers, List<BusinessClass> listOfBusiness, List<EconomyClass> listOfEconomic) {
         this.flightCode = flightCode;
         this.planeCode = planeCode;
         this.departureTime = departureTime;
@@ -37,10 +88,16 @@ public class Flight implements IFlight {
         this.destination = destination;
         this.usedEconomySeats = usedEconomySeats;
         this.usedBusinessSeats = usedBusinessSeats;
-        this.economyFare = ec.getFare();
-        this.businessFare = bs.getFare();
+        this.economyFare = economyFare;
+        this.businessFare = businessFare;
         this.totalEconomySeats = totalEconomySeats;
         this.totalBusinessSeats = totalBusinessSeats;
+        this.numOfPassengers = numOfPassengers;
+        this.numOfBusiness = numOfBusiness;
+        this.numOfEconomic = numOfEconomic;
+        this.listOfPassengers = listOfPassengers;
+        this.listOfBusiness = listOfBusiness;
+        this.listOfEconomic = listOfEconomic;
     }
 
     public Flight(String flightCode, String planeCode, LocalDateTime departureTime, LocalDateTime arrivalTime, String departure, String destination, double economyFare, double businessFare, int totalEconomySeats, int totalBusinessSeats) {
@@ -55,8 +112,6 @@ public class Flight implements IFlight {
         this.totalEconomySeats = totalEconomySeats;
         this.totalBusinessSeats = totalBusinessSeats;
     }
-
-    
 
     @Override
     public void add() {
