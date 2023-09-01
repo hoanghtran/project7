@@ -106,8 +106,6 @@ public class Main {
             String data = gson.toJson(list);
             fw.write(data);
         }
-        System.out.println("============ Het ============");
-
     }
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
@@ -156,6 +154,7 @@ public class Main {
                                 int numOfPlanes = sc.nextInt();
 
                                 LAirline.add(new Airline(brandname, code, numOfPlanes));
+                                
                                 break;
                             case 2: // xóa một hãng hàng không 
                                 //exception mã hãng hàng không sai thì sao?
