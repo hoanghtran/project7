@@ -118,6 +118,8 @@ public class Main {
         ArrayList<FlightTicket> LTicket = new ArrayList<>();
         ArrayList<Flight> LFlight = new ArrayList<>();
         ArrayList<Airline> LAirline = new ArrayList<>();
+        List<JSON.Airline> database = new ArrayList<>();
+        database = read_json_file(Json_file_path);
 
         int option, opt_for_airline;
 
@@ -156,8 +158,8 @@ public class Main {
                                 System.out.print("Nhập số máy bay hãng sở hữu: ");
                                 int numOfPlanes = sc.nextInt();
 
-                                LAirline.add(new Airline(brandname, code, numOfPlanes));
-                                
+                                database.add(new JSON.Airline(brandname, code, numOfPlanes, listOfPlanes, numOfPlanes, listOfFlights));
+                               
                                 break;
                             case 2: // xóa một hãng hàng không 
                                 //exception mã hãng hàng không sai thì sao?
