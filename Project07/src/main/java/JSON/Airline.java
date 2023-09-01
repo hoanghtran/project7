@@ -1,4 +1,3 @@
-
 package JSON;
 
 import java.util.List;
@@ -25,6 +24,14 @@ public class Airline {
     @SerializedName("listOfFlights")
     @Expose
     private List<ListOfFlight> listOfFlights;
+
+    public Airline(String brandname, String code, int numOfPlanes, List<ListOfPlane> listOfPlanes) {
+        this.brandname = brandname;
+        this.code = code;
+        this.numOfPlanes = numOfPlanes;
+        this.listOfPlanes = listOfPlanes;
+        this.numOfFlights = 0;
+    }
 
     public String getBrandname() {
         return brandname;
@@ -80,11 +87,11 @@ public class Airline {
         sb.append(Airline.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("brandname");
         sb.append('=');
-        sb.append(((this.brandname == null)?"<null>":this.brandname));
+        sb.append(((this.brandname == null) ? "<null>" : this.brandname));
         sb.append(',');
         sb.append("code");
         sb.append('=');
-        sb.append(((this.code == null)?"<null>":this.code));
+        sb.append(((this.code == null) ? "<null>" : this.code));
         sb.append(',');
         sb.append("numOfPlanes");
         sb.append('=');
@@ -92,7 +99,7 @@ public class Airline {
         sb.append(',');
         sb.append("listOfPlanes");
         sb.append('=');
-        sb.append(((this.listOfPlanes == null)?"<null>":this.listOfPlanes));
+        sb.append(((this.listOfPlanes == null) ? "<null>" : this.listOfPlanes));
         sb.append(',');
         sb.append("numOfFlights");
         sb.append('=');
@@ -100,10 +107,10 @@ public class Airline {
         sb.append(',');
         sb.append("listOfFlights");
         sb.append('=');
-        sb.append(((this.listOfFlights == null)?"<null>":this.listOfFlights));
+        sb.append(((this.listOfFlights == null) ? "<null>" : this.listOfFlights));
         sb.append(',');
-        if (sb.charAt((sb.length()- 1)) == ',') {
-            sb.setCharAt((sb.length()- 1), ']');
+        if (sb.charAt((sb.length() - 1)) == ',') {
+            sb.setCharAt((sb.length() - 1), ']');
         } else {
             sb.append(']');
         }
