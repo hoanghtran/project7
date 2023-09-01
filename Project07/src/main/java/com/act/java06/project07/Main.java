@@ -113,15 +113,6 @@ public class Main {
 
     }
 
-    static void openLocalDateTimeForReadingJsonFilePurpose() {
-        // Create a GsonBuilder and register the custom TypeAdapter
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeTypeAdapter());
-
-        // Create a Gson instance from the GsonBuilder
-        Gson gson = gsonBuilder.create();
-    }
-
     public static void main(String[] args) throws FileNotFoundException, IOException {
 
         //global variables:
@@ -131,9 +122,6 @@ public class Main {
         ArrayList<Airline> LAirline = new ArrayList<>();
 
         int option, opt_for_airline;
-
-        //regulate some rules:
-        openLocalDateTimeForReadingJsonFilePurpose();
 
         do {
             navigator(); // menu điều hướng
