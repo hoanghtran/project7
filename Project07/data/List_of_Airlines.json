@@ -5,19 +5,19 @@
     "numOfPlanes": 69,
     "listOfPlanes": [
       {
-        "planeCode": "ZQX",
+        "planeCode": "VN-A861",
         "numOfSeats": 211
       },
       {
-        "planeCode": "QYH",
+        "planeCode": "VN-A870",
         "numOfSeats": 290
       },
       {
-        "planeCode": "XZC",
-        "numOfSeats": 440
+        "planeCode": "VN-A529",
+        "numOfSeats": 300
       },
       {
-        "planeCode": "JQW",
+        "planeCode": "VN-A427",
         "numOfSeats": 149
       }
     ],
@@ -25,7 +25,7 @@
     "listOfFlights": [
       {
         "flightCode": "VN348",
-        "planeCode": "ZQX",
+        "planeCode": "VN-A861",
         "departureTime": {
           "date": {
             "year": 2023,
@@ -69,19 +69,19 @@
     "numOfPlanes": 55,
     "listOfPlanes":[
       {
-        "planeCode":"VJA",
+        "planeCode":"VJ-A842",
         "numOfSeats":180
       },
       {
-        "planeCode":"VJB",
+        "planeCode":"VJ-A564",
         "numOfSeats":200
       },
       {
-        "planeCode":"VJC",
+        "planeCode":"VJ-A045",
         "numOfSeats":220
       },
       {
-        "planeCode":"VJD",
+        "planeCode":"VJ-A178",
         "numOfSeats":240
       }
     ],
@@ -89,7 +89,7 @@
     'listOfFlights':[
       {
        'flightCode':'VJ123',
-       'planeCode':'VJA',
+       'planeCode':'VJ-A842',
        'departureTime':{
          'date':{
            'year':2023,
@@ -133,22 +133,22 @@
     'code':'QH',
     'numOfPlanes':40,
     'listOfPlanes':[{
-      'planeCode':'QHA',
+      'planeCode':'QH-A055',
       'numOfSeats':250
     },{
-      'planeCode':'QHB',
+      'planeCode':'QH-A654',
       'numOfSeats':270
     },{
-      'planeCode':'QHC',
+      'planeCode':'QH-A836',
       'numOfSeats':300
     },{
-      'planeCode':'QHD',
+      'planeCode':'QH-A155',
       'numOfSeats':320
     }],
     'numOfFlights' :10,
     'listOfFlights':[{
     	'flightCode':'QH456',
-    	'planeCode':'QHA',
+    	'planeCode':'QH-A055',
     	'departureTime':{
     		'date':{
     			'year':2023,
@@ -190,22 +190,22 @@
     'code':'BL',
     'numOfPlanes':30,
     'listOfPlanes':[{
-      'planeCode':'BLA',
+      'planeCode':'BL-A966',
       'numOfSeats':190
     },{
-      'planeCode':'BLB',
+      'planeCode':'BL-A624',
       'numOfSeats':210
     },{
-      'planeCode':'BLC',
+      'planeCode'BL-A128',
       'numOfSeats':230
     },{
-      'planeCode':'BLD',
+      'planeCode':BL-A758',
       'numOfSeats':250
     }],
     'numOfFlights' :7,
     'listOfFlights':[{
     	'flightCode':'BL789',
-    	'planeCode':'BLA',
+    	'planeCode':'BL-A966',
     	'departureTime':{
     		'date':{
     			'year':2023,

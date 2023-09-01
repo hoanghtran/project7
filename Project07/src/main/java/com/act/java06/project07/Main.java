@@ -44,7 +44,7 @@ public class Main {
         //Hàm duyệt hiển thị các hãng hàng không
         List<JSON.Airline> list = read_json_file(Json_file_path);
         int stt = 1;
-        for(JSON.Airline airline: list){
+        for (JSON.Airline airline : list) {
             System.out.println(stt + ". " + airline.getBrandname());
             stt++;
         }
@@ -78,6 +78,18 @@ public class Main {
         System.out.println("3. chon loc hanh khach cua 1 chuyen bay:");
         System.out.println("4. Sua ve");
         System.out.println("5. Thoat chuong trinh");
+        System.out.print("Vui long nhap lua chon cua ban: ");
+    }
+
+    static void randomPlaneCode() {
+        System.out.println("============== Tao ngau nhien ==============");
+        System.out.println("Tao ngau nhien ma may bay (Y/N) ");
+        System.out.print("Vui long nhap lua chon cua ban: ");
+    }
+
+    static void randomFlightCode() {
+        System.out.println("============== Tao ngau nhien ==============");
+        System.out.println("Tao ngau nhien so hieu chuyen bay (Y/N) ");
         System.out.print("Vui long nhap lua chon cua ban: ");
     }
 
@@ -203,11 +215,19 @@ public class Main {
                                                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
                                                     if (n > 0) {
                                                         for (int i = 0; i < n; i++) {
-                                                            System.out.println(" -Nhap so hieu chuyen bay: ");
-                                                            String soHieuCb = sc.nextLine();
-
+                                                            randomFlightCode();
+                                                            String nhap = sc.next();
+                                                            char lc = nhap.charAt(0);
+                                                            if (lc == 'Y' || lc == 'y') {
+                                                                UUID maMayBay = UUID.randomUUID();
+                                                                String maMayBayString = maMayBay.toString();
+                                                                String maMayBayEdit = maMayBayString.replace("-", "").substring(0, 8);
+                                                            }
                                                             System.out.println(" -Nhap so hieu may bay: ");
                                                             String soHieuMb = sc.nextLine();
+
+                                                            System.out.println(" -Nhap so hieu chuyen bay: ");
+                                                            String soHieuCb = sc.nextLine();
 
                                                             System.out.println(" -Nhap diem xuat phat: ");
                                                             String diemXp = sc.nextLine();
