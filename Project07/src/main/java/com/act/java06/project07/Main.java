@@ -44,7 +44,7 @@ public class Main {
         //Hàm duyệt hiển thị các hãng hàng không
         List<JSON.Airline> list = read_json_file(Json_file_path);
         int stt = 1;
-        for(JSON.Airline airline: list){
+        for (JSON.Airline airline : list) {
             System.out.println(stt + ". " + airline.getBrandname());
             stt++;
         }
@@ -114,10 +114,6 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException, IOException {
 
         //global variables:
-        ArrayList<Passenger> LPassengers = new ArrayList<>();
-        ArrayList<FlightTicket> LTicket = new ArrayList<>();
-        ArrayList<Flight> LFlight = new ArrayList<>();
-        ArrayList<Airline> LAirline = new ArrayList<>();
         List<JSON.Airline> database = new ArrayList<>();
         database = read_json_file(Json_file_path);
 
@@ -158,8 +154,19 @@ public class Main {
                                 System.out.print("Nhập số máy bay hãng sở hữu: ");
                                 int numOfPlanes = sc.nextInt();
 
-                                database.add(new JSON.Airline(brandname, code, numOfPlanes, listOfPlanes, numOfPlanes, listOfFlights));
-                               
+                                List<JSON.ListOfPlane> listOfPlanes = new ArrayList<>();
+                                JSON.ListOfPlane plane = new ListOfPlane();
+                                for (int n = 0; n < numOfPlanes; n++) {
+                                    System.out.print("Nhập mã máy bay của bạn: ");
+                                    String PlaneCode = sc.nextLine();
+                                    plane.setPlaneCode(PlaneCode);
+                                    System.out.print("Nhập số chỗ ngồi của bạn: ");
+                                    int num = sc.nextInt();
+                                    plane.setNumOfSeats(num);
+                                }
+
+                                database.add(new JSON.Airline(brandname, code, numOfPlanes, listOfPlanes));
+                                write_airlines_file(Json_file_path, database);
                                 break;
                             case 2: // xóa một hãng hàng không 
                                 //exception mã hãng hàng không sai thì sao?
@@ -170,9 +177,9 @@ public class Main {
 
                                 int check = 0;
 
-                                for (int i = 0; i < LAirline.size(); i++) {
-                                    if (LAirline.get(i).getCode().equals(code)) {
-                                        LAirline.remove(i);
+                                for (int i = 0; i < database.size(); i++) {
+                                    if (database.get(i).getCode().equals(code)) {
+                                        database.remove(i);
                                         check = 1;
                                         break;
                                     }

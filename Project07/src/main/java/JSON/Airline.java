@@ -25,13 +25,12 @@ public class Airline {
     @Expose
     private List<ListOfFlight> listOfFlights;
 
-    public Airline(String brandname, String code, int numOfPlanes, List<ListOfPlane> listOfPlanes, int numOfFlights, List<ListOfFlight> listOfFlights) {
+    public Airline(String brandname, String code, int numOfPlanes, List<ListOfPlane> listOfPlanes) {
         this.brandname = brandname;
         this.code = code;
         this.numOfPlanes = numOfPlanes;
         this.listOfPlanes = listOfPlanes;
-        this.numOfFlights = numOfFlights;
-        this.listOfFlights = listOfFlights;
+        this.numOfFlights = 0;
     }
 
     public String getBrandname() {
