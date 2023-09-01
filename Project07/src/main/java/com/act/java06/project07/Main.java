@@ -31,7 +31,7 @@ public class Main {
 
     private static final String current = System.getProperty("user.dir");
     private static final String separator = File.separator;
-    static String Json_file_path = current + separator + "data" + separator + "List_of_Airlines_Json.json";
+    static String Json_file_path = current + separator + "data" + separator + "List_of_Airlines.json";
 
     static void navigator() {
         System.out.println("======= Dieu huong =======");
@@ -42,7 +42,13 @@ public class Main {
     static <E> void airline_menu() throws IOException {
         System.out.println("====== Hang hang khong ======");
         //Hàm duyệt hiển thị các hãng hàng không
-        read_airlines_file(Json_file_path);
+        List<JSON.Airline> list = read_json_file(Json_file_path);
+        int stt = 1;
+        for(JSON.Airline airline: list){
+            System.out.println(stt + ". " + airline.getBrandname());
+            stt++;
+        }
+        System.out.println("=========== Het ============");
     }
 
     static void modify_or_access_an_airline_option() {
@@ -82,7 +88,7 @@ public class Main {
         }
     }
 
-    static void read_airlines_file(String file_path) throws IOException {
+    static List read_json_file(String file_path) throws IOException {
 
         try (FileReader fr = new FileReader(file_path)) {
             Gson gson = new Gson();
@@ -91,15 +97,9 @@ public class Main {
             }.getType();
 
             List<JSON.Airline> airlines = gson.fromJson(fr, type);
-            int stt = 1;
-            for (JSON.Airline airline : airlines) {
 
-                System.out.println(stt + ". " + airline.getBrandname());
-                stt++;
-            }
+            return airlines;
         }
-        System.out.println("============ Het ============");
-
     }
 
     static void write_airlines_file(String file_path, List<Airline> list) throws IOException {
