@@ -102,7 +102,7 @@ public class Main {
         }
     }
 
-    static void write_airlines_file(String file_path, List<Airline> list) throws IOException {
+    static void write_airlines_file(String file_path, List<JSON.Airline> list) throws IOException {
 
         try (FileWriter fw = new FileWriter(file_path)) {
             Gson gson = new Gson();
