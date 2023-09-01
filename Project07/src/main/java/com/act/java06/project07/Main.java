@@ -131,7 +131,7 @@ public class Main {
                     int opt_for_airline_menu = sc.nextInt();
                     switch (opt_for_airline_menu) {
                         case 1: {
-
+                            
                         }
                     }
 
