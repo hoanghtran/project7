@@ -1,10 +1,11 @@
 
 package JSON;
 
+import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ListOfFlight {
+public class Flight {
 
     @SerializedName("flightCode")
     @Expose
@@ -32,16 +33,74 @@ public class ListOfFlight {
     private int usedBusinessSeats;
     @SerializedName("economyFare")
     @Expose
-    private double economyFare;
+    private int economyFare;
     @SerializedName("businessFare")
     @Expose
-    private double businessFare;
+    private int businessFare;
     @SerializedName("totalEconomySeats")
     @Expose
     private int totalEconomySeats;
     @SerializedName("totalBusinessSeats")
     @Expose
     private int totalBusinessSeats;
+    @SerializedName("numOfPassengers")
+    @Expose
+    private int numOfPassengers;
+    @SerializedName("numOfBusiness")
+    @Expose
+    private int numOfBusiness;
+    @SerializedName("numOfEconomic")
+    @Expose
+    private int numOfEconomic;
+    @SerializedName("Passengers")
+    @Expose
+    private List<Passenger> passengers;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public Flight() {
+    }
+
+    /**
+     * 
+     * @param departureTime
+     * @param economyFare
+     * @param totalBusinessSeats
+     * @param passengers
+     * @param numOfEconomic
+     * @param flightCode
+     * @param destination
+     * @param usedBusinessSeats
+     * @param usedEconomySeats
+     * @param businessFare
+     * @param arrivalTime
+     * @param numOfBusiness
+     * @param planeCode
+     * @param numOfPassengers
+     * @param departure
+     * @param totalEconomySeats
+     */
+    public Flight(String flightCode, String planeCode, DepartureTime departureTime, ArrivalTime arrivalTime, String departure, String destination, int usedEconomySeats, int usedBusinessSeats, int economyFare, int businessFare, int totalEconomySeats, int totalBusinessSeats, int numOfPassengers, int numOfBusiness, int numOfEconomic, List<Passenger> passengers) {
+        super();
+        this.flightCode = flightCode;
+        this.planeCode = planeCode;
+        this.departureTime = departureTime;
+        this.arrivalTime = arrivalTime;
+        this.departure = departure;
+        this.destination = destination;
+        this.usedEconomySeats = usedEconomySeats;
+        this.usedBusinessSeats = usedBusinessSeats;
+        this.economyFare = economyFare;
+        this.businessFare = businessFare;
+        this.totalEconomySeats = totalEconomySeats;
+        this.totalBusinessSeats = totalBusinessSeats;
+        this.numOfPassengers = numOfPassengers;
+        this.numOfBusiness = numOfBusiness;
+        this.numOfEconomic = numOfEconomic;
+        this.passengers = passengers;
+    }
 
     public String getFlightCode() {
         return flightCode;
@@ -107,19 +166,19 @@ public class ListOfFlight {
         this.usedBusinessSeats = usedBusinessSeats;
     }
 
-    public double getEconomyFare() {
+    public int getEconomyFare() {
         return economyFare;
     }
 
-    public void setEconomyFare(double economyFare) {
+    public void setEconomyFare(int economyFare) {
         this.economyFare = economyFare;
     }
 
-    public double getBusinessFare() {
+    public int getBusinessFare() {
         return businessFare;
     }
 
-    public void setBusinessFare(double businessFare) {
+    public void setBusinessFare(int businessFare) {
         this.businessFare = businessFare;
     }
 
@@ -139,10 +198,42 @@ public class ListOfFlight {
         this.totalBusinessSeats = totalBusinessSeats;
     }
 
+    public int getNumOfPassengers() {
+        return numOfPassengers;
+    }
+
+    public void setNumOfPassengers(int numOfPassengers) {
+        this.numOfPassengers = numOfPassengers;
+    }
+
+    public int getNumOfBusiness() {
+        return numOfBusiness;
+    }
+
+    public void setNumOfBusiness(int numOfBusiness) {
+        this.numOfBusiness = numOfBusiness;
+    }
+
+    public int getNumOfEconomic() {
+        return numOfEconomic;
+    }
+
+    public void setNumOfEconomic(int numOfEconomic) {
+        this.numOfEconomic = numOfEconomic;
+    }
+
+    public List<Passenger> getPassengers() {
+        return passengers;
+    }
+
+    public void setPassengers(List<Passenger> passengers) {
+        this.passengers = passengers;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(ListOfFlight.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append(Flight.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("flightCode");
         sb.append('=');
         sb.append(((this.flightCode == null)?"<null>":this.flightCode));
@@ -190,6 +281,22 @@ public class ListOfFlight {
         sb.append("totalBusinessSeats");
         sb.append('=');
         sb.append(this.totalBusinessSeats);
+        sb.append(',');
+        sb.append("numOfPassengers");
+        sb.append('=');
+        sb.append(this.numOfPassengers);
+        sb.append(',');
+        sb.append("numOfBusiness");
+        sb.append('=');
+        sb.append(this.numOfBusiness);
+        sb.append(',');
+        sb.append("numOfEconomic");
+        sb.append('=');
+        sb.append(this.numOfEconomic);
+        sb.append(',');
+        sb.append("passengers");
+        sb.append('=');
+        sb.append(((this.passengers == null)?"<null>":this.passengers));
         sb.append(',');
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');

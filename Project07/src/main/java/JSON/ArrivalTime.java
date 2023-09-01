@@ -13,6 +13,24 @@ public class ArrivalTime {
     @Expose
     private Time__1 time;
 
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public ArrivalTime() {
+    }
+
+    /**
+     * 
+     * @param date
+     * @param time
+     */
+    public ArrivalTime(Date__1 date, Time__1 time) {
+        super();
+        this.date = date;
+        this.time = time;
+    }
+
     public Date__1 getDate() {
         return date;
     }

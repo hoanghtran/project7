@@ -16,6 +16,26 @@ public class Date__1 {
     @Expose
     private int day;
 
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public Date__1() {
+    }
+
+    /**
+     * 
+     * @param month
+     * @param year
+     * @param day
+     */
+    public Date__1(int year, int month, int day) {
+        super();
+        this.year = year;
+        this.month = month;
+        this.day = day;
+    }
+
     public int getYear() {
         return year;
     }
