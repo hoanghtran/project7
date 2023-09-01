@@ -39,7 +39,7 @@ public class Main {
         System.out.print("Ban la: ");
     }
 
-    static <E> void airline_menu() throws IOException {
+    static void airline_menu() throws IOException {
         System.out.println("====== Hang hang khong ======");
         //Hàm duyệt hiển thị các hãng hàng không
         List<JSON.Airline> list = read_json_file(Json_file_path);
