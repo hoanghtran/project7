@@ -149,7 +149,7 @@ public class Main {
         database = read_json_file(Json_file_path);
         for (int i = 1; i <= list.size(); i++) {
             int x = i + 1;
-            String str = null;
+            String str = "";
             if (i <= 25) {
                 if (i < 10) {
                     str = "A" + "0" + i;
