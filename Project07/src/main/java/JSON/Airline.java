@@ -26,10 +26,14 @@ public class Airline {
     @Expose
     private List<Flight> flights;
 
-    /**
-     * No args constructor for use in serialization
-     * 
-     */
+    public Airline(String brandname, String code, int numOfPlanes, List<Plane> planes, int numOfFlights) {
+        this.brandname = brandname;
+        this.code = code;
+        this.numOfPlanes = numOfPlanes;
+        this.planes = planes;
+        this.numOfFlights = numOfFlights;
+    }
+
     public Airline() {
     }
 

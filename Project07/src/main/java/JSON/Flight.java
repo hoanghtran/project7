@@ -107,6 +107,19 @@ public class Flight {
         this.passengers = passengers;
     }
 
+    public Flight(String flightCode, String planeCode, DepartureTime departureTime, ArrivalTime arrivalTime, String departure, String destination, int economyFare, int businessFare, int totalEconomySeats, int totalBusinessSeats) {
+        this.flightCode = flightCode;
+        this.planeCode = planeCode;
+        this.departureTime = departureTime;
+        this.arrivalTime = arrivalTime;
+        this.departure = departure;
+        this.destination = destination;
+        this.economyFare = economyFare;
+        this.businessFare = businessFare;
+        this.totalEconomySeats = totalEconomySeats;
+        this.totalBusinessSeats = totalBusinessSeats;
+    }
+    
     public String getFlightCode() {
         return flightCode;
     }

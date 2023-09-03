@@ -4,18 +4,27 @@
  */
 package com.act.java06.project07;
 
+import JSON.Flight;
 import java.util.Comparator;
 
 /**
  *
  * @author ADMIN
  */
-public class NameComparator implements Comparator<Flight>{
+public class NameComparator implements Comparator<JSON.Flight>{
 
     @Override
     public int compare(Flight o1, Flight o2) {
-        return o1.getFlightCode().compareTo(o2.getFlightCode());
+       return o1.getFlightCode().compareTo(o2.getFlightCode());
     }
+
+    
+
+    
+
+    
+
+    
 
     
     
