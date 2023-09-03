@@ -122,11 +122,11 @@ public class Main {
             fw.write(data);
         }
     }
-    
+
     public static boolean isSubstring(String str1, String str2) {
         int len1 = str1.length();
         int len2 = str2.length();
-        
+
         for (int i = 0; i <= len1 - len2; i++) {
             int j;
             for (j = 0; j < len2; j++) {
@@ -134,22 +134,22 @@ public class Main {
                     break;
                 }
             }
-            
+
             if (j == len2) {
                 return true;
             }
         }
-        
+
         return false;
     }
-    
-    static void generateTicketCode(String code, List<JSON.Airline> database) throws IOException{
-        
+
+    static void generateTicketCode(String code, List<JSON.Airline> database) throws IOException {
+
         String rs = null;
-        List <JSON.Airline> ds = read_json_file(Json_file_path);
-        for(JSON.Airline airline : ds){
-            if(airline.getCode().equals(code)){
-                rs+= airline.getBrandname();
+        List<JSON.Airline> ds = read_json_file(Json_file_path);
+        for (JSON.Airline airline : ds) {
+            if (airline.getCode().equals(code)) {
+                rs += airline.getBrandname();
                 break;
             }
         }
@@ -255,34 +255,32 @@ public class Main {
                                             for (int p = 0; p < database.size(); p++) {
                                                 if (database.get(p).getBrandname().equals(brandname)) {
                                                     int n;
-                                                    
-                                            
-                                            try {
-                                                do {
-                                                    System.out.println("Nhap so luong chuyen bay muon them: ");
-                                                    n = sc.nextInt();
-                                                    sc.nextLine();
-                                                    String pattern = "yyyy-MM-dd HH:mm:ss";
-                                                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
-                                                    if (n > 0) {
-                                                        for (int i = 0; i < n; i++) {
-                                                            randomFlightCode();
-                                                            String nhap = sc.next();
-                                                            char lc = nhap.charAt(0);
-                                                            if (lc == 'Y' || lc == 'y') {
-                                                                UUID maMayBay = UUID.randomUUID();
-                                                                String maMayBayString = maMayBay.toString();
-                                                                String maMayBayEdit = maMayBayString.replace("-", "").substring(0, 8);
-                                                            }
-                                                            System.out.println(" -Nhap so hieu may bay: ");
-                                                            String soHieuMb = sc.nextLine();
 
-                                                            System.out.println(" -Nhap so hieu chuyen bay: ");
-                                                            String soHieuCb = sc.nextLine();
+                                                    try {
+                                                        do {
+                                                            System.out.println("Nhap so luong chuyen bay muon them: ");
+                                                            n = sc.nextInt();
+                                                            sc.nextLine();
+                                                            String pattern = "yyyy-MM-dd HH:mm:ss";
+                                                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
+                                                            if (n > 0) {
+                                                                for (int i = 0; i < n; i++) {
+                                                                    randomFlightCode();
+                                                                    String nhap = sc.next();
+                                                                    char lc = nhap.charAt(0);
+                                                                    if (lc == 'Y' || lc == 'y') {
+                                                                        UUID maMayBay = UUID.randomUUID();
+                                                                        String maMayBayString = maMayBay.toString();
+                                                                        String maMayBayEdit = maMayBayString.replace("-", "").substring(0, 8);
+                                                                    }
+                                                                    System.out.println(" -Nhap so hieu may bay: ");
+                                                                    String soHieuMb = sc.nextLine();
 
-                                                            System.out.println(" -Nhap diem xuat phat: ");
-                                                            String diemXp = sc.nextLine();
+                                                                    System.out.println(" -Nhap so hieu chuyen bay: ");
+                                                                    String soHieuCb = sc.nextLine();
 
+                                                                    System.out.println(" -Nhap diem xuat phat: ");
+                                                                    String diemXp = sc.nextLine();
 
                                                                     System.out.println(" -Nhap diem den: ");
                                                                     String diemDen = sc.nextLine();
@@ -339,7 +337,6 @@ public class Main {
                                                     } catch (Exception ex) {
                                                         System.out.println("Da xay ra loi khi nhap 1 chuyen bay" + ex);
 
-                                                            
                                                     }
                                                 }
                                                 break;
