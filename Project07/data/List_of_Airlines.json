@@ -63,6 +63,16 @@
         "numOfPassengers": 61,
         "numOfBusiness": 19,
         "numOfEconomic": 42,
+        "Seats": [
+          {
+            "SeatCode": "A01",
+            "Status": 0
+          },
+          {
+            "SeatCode": "A02",
+            "Status": 1
+          }
+        ],
         "Passengers": [
           {
             "ID": "VN348-001",
@@ -262,6 +272,16 @@
         "numOfPassengers": 61,
         "numOfBusiness": 19,
         "numOfEconomic": 42,
+        "Seats": [
+          {
+            "SeatCode": "A01",
+            "Status": 0
+          },
+          {
+            "SeatCode": "A02",
+            "Status": 1
+          }
+        ],
         "Passengers": [
           {
             "ID": "VN348-001",
@@ -461,6 +481,16 @@
         "numOfPassengers": 61,
         "numOfBusiness": 19,
         "numOfEconomic": 42,
+        "Seats": [
+          {
+            "SeatCode": "A01",
+            "Status": 0
+          },
+          {
+            "SeatCode": "A02",
+            "Status": 1
+          }
+        ],
         "Passengers": [
           {
             "ID": "VN348-001",
@@ -562,7 +592,6 @@
             "fullName": "Hoàng Thị T",
             "ticketCode": "VN-A20-QH456"
           },
-          
           {
             "ID": "VN348-026",
             "fullName": "Nguyễn Thị Z",
@@ -636,6 +665,16 @@
         "numOfPassengers": 61,
         "numOfBusiness": 19,
         "numOfEconomic": 42,
+        "Seats": [
+          {
+            "SeatCode": "A01",
+            "Status": 0
+          },
+          {
+            "SeatCode": "A02",
+            "Status": 1
+          }
+        ],
         "Passengers": [
           {
             "ID": "VN348-001",
