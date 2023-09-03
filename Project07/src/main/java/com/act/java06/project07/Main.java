@@ -124,7 +124,7 @@ public class Main {
         }
     }
 
-<<<<<<< HEAD
+
     public static boolean isSubstring(String str1, String str2) {
         int len1 = str1.length();
         int len2 = str2.length();
@@ -143,7 +143,7 @@ public class Main {
         }
 
         return false;
-=======
+
     static void getEmptySeats(ArrayList<KeyValue<String, Integer>> list, String code) throws IOException {
         List<JSON.Airline> database = new ArrayList<>();
         database = read_json_file(Json_file_path);
@@ -232,7 +232,7 @@ public class Main {
 
         }
         return -1;
->>>>>>> 4915d615c4c6355b5b2b6162bc7419b9dd398f54
+
     }
 
     static void generateTicketCode(String code, List<JSON.Airline> database) throws IOException {
