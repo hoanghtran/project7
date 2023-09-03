@@ -81,6 +81,18 @@ public class Main {
         System.out.print("Vui long nhap lua chon cua ban: ");
     }
 
+    static void randomPlaneCode() {
+        System.out.println("============== Tao ngau nhien ==============");
+        System.out.println("Tao ngau nhien ma may bay (Y/N) ");
+        System.out.print("Vui long nhap lua chon cua ban: ");
+    }
+
+    static void randomFlightCode() {
+        System.out.println("============== Tao ngau nhien ==============");
+        System.out.println("Tao ngau nhien so hieu chuyen bay (Y/N) ");
+        System.out.print("Vui long nhap lua chon cua ban: ");
+    }
+
     static <E> void show(List<E> list) {
         System.out.println("=========================");
         for (Object item : list) {
@@ -109,6 +121,20 @@ public class Main {
             String data = gson.toJson(list);
             fw.write(data);
         }
+    }
+    
+    static void generateTicketCode(String code, List<JSON.Airline> database) throws IOException{
+        
+        String rs = null;
+        List <JSON.Airline> ds = read_json_file(Json_file_path);
+        for(JSON.Airline airline : ds){
+            if(airline.getCode().equals(code)){
+                rs+= airline.getBrandname();
+                break;
+            }
+        }
+        // duyet cac so 
+        for
     }
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
@@ -154,8 +180,8 @@ public class Main {
                                 System.out.print("Nhập số máy bay hãng sở hữu: ");
                                 int numOfPlanes = sc.nextInt();
 
-                                List<JSON.ListOfPlane> listOfPlanes = new ArrayList<>();
-                                JSON.ListOfPlane plane = new ListOfPlane();
+                                List<JSON.Plane> listOfPlanes = new ArrayList<>();
+                                JSON.Plane plane = new JSON.Plane();
                                 for (int n = 0; n < numOfPlanes; n++) {
                                     System.out.print("Nhập mã máy bay của bạn: ");
                                     String PlaneCode = sc.nextLine();
@@ -165,7 +191,7 @@ public class Main {
                                     plane.setNumOfSeats(num);
                                 }
 
-                                database.add(new JSON.Airline(brandname, code, numOfPlanes, listOfPlanes));
+                                database.add(new JSON.Airline(brandname, code, numOfPlanes, listOfPlanes, numOfPlanes, flights));
                                 write_airlines_file(Json_file_path, database);
                                 break;
                             case 2: // xóa một hãng hàng không 
@@ -187,6 +213,8 @@ public class Main {
                                 if (check == 0) {
                                     System.out.println("Không tìm thấy mã hãng hàng không cần xóa");
                                 }
+                                write_airlines_file(Json_file_path, database);
+
                                 break;
                             case 3: // truy cập một hãng hàng không
 
@@ -201,6 +229,7 @@ public class Main {
                                             // exception <= 0
 
                                             // chèn code vào đây 
+<<<<<<< HEAD
                                             airline_menu();
                                             System.out.println("Nhap ten hang hang khong can them chuyen bay(nhap dung voi ten o tren): ");
                                             brandname = sc.nextLine();
@@ -222,6 +251,34 @@ public class Main {
 
                                                                     System.out.println(" -Nhap diem xuat phat: ");
                                                                     String diemXp = sc.nextLine();
+=======
+                                            int n;
+                                            try {
+                                                do {
+                                                    System.out.println("Nhap so luong chuyen bay muon them: ");
+                                                    n = sc.nextInt();
+                                                    sc.nextLine();
+                                                    String pattern = "yyyy-MM-dd HH:mm:ss";
+                                                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
+                                                    if (n > 0) {
+                                                        for (int i = 0; i < n; i++) {
+                                                            randomFlightCode();
+                                                            String nhap = sc.next();
+                                                            char lc = nhap.charAt(0);
+                                                            if (lc == 'Y' || lc == 'y') {
+                                                                UUID maMayBay = UUID.randomUUID();
+                                                                String maMayBayString = maMayBay.toString();
+                                                                String maMayBayEdit = maMayBayString.replace("-", "").substring(0, 8);
+                                                            }
+                                                            System.out.println(" -Nhap so hieu may bay: ");
+                                                            String soHieuMb = sc.nextLine();
+
+                                                            System.out.println(" -Nhap so hieu chuyen bay: ");
+                                                            String soHieuCb = sc.nextLine();
+
+                                                            System.out.println(" -Nhap diem xuat phat: ");
+                                                            String diemXp = sc.nextLine();
+>>>>>>> d25f4bd0bba690e68293dd976144bd132b340055
 
                                                                     System.out.println(" -Nhap diem den: ");
                                                                     String diemDen = sc.nextLine();
@@ -266,6 +323,7 @@ public class Main {
                                                                     System.out.println(" -Nhap gia ve hang pho thong");
                                                                     int giaVePt = sc.nextInt();
 
+<<<<<<< HEAD
                                                                     database.get(p).getFlights().add(new JSON.Flight(soHieuCb, soHieuMb, tgDi, tgDen, diemXp, diemDen, giaVeTg, giaVePt, soluongTg, soluongPt));
 
                                                                     // thêm phần viết lại vào file
@@ -277,6 +335,13 @@ public class Main {
                                                         } while (n < 0);
                                                     } catch (Exception ex) {
                                                         System.out.println("Da xay ra loi khi nhap 1 chuyen bay" + ex);
+=======
+                                                            database.add(new Flight(soHieuCb, soHieuMb, LocalDateTime.parse(tgDi, formatter), LocalDateTime.parse(tgDen, formatter), diemXp, diemDen, giaVeTg, giaVePt, soluongTg, soluongPt));
+                                                        }
+                                                    } else {
+                                                        System.out.println("Loi nhap so luong!!!!!!");
+                                                        System.out.println("So can nhap la so nguyen duong!!!!");
+>>>>>>> d25f4bd0bba690e68293dd976144bd132b340055
                                                     }
                                                 }
                                                 break;
@@ -347,10 +412,10 @@ public class Main {
                                                                         System.out.println("2.Pho Thong");
                                                                         System.out.print("Nhap lua chon cua ban:");
                                                                         int luaChon = sc.nextInt();
-                                                                        UUID maVe = UUID.randomUUID();
-                                                                        String maVeString = maVe.toString().toUpperCase();
-                                                                        String maVeEdit = maVeString.replace("-", "").substring(0, 8);
-                                                                        System.out.println("Ma ve cua ban la: " + maVeEdit);
+//                                                                        UUID maVe = UUID.randomUUID();
+//                                                                        String maVeString = maVe.toString().toUpperCase();
+//                                                                        String maVeEdit = maVeString.replace("-", "").substring(0, 8);
+//                                                                        System.out.println("Ma ve cua ban la: " + maVeEdit);
                                                                         switch (luaChon) {
                                                                             case 1: {
                                                                                 LTicket.add(new FlightTicket(maVeEdit, LFlight.get(a).getFlightCode(),

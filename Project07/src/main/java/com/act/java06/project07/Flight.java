@@ -28,7 +28,7 @@ public class Flight implements IFlight {
     private List<BusinessClass> listOfBusiness;
     private List<EconomyClass> listOfEconomic;
 
-    public Flight() {
+    public Flight(String soHieuCb, String soHieuMb, LocalDateTime parse, LocalDateTime parse1, String diemXp, String diemDen, double giaVeTg, double giaVePt, int soluongTg, int soluongPt) {
     }
 
     public int getNumOfPassengers() {
@@ -79,7 +79,7 @@ public class Flight implements IFlight {
         this.listOfEconomic = listOfEconomic;
     }
 
-    public Flight(String flightCode, String planeCode, LocalDateTime departureTime, LocalDateTime arrivalTime, String departure, String destination, int usedEconomySeats, int usedBusinessSeats, double economyFare, double businessFare, int totalEconomySeats, int totalBusinessSeats, int numOfPassengers, int numOfBusiness, int numOfEconomic, List<Passenger> listOfPassengers, List<BusinessClass> listOfBusiness, List<EconomyClass> listOfEconomic) {
+    public Flight(String flightCode, String planeCode, LocalDateTime departureTime, LocalDateTime arrivalTime, String departure, String destination, double economyFare, double businessFare, int usedEconomySeats, int usedBusinessSeats) {
         this.flightCode = flightCode;
         this.planeCode = planeCode;
         this.departureTime = departureTime;

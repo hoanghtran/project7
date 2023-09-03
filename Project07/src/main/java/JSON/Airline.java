@@ -26,10 +26,6 @@ public class Airline {
     @Expose
     private List<Flight> flights;
 
-    /**
-     * No args constructor for use in serialization
-     * 
-     */
     public Airline() {
     }
 
@@ -42,14 +38,12 @@ public class Airline {
      * @param brandname
      * @param flights
      */
-    public Airline(String brandname, String code, int numOfPlanes, List<Plane> planes, int numOfFlights, List<Flight> flights) {
+    public Airline(String brandname, String code, int numOfPlanes, List<Plane> planes) {
         super();
         this.brandname = brandname;
         this.code = code;
         this.numOfPlanes = numOfPlanes;
         this.planes = planes;
-        this.numOfFlights = numOfFlights;
-        this.flights = flights;
     }
 
     public String getBrandname() {
