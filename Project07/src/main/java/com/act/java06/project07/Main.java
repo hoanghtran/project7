@@ -154,8 +154,8 @@ public class Main {
                                 System.out.print("Nhập số máy bay hãng sở hữu: ");
                                 int numOfPlanes = sc.nextInt();
 
-                                List<JSON.ListOfPlane> listOfPlanes = new ArrayList<>();
-                                JSON.ListOfPlane plane = new ListOfPlane();
+                                List<JSON.Plane> listOfPlanes = new ArrayList<>();
+                                JSON.Plane plane = new JSON.Plane();
                                 for (int n = 0; n < numOfPlanes; n++) {
                                     System.out.print("Nhập mã máy bay của bạn: ");
                                     String PlaneCode = sc.nextLine();
@@ -187,6 +187,8 @@ public class Main {
                                 if (check == 0) {
                                     System.out.println("Không tìm thấy mã hãng hàng không cần xóa");
                                 }
+                                write_airlines_file(Json_file_path, database);
+
                                 break;
                             case 3: // truy cập một hãng hàng không
 
@@ -393,15 +395,15 @@ public class Main {
                                                         String soHieu = sc.nextLine();
                                                         for (int a = 0; a < database.size(); a++) {
                                                             for (int b = 0; b < database.get(a).getFlights().size(); b++) {
-                                                            if (database.get(a).getFlights().get(b).getFlightCode().equals(soHieu)) {
-                                                                checkFlCode = 1;
-                                                                for (int c = 0; c < database.get(a).getFlights().get(b).getPassengers().size(); c++) {
-                                                                    if (database.get(a).getFlights().get(b).getPassengers().get(c).getTicketCode().equals(LTicket.get(i).getTicketCode())) {
-                                                                        database.get(a).getFlights().get(b).getPassengers().get(c).toString();
+                                                                if (database.get(a).getFlights().get(b).getFlightCode().equals(soHieu)) {
+                                                                    checkFlCode = 1;
+                                                                    for (int c = 0; c < database.get(a).getFlights().get(b).getPassengers().size(); c++) {
+                                                                        if (database.get(a).getFlights().get(b).getPassengers().get(c).getTicketCode().equals(LTicket.get(i).getTicketCode())) {
+                                                                            database.get(a).getFlights().get(b).getPassengers().get(c).toString();
+                                                                        }
                                                                     }
                                                                 }
                                                             }
-                                                        }
                                                         }
                                                         if (checkFlCode == 0) {
                                                             System.out.println("Khong tim thay so hieu chuyen bay: " + soHieu);
