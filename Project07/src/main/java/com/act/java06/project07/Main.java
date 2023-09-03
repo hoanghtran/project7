@@ -144,7 +144,7 @@ public class Main {
         return false;
     }
 
-    static void getEmptySeats(ArrayList<KeyValue<String, Integer>> list, String code) throws IOException {
+    static void newEmptySeats(ArrayList<KeyValue<String, Integer>> list, String code) throws IOException {
         List<JSON.Airline> database = new ArrayList<>();
         database = read_json_file(Json_file_path);
         for (int i = 1; i <= list.size(); i++) {
@@ -203,31 +203,53 @@ public class Main {
             list.get(i).setKey(str);
         }
 
-
-        for(int a=0; a<database.size(); a++){
-            for(int b=0; b<database.get(a).getFlights().size(); b++){
-                for(int c=0; c<database.get(a).getFlights().get(b).getPassengers().size(); c++)
-                if(database.get(a).getFlights().get(b).getFlightCode().equals(code)){
-                    String[] part = database.get(a).getFlights().get(b).getPassengers().get(c).getTicketCode().split("-");
-                    for(int i=0; i<list.size(); i++){
-                        if(part[1].equals(list.get(i).getKey())){
-                            list.get(i).setValue(1);
-                        }
-                    }
-                }
-            }
-        }
-        for(int i=0; i<list.size(); i++){
-            if(i%25==0){
+//        for (int a = 0; a < database.size(); a++) {
+//            for (int b = 0; b < database.get(a).getFlights().size(); b++) {
+//                for (int c = 0; c < database.get(a).getFlights().get(b).getPassengers().size(); c++) {
+//                    if (database.get(a).getFlights().get(b).getFlightCode().equals(code)) {
+//                        String[] part = database.get(a).getFlights().get(b).getPassengers().get(c).getTicketCode().split("-");
+//                        for (int i = 0; i < list.size(); i++) {
+//                            if (part[1].equals(list.get(i).getKey())) {
+//                                list.get(i).setValue(1);
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
+        for (int i = 0; i < list.size(); i++) {
+            if (i % 25 == 0) {
                 System.out.println("");
             }
-            if(list.get(i).getValue()==0){
-                System.out.print(list.get(i).getKey()+"\t");
-            }
-            else{
+            if (list.get(i).getValue() == 0) {
+                System.out.print(list.get(i).getKey() + "\t");
+            } else {
                 System.out.println("   \t");
             }
-            
+
+        }
+    }
+
+    static void setValueForSeat(ArrayList<KeyValue<String, Integer>> list, String seatCode) {
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getKey().equals(seatCode)) {
+                list.get(i).setValue(1);
+            }
+        }
+
+    }
+
+    static void printAvailableSeats(ArrayList<KeyValue<String, Integer>> list) {
+        for (int i = 0; i < list.size(); i++) {
+            if (i % 25 == 0) {
+                System.out.println("");
+            }
+            if (list.get(i).getValue() == 0) {
+                System.out.print(list.get(i).getKey() + "\t");
+            } else {
+                System.out.print("   \t");
+            }
+
         }
     }
 
