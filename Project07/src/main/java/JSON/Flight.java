@@ -52,6 +52,9 @@ public class Flight {
     @SerializedName("numOfEconomic")
     @Expose
     private int numOfEconomic;
+    @SerializedName("Seats")
+    @Expose
+    private List<Seat> seats;
     @SerializedName("Passengers")
     @Expose
     private List<Passenger> passengers;
@@ -74,6 +77,7 @@ public class Flight {
      * @param destination
      * @param usedBusinessSeats
      * @param usedEconomySeats
+     * @param seats
      * @param businessFare
      * @param arrivalTime
      * @param numOfBusiness
@@ -82,7 +86,7 @@ public class Flight {
      * @param departure
      * @param totalEconomySeats
      */
-    public Flight(String flightCode, String planeCode, DepartureTime departureTime, ArrivalTime arrivalTime, String departure, String destination, int usedEconomySeats, int usedBusinessSeats, int economyFare, int businessFare, int totalEconomySeats, int totalBusinessSeats, int numOfPassengers, int numOfBusiness, int numOfEconomic, List<Passenger> passengers) {
+    public Flight(String flightCode, String planeCode, DepartureTime departureTime, ArrivalTime arrivalTime, String departure, String destination, int usedEconomySeats, int usedBusinessSeats, int economyFare, int businessFare, int totalEconomySeats, int totalBusinessSeats, int numOfPassengers, int numOfBusiness, int numOfEconomic, List<Seat> seats, List<Passenger> passengers) {
         super();
         this.flightCode = flightCode;
         this.planeCode = planeCode;
@@ -99,6 +103,7 @@ public class Flight {
         this.numOfPassengers = numOfPassengers;
         this.numOfBusiness = numOfBusiness;
         this.numOfEconomic = numOfEconomic;
+        this.seats = seats;
         this.passengers = passengers;
     }
 
@@ -235,6 +240,14 @@ public class Flight {
         this.numOfEconomic = numOfEconomic;
     }
 
+    public List<Seat> getSeats() {
+        return seats;
+    }
+
+    public void setSeats(List<Seat> seats) {
+        this.seats = seats;
+    }
+
     public List<Passenger> getPassengers() {
         return passengers;
     }
@@ -306,6 +319,10 @@ public class Flight {
         sb.append("numOfEconomic");
         sb.append('=');
         sb.append(this.numOfEconomic);
+        sb.append(',');
+        sb.append("seats");
+        sb.append('=');
+        sb.append(((this.seats == null)?"<null>":this.seats));
         sb.append(',');
         sb.append("passengers");
         sb.append('=');

@@ -28,6 +28,7 @@ import java.time.format.DateTimeFormatter;
 public class Main {
 
     static Scanner sc = new Scanner(System.in);
+    static ArrayList<KeyValue<String, Integer>> dsChoNgoi = new ArrayList<>();
 
     private static final String current = System.getProperty("user.dir");
     private static final String separator = File.separator;
@@ -123,6 +124,7 @@ public class Main {
         }
     }
 
+<<<<<<< HEAD
     public static boolean isSubstring(String str1, String str2) {
         int len1 = str1.length();
         int len2 = str2.length();
@@ -141,6 +143,96 @@ public class Main {
         }
 
         return false;
+=======
+    static void getEmptySeats(ArrayList<KeyValue<String, Integer>> list, String code) throws IOException {
+        List<JSON.Airline> database = new ArrayList<>();
+        database = read_json_file(Json_file_path);
+        for (int i = 1; i <= list.size(); i++) {
+            int x=i+1;
+            String str=null;
+            if(i<=25){
+                if(i<10){
+                    str = "A"+"0"+i;
+                }
+                else{
+                    str = "A"+i;
+                }
+            }
+            else if(i<=50){
+                if(i%25<10){
+                    str = "B"+"0"+i%25;
+                }
+                else{
+                    str = "B"+i%25;
+                }
+            }
+            else if(i<=75){
+                if(i%25<10){
+                    str = "C"+"0"+i%25;
+                }
+                else{
+                    str = "C"+i%25;
+                }
+            }
+            else if(i<=100){
+                if(i%25<10){
+                    str = "D"+"0"+i%25;
+                }
+                else{
+                    str = "D"+i%25;
+                }
+            }
+            else if(i<=125){
+                if(i%25<10){
+                    str = "E"+"0"+i%25;
+                }
+                else{
+                    str = "E"+i%25;
+                }
+            }
+            else if(i<=150){
+                if(i%25<10){
+                    str = "F"+"0"+i%25;
+                }
+                else{
+                    str = "F"+i%25;
+                }
+            }
+            else if(i<=175){
+                if(i%25<10){
+                    str = "G"+"0"+i%25;
+                }
+                else{
+                    str = "G"+i%25;
+                }
+            }
+            else if(i<=200){
+                if(i%25<10){
+                    str = "H"+"0"+i%25;
+                }
+                else{
+                    str = "H"+i%25;
+                }
+            }
+            list.get(i).setValue(0);
+            list.get(i).setKey(str);
+        }
+
+        
+    }
+
+    
+    static int getIndexOfAirline(String code) throws IOException {// error
+        List<JSON.Airline> database = new ArrayList<>();
+        database = read_json_file(Json_file_path);
+        for (int i = 0; i < database.size(); i++) {
+            if (database.get(i).getCode().equals(code)) {
+                return i;
+            }
+
+        }
+        return -1;
+>>>>>>> 4915d615c4c6355b5b2b6162bc7419b9dd398f54
     }
 
     static void generateTicketCode(String code, List<JSON.Airline> database) throws IOException {
@@ -158,7 +250,6 @@ public class Main {
     }
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
-
         //global variables:
         List<JSON.Airline> database = new ArrayList<>();
         database = read_json_file(Json_file_path);
