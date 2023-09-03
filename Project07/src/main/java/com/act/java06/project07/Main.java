@@ -229,30 +229,14 @@ public class Main {
                                             // exception <= 0
 
                                             // chèn code vào đây 
-<<<<<<< HEAD
                                             airline_menu();
                                             System.out.println("Nhap ten hang hang khong can them chuyen bay(nhap dung voi ten o tren): ");
                                             brandname = sc.nextLine();
                                             for (int p = 0; p < database.size(); p++) {
                                                 if (database.get(p).getBrandname().equals(brandname)) {
                                                     int n;
-                                                    try {
-                                                        do {
-                                                            System.out.println("Nhap so luong chuyen bay muon them: ");
-                                                            n = sc.nextInt();
-                                                            sc.nextLine();
-                                                            if (n > 0) {
-                                                                for (int i = 0; i < n; i++) {
-                                                                    System.out.println(" -Nhap so hieu chuyen bay: ");
-                                                                    String soHieuCb = sc.nextLine();
-
-                                                                    System.out.println(" -Nhap so hieu may bay: ");
-                                                                    String soHieuMb = sc.nextLine();
-
-                                                                    System.out.println(" -Nhap diem xuat phat: ");
-                                                                    String diemXp = sc.nextLine();
-=======
-                                            int n;
+                                                    
+                                            
                                             try {
                                                 do {
                                                     System.out.println("Nhap so luong chuyen bay muon them: ");
@@ -278,7 +262,7 @@ public class Main {
 
                                                             System.out.println(" -Nhap diem xuat phat: ");
                                                             String diemXp = sc.nextLine();
->>>>>>> d25f4bd0bba690e68293dd976144bd132b340055
+
 
                                                                     System.out.println(" -Nhap diem den: ");
                                                                     String diemDen = sc.nextLine();
@@ -323,7 +307,6 @@ public class Main {
                                                                     System.out.println(" -Nhap gia ve hang pho thong");
                                                                     int giaVePt = sc.nextInt();
 
-<<<<<<< HEAD
                                                                     database.get(p).getFlights().add(new JSON.Flight(soHieuCb, soHieuMb, tgDi, tgDen, diemXp, diemDen, giaVeTg, giaVePt, soluongTg, soluongPt));
 
                                                                     // thêm phần viết lại vào file
@@ -335,13 +318,8 @@ public class Main {
                                                         } while (n < 0);
                                                     } catch (Exception ex) {
                                                         System.out.println("Da xay ra loi khi nhap 1 chuyen bay" + ex);
-=======
-                                                            database.add(new Flight(soHieuCb, soHieuMb, LocalDateTime.parse(tgDi, formatter), LocalDateTime.parse(tgDen, formatter), diemXp, diemDen, giaVeTg, giaVePt, soluongTg, soluongPt));
-                                                        }
-                                                    } else {
-                                                        System.out.println("Loi nhap so luong!!!!!!");
-                                                        System.out.println("So can nhap la so nguyen duong!!!!");
->>>>>>> d25f4bd0bba690e68293dd976144bd132b340055
+
+                                                            
                                                     }
                                                 }
                                                 break;
