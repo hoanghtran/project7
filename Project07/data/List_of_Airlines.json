@@ -5,19 +5,19 @@
     "numOfPlanes": 69,
     "Planes": [
       {
-        "planeCode": "VN-A861",
+        "planeCode": "ZQX",
         "numOfSeats": 211
       },
       {
-        "planeCode": "VN-A870",
+        "planeCode": "QYH",
         "numOfSeats": 290
       },
       {
-        "planeCode": "VN-A529",
-        "numOfSeats": 300
+        "planeCode": "XZC",
+        "numOfSeats": 440
       },
       {
-        "planeCode": "VN-A427",
+        "planeCode": "JQW",
         "numOfSeats": 149
       }
     ],
@@ -25,7 +25,7 @@
     "Flights": [
       {
         "flightCode": "VN348",
-        "planeCode": "VN-A861",
+        "planeCode": "ZQX",
         "departureTime": {
           "date": {
             "year": 2023,
@@ -67,132 +67,132 @@
           {
             "ID": "VN348-001",
             "fullName": "Nguyễn Văn A",
-            "ticketCode": "VN348-B-001"
+            "ticketCode": "VN-A01-VN348"
           },
           {
             "ID": "VN348-002",
             "fullName": "Trần Thị B",
-            "ticketCode": "VN348-B-002"
+            "ticketCode": "VN-A02-VN348"
           },
           {
             "ID": "VN348-003",
             "fullName": "Lê Văn C",
-            "ticketCode": "VN348-B-003"
+            "ticketCode": "VN-A03-VN348"
           },
           {
             "ID": "VN348-004",
             "fullName": "Phạm Thị D",
-            "ticketCode": "VN348-B-004"
+            "ticketCode": "VN-A04-VN348"
           },
           {
             "ID": "VN348-005",
             "fullName": "Hoàng Văn E",
-            "ticketCode": "VN348-B-005"
+            "ticketCode": "VN-A05-VN348"
           },
           {
             "ID": "VN348-006",
             "fullName": "Nguyễn Thị F",
-            "ticketCode": "VN348-B-006"
+            "ticketCode": "VN-A06-VN348"
           },
           {
             "ID": "VN348-007",
             "fullName": "Trần Văn G",
-            "ticketCode": "VN348-B-007"
+            "ticketCode": "VN-A07-VN348"
           },
           {
             "ID": "VN348-008",
             "fullName": "Lê Thị H",
-            "ticketCode": "VN348-B-008"
+            "ticketCode": "VN-A08-VN348"
           },
           {
             "ID": "VN348-009",
             "fullName": "Phạm Văn I",
-            "ticketCode": "VN348-B-009"
+            "ticketCode": "VN-A09-VN348"
           },
           {
             "ID": "VN348-010",
             "fullName": "Hoàng Thị J",
-            "ticketCode": "VN348-B-010"
+            "ticketCode": "VN-A10-VN348"
           },
           {
             "ID": "VN348-011",
             "fullName": "Nguyễn Văn K",
-            "ticketCode": "VN348-B-011"
+            "ticketCode": "VN-A11-VN348"
           },
           {
             "ID": "VN348-012",
             "fullName": "Trần Thị L",
-            "ticketCode": "VN348-B-012"
+            "ticketCode": "VN-A12-VN348"
           },
           {
             "ID": "VN348-013",
             "fullName": "Lê Văn M",
-            "ticketCode": "VN348-B-013"
+            "ticketCode": "VN-A13-VN348"
           },
           {
             "ID": "VN348-014",
             "fullName": "Phạm Thị N",
-            "ticketCode": "VN348-B-014"
+            "ticketCode": "VN-A14-VN348"
           },
           {
             "ID": "VN348-015",
             "fullName": "Hoàng Văn O",
-            "ticketCode": "VN348-B-015"
+            "ticketCode": "VN-A15-VN348"
           },
           {
             "ID": "VN348-016",
             "fullName": "Nguyễn Thị P",
-            "ticketCode": "VN348-B-016"
+            "ticketCode": "VN-A16-VN348"
           },
           {
             "ID": "VN348-017",
             "fullName": "Trần Văn Q",
-            "ticketCode": "VN348-B-017"
+            "ticketCode": "VN-A17-VN348"
           },
           {
             "ID": "VN348-018",
             "fullName": "Lê Thị R",
-            "ticketCode": "VN348-B-018"
+            "ticketCode": "VN-A18-VN348"
           },
           {
             "ID": "VN348-019",
             "fullName": "Phạm Văn S",
-            "ticketCode": "VN348-B-019"
+            "ticketCode": "VN-A19-VN348"
           },
           {
             "ID": "VN348-020",
             "fullName": "Hoàng Thị T",
-            "ticketCode": "VN348-E-020"
+            "ticketCode": "VN-A20-VN348"
           },
           {
             "ID": "VN348-021",
             "fullName": "Nguyễn Văn U",
-            "ticketCode": "VN348-E-021"
+            "ticketCode": "VN-A21-VN348"
           },
           {
             "ID": "VN348-022",
             "fullName": "Trần Thị V",
-            "ticketCode": "VN348-E-022"
+            "ticketCode": "VN-A22-VN348"
           },
           {
             "ID": "VN348-023",
             "fullName": "Lê Văn W",
-            "ticketCode": "VN348-E-023"
+            "ticketCode": "VN-A23-348"
           },
           {
             "ID": "VN348-024",
             "fullName": "Phạm Thị X",
-            "ticketCode": "VN348-E-024"
+            "ticketCode": "VN-A24-VN348"
           },
           {
             "ID": "VN348-025",
             "fullName": "Hoàng Văn Y",
-            "ticketCode": "VN348-E-025"
+            "ticketCode": "VN-A25-VN348"
           },
           {
             "ID": "VN348-026",
             "fullName": "Nguyễn Thị Z",
-            "ticketCode": "VN348-E-026"
+            "ticketCode": "VN-B01-VN348"
           }
         ]
       }
@@ -204,22 +204,6 @@
     "numOfPlanes": 55,
     "Planes": [
       {
-<<<<<<< HEAD
-        "planeCode":"VJ-A842",
-        "numOfSeats":180
-      },
-      {
-        "planeCode":"VJ-A564",
-        "numOfSeats":200
-      },
-      {
-        "planeCode":"VJ-A045",
-        "numOfSeats":220
-      },
-      {
-        "planeCode":"VJ-A178",
-        "numOfSeats":240
-=======
         "planeCode": "VJA",
         "numOfSeats": 180
       },
@@ -234,50 +218,11 @@
       {
         "planeCode": "VJD",
         "numOfSeats": 240
->>>>>>> 19c4fd0a6b2f580bcbb9ddd50859951f0bbe1637
       }
     ],
     "numOfFlights": 8,
     "Flights": [
       {
-<<<<<<< HEAD
-       'flightCode':'VJ123',
-       'planeCode':'VJ-A842',
-       'departureTime':{
-         'date':{
-           'year':2023,
-           'month':9,
-           'day':26
-         },
-         'time':{
-           'hour':10,
-           'minute':15,
-           'second':0,
-           'nano':0
-         }
-       },
-       'arrivalTime':{
-         'date':{
-           'year':2023,
-           'month':9,
-           'day':26
-         },
-         'time':{
-           'hour':12,
-           'minute':30,
-           'second':0,
-           'nano':0
-         }
-       },
-       'departure':'SGN',
-       'destination':'HUI',
-       'usedEconomySeats':120,
-       'usedBusinessSeats':20,
-       'economyFare':900.0,
-       'businessFare':1800.0,
-       'totalEconomySeats':150,
-       'totalBusinessSeats':30 
-=======
         "flightCode": "VJ123",
         "planeCode": "VJA",
         "departureTime": {
@@ -321,253 +266,138 @@
           {
             "ID": "VN348-001",
             "fullName": "Nguyễn Văn A",
-            "ticketCode": "VN348-B-001"
+            "ticketCode": "VN-A01-VJ123"
           },
           {
             "ID": "VN348-002",
             "fullName": "Trần Thị B",
-            "ticketCode": "VN348-B-002"
+            "ticketCode": "VN-A02-VJ123"
           },
           {
             "ID": "VN348-003",
             "fullName": "Lê Văn C",
-            "ticketCode": "VN348-B-003"
+            "ticketCode": "VN-A03-VJ123"
           },
           {
             "ID": "VN348-004",
             "fullName": "Phạm Thị D",
-            "ticketCode": "VN348-B-004"
+            "ticketCode": "VN-A04-VJ123"
           },
           {
             "ID": "VN348-005",
             "fullName": "Hoàng Văn E",
-            "ticketCode": "VN348-B-005"
+            "ticketCode": "VN-A05-VJ123"
           },
           {
             "ID": "VN348-006",
             "fullName": "Nguyễn Thị F",
-            "ticketCode": "VN348-B-006"
+            "ticketCode": "VN-A06-VJ123"
           },
           {
             "ID": "VN348-007",
             "fullName": "Trần Văn G",
-            "ticketCode": "VN348-B-007"
+            "ticketCode": "VN-A07-VJ123"
           },
           {
             "ID": "VN348-008",
             "fullName": "Lê Thị H",
-            "ticketCode": "VN348-B-008"
+            "ticketCode": "VN-A08-VJ123"
           },
           {
             "ID": "VN348-009",
             "fullName": "Phạm Văn I",
-            "ticketCode": "VN348-B-009"
+            "ticketCode": "VN-A09-VJ123"
           },
           {
             "ID": "VN348-010",
             "fullName": "Hoàng Thị J",
-            "ticketCode": "VN348-B-010"
+            "ticketCode": "VN-A10-VJ123"
           },
           {
             "ID": "VN348-011",
             "fullName": "Nguyễn Văn K",
-            "ticketCode": "VN348-B-011"
+            "ticketCode": "VN-A11-VJ123"
           },
           {
             "ID": "VN348-012",
             "fullName": "Trần Thị L",
-            "ticketCode": "VN348-B-012"
+            "ticketCode": "VN-A12-VJ123"
           },
           {
             "ID": "VN348-013",
             "fullName": "Lê Văn M",
-            "ticketCode": "VN348-B-013"
+            "ticketCode": "VN-A13-VJ123"
           },
           {
             "ID": "VN348-014",
             "fullName": "Phạm Thị N",
-            "ticketCode": "VN348-B-014"
+            "ticketCode": "VN-A14-VJ123"
           },
           {
             "ID": "VN348-015",
             "fullName": "Hoàng Văn O",
-            "ticketCode": "VN348-B-015"
+            "ticketCode": "VN-A15-VJ123"
           },
           {
             "ID": "VN348-016",
             "fullName": "Nguyễn Thị P",
-            "ticketCode": "VN348-B-016"
+            "ticketCode": "VN-A16-VJ123"
           },
           {
             "ID": "VN348-017",
             "fullName": "Trần Văn Q",
-            "ticketCode": "VN348-B-017"
+            "ticketCode": "VN-A17-VJ123"
           },
           {
             "ID": "VN348-018",
             "fullName": "Lê Thị R",
-            "ticketCode": "VN348-B-018"
+            "ticketCode": "VN-A18-VJ123"
           },
           {
             "ID": "VN348-019",
             "fullName": "Phạm Văn S",
-            "ticketCode": "VN348-B-019"
+            "ticketCode": "VN-A19-VJ123"
           },
           {
             "ID": "VN348-020",
             "fullName": "Hoàng Thị T",
-            "ticketCode": "VN348-E-020"
+            "ticketCode": "VN-A20-VJ123"
           },
           {
             "ID": "VN348-021",
             "fullName": "Nguyễn Văn U",
-            "ticketCode": "VN348-E-021"
+            "ticketCode": "VN-A21-VJ123"
           },
           {
             "ID": "VN348-022",
             "fullName": "Trần Thị V",
-            "ticketCode": "VN348-E-022"
+            "ticketCode": "VN-A22-VJ123"
           },
           {
             "ID": "VN348-023",
             "fullName": "Lê Văn W",
-            "ticketCode": "VN348-E-023"
+            "ticketCode": "VN-A23-VJ123"
           },
           {
             "ID": "VN348-024",
             "fullName": "Phạm Thị X",
-            "ticketCode": "VN348-E-024"
+            "ticketCode": "VN-A24-VJ123"
           },
           {
             "ID": "VN348-025",
             "fullName": "Hoàng Văn Y",
-            "ticketCode": "VN348-E-025"
+            "ticketCode": "VN-A25-VJ123"
           },
           {
             "ID": "VN348-026",
             "fullName": "Nguyễn Thị Z",
-            "ticketCode": "VN348-E-026"
+            "ticketCode": "VN-B01-VJ123"
           }
         ]
->>>>>>> 19c4fd0a6b2f580bcbb9ddd50859951f0bbe1637
       }
     ]
   },
   {
-<<<<<<< HEAD
-    'brandname':'Bamboo Airways',
-    'code':'QH',
-    'numOfPlanes':40,
-    'listOfPlanes':[{
-      'planeCode':'QH-A055',
-      'numOfSeats':250
-    },{
-      'planeCode':'QH-A654',
-      'numOfSeats':270
-    },{
-      'planeCode':'QH-A836',
-      'numOfSeats':300
-    },{
-      'planeCode':'QH-A155',
-      'numOfSeats':320
-    }],
-    'numOfFlights' :10,
-    'listOfFlights':[{
-    	'flightCode':'QH456',
-    	'planeCode':'QH-A055',
-    	'departureTime':{
-    		'date':{
-    			'year':2023,
-    			'month':9,
-    			'day':27
-    		},
-    		'time':{
-    			'hour':8,
-    			'minute':45,
-    			'second':0,
-    			'nano':0
-    		}
-    	},
-    	'arrivalTime':{
-    		'date':{
-    			'year':2023,
-    			'month':9,
-    			'day':27
-    		},
-    		'time':{
-    			'hour':11,
-    			'minute':15,
-    			'second':0,
-    			'nano':0
-    		}
-    	},
-    	'departure':'HAN',
-    	'destination':'CXR',
-    	'usedEconomySeats':150,
-    	'usedBusinessSeats':30,
-    	'economyFare':1200.0,
-    	'businessFare':2400.0,
-    	'totalEconomySeats':200,
-    	'totalBusinessSeats':50
-    }]
-  },
-  {
-    'brandname':'Pacific Airlines',
-    'code':'BL',
-    'numOfPlanes':30,
-    'listOfPlanes':[{
-      'planeCode':'BL-A966',
-      'numOfSeats':190
-    },{
-      'planeCode':'BL-A624',
-      'numOfSeats':210
-    },{
-      'planeCode'BL-A128',
-      'numOfSeats':230
-    },{
-      'planeCode':BL-A758',
-      'numOfSeats':250
-    }],
-    'numOfFlights' :7,
-    'listOfFlights':[{
-    	'flightCode':'BL789',
-    	'planeCode':'BL-A966',
-    	'departureTime':{
-    		'date':{
-    			'year':2023,
-    			'month':9,
-    			'day':28
-    		},
-    		'time':{
-    			'hour':9,
-    			'minute':30,
-    			'second':0,
-    			'nano':0
-    		}
-    	},
-    	'arrivalTime':{
-    		'date':{
-    			'year':2023,
-    			'month':9,
-    			'day':28
-    		},
-    		'time':{
-    			'hour':11,
-    			'minute':45,
-    			'second':0,
-    			'nano':0
-    		}
-    	},
-    	'departure':'DAD',
-    	'destination':'PQC',
-    	'usedEconomySeats':100,
-    	'usedBusinessSeats':10,
-    	economyFare:800.0,
-    	businessFare:1600.0,
-    	totalEconomySeats:120,
-    	totalBusinessSeats:20
-    }]
-=======
     "brandname": "Bamboo Airways",
     "code": "QH",
     "numOfPlanes": 40,
@@ -635,132 +465,108 @@
           {
             "ID": "VN348-001",
             "fullName": "Nguyễn Văn A",
-            "ticketCode": "VN348-B-001"
+            "ticketCode": "VN-A01-QH456"
           },
           {
             "ID": "VN348-002",
             "fullName": "Trần Thị B",
-            "ticketCode": "VN348-B-002"
+            "ticketCode": "VN-A02-QH456"
           },
           {
             "ID": "VN348-003",
             "fullName": "Lê Văn C",
-            "ticketCode": "VN348-B-003"
+            "ticketCode": "VN-A03-QH456"
           },
           {
             "ID": "VN348-004",
             "fullName": "Phạm Thị D",
-            "ticketCode": "VN348-B-004"
+            "ticketCode": "VN-A04-QH456"
           },
           {
             "ID": "VN348-005",
             "fullName": "Hoàng Văn E",
-            "ticketCode": "VN348-B-005"
+            "ticketCode": "VN-A05-QH456"
           },
           {
             "ID": "VN348-006",
             "fullName": "Nguyễn Thị F",
-            "ticketCode": "VN348-B-006"
+            "ticketCode": "VN-A06-QH456"
           },
           {
             "ID": "VN348-007",
             "fullName": "Trần Văn G",
-            "ticketCode": "VN348-B-007"
+            "ticketCode": "VN-A07-QH456"
           },
           {
             "ID": "VN348-008",
             "fullName": "Lê Thị H",
-            "ticketCode": "VN348-B-008"
+            "ticketCode": "VN-A08-QH456"
           },
           {
             "ID": "VN348-009",
             "fullName": "Phạm Văn I",
-            "ticketCode": "VN348-B-009"
+            "ticketCode": "VN-A09-QH456"
           },
           {
             "ID": "VN348-010",
             "fullName": "Hoàng Thị J",
-            "ticketCode": "VN348-B-010"
+            "ticketCode": "VN-A10-QH456"
           },
           {
             "ID": "VN348-011",
             "fullName": "Nguyễn Văn K",
-            "ticketCode": "VN348-B-011"
+            "ticketCode": "VN-A11-QH456"
           },
           {
             "ID": "VN348-012",
             "fullName": "Trần Thị L",
-            "ticketCode": "VN348-B-012"
+            "ticketCode": "VN-A12-QH456"
           },
           {
             "ID": "VN348-013",
             "fullName": "Lê Văn M",
-            "ticketCode": "VN348-B-013"
+            "ticketCode": "VN-A13-QH456"
           },
           {
             "ID": "VN348-014",
             "fullName": "Phạm Thị N",
-            "ticketCode": "VN348-B-014"
+            "ticketCode": "VN-A14-QH456"
           },
           {
             "ID": "VN348-015",
             "fullName": "Hoàng Văn O",
-            "ticketCode": "VN348-B-015"
+            "ticketCode": "VN-A15-QH456"
           },
           {
             "ID": "VN348-016",
             "fullName": "Nguyễn Thị P",
-            "ticketCode": "VN348-B-016"
+            "ticketCode": "VN-A16-QH456"
           },
           {
             "ID": "VN348-017",
             "fullName": "Trần Văn Q",
-            "ticketCode": "VN348-B-017"
+            "ticketCode": "VN-A17-QH456"
           },
           {
             "ID": "VN348-018",
             "fullName": "Lê Thị R",
-            "ticketCode": "VN348-B-018"
+            "ticketCode": "VN-A18-QH456"
           },
           {
             "ID": "VN348-019",
             "fullName": "Phạm Văn S",
-            "ticketCode": "VN348-B-019"
+            "ticketCode": "VN-A19-QH456"
           },
           {
             "ID": "VN348-020",
             "fullName": "Hoàng Thị T",
-            "ticketCode": "VN348-E-020"
+            "ticketCode": "VN-A20-QH456"
           },
-          {
-            "ID": "VN348-021",
-            "fullName": "Nguyễn Văn U",
-            "ticketCode": "VN348-E-021"
-          },
-          {
-            "ID": "VN348-022",
-            "fullName": "Trần Thị V",
-            "ticketCode": "VN348-E-022"
-          },
-          {
-            "ID": "VN348-023",
-            "fullName": "Lê Văn W",
-            "ticketCode": "VN348-E-023"
-          },
-          {
-            "ID": "VN348-024",
-            "fullName": "Phạm Thị X",
-            "ticketCode": "VN348-E-024"
-          },
-          {
-            "ID": "VN348-025",
-            "fullName": "Hoàng Văn Y",
-            "ticketCode": "VN348-E-025"
-          },
+          
           {
             "ID": "VN348-026",
             "fullName": "Nguyễn Thị Z",
-            "ticketCode": "VN348-E-026"
+            "ticketCode": "VN-A21-QH456"
           }
         ]
       }
@@ -834,136 +640,70 @@
           {
             "ID": "VN348-001",
             "fullName": "Nguyễn Văn A",
-            "ticketCode": "VN348-B-001"
+            "ticketCode": "VN-A01-BL789"
           },
           {
             "ID": "VN348-002",
             "fullName": "Trần Thị B",
-            "ticketCode": "VN348-B-002"
+            "ticketCode": "VN-A02-BL789"
           },
           {
             "ID": "VN348-003",
             "fullName": "Lê Văn C",
-            "ticketCode": "VN348-B-003"
+            "ticketCode": "VN-A03-BL789"
           },
           {
             "ID": "VN348-004",
             "fullName": "Phạm Thị D",
-            "ticketCode": "VN348-B-004"
+            "ticketCode": "VN-A04-BL789"
           },
           {
             "ID": "VN348-005",
             "fullName": "Hoàng Văn E",
-            "ticketCode": "VN348-B-005"
+            "ticketCode": "VN-A05-BL789"
           },
           {
             "ID": "VN348-006",
             "fullName": "Nguyễn Thị F",
-            "ticketCode": "VN348-B-006"
+            "ticketCode": "VN-A06-BL789"
           },
           {
             "ID": "VN348-007",
             "fullName": "Trần Văn G",
-            "ticketCode": "VN348-B-007"
+            "ticketCode": "VN-A07-BL789"
           },
           {
             "ID": "VN348-008",
             "fullName": "Lê Thị H",
-            "ticketCode": "VN348-B-008"
+            "ticketCode": "VN-A08-BL789"
           },
           {
             "ID": "VN348-009",
             "fullName": "Phạm Văn I",
-            "ticketCode": "VN348-B-009"
+            "ticketCode": "VN-A09-BL789"
           },
           {
             "ID": "VN348-010",
             "fullName": "Hoàng Thị J",
-            "ticketCode": "VN348-B-010"
+            "ticketCode": "VN-A10-BL789"
           },
           {
             "ID": "VN348-011",
             "fullName": "Nguyễn Văn K",
-            "ticketCode": "VN348-B-011"
+            "ticketCode": "VN-A11-BL789"
           },
           {
             "ID": "VN348-012",
             "fullName": "Trần Thị L",
-            "ticketCode": "VN348-B-012"
-          },
-          {
-            "ID": "VN348-013",
-            "fullName": "Lê Văn M",
-            "ticketCode": "VN348-B-013"
-          },
-          {
-            "ID": "VN348-014",
-            "fullName": "Phạm Thị N",
-            "ticketCode": "VN348-B-014"
-          },
-          {
-            "ID": "VN348-015",
-            "fullName": "Hoàng Văn O",
-            "ticketCode": "VN348-B-015"
-          },
-          {
-            "ID": "VN348-016",
-            "fullName": "Nguyễn Thị P",
-            "ticketCode": "VN348-B-016"
-          },
-          {
-            "ID": "VN348-017",
-            "fullName": "Trần Văn Q",
-            "ticketCode": "VN348-B-017"
-          },
-          {
-            "ID": "VN348-018",
-            "fullName": "Lê Thị R",
-            "ticketCode": "VN348-B-018"
-          },
-          {
-            "ID": "VN348-019",
-            "fullName": "Phạm Văn S",
-            "ticketCode": "VN348-B-019"
-          },
-          {
-            "ID": "VN348-020",
-            "fullName": "Hoàng Thị T",
-            "ticketCode": "VN348-E-020"
-          },
-          {
-            "ID": "VN348-021",
-            "fullName": "Nguyễn Văn U",
-            "ticketCode": "VN348-E-021"
-          },
-          {
-            "ID": "VN348-022",
-            "fullName": "Trần Thị V",
-            "ticketCode": "VN348-E-022"
-          },
-          {
-            "ID": "VN348-023",
-            "fullName": "Lê Văn W",
-            "ticketCode": "VN348-E-023"
-          },
-          {
-            "ID": "VN348-024",
-            "fullName": "Phạm Thị X",
-            "ticketCode": "VN348-E-024"
-          },
-          {
-            "ID": "VN348-025",
-            "fullName": "Hoàng Văn Y",
-            "ticketCode": "VN348-E-025"
+            "ticketCode": "VN-A12-BL789"
           },
           {
             "ID": "VN348-026",
             "fullName": "Nguyễn Thị Z",
-            "ticketCode": "VN348-E-026"
+            "ticketCode": "VVN-A13-BL789"
           }
         ]
       }
     ]
->>>>>>> 19c4fd0a6b2f580bcbb9ddd50859951f0bbe1637
   }
 ]
