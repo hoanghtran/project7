@@ -122,6 +122,20 @@ public class Main {
             fw.write(data);
         }
     }
+    
+    static void generateTicketCode(String code, List<JSON.Airline> database) throws IOException{
+        
+        String rs = null;
+        List <JSON.Airline> ds = read_json_file(Json_file_path);
+        for(JSON.Airline airline : ds){
+            if(airline.getCode().equals(code)){
+                rs+= airline.getBrandname();
+                break;
+            }
+        }
+        // duyet cac so 
+        for
+    }
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
 
@@ -339,10 +353,10 @@ public class Main {
                                                                         System.out.println("2.Pho Thong");
                                                                         System.out.print("Nhap lua chon cua ban:");
                                                                         int luaChon = sc.nextInt();
-                                                                        UUID maVe = UUID.randomUUID();
-                                                                        String maVeString = maVe.toString().toUpperCase();
-                                                                        String maVeEdit = maVeString.replace("-", "").substring(0, 8);
-                                                                        System.out.println("Ma ve cua ban la: " + maVeEdit);
+//                                                                        UUID maVe = UUID.randomUUID();
+//                                                                        String maVeString = maVe.toString().toUpperCase();
+//                                                                        String maVeEdit = maVeString.replace("-", "").substring(0, 8);
+//                                                                        System.out.println("Ma ve cua ban la: " + maVeEdit);
                                                                         switch (luaChon) {
                                                                             case 1: {
                                                                                 LTicket.add(new FlightTicket(maVeEdit, LFlight.get(a).getFlightCode(),
