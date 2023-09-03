@@ -198,7 +198,19 @@ public class Main {
             list.get(i).setKey(str);
         }
 
-        
+        for(int a=0; a<database.size(); a++){
+            for(int b=0; b<database.get(a).getFlights().size(); b++){
+                for(int c=0; c<database.get(a).getFlights().get(b).getPassengers().size(); c++)
+                if(database.get(a).getFlights().get(b).getFlightCode().equals(code)){
+                    String[] part = database.get(a).getFlights().get(b).getPassengers().get(c).getTicketCode().split("-");
+                    for(int i=0; i<list.size(); i++){
+                        if(part[1].equals(list.get(i).getKey())){
+                            list.get(i).setValue(1);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     
