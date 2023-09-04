@@ -273,29 +273,54 @@ public class Main {
             switch (option) {
                 case 1: // case cho khách hàng
                     int kt = 0;
+                    int stt = 0;
                     airline_menu();
                     int opt_for_airline_menu = sc.nextInt(); // index của hãng hàng không 
                     sc.nextLine();
                     List<JSON.Airport> LAirport = read_json_file(Json_airport_file_path);
                     System.out.println("=========Danh sach san bay=========");
                     for (JSON.Airport item : LAirport) {
+                        System.out.print(stt+"." );
                         System.out.println(item.toString());
+                        stt++;
                     }
                     //Hiện menu cho khách chọn nơi xuất phát, nơi đến, ngày đi và ngày về (Đức Duy làm)
                     System.out.println("=======Menu======");
-                    System.out.print("Chon diem xuat phat: ");
-                    String departure = sc.nextLine();
-                    System.out.print("Chon diem den: ");
-                    String destination = sc.nextLine();
-                    System.out.print("Chon thoi gian khoi hanh: ");
-                    System.out.print("/t/t/t Nhap ngay khoi hanh:   ");
-                    int dayD = sc.nextInt();
-                    System.out.println("/t/t/t Nhap thang khoi hanh: ");
-                    int monthD = sc.nextInt();
+                    System.out.print("Chon diem xuat phat(Chon theo stt): ");
+                    int departure = sc.nextInt();
+                    System.out.print("Chon diem den(Chon theo stt): ");
+                    int destination = sc. nextInt();
+                    System.out.print("Nhap khoang thoi gian khoi hanh ");
+                    System.out.println("Nhap moc thoi gian 1: ");
+                    System.out.print("/t/t/t Nhap ngay:   ");
+                    int dayD1 = sc.nextInt();
+                    System.out.println("/t/t/t Nhap thang khoi h: ");
+                    int monthD1 = sc.nextInt();
                     System.out.println("/t/t/t Nhap nam khoi hanh: ");
-                    int yearD = sc.nextInt();
-                    
-                    
+                    int yearD1 = sc.nextInt();
+                    System.out.println("Nhap moc thoi gian 2: ");
+                    System.out.print("/t/t/t Nhap ngay:   ");
+                    int dayD2 = sc.nextInt();
+                    System.out.println("/t/t/t Nhap thang khoi h: ");
+                    int monthD2 = sc.nextInt();
+                    System.out.println("/t/t/t Nhap nam khoi hanh: ");
+                    int yearD2 = sc.nextInt();
+                    JSON.Date = new JSON.Date(yearD2, monthD2, dayD2);
+                    System.out.print("Nhap khoang thoi gian muốn đến ");
+                    System.out.println("Nhap moc thoi gian 1: ");
+                    System.out.print("/t/t/t Nhap ngay:   ");
+                    int dayA1 = sc.nextInt();
+                    System.out.println("/t/t/t Nhap thang: ");
+                    int monthA1 = sc.nextInt();
+                    System.out.println("/t/t/t Nhap nam: ");
+                    int yearA1 = sc.nextInt();
+                    System.out.println("Nhap moc thoi gian 2: ");
+                    System.out.print("/t/t/t Nhap ngay:   ");
+                    int dayA2 = sc.nextInt();
+                    System.out.println("/t/t/t Nhap thang: ");
+                    int monthA2 = sc.nextInt();
+                    System.out.println("/t/t/t Nhap nam: ");
+                    int yearA2 = sc.nextInt();
                                                                     
 
                     //Hiển thị ds các chuyến bay khả dụng với ngày đi và ngày về đó (Quốc Huy làm)
