@@ -298,6 +298,7 @@ public class Main {
                     int monthD1 = sc.nextInt();
                     System.out.println("/t/t/t Nhap nam khoi hanh: ");
                     int yearD1 = sc.nextInt();
+                    JSON.Date dateD1 = new JSON.Date(yearD1, monthD1, dayD1);
                     System.out.println("Nhap moc thoi gian 2: ");
                     System.out.print("/t/t/t Nhap ngay:   ");
                     int dayD2 = sc.nextInt();
@@ -305,7 +306,7 @@ public class Main {
                     int monthD2 = sc.nextInt();
                     System.out.println("/t/t/t Nhap nam khoi hanh: ");
                     int yearD2 = sc.nextInt();
-                    JSON.Date = new JSON.Date(yearD2, monthD2, dayD2);
+                    JSON.Date dateD2 = new JSON.Date(yearD2, monthD2, dayD2);
                     System.out.print("Nhap khoang thoi gian muốn đến ");
                     System.out.println("Nhap moc thoi gian 1: ");
                     System.out.print("/t/t/t Nhap ngay:   ");
@@ -314,6 +315,7 @@ public class Main {
                     int monthA1 = sc.nextInt();
                     System.out.println("/t/t/t Nhap nam: ");
                     int yearA1 = sc.nextInt();
+                    JSON.Date dateA1 = new JSON.Date(yearA1, monthA1, dayA1);
                     System.out.println("Nhap moc thoi gian 2: ");
                     System.out.print("/t/t/t Nhap ngay:   ");
                     int dayA2 = sc.nextInt();
@@ -321,8 +323,11 @@ public class Main {
                     int monthA2 = sc.nextInt();
                     System.out.println("/t/t/t Nhap nam: ");
                     int yearA2 = sc.nextInt();
-                                                                    
-
+                    JSON.Date dateA2 = new JSON.Date(yearA2, monthA2, dayA2);                                                
+                    for(int i=0;i<database.get(opt_for_airline_menu).getFlights().size();i++){
+                        if(database.get(opt_for_airline_menu).getFlights().get(i).getDeparture().equals(departure) && 
+                                )
+                    }
                     //Hiển thị ds các chuyến bay khả dụng với ngày đi và ngày về đó (Quốc Huy làm)
                     
 
