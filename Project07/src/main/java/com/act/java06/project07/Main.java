@@ -666,9 +666,10 @@ public class Main {
 
                                                                     if (database.get(a).getFlights().get(b).getPassengers().get(c).getId().equals(IDxoa)) {
                                                                         checkID = 1;
-                                                                        for (int j = 0; j < LTicket.size(); j++) {
-                                                                            if (LTicket.get(j).getTicketCode().equals(LPassengers.get(i).getTicketCode())) {
-                                                                                LTicket.remove(j);
+                                                                        for(int i=0; i<database.get(a).getFlights().get(b).getSeats().size(); i++){
+                                                                            if(database.get(a).getFlights().get(b).getSeats().get(i).getSeatCode().equals(database.get(a).getFlights().get(b).getPassengers().get(c).getTicketCode().substring(3, 5))){
+                                                                                database.get(a).getFlights().get(b).getSeats().get(i).setStatus(0);
+                                                                                
                                                                             }
                                                                         }
                                                                         database.get(a).getFlights().get(b).getPassengers().remove(c);
@@ -693,9 +694,7 @@ public class Main {
                                                                 if (database.get(a).getFlights().get(b).getFlightCode().equals(soHieu)) {
                                                                     checkFlCode = 1;
                                                                     for (int c = 0; c < database.get(a).getFlights().get(b).getPassengers().size(); c++) {
-                                                                        if (database.get(a).getFlights().get(b).getPassengers().get(c).getTicketCode().equals(LTicket.get(i).getTicketCode())) {
-                                                                            database.get(a).getFlights().get(b).getPassengers().get(c).toString();
-                                                                        }
+                                                                        database.get(a).getFlights().get(b).getPassengers().toString();
                                                                     }
                                                                 }
                                                             }
