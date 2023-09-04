@@ -6,19 +6,19 @@
     "Planes": [
       {
         "planeCode": "ZQX",
-        "numOfSeats": 211
+        "numOfSeats": 20
       },
       {
         "planeCode": "QYH",
-        "numOfSeats": 290
+        "numOfSeats": 20
       },
       {
         "planeCode": "XZC",
-        "numOfSeats": 440
+        "numOfSeats": 20
       },
       {
         "planeCode": "JQW",
-        "numOfSeats": 149
+        "numOfSeats": 20
       }
     ],
     "numOfFlights": 6,
@@ -185,61 +185,6 @@
             "ID": "VN348-008",
             "fullName": "Lê Thị H",
             "ticketCode": "VN-A08-VN348"
-          },
-          {
-            "ID": "VN348-009",
-            "fullName": "Phạm Văn I",
-            "ticketCode": "VN-A09-VN348"
-          },
-          {
-            "ID": "VN348-010",
-            "fullName": "Hoàng Thị J",
-            "ticketCode": "VN-A10-VN348"
-          },
-          {
-            "ID": "VN348-011",
-            "fullName": "Nguyễn Văn K",
-            "ticketCode": "VN-A11-VN348"
-          },
-          {
-            "ID": "VN348-012",
-            "fullName": "Trần Thị L",
-            "ticketCode": "VN-A12-VN348"
-          },
-          {
-            "ID": "VN348-013",
-            "fullName": "Lê Văn M",
-            "ticketCode": "VN-A13-VN348"
-          },
-          {
-            "ID": "VN348-014",
-            "fullName": "Phạm Thị N",
-            "ticketCode": "VN-A14-VN348"
-          },
-          {
-            "ID": "VN348-015",
-            "fullName": "Hoàng Văn O",
-            "ticketCode": "VN-A15-VN348"
-          },
-          {
-            "ID": "VN348-016",
-            "fullName": "Nguyễn Thị P",
-            "ticketCode": "VN-A16-VN348"
-          },
-          {
-            "ID": "VN348-017",
-            "fullName": "Trần Văn Q",
-            "ticketCode": "VN-A17-VN348"
-          },
-          {
-            "ID": "VN348-018",
-            "fullName": "Lê Thị R",
-            "ticketCode": "VN-A18-VN348"
-          },
-          {
-            "ID": "VN348-019",
-            "fullName": "Phạm Văn S",
-            "ticketCode": "VN-A19-VN348"
           }
         ]
       }
