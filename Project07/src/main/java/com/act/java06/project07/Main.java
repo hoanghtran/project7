@@ -18,6 +18,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.lang.reflect.Type;
 import java.time.LocalDate;
+import java.time.Month;
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -259,6 +260,10 @@ public class Main {
         return rs;
     }
 
+    static LocalDate chuyenDateJsonThanhLocalDate(int y, int m, int d) {
+        return LocalDate.of(y, m, d);
+    }
+
     public static void main(String[] args) throws FileNotFoundException, IOException {
         //global variables:
         List<JSON.Airline> database = new ArrayList<>();
@@ -272,7 +277,7 @@ public class Main {
 
             switch (option) {
                 case 1: // case cho khách hàng
-                    int kt = 0;
+                    DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                     int stt = 0;
                     airline_menu();
                     int opt_for_airline_menu = sc.nextInt(); // index của hãng hàng không 
@@ -280,7 +285,7 @@ public class Main {
                     List<JSON.Airport> LAirport = read_json_file(Json_airport_file_path);
                     System.out.println("=========Danh sach san bay=========");
                     for (JSON.Airport item : LAirport) {
-                        System.out.print(stt+"." );
+                        System.out.print(stt + ".");
                         System.out.println(item.toString());
                         stt++;
                     }
@@ -289,47 +294,31 @@ public class Main {
                     System.out.print("Chon diem xuat phat(Chon theo stt): ");
                     int departure = sc.nextInt();
                     System.out.print("Chon diem den(Chon theo stt): ");
-                    int destination = sc. nextInt();
-                    System.out.print("Nhap khoang thoi gian khoi hanh ");
+                    int destination = sc.nextInt();
+                    sc.nextLine();
+                    System.out.print("Nhap khoang thoi gian khoi hanh(Theo dinh dang dd/MM/yyyy) ");
                     System.out.println("Nhap moc thoi gian 1: ");
-                    System.out.print("/t/t/t Nhap ngay:   ");
-                    int dayD1 = sc.nextInt();
-                    System.out.println("/t/t/t Nhap thang khoi h: ");
-                    int monthD1 = sc.nextInt();
-                    System.out.println("/t/t/t Nhap nam khoi hanh: ");
-                    int yearD1 = sc.nextInt();
-                    JSON.Date dateD1 = new JSON.Date(yearD1, monthD1, dayD1);
+                    String ngayD1 = sc.nextLine();
+                    LocalDate dateD1 = LocalDate.parse(ngayD1, format);
                     System.out.println("Nhap moc thoi gian 2: ");
-                    System.out.print("/t/t/t Nhap ngay:   ");
-                    int dayD2 = sc.nextInt();
-                    System.out.println("/t/t/t Nhap thang khoi h: ");
-                    int monthD2 = sc.nextInt();
-                    System.out.println("/t/t/t Nhap nam khoi hanh: ");
-                    int yearD2 = sc.nextInt();
-                    JSON.Date dateD2 = new JSON.Date(yearD2, monthD2, dayD2);
-                    System.out.print("Nhap khoang thoi gian muốn đến ");
-                    System.out.println("Nhap moc thoi gian 1: ");
-                    System.out.print("/t/t/t Nhap ngay:   ");
-                    int dayA1 = sc.nextInt();
-                    System.out.println("/t/t/t Nhap thang: ");
-                    int monthA1 = sc.nextInt();
-                    System.out.println("/t/t/t Nhap nam: ");
-                    int yearA1 = sc.nextInt();
-                    JSON.Date dateA1 = new JSON.Date(yearA1, monthA1, dayA1);
+                    String ngayD2 = sc.nextLine();
+                    LocalDate dateD2 = LocalDate.parse(ngayD2, format);
+                    System.out.print("Nhap khoang thoi gian muốn đến(Theo dinh dang dd/MM/yyyy) ");
+                    String ngayA1 = sc.nextLine();
+                    LocalDate dateA1 = LocalDate.parse(ngayA1, format);
                     System.out.println("Nhap moc thoi gian 2: ");
-                    System.out.print("/t/t/t Nhap ngay:   ");
-                    int dayA2 = sc.nextInt();
-                    System.out.println("/t/t/t Nhap thang: ");
-                    int monthA2 = sc.nextInt();
-                    System.out.println("/t/t/t Nhap nam: ");
-                    int yearA2 = sc.nextInt();
-                    JSON.Date dateA2 = new JSON.Date(yearA2, monthA2, dayA2);                                                
-                    for(int i=0;i<database.get(opt_for_airline_menu).getFlights().size();i++){
-                        if(database.get(opt_for_airline_menu).getFlights().get(i).getDeparture().equals(departure) && 
-                                )
+                    String ngayA2 = sc.nextLine();
+                    LocalDate dateA2 = LocalDate.parse(ngayA2, format);
+                    for (int i = 0; i < database.get(opt_for_airline_menu).getFlights().size(); i++) {
+                        if (database.get(opt_for_airline_menu).getFlights().get(i).getDeparture().equals(departure)
+                                && database.get(opt_for_airline_menu).getFlights().get(i).getDestination().equals(destination)
+                                && chuyenDateJsonThanhLocalDate(database.get(opt_for_airline_menu).getFlights().get(i).getDepartureTime().getDate().getYear(),
+                                        database.get(opt_for_airline_menu).getFlights().get(i).getDepartureTime().getDate().getMonth(),
+                                        database.get(opt_for_airline_menu).getFlights().get(i).getDepartureTime().getDate().getDay()).isAfter(dateD1)) {
+
+                        }
                     }
                     //Hiển thị ds các chuyến bay khả dụng với ngày đi và ngày về đó (Quốc Huy làm)
-                    
 
                     //Nếu có thì đến mục menu tiếp theo lựa chọn khứ hồi hay 1 chiều, bao nhiêu 
                     //người (Quốc Huy)
@@ -599,10 +588,10 @@ public class Main {
 
                                                                     if (database.get(a).getFlights().get(b).getPassengers().get(c).getId().equals(IDxoa)) {
                                                                         checkID = 1;
-                                                                        for(int i=0; i<database.get(a).getFlights().get(b).getSeats().size(); i++){
-                                                                            if(database.get(a).getFlights().get(b).getSeats().get(i).getSeatCode().equals(database.get(a).getFlights().get(b).getPassengers().get(c).getTicketCode().substring(3, 5))){
+                                                                        for (int i = 0; i < database.get(a).getFlights().get(b).getSeats().size(); i++) {
+                                                                            if (database.get(a).getFlights().get(b).getSeats().get(i).getSeatCode().equals(database.get(a).getFlights().get(b).getPassengers().get(c).getTicketCode().substring(3, 5))) {
                                                                                 database.get(a).getFlights().get(b).getSeats().get(i).setStatus(0);
-                                                                                
+
                                                                             }
                                                                         }
                                                                         database.get(a).getFlights().get(b).getPassengers().remove(c);
@@ -676,7 +665,7 @@ public class Main {
 
                                                 }
                                             } while (opt_for_passenger != 4); // loop cho mục khách
-                                            break;                           // tier 4
+                                            break;                           // tier 4  
                                         case 4: // sua thong tin 1 chuyen bay
                                             airline_menu();
                                             System.out.println("Nhap ten hang hang khong can xoa chuyen bay(nhap dung voi ten o tren): ");
@@ -755,7 +744,7 @@ public class Main {
                                             System.out.println("Nhập mã hãng hàng không cần tính doanh thu: ");
                                             code = sc.nextLine();
                                             check = 0;
-
+                                        /*
                                             for (int i = 0; i < LAirline.size(); i++) {
                                                 if (LAirline.get(i).getCode().equals(code)) {
                                                     check = 1;
@@ -784,7 +773,7 @@ public class Main {
                                                 System.out.println("Không tìm thấy mã hãng hàng không cần tính");
                                             }
                                             break;
-
+                                         */
                                         case 5: // loc thong tin 1 chuyen bay // Phan tra cuu thong tin
                                             airline_menu();
                                             System.out.println("Nhap ten hang hang khong can xoa chuyen bay(nhap dung voi ten o tren): ");
