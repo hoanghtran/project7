@@ -152,64 +152,45 @@ public class Main {
 
         return false;
     }
+    static void newEmptySeats(List<JSON.Seat> listOfSeats){
+        
+        for (int i = 1; i <= 200; i++) {
 
-    static void newEmptySeats(ArrayList<KeyValue<String, Integer>> list, String code) throws IOException {
-        List<JSON.Airline> database = new ArrayList<>();
-        database = read_json_file(Json_file_path);
-        for (int i = 1; i <= list.size(); i++) {
             int x = i + 1;
-            String str = null;
-            if (i <= 25) {
+            String str = "";
+            if (i <= 50) {
                 if (i < 10) {
                     str = "A" + "0" + i;
                 } else {
                     str = "A" + i;
                 }
-            } else if (i <= 50) {
-                if (i % 25 < 10) {
-                    str = "B" + "0" + i % 25;
-                } else {
-                    str = "B" + i % 25;
+            }
+            else if(i<=100){
+                if(i%50<10){
+                    str = "B"+"0"+i%50;
                 }
-            } else if (i <= 75) {
-                if (i % 25 < 10) {
-                    str = "C" + "0" + i % 25;
-                } else {
-                    str = "C" + i % 25;
-                }
-            } else if (i <= 100) {
-                if (i % 25 < 10) {
-                    str = "D" + "0" + i % 25;
-                } else {
-                    str = "D" + i % 25;
-                }
-            } else if (i <= 125) {
-                if (i % 25 < 10) {
-                    str = "E" + "0" + i % 25;
-                } else {
-                    str = "E" + i % 25;
-                }
-            } else if (i <= 150) {
-                if (i % 25 < 10) {
-                    str = "F" + "0" + i % 25;
-                } else {
-                    str = "F" + i % 25;
-                }
-            } else if (i <= 175) {
-                if (i % 25 < 10) {
-                    str = "G" + "0" + i % 25;
-                } else {
-                    str = "G" + i % 25;
-                }
-            } else if (i <= 200) {
-                if (i % 25 < 10) {
-                    str = "H" + "0" + i % 25;
-                } else {
-                    str = "H" + i % 25;
+                else{
+                    str = "B"+i;
                 }
             }
-            list.get(i).setValue(0);
-            list.get(i).setKey(str);
+            else if(i<=150){
+                if(i%50<10){
+                    str = "C"+"0"+i%50;
+                }
+                else{
+                    str = "C"+i;
+                }
+            }
+            else if(i<=200){
+                if(i%50<10){
+                    str = "D"+"0"+i%50;
+                }
+                else{
+                    str = "D"+i;
+                }
+            }
+            listOfSeats.get(i).setSeatCode(str);
+            listOfSeats.get(i).setStatus(0);
         }
 
 //        for (int a = 0; a < database.size(); a++) {
@@ -226,40 +207,32 @@ public class Main {
 //                }
 //            }
 //        }
-        for (int i = 0; i < list.size(); i++) {
-            if (i % 25 == 0) {
-                System.out.println("");
-            }
-            if (list.get(i).getValue() == 0) {
-                System.out.print(list.get(i).getKey() + "\t");
-            } else {
-                System.out.println("   \t");
-            }
-
-        }
+        
     }
 
-    static void setValueForSeat(ArrayList<KeyValue<String, Integer>> list, String seatCode) {
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getKey().equals(seatCode)) {
-                list.get(i).setValue(1);
+    static void setValueForSeat(List<JSON.Seat> listOfSeats, String seatCode) {
+        for (int i = 0; i < listOfSeats.size(); i++) {
+            if (listOfSeats.get(i).getSeatCode().equals(seatCode)) {
+                listOfSeats.get(i).setStatus(1);
             }
         }
 
     }
 
-    static void printAvailableSeats(ArrayList<KeyValue<String, Integer>> list) {
-        for (int i = 0; i < list.size(); i++) {
-            if (i % 25 == 0) {
+    static void printAvailableSeats(List<JSON.Seat> listOfSeats) {
+        for (int i = 0; i < 200; i++) {
+            if (i % 50 == 0) {
                 System.out.println("");
             }
-            if (list.get(i).getValue() == 0) {
-                System.out.print(list.get(i).getKey() + "\t");
+            if (listOfSeats.get(i).getStatus() == 0) {
+                System.out.print(listOfSeats.get(i).getSeatCode() + "\t");
             } else {
                 System.out.print("   \t");
             }
 
         }
+        System.out.println("Hang pho thong: tu 01->25");
+        System.out.println("Hang thuong gia: tu 26->50");
     }
 
     static int getIndexOfAirline(String code) throws IOException {// error
@@ -274,7 +247,8 @@ public class Main {
         return -1;
 
     }
-
+    
+            
     static String generateTicketCode(String code, List<JSON.Airline> database, String Seatcode) throws IOException {
 
         String rs = code + "-";
@@ -573,7 +547,8 @@ public class Main {
                                                                     int giaVePt = sc.nextInt();
 
                                                                     database.get(p).getFlights().add(new JSON.Flight(soHieuCb, soHieuMb, tgDi, tgDen, diemXp, diemDen, giaVeTg, giaVePt, soluongTg, soluongPt));
-
+                                                                    ArrayList<Seat> seats = new ArrayList<>();
+                                                                    newEmptySeats(seats);
                                                                     database.get(p).getFlights().get(database.get(p).getFlights().size() - 1).setSeats(seats);
                                                                     // thêm phần viết lại vào file
                                                                 }
@@ -650,36 +625,15 @@ public class Main {
                                                                         System.out.print("Nhap ID: ");
                                                                         String ID = sc.nextLine();
 
-                                                                        System.out.println("Chon hang ve: ");
-                                                                        System.out.println("1.Thuong gia");
-                                                                        System.out.println("2.Pho Thong");
-                                                                        System.out.print("Nhap lua chon cua ban:");
-                                                                        int luaChon = sc.nextInt();
+                                                                        printAvailableSeats(database.get(a).getFlights().get(b).getSeats());
+                                                                        System.out.print("Chon cho ngoi: ");
+                                                                        String luaChon = sc.nextLine();
+                                                                        
 //                                                                        UUID maVe = UUID.randomUUID();
 //                                                                        String maVeString = maVe.toString().toUpperCase();
 //                                                                        String maVeEdit = maVeString.replace("-", "").substring(0, 8);
 //                                                                        System.out.println("Ma ve cua ban la: " + maVeEdit);
-                                                                        switch (luaChon) {
-                                                                            case 1: {
-                                                                                LTicket.add(new FlightTicket(maVeEdit, LFlight.get(a).getFlightCode(),
-                                                                                        LFlight.get(a).getDeparture(), LFlight.get(a).getDestination(),
-                                                                                        LFlight.get(a).getDepartureTime(),
-                                                                                        LFlight.get(a).getArrivalTime(),
-                                                                                        "Thuong gia", LFlight.get(a).getBusinessFare()));
-
-                                                                                break;
-                                                                            }
-                                                                            case 2: {
-                                                                                LTicket.add(new FlightTicket(maVeEdit, LFlight.get(a).getFlightCode(),
-                                                                                        LFlight.get(a).getDeparture(), LFlight.get(a).getDestination(),
-                                                                                        LFlight.get(a).getDepartureTime(),
-                                                                                        LFlight.get(a).getArrivalTime(),
-                                                                                        "Pho thong", LFlight.get(a).getEconomyFare()));
-                                                                                break;
-                                                                            }
-                                                                            default:
-                                                                                break;
-                                                                        }
+                                                                        
 
                                                                         database.get(a).getFlights().get(b).getPassengers().add(new JSON.Passenger(ID, hoTen, maVeEdit));
                                                                     }
