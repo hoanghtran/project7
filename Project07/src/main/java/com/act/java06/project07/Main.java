@@ -273,122 +273,56 @@ public class Main {
             switch (option) {
                 case 1: // case cho khách hàng
                     int kt = 0;
+                    int stt = 0;
                     airline_menu();
                     int opt_for_airline_menu = sc.nextInt(); // index của hãng hàng không 
-
+                    sc.nextLine();
+                    List<JSON.Airport> LAirport = read_json_file(Json_airport_file_path);
+                    System.out.println("=========Danh sach san bay=========");
+                    for (JSON.Airport item : LAirport) {
+                        System.out.print(stt + ".");
+                        System.out.println(item.toString());
+                        stt++;
+                    }
                     //Hiện menu cho khách chọn nơi xuất phát, nơi đến, ngày đi và ngày về (Đức Duy làm)
-                    menu_passenger_1();
-                    ArrayList<JSON.Flight> listCB = new ArrayList<>();
+                    System.out.println("=======Menu======");
+                    System.out.print("Chon diem xuat phat(Chon theo stt): ");
+                    int departure = sc.nextInt();
+                    System.out.print("Chon diem den(Chon theo stt): ");
+                    int destination = sc.nextInt();
+                    System.out.print("Nhap khoang thoi gian khoi hanh ");
+                    System.out.println("Nhap moc thoi gian 1: ");
+                    System.out.print("/t/t/t Nhap ngay:   ");
+                    int dayD1 = sc.nextInt();
+                    System.out.println("/t/t/t Nhap thang khoi h: ");
+                    int monthD1 = sc.nextInt();
+                    System.out.println("/t/t/t Nhap nam khoi hanh: ");
+                    int yearD1 = sc.nextInt();
+                    System.out.println("Nhap moc thoi gian 2: ");
+                    System.out.print("/t/t/t Nhap ngay:   ");
+                    int dayD2 = sc.nextInt();
+                    System.out.println("/t/t/t Nhap thang khoi h: ");
+                    int monthD2 = sc.nextInt();
+                    System.out.println("/t/t/t Nhap nam khoi hanh: ");
+                    int yearD2 = sc.nextInt();
+                    JSON.Date = new JSON.Date(yearD2, monthD2, dayD2);
+                    System.out.print("Nhap khoang thoi gian muốn đến ");
+                    System.out.println("Nhap moc thoi gian 1: ");
+                    System.out.print("/t/t/t Nhap ngay:   ");
+                    int dayA1 = sc.nextInt();
+                    System.out.println("/t/t/t Nhap thang: ");
+                    int monthA1 = sc.nextInt();
+                    System.out.println("/t/t/t Nhap nam: ");
+                    int yearA1 = sc.nextInt();
+                    System.out.println("Nhap moc thoi gian 2: ");
+                    System.out.print("/t/t/t Nhap ngay:   ");
+                    int dayA2 = sc.nextInt();
+                    System.out.println("/t/t/t Nhap thang: ");
+                    int monthA2 = sc.nextInt();
+                    System.out.println("/t/t/t Nhap nam: ");
+                    int yearA2 = sc.nextInt();
 
                     //Hiển thị ds các chuyến bay khả dụng với ngày đi và ngày về đó (Quốc Huy làm)
-                    int lua_chon = sc.nextInt();
-                    switch (lua_chon) {
-                        case 1:
-                            sc.nextLine();
-                            String information = sc.nextLine();
-                            for (int i = 0; i < database.get(opt_for_airline_menu).getFlights().size(); i++) {
-                                if (database.get(opt_for_airline_menu).getFlights().get(i).getDeparture().equals(information)) {
-                                    listCB.add(database.get(opt_for_airline_menu).getFlights().get(i));
-                                }
-                            }
-                            Collections.sort(listCB, new NameComparator());
-                            for (int i = 0; i < listCB.size(); i++) {
-                                System.out.println(listCB.get(i).getFlightCode());
-                            }
-                            listCB.clear();
-                            break;
-                        case 2:
-                            information = sc.nextLine();
-                            for (int i = 0; i < database.get(opt_for_airline_menu).getFlights().size(); i++) {
-                                if (database.get(opt_for_airline_menu).getFlights().get(i).getDestination().equals(information)) {
-                                    listCB.add(database.get(opt_for_airline_menu).getFlights().get(i));
-                                }
-                            }
-                            Collections.sort(listCB, new NameComparator());
-                            for (int i = 0; i < listCB.size(); i++) {
-                                System.out.println(listCB.get(i).getFlightCode());
-                            }
-                            listCB.clear();
-                            break;
-                        case 3:
-                            System.out.print("Nhap vao nam: ");
-                            int year = sc.nextInt();
-                            System.out.print("Nhap vao thang: ");
-                            int month = sc.nextInt();
-                            System.out.print("Nhap vao ngay");
-                            int day = sc.nextInt();
-                            JSON.Date dateDep = new JSON.Date(year, month, day);
-
-                            for (int i = 0; i < database.get(opt_for_airline_menu).getFlights().size(); i++) {
-                                if (database.get(opt_for_airline_menu).getFlights().get(i).getDepartureTime().getDate().equals(dateDep)) {
-                                    listCB.add(database.get(opt_for_airline_menu).getFlights().get(i));
-                                }
-                            }
-                            Collections.sort(listCB, new NameComparator());
-                            for (int i = 0; i < listCB.size(); i++) {
-                                System.out.println(listCB.get(i).getFlightCode());
-                            }
-                            listCB.clear();
-                            break;
-                        case 4:
-                            System.out.print("Nhap vao nam: ");
-                            year = sc.nextInt();
-                            System.out.print("Nhap vao thang: ");
-                            month = sc.nextInt();
-                            System.out.print("Nhap vao ngay");
-                            day = sc.nextInt();
-                            JSON.Date__1 dateArr = new JSON.Date__1(year, month, day);
-                            for (int i = 0; i < database.get(opt_for_airline_menu).getFlights().size(); i++) {
-                                if (database.get(opt_for_airline_menu).getFlights().get(i).getArrivalTime().getDate().equals(dateArr)) {
-                                    listCB.add(database.get(opt_for_airline_menu).getFlights().get(i));
-                                }
-                            }
-                            Collections.sort(listCB, new NameComparator());
-                            for (int i = 0; i < listCB.size(); i++) {
-                                System.out.println(listCB.get(i).getFlightCode());
-                            }
-                            listCB.clear();
-                            break;
-                        case 5:
-
-                            int hour = sc.nextInt();
-                            int minute = sc.nextInt();
-                            int second = sc.nextInt();
-                            int nano = sc.nextInt();
-                            JSON.Time timeDep = new Time(hour, minute, second, nano);
-                            for (int i = 0; i < database.get(opt_for_airline_menu).getFlights().size(); i++) {
-                                if (database.get(opt_for_airline_menu).getFlights().get(i).getDepartureTime().getTime().equals(timeDep)) {
-                                    listCB.add(database.get(opt_for_airline_menu).getFlights().get(i));
-                                }
-                            }
-                            Collections.sort(listCB, new NameComparator());
-                            for (int i = 0; i < listCB.size(); i++) {
-                                System.out.println(listCB.get(i).getFlightCode());
-                            }
-                            listCB.clear();
-                            break;
-                        case 6:
-                            hour = sc.nextInt();
-                            minute = sc.nextInt();
-                            second = sc.nextInt();
-                            nano = sc.nextInt();
-                            JSON.Time__1 timeArr = new Time__1(hour, minute, second, nano);
-                            for (int i = 0; i < database.get(opt_for_airline_menu).getFlights().size(); i++) {
-                                if (database.get(opt_for_airline_menu).getFlights().get(i).getArrivalTime().getTime().equals(timeArr)) {
-                                    listCB.add(database.get(opt_for_airline_menu).getFlights().get(i));
-                                }
-                            }
-                            Collections.sort(listCB, new NameComparator());
-                            for (int i = 0; i < listCB.size(); i++) {
-                                System.out.println(listCB.get(i).getFlightCode());
-                            }
-                            listCB.clear();
-                            break;
-                        default:
-                            System.out.println("Khong co chuyen bay nao co thong tin nhu tren!!!"); //Nếu không có hiện là không có
-                            break;
-                    }
-
                     //Nếu có thì đến mục menu tiếp theo lựa chọn khứ hồi hay 1 chiều, bao nhiêu 
                     //người (Quốc Huy)
                     //Sau khi khách chọn xong hiển thị giá vé và tính toán (Hoàng làm)
@@ -651,13 +585,13 @@ public class Main {
                                                         System.out.print("Nhap ID hanh khach muon xoa: ");
                                                         sc.nextLine();
                                                         String IDxoa = sc.nextLine();
-                                                        String maCB;
-                                                        //phai check xem hanh khach can xoa là o chuyen bay nao boi vì có nh chuyen bay 
+                                                        System.out.print("Nhap ma chuyen bay: ");
+                                                        String maCB = sc.nextLine();
                                                         for (int a = 0; a < database.size(); a++) {
+
                                                             for (int b = 0; b < database.get(a).getFlights().size(); b++) {
-                                                                System.out.print("Nhap ma chuyen bay: ");
-                                                                maCB = sc.nextLine();
-                                                                if (database.get(a).getFlights().get(b).equals(maCB)) {
+
+                                                                if (database.get(a).getFlights().get(b).getFlightCode().equals(maCB)) {
                                                                     for (int c = 0; c < database.get(a).getFlights().get(b).getPassengers().size(); c++) {
 
                                                                         if (database.get(a).getFlights().get(b).getPassengers().get(c).getId().equals(IDxoa)) {
@@ -672,7 +606,7 @@ public class Main {
                                                                         }
                                                                     }
                                                                 }
-
+                                                                break;
                                                             }
                                                         }
                                                         if (checkID == 1) {
@@ -702,51 +636,54 @@ public class Main {
                                                         }
                                                     case 4: {
                                                         int checkId = 0;
+                                                        String cccd;
+                                                        String hoTen;
                                                         System.out.print("Nhap ID hanh khach muon sua: ");
-                                                        sc.nextLine();
                                                         String IDsua = sc.nextLine();
+                                                        System.out.print("Nhap ma chuyen bay: ");
+                                                        String macb = sc.nextLine();
                                                         for (int a = 0; a < database.size(); a++) {
+
                                                             for (int b = 0; b < database.get(a).getFlights().size(); b++) {
-                                                                for (int c = 0; c < database.get(a).getFlights().get(b).getPassengers().size(); c++) {
 
-                                                                    if (database.get(a).getFlights().get(b).getPassengers().get(c).getId().equals(IDsua)) {
-                                                                        checkID = 1;
-
-                                                                        for (int i = 0; i < database.get(a).getFlights().get(b).getSeats().size(); i++) {
-                                                                            if (database.get(a).getFlights().get(b).getSeats().get(i).getSeatCode().equals(database.get(a).getFlights().get(b).getPassengers().get(c).getTicketCode().substring(3, 5))) {
-                                                                                database.get(a).getFlights().get(b).getSeats().get(i).setStatus(0);
-
+                                                                if (database.get(a).getFlights().get(b).getFlightCode().equals(macb)) {
+                                                                    for (int c = 0; c < database.get(a).getFlights().get(b).getPassengers().size(); c++) {
+                                                                         cccd = database.get(a).getFlights().get(b).getPassengers().get(c).getId();
+                                                                         hoTen = database.get(a).getFlights().get(b).getPassengers().get(c).getFullName();
+                                                                        if (database.get(a).getFlights().get(b).getPassengers().get(c).getId().equals(IDsua)) {
+                                                                            checkId = 1;
+                                                                            for (int i = 0; i < database.get(a).getFlights().get(b).getSeats().size(); i++) {
+                                                                                if (database.get(a).getFlights().get(b).getSeats().get(i).getSeatCode().equals(database.get(a).getFlights().get(b).getPassengers().get(c).getTicketCode().substring(3, 5))) {
+                                                                                    database.get(a).getFlights().get(b).getSeats().get(i).setStatus(0);
+                                                                                    
+                                                                                }
                                                                             }
+                                                                            database.get(a).getFlights().get(b).getPassengers().remove(c);
                                                                         }
-                                                                        database.get(a).getFlights().get(b).getPassengers().remove(c);
                                                                     }
                                                                 }
+                                                                break;
                                                             }
                                                         }
 
+                                                        // cho khach chon lai cho ngoi
                                                         for (int a = 0; a < database.size(); a++) {
                                                             for (int b = 0; b < database.get(a).getFlights().size(); b++) {
-                                                                for (int c = 0; c < database.get(a).getFlights().get(b).getPassengers().size(); c++) {
+                                                                printAvailableSeats(database.get(a).getFlights().get(b).getSeats());
+                                                                System.out.print("Chon cho ngoi: ");
+                                                                String lc = sc.nextLine();
 
-                                                                    printAvailableSeats(database.get(a).getFlights().get(b).getSeats());
-                                                                    System.out.print("Chon cho ngoi: ");
-                                                                    String luaChon = sc.nextLine();
-
-//                                                                      
-                                                                    for (int j = 0; j < database.get(a).getFlights().get(b).getSeats().size(); j++) {
-                                                                        if (luaChon.equals(database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode())) {
-                                                                            System.out.println("Cho ngoi da duoc dat");
-                                                                        } else {
-                                                                            database.get(a).getFlights().get(b).getPassengers().get(c).add(new JSON.Passenger(ID, hoTen, generateTicketCode(database.get(a).getCode(), database, luaChon)));
-                                                                        }
+                                                                for (int j = 0; j < database.get(a).getFlights().get(b).getSeats().size(); j++) {
+                                                                    if (lc.equals(database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode())) {
+                                                                        System.out.println("Cho ngoi da duoc dat");
+                                                                    } else {
+                                                                        database.get(a).getFlights().get(b).getPassengers().add(new JSON.Passenger( cccd, hoTen, generateTicketCode(database.get(a).getCode(), database, lc)));
                                                                     }
-
                                                                 }
                                                             }
                                                         }
-                                                    }
 
-                                                    break;
+                                                    }
 
                                                     case 5:
                                                         // thoát chương trình                                                     
