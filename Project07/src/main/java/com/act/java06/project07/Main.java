@@ -32,6 +32,7 @@ public class Main {
     private static final String current = System.getProperty("user.dir");
     private static final String separator = File.separator;
     static String Json_file_path = current + separator + "data" + separator + "List_of_Airlines.json";
+    static String Json_airport_file_path = current + separator + "data" + separator + "List_of_Airports.json";
 
     static void navigator() {
         System.out.println("======= Dieu huong =======");
