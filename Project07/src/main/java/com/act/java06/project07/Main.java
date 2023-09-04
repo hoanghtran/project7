@@ -756,8 +756,8 @@ public class Main {
                                             code = sc.nextLine();
                                             check = 0;
 
-                                            for (int i = 0; i < LAirline.size(); i++) {
-                                                if (LAirline.get(i).getCode().equals(code)) {
+                                            for (int i = 0; i < database.size(); i++) {
+                                                if (database.get(i).getCode().equals(code)) {
                                                     check = 1;
                                                     int month = 0, year = 0;
 
@@ -776,7 +776,7 @@ public class Main {
                                                         year = sc.nextInt();
                                                     }
 
-                                                    LAirline.get(i).statisticize_turnOver(LAirline.get(i).getListOfFlights(), x, month, year);
+                                                    database.get(i).statisticize_turnOver(database.get(i).getFlights(), check, month, year);
                                                     break;
                                                 }
                                             }
