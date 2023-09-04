@@ -518,9 +518,16 @@ public class Main {
 //                                                                        String maVeString = maVe.toString().toUpperCase();
 //                                                                        String maVeEdit = maVeString.replace("-", "").substring(0, 8);
 //                                                                        System.out.println("Ma ve cua ban la: " + maVeEdit);
-                                                                        
+                                                                        for(int j=0; j<database.get(a).getFlights().get(b).getSeats().size(); j++){
+                                                                            if(luaChon.equals(database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode())){
+                                                                                  System.out.println("Cho ngoi da duoc dat");
+                                                                            }
+                                                                            else{
+                                                                                database.get(a).getFlights().get(b).getPassengers().add(new JSON.Passenger(ID, hoTen, generateTicketCode(database.get(a).getCode(), database, luaChon)));
+                                                                            }
+                                                                        }
 
-                                                                        database.get(a).getFlights().get(b).getPassengers().add(new JSON.Passenger(ID, hoTen, maVeEdit));
+                                                                        
                                                                     }
                                                                 }
                                                             }
