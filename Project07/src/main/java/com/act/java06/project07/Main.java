@@ -148,80 +148,89 @@ public class Main {
         List<JSON.Airline> database = new ArrayList<>();
         database = read_json_file(Json_file_path);
         for (int i = 1; i <= list.size(); i++) {
-            int x=i+1;
-            String str=null;
-            if(i<=25){
-                if(i<10){
-                    str = "A"+"0"+i;
+            int x = i + 1;
+            String str = null;
+            if (i <= 25) {
+                if (i < 10) {
+                    str = "A" + "0" + i;
+                } else {
+                    str = "A" + i;
                 }
-                else{
-                    str = "A"+i;
+            } else if (i <= 50) {
+                if (i % 25 < 10) {
+                    str = "B" + "0" + i % 25;
+                } else {
+                    str = "B" + i % 25;
                 }
-            }
-            else if(i<=50){
-                if(i%25<10){
-                    str = "B"+"0"+i%25;
+            } else if (i <= 75) {
+                if (i % 25 < 10) {
+                    str = "C" + "0" + i % 25;
+                } else {
+                    str = "C" + i % 25;
                 }
-                else{
-                    str = "B"+i%25;
+            } else if (i <= 100) {
+                if (i % 25 < 10) {
+                    str = "D" + "0" + i % 25;
+                } else {
+                    str = "D" + i % 25;
                 }
-            }
-            else if(i<=75){
-                if(i%25<10){
-                    str = "C"+"0"+i%25;
+            } else if (i <= 125) {
+                if (i % 25 < 10) {
+                    str = "E" + "0" + i % 25;
+                } else {
+                    str = "E" + i % 25;
                 }
-                else{
-                    str = "C"+i%25;
+            } else if (i <= 150) {
+                if (i % 25 < 10) {
+                    str = "F" + "0" + i % 25;
+                } else {
+                    str = "F" + i % 25;
                 }
-            }
-            else if(i<=100){
-                if(i%25<10){
-                    str = "D"+"0"+i%25;
+            } else if (i <= 175) {
+                if (i % 25 < 10) {
+                    str = "G" + "0" + i % 25;
+                } else {
+                    str = "G" + i % 25;
                 }
-                else{
-                    str = "D"+i%25;
-                }
-            }
-            else if(i<=125){
-                if(i%25<10){
-                    str = "E"+"0"+i%25;
-                }
-                else{
-                    str = "E"+i%25;
-                }
-            }
-            else if(i<=150){
-                if(i%25<10){
-                    str = "F"+"0"+i%25;
-                }
-                else{
-                    str = "F"+i%25;
-                }
-            }
-            else if(i<=175){
-                if(i%25<10){
-                    str = "G"+"0"+i%25;
-                }
-                else{
-                    str = "G"+i%25;
-                }
-            }
-            else if(i<=200){
-                if(i%25<10){
-                    str = "H"+"0"+i%25;
-                }
-                else{
-                    str = "H"+i%25;
+            } else if (i <= 200) {
+                if (i % 25 < 10) {
+                    str = "H" + "0" + i % 25;
+                } else {
+                    str = "H" + i % 25;
                 }
             }
             list.get(i).setValue(0);
             list.get(i).setKey(str);
         }
 
-        
+
+        for(int a=0; a<database.size(); a++){
+            for(int b=0; b<database.get(a).getFlights().size(); b++){
+                for(int c=0; c<database.get(a).getFlights().get(b).getPassengers().size(); c++)
+                if(database.get(a).getFlights().get(b).getFlightCode().equals(code)){
+                    String[] part = database.get(a).getFlights().get(b).getPassengers().get(c).getTicketCode().split("-");
+                    for(int i=0; i<list.size(); i++){
+                        if(part[1].equals(list.get(i).getKey())){
+                            list.get(i).setValue(1);
+                        }
+                    }
+                }
+            }
+        }
+        for(int i=0; i<list.size(); i++){
+            if(i%25==0){
+                System.out.println("");
+            }
+            if(list.get(i).getValue()==0){
+                System.out.print(list.get(i).getKey()+"\t");
+            }
+            else{
+                System.out.println("   \t");
+            }
+            
+        }
     }
 
-    
     static int getIndexOfAirline(String code) throws IOException {// error
         List<JSON.Airline> database = new ArrayList<>();
         database = read_json_file(Json_file_path);
@@ -246,7 +255,6 @@ public class Main {
             }
         }
         // duyet cac so 
-        for
     }
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
@@ -302,7 +310,7 @@ public class Main {
                                     plane.setNumOfSeats(num);
                                 }
 
-                                database.add(new JSON.Airline(brandname, code, numOfPlanes, listOfPlanes, numOfPlanes, flights));
+                                database.add(new JSON.Airline(brandname, code, numOfPlanes, listOfPlanes, numOfPlanes));
                                 write_airlines_file(Json_file_path, database);
                                 break;
                             case 2: // xóa một hãng hàng không 
