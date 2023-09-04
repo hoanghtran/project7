@@ -298,6 +298,7 @@ public class Main {
                     int monthD1 = sc.nextInt();
                     System.out.println("/t/t/t Nhap nam khoi hanh: ");
                     int yearD1 = sc.nextInt();
+                    JSON.Date dateD1 = new JSON.Date(yearD1, monthD1, dayD1);
                     System.out.println("Nhap moc thoi gian 2: ");
                     System.out.print("/t/t/t Nhap ngay:   ");
                     int dayD2 = sc.nextInt();
@@ -305,7 +306,7 @@ public class Main {
                     int monthD2 = sc.nextInt();
                     System.out.println("/t/t/t Nhap nam khoi hanh: ");
                     int yearD2 = sc.nextInt();
-                    JSON.Date = new JSON.Date(yearD2, monthD2, dayD2);
+                    JSON.Date dateD2 = new JSON.Date(yearD2, monthD2, dayD2);
                     System.out.print("Nhap khoang thoi gian muốn đến ");
                     System.out.println("Nhap moc thoi gian 1: ");
                     System.out.print("/t/t/t Nhap ngay:   ");
@@ -314,6 +315,7 @@ public class Main {
                     int monthA1 = sc.nextInt();
                     System.out.println("/t/t/t Nhap nam: ");
                     int yearA1 = sc.nextInt();
+                    JSON.Date dateA1 = new JSON.Date(yearA1, monthA1, dayA1);
                     System.out.println("Nhap moc thoi gian 2: ");
                     System.out.print("/t/t/t Nhap ngay:   ");
                     int dayA2 = sc.nextInt();
@@ -322,6 +324,8 @@ public class Main {
                     System.out.println("/t/t/t Nhap nam: ");
                     int yearA2 = sc.nextInt();
 
+                    JSON.Date dateA2 = new JSON.Date(yearA2, monthA2, dayA2);                                                
+                    
                     //Hiển thị ds các chuyến bay khả dụng với ngày đi và ngày về đó (Quốc Huy làm)
                     //Nếu có thì đến mục menu tiếp theo lựa chọn khứ hồi hay 1 chiều, bao nhiêu 
                     //người (Quốc Huy)
@@ -636,8 +640,8 @@ public class Main {
                                                         }
                                                     case 4: {
                                                         int checkId = 0;
-                                                        String cccd;
-                                                        String hoTen;
+                                                        String cccd = "";
+                                                        String hoTen = "";
                                                         System.out.print("Nhap ID hanh khach muon sua: ");
                                                         String IDsua = sc.nextLine();
                                                         System.out.print("Nhap ma chuyen bay: ");
@@ -773,8 +777,8 @@ public class Main {
                                             code = sc.nextLine();
                                             check = 0;
 
-                                            for (int i = 0; i < LAirline.size(); i++) {
-                                                if (LAirline.get(i).getCode().equals(code)) {
+                                            for (int i = 0; i < database.size(); i++) {
+                                                if (database.get(i).getCode().equals(code)) {
                                                     check = 1;
                                                     int month = 0, year = 0;
 
@@ -793,7 +797,7 @@ public class Main {
                                                         year = sc.nextInt();
                                                     }
 
-                                                    LAirline.get(i).statisticize_turnOver(LAirline.get(i).getListOfFlights(), x, month, year);
+                                                    database.get(i).statisticize_turnOver(database.get(i).getFlights(), check, month, year);
                                                     break;
                                                 }
                                             }
