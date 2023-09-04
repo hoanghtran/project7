@@ -29,6 +29,7 @@ public class Flight implements IFlight {
     private List<Passenger> listOfPassengers;
     private List<BusinessClass> listOfBusiness;
     private List<EconomyClass> listOfEconomic;
+    private List<KeyValue<String, Integer>> listOfSeats;
 
     public Flight() {
     }

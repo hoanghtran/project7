@@ -123,6 +123,7 @@ public class Main {
         }
     }
 
+
     public static boolean isSubstring(String str1, String str2) {
         int len1 = str1.length();
         int len2 = str2.length();
@@ -141,7 +142,6 @@ public class Main {
         }
 
         return false;
-    }
 
     static void newEmptySeats(ArrayList<KeyValue<String, Integer>> list, String code) throws IOException {
         List<JSON.Airline> database = new ArrayList<>();
@@ -262,19 +262,22 @@ public class Main {
 
         }
         return -1;
+
     }
 
-    static void generateTicketCode(String code, List<JSON.Airline> database) throws IOException {
+    static String generateTicketCode(String code, List<JSON.Airline> database, String Seatcode) throws IOException {
 
-        String rs = null;
+        String rs = code + "-";
+        rs += Seatcode + "-";
         List<JSON.Airline> ds = read_json_file(Json_file_path);
         for (JSON.Airline airline : ds) {
             if (airline.getCode().equals(code)) {
-                rs += airline.getBrandname();
-                break;
+                for(JSON.Flight fl : airline.getFlights())
+                rs += fl.getFlightCode();
             }
+            break;
         }
-        // duyet cac so 
+        return rs;
     }
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
