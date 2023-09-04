@@ -82,18 +82,6 @@ public class Main {
         System.out.print("Vui long nhap lua chon cua ban: ");
     }
 
-    static void randomPlaneCode() {
-        System.out.println("============== Tao ngau nhien ==============");
-        System.out.println("Tao ngau nhien ma may bay (Y/N) ");
-        System.out.print("Vui long nhap lua chon cua ban: ");
-    }
-
-    static void randomFlightCode() {
-        System.out.println("============== Tao ngau nhien ==============");
-        System.out.println("Tao ngau nhien so hieu chuyen bay (Y/N) ");
-        System.out.print("Vui long nhap lua chon cua ban: ");
-    }
-
     static <E> void show(List<E> list) {
         System.out.println("=========================");
         for (Object item : list) {
@@ -324,8 +312,8 @@ public class Main {
                     System.out.println("/t/t/t Nhap nam: ");
                     int yearA2 = sc.nextInt();
 
-                    JSON.Date dateA2 = new JSON.Date(yearA2, monthA2, dayA2);                                                
-                    
+                    JSON.Date dateA2 = new JSON.Date(yearA2, monthA2, dayA2);
+
                     //Hiển thị ds các chuyến bay khả dụng với ngày đi và ngày về đó (Quốc Huy làm)
                     //Nếu có thì đến mục menu tiếp theo lựa chọn khứ hồi hay 1 chiều, bao nhiêu 
                     //người (Quốc Huy)
@@ -417,14 +405,7 @@ public class Main {
                                                             DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
                                                             if (n > 0) {
                                                                 for (int i = 0; i < n; i++) {
-                                                                    randomFlightCode();
-                                                                    String nhap = sc.next();
-                                                                    char lc = nhap.charAt(0);
-                                                                    if (lc == 'Y' || lc == 'y') {
-                                                                        UUID maMayBay = UUID.randomUUID();
-                                                                        String maMayBayString = maMayBay.toString();
-                                                                        String maMayBayEdit = maMayBayString.replace("-", "").substring(0, 8);
-                                                                    }
+                                                                   
                                                                     System.out.println(" -Nhap so hieu may bay: ");
                                                                     String soHieuMb = sc.nextLine();
 
@@ -559,11 +540,7 @@ public class Main {
                                                                         printAvailableSeats(database.get(a).getFlights().get(b).getSeats());
                                                                         System.out.print("Chon cho ngoi: ");
                                                                         String luaChon = sc.nextLine();
-
-//                                                                        UUID maVe = UUID.randomUUID();
-//                                                                        String maVeString = maVe.toString().toUpperCase();
-//                                                                        String maVeEdit = maVeString.replace("-", "").substring(0, 8);
-//                                                                        System.out.println("Ma ve cua ban la: " + maVeEdit);
+                                                                       
                                                                         for (int j = 0; j < database.get(a).getFlights().get(b).getSeats().size(); j++) {
                                                                             if (luaChon.equals(database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode())) {
                                                                                 System.out.println("Cho ngoi da duoc dat");
@@ -652,14 +629,14 @@ public class Main {
 
                                                                 if (database.get(a).getFlights().get(b).getFlightCode().equals(macb)) {
                                                                     for (int c = 0; c < database.get(a).getFlights().get(b).getPassengers().size(); c++) {
-                                                                         cccd = database.get(a).getFlights().get(b).getPassengers().get(c).getId();
-                                                                         hoTen = database.get(a).getFlights().get(b).getPassengers().get(c).getFullName();
+                                                                        cccd = database.get(a).getFlights().get(b).getPassengers().get(c).getId();
+                                                                        hoTen = database.get(a).getFlights().get(b).getPassengers().get(c).getFullName();
                                                                         if (database.get(a).getFlights().get(b).getPassengers().get(c).getId().equals(IDsua)) {
                                                                             checkId = 1;
                                                                             for (int i = 0; i < database.get(a).getFlights().get(b).getSeats().size(); i++) {
                                                                                 if (database.get(a).getFlights().get(b).getSeats().get(i).getSeatCode().equals(database.get(a).getFlights().get(b).getPassengers().get(c).getTicketCode().substring(3, 5))) {
                                                                                     database.get(a).getFlights().get(b).getSeats().get(i).setStatus(0);
-                                                                                    
+
                                                                                 }
                                                                             }
                                                                             database.get(a).getFlights().get(b).getPassengers().remove(c);
@@ -671,22 +648,26 @@ public class Main {
                                                         }
 
                                                         // cho khach chon lai cho ngoi
-                                                        for (int a = 0; a < database.size(); a++) {
-                                                            for (int b = 0; b < database.get(a).getFlights().size(); b++) {
-                                                                printAvailableSeats(database.get(a).getFlights().get(b).getSeats());
-                                                                System.out.print("Chon cho ngoi: ");
-                                                                String lc = sc.nextLine();
+                                                        if (checkId == 1) {
+                                                            for (int a = 0; a < database.size(); a++) {
+                                                                for (int b = 0; b < database.get(a).getFlights().size(); b++) {
+                                                                    printAvailableSeats(database.get(a).getFlights().get(b).getSeats());
+                                                                    System.out.print("Chon cho ngoi: ");
+                                                                    String lc = sc.nextLine();
 
-                                                                for (int j = 0; j < database.get(a).getFlights().get(b).getSeats().size(); j++) {
-                                                                    if (lc.equals(database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode())) {
-                                                                        System.out.println("Cho ngoi da duoc dat");
-                                                                    } else {
-                                                                        database.get(a).getFlights().get(b).getPassengers().add(new JSON.Passenger( cccd, hoTen, generateTicketCode(database.get(a).getCode(), database, lc)));
+                                                                    for (int j = 0; j < database.get(a).getFlights().get(b).getSeats().size(); j++) {
+                                                                        if (lc.equals(database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode())) {
+                                                                            System.out.println("Cho ngoi da duoc dat");
+                                                                        } else {
+                                                                            database.get(a).getFlights().get(b).getPassengers().add(new JSON.Passenger(cccd, hoTen, generateTicketCode(database.get(a).getCode(), database, lc)));
+                                                                        }
                                                                     }
                                                                 }
                                                             }
                                                         }
-
+                                                        else{
+                                                            System.out.println("Khong tim thay ID nay: "+IDsua);
+                                                        }
                                                     }
 
                                                     case 5:
