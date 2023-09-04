@@ -139,5 +139,26 @@ public class Airline {
         }
         return sb.toString();
     }
+    
+    public double statisticize_turnOver(List<JSON.Flight> fl, int choose, int month, int year) {
+        double turnOver = 0;
+
+        for (JSON.Flight flight : fl) {
+            if (choose == 1) { // tinh doanh thu theo thang
+                if (flight.getArrivalTime().getDate().getYear() == year
+                        && flight.getArrivalTime().getDate().getMonth() == month) {
+                    turnOver += flight.getUsedEconomySeats() * flight.getEconomyFare()
+                            + flight.getUsedBusinessSeats() * flight.getBusinessFare();
+                }
+
+            } else if (choose == 2) { // tinh doanh thu theo nam
+                if (flight.getArrivalTime().getDate().getYear() == year) {
+                    turnOver += flight.getUsedEconomySeats() * flight.getEconomyFare()
+                            + flight.getUsedBusinessSeats() * flight.getBusinessFare();
+                }
+            }
+        }
+        return turnOver;
+    }
 
 }
