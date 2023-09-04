@@ -2,78 +2,63 @@
   "airports": [
     {
       "name": "Noi Bai International Airport",
-      "city": "Hanoi",
-      "country": "Vietnam"
+      "city": "Hanoi"
     },
     {
       "name": "Tan Son Nhat International Airport",
-      "city": "Ho Chi Minh "city"",
-      "country": "Vietnam"
+      "city": "Ho Chi Minh city"
     },
     {
       "name": "Da Nang International Airport",
-      "city": "Da Nang",
-      "country": "Vietnam"
+      "city": "Da Nang"
     },
     {
       "name": "Cam Ranh International Airport",
-      "city": "Nha Trang",
-      "country": "Vietnam"
+      "city": "Nha Trang"
     },
     {
       "name": "Cat Bi International Airport",
-      "city": "Hai Phong",
-      "country": "Vietnam"
+      "city": "Hai Phong"
     },
     {
       "name": "Phu Bai International Airport",
-      "city": "Hue",
-      "country": "Vietnam"
+      "city": "Hue"
     },
     {
       "name": "Can Tho International Airport",
-      "city": "Can Tho",
-      "country":"Vietnam"
+      "city": "Can Tho"
     },
     {
-	"name": "Lien Khuong Airport",
-  	"city": "Da Lat",
-  	"country": "Vietnam"
-},
-{
-  "name": "Phu Quoc International Airport",
-  "city": "Phu Quoc",
-  "country": "Vietnam"
-},
-{
-  "name": "Buon Ma Thuot Airport",
-  "city": "Buon Ma Thuot",
-  "country": "Vietnam"
-},
-{
-  "name": "Chu Lai International Airport",
-  "city": "Quang Nam",
-  "country": "Vietnam"
-},
-{
-  "name": "Dong Hoi Airport",
-  "city": "Dong Hoi",
-  "country": "Vietnam"
-},
-{
-  "name": "Pleiku Airport",
-  "city": "Pleiku",
-  "country": "Vietnam"
-},
-{
-  "name": "Rach Gia Airport",
-  "city": "Rach Gia",
-  "country": "Vietnam"
-},
-{
-  "name": "Vinh International Airport",
-  "city": "Vinh",
-  "country": "Vietnam"
-}
-]
+      "name": "Lien Khuong Airport",
+      "city": "Da Lat"
+    },
+    {
+      "name": "Phu Quoc International Airport",
+      "city": "Phu Quoc"
+    },
+    {
+      "name": "Buon Ma Thuot Airport",
+      "city": "Buon Ma Thuot"
+    },
+    {
+      "name": "Chu Lai International Airport",
+      "city": "Quang Nam"
+    },
+    {
+      "name": "Dong Hoi Airport",
+      "city": "Dong Hoi"
+    },
+    {
+      "name": "Pleiku Airport",
+      "city": "Pleiku"
+    },
+    {
+      "name": "Rach Gia Airport",
+      "city": "Rach Gia"
+    },
+    {
+      "name": "Vinh International Airport",
+      "city": "Vinh"
+    }
+  ]
 }
