@@ -71,6 +71,78 @@
           {
             "SeatCode": "A02",
             "Status": 1
+          },
+          {
+            "SeatCode": "A03",
+            "Status": 0
+          },
+          {
+            "SeatCode": "A04",
+            "Status": 1
+          },
+          {
+            "SeatCode": "A05",
+            "Status": 0
+          },
+          {
+            "SeatCode": "A06",
+            "Status": 1
+          },
+          {
+            "SeatCode": "A07",
+            "Status": 0
+          },
+          {
+            "SeatCode": "A08",
+            "Status": 1
+          },
+          {
+            "SeatCode": "A09",
+            "Status": 0
+          },
+          {
+            "SeatCode": "A10",
+            "Status": 1
+          },
+          {
+            "SeatCode": "B01",
+            "Status": 0
+          },
+          {
+            "SeatCode": "B02",
+            "Status": 1
+          },
+          {
+            "SeatCode": "B03",
+            "Status": 0
+          },
+          {
+            "SeatCode": "B04",
+            "Status": 1
+          },
+          {
+            "SeatCode": "B05",
+            "Status": 0
+          },
+          {
+            "SeatCode": "B06",
+            "Status": 1
+          },
+          {
+            "SeatCode": "B07",
+            "Status": 0
+          },
+          {
+            "SeatCode": "B08",
+            "Status": 1
+          },
+          {
+            "SeatCode": "B09",
+            "Status": 0
+          },
+          {
+            "SeatCode": "B10",
+            "Status": 0
           }
         ],
         "Passengers": [
@@ -168,41 +240,6 @@
             "ID": "VN348-019",
             "fullName": "Phạm Văn S",
             "ticketCode": "VN-A19-VN348"
-          },
-          {
-            "ID": "VN348-020",
-            "fullName": "Hoàng Thị T",
-            "ticketCode": "VN-A20-VN348"
-          },
-          {
-            "ID": "VN348-021",
-            "fullName": "Nguyễn Văn U",
-            "ticketCode": "VN-A21-VN348"
-          },
-          {
-            "ID": "VN348-022",
-            "fullName": "Trần Thị V",
-            "ticketCode": "VN-A22-VN348"
-          },
-          {
-            "ID": "VN348-023",
-            "fullName": "Lê Văn W",
-            "ticketCode": "VN-A23-348"
-          },
-          {
-            "ID": "VN348-024",
-            "fullName": "Phạm Thị X",
-            "ticketCode": "VN-A24-VN348"
-          },
-          {
-            "ID": "VN348-025",
-            "fullName": "Hoàng Văn Y",
-            "ticketCode": "VN-A25-VN348"
-          },
-          {
-            "ID": "VN348-026",
-            "fullName": "Nguyễn Thị Z",
-            "ticketCode": "VN-B01-VN348"
           }
         ]
       }
@@ -280,6 +317,78 @@
           {
             "SeatCode": "A02",
             "Status": 1
+          },
+          {
+            "SeatCode": "A03",
+            "Status": 0
+          },
+          {
+            "SeatCode": "A04",
+            "Status": 1
+          },
+          {
+            "SeatCode": "A05",
+            "Status": 0
+          },
+          {
+            "SeatCode": "A06",
+            "Status": 1
+          },
+          {
+            "SeatCode": "A07",
+            "Status": 0
+          },
+          {
+            "SeatCode": "A08",
+            "Status": 1
+          },
+          {
+            "SeatCode": "A09",
+            "Status": 0
+          },
+          {
+            "SeatCode": "A10",
+            "Status": 1
+          },
+          {
+            "SeatCode": "B01",
+            "Status": 0
+          },
+          {
+            "SeatCode": "B02",
+            "Status": 1
+          },
+          {
+            "SeatCode": "B03",
+            "Status": 0
+          },
+          {
+            "SeatCode": "B04",
+            "Status": 1
+          },
+          {
+            "SeatCode": "B05",
+            "Status": 0
+          },
+          {
+            "SeatCode": "B06",
+            "Status": 1
+          },
+          {
+            "SeatCode": "B07",
+            "Status": 0
+          },
+          {
+            "SeatCode": "B08",
+            "Status": 1
+          },
+          {
+            "SeatCode": "B09",
+            "Status": 0
+          },
+          {
+            "SeatCode": "B10",
+            "Status": 0
           }
         ],
         "Passengers": [
@@ -377,41 +486,6 @@
             "ID": "VN348-019",
             "fullName": "Phạm Văn S",
             "ticketCode": "VN-A19-VJ123"
-          },
-          {
-            "ID": "VN348-020",
-            "fullName": "Hoàng Thị T",
-            "ticketCode": "VN-A20-VJ123"
-          },
-          {
-            "ID": "VN348-021",
-            "fullName": "Nguyễn Văn U",
-            "ticketCode": "VN-A21-VJ123"
-          },
-          {
-            "ID": "VN348-022",
-            "fullName": "Trần Thị V",
-            "ticketCode": "VN-A22-VJ123"
-          },
-          {
-            "ID": "VN348-023",
-            "fullName": "Lê Văn W",
-            "ticketCode": "VN-A23-VJ123"
-          },
-          {
-            "ID": "VN348-024",
-            "fullName": "Phạm Thị X",
-            "ticketCode": "VN-A24-VJ123"
-          },
-          {
-            "ID": "VN348-025",
-            "fullName": "Hoàng Văn Y",
-            "ticketCode": "VN-A25-VJ123"
-          },
-          {
-            "ID": "VN348-026",
-            "fullName": "Nguyễn Thị Z",
-            "ticketCode": "VN-B01-VJ123"
           }
         ]
       }
@@ -489,6 +563,78 @@
           {
             "SeatCode": "A02",
             "Status": 1
+          },
+          {
+            "SeatCode": "A03",
+            "Status": 0
+          },
+          {
+            "SeatCode": "A04",
+            "Status": 1
+          },
+          {
+            "SeatCode": "A05",
+            "Status": 0
+          },
+          {
+            "SeatCode": "A06",
+            "Status": 1
+          },
+          {
+            "SeatCode": "A07",
+            "Status": 0
+          },
+          {
+            "SeatCode": "A08",
+            "Status": 1
+          },
+          {
+            "SeatCode": "A09",
+            "Status": 0
+          },
+          {
+            "SeatCode": "A10",
+            "Status": 1
+          },
+          {
+            "SeatCode": "B01",
+            "Status": 0
+          },
+          {
+            "SeatCode": "B02",
+            "Status": 1
+          },
+          {
+            "SeatCode": "B03",
+            "Status": 0
+          },
+          {
+            "SeatCode": "B04",
+            "Status": 1
+          },
+          {
+            "SeatCode": "B05",
+            "Status": 0
+          },
+          {
+            "SeatCode": "B06",
+            "Status": 1
+          },
+          {
+            "SeatCode": "B07",
+            "Status": 0
+          },
+          {
+            "SeatCode": "B08",
+            "Status": 1
+          },
+          {
+            "SeatCode": "B09",
+            "Status": 0
+          },
+          {
+            "SeatCode": "B10",
+            "Status": 0
           }
         ],
         "Passengers": [
@@ -576,26 +722,6 @@
             "ID": "VN348-017",
             "fullName": "Trần Văn Q",
             "ticketCode": "VN-A17-QH456"
-          },
-          {
-            "ID": "VN348-018",
-            "fullName": "Lê Thị R",
-            "ticketCode": "VN-A18-QH456"
-          },
-          {
-            "ID": "VN348-019",
-            "fullName": "Phạm Văn S",
-            "ticketCode": "VN-A19-QH456"
-          },
-          {
-            "ID": "VN348-020",
-            "fullName": "Hoàng Thị T",
-            "ticketCode": "VN-A20-QH456"
-          },
-          {
-            "ID": "VN348-026",
-            "fullName": "Nguyễn Thị Z",
-            "ticketCode": "VN-A21-QH456"
           }
         ]
       }
@@ -673,6 +799,78 @@
           {
             "SeatCode": "A02",
             "Status": 1
+          },
+          {
+            "SeatCode": "A03",
+            "Status": 0
+          },
+          {
+            "SeatCode": "A04",
+            "Status": 1
+          },
+          {
+            "SeatCode": "A05",
+            "Status": 0
+          },
+          {
+            "SeatCode": "A06",
+            "Status": 1
+          },
+          {
+            "SeatCode": "A07",
+            "Status": 0
+          },
+          {
+            "SeatCode": "A08",
+            "Status": 1
+          },
+          {
+            "SeatCode": "A09",
+            "Status": 0
+          },
+          {
+            "SeatCode": "A10",
+            "Status": 1
+          },
+          {
+            "SeatCode": "B01",
+            "Status": 0
+          },
+          {
+            "SeatCode": "B02",
+            "Status": 1
+          },
+          {
+            "SeatCode": "B03",
+            "Status": 0
+          },
+          {
+            "SeatCode": "B04",
+            "Status": 1
+          },
+          {
+            "SeatCode": "B05",
+            "Status": 0
+          },
+          {
+            "SeatCode": "B06",
+            "Status": 1
+          },
+          {
+            "SeatCode": "B07",
+            "Status": 0
+          },
+          {
+            "SeatCode": "B08",
+            "Status": 1
+          },
+          {
+            "SeatCode": "B09",
+            "Status": 0
+          },
+          {
+            "SeatCode": "B10",
+            "Status": 0
           }
         ],
         "Passengers": [
