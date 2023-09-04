@@ -18,7 +18,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.lang.reflect.Type;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -49,7 +48,7 @@ public class Main {
             System.out.println(stt + ". " + airline.getBrandname());
             stt++;
         }
-        System.out.println("=========== Het ============");
+        System.out.print("Truy cập hãng hàng không: ");
     }
 
     static void modify_or_access_an_airline_option() {
@@ -76,7 +75,7 @@ public class Main {
         System.out.println("============== Hanh khach va Ve ==============");
         System.out.println("1. Them hanh khach ");
         System.out.println("2. Xoa mot hanh khach");
-        System.out.println("3. chon loc hanh khach cua 1 chuyen bay:");
+        System.out.println("3. Chon loc hanh khach cua 1 chuyen bay:");
         System.out.println("4. Sua ve");
         System.out.println("5. Thoat chuong trinh");
         System.out.print("Vui long nhap lua chon cua ban: ");
@@ -291,14 +290,23 @@ public class Main {
 
             switch (option) {
                 case 1: // case cho khách hàng
-
                     airline_menu();
-                    int opt_for_airline_menu = sc.nextInt();
-                    switch (opt_for_airline_menu) {
-                        case 1: {
-
-                        }
-                    }
+                    int opt_for_airline_menu = sc.nextInt(); // index của hãng hàng không 
+                    
+                    //Hiện menu cho khách chọn nơi xuất phát, nơi đến, ngày đi và ngày về (Đức Duy làm)
+                    
+                    //Hiển thị ds các chuyến bay khả dụng với ngày đi và ngày về đó (Quốc Huy làm)
+                    
+                    //Nếu không có hiện là không có
+                    
+                    //Nếu có thì đến mục menu tiếp theo lựa chọn khứ hồi hay 1 chiều, bao nhiêu 
+                    //người (Quốc Huy)
+                    
+                    //Sau khi khách chọn xong hiển thị giá vé và tính toán (Hoàng làm)
+                    
+                    //Cùng lúc đấy tạo (mã) vé + hành khách vào chuyến bay (Đức Duy + Q.Huy làm)
+                    
+                    //Chuyển value của seat được đặt từ - -> 1, usedSeat +1, availableSeat -1 (Duy Huy làm)
 
                     break; // break case 1 - case cho khách hàng
 
