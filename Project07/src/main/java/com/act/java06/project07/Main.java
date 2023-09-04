@@ -142,7 +142,7 @@ public class Main {
         }
 
         return false;
-
+    }
     static void newEmptySeats(ArrayList<KeyValue<String, Integer>> list, String code) throws IOException {
         List<JSON.Airline> database = new ArrayList<>();
         database = read_json_file(Json_file_path);
@@ -201,6 +201,8 @@ public class Main {
             list.get(i).setValue(0);
             list.get(i).setKey(str);
         }
+    
+    
 
 //        for (int a = 0; a < database.size(); a++) {
 //            for (int b = 0; b < database.get(a).getFlights().size(); b++) {
@@ -455,9 +457,10 @@ public class Main {
 
                                                                     System.out.println(" -Nhap gia ve hang pho thong");
                                                                     int giaVePt = sc.nextInt();
-
+                                                                    
                                                                     database.get(p).getFlights().add(new JSON.Flight(soHieuCb, soHieuMb, tgDi, tgDen, diemXp, diemDen, giaVeTg, giaVePt, soluongTg, soluongPt));
-
+                                                                    
+                                                                    database.get(p).getFlights().get(database.get(p).getFlights().size()-1).setSeats(seats);
                                                                     // thêm phần viết lại vào file
                                                                 }
                                                             } else {
