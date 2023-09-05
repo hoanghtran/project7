@@ -147,44 +147,24 @@
         ],
         "Passengers": [
           {
-            "ID": "VN348-001",
+            "ID": "034203012345",
             "fullName": "Nguyễn Văn A",
             "ticketCode": "VN-A01-VN348"
           },
           {
-            "ID": "VN348-002",
+            "ID": "034203023456",
             "fullName": "Trần Thị B",
             "ticketCode": "VN-A02-VN348"
           },
           {
-            "ID": "VN348-003",
+            "ID": "034203034567",
             "fullName": "Lê Văn C",
             "ticketCode": "VN-A03-VN348"
           },
           {
-            "ID": "VN348-004",
+            "ID": "034203045678",
             "fullName": "Phạm Thị D",
             "ticketCode": "VN-A04-VN348"
-          },
-          {
-            "ID": "VN348-005",
-            "fullName": "Hoàng Văn E",
-            "ticketCode": "VN-A05-VN348"
-          },
-          {
-            "ID": "VN348-006",
-            "fullName": "Nguyễn Thị F",
-            "ticketCode": "VN-A06-VN348"
-          },
-          {
-            "ID": "VN348-007",
-            "fullName": "Trần Văn G",
-            "ticketCode": "VN-A07-VN348"
-          },
-          {
-            "ID": "VN348-008",
-            "fullName": "Lê Thị H",
-            "ticketCode": "VN-A08-VN348"
           }
         ]
       }
@@ -197,19 +177,19 @@
     "Planes": [
       {
         "planeCode": "VJA",
-        "numOfSeats": 180
+        "numOfSeats": 20
       },
       {
         "planeCode": "VJB",
-        "numOfSeats": 200
+        "numOfSeats": 20
       },
       {
         "planeCode": "VJC",
-        "numOfSeats": 220
+        "numOfSeats": 20
       },
       {
         "planeCode": "VJD",
-        "numOfSeats": 240
+        "numOfSeats": 20
       }
     ],
     "numOfFlights": 8,
