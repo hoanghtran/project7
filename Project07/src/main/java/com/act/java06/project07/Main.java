@@ -384,25 +384,23 @@ public class Main {
 
                         switch (opt_for_airline) {
                             case 1: // tạo một hãng hàng không 
-                                System.out.print("Nhập tên hãng hàng không: ");
+                                System.out.print("Nhap ten hang hang khong: ");
                                 sc.nextLine();
                                 String brandname = sc.nextLine();
 
-                                System.out.print("Nhập mã hãng hàng không: ");
+                                System.out.print("Nhap ma hang hang khong: ");
                                 String code = sc.nextLine();
 
-                                System.out.print("Nhập số máy bay hãng sở hữu: ");
+                                System.out.print("Nhập so may bay hang so huu: ");
                                 int numOfPlanes = sc.nextInt();
 
                                 List<JSON.Plane> listOfPlanes = new ArrayList<>();
                                 JSON.Plane plane = new JSON.Plane();
                                 for (int n = 0; n < numOfPlanes; n++) {
-                                    System.out.print("Nhập mã máy bay của bạn: ");
+                                    sc.nextLine();
+                                    System.out.print("Nhap ma may bay: ");
                                     String PlaneCode = sc.nextLine();
                                     plane.setPlaneCode(PlaneCode);
-                                    System.out.print("Nhập số chỗ ngồi của bạn: ");
-                                    int num = sc.nextInt();
-                                    plane.setNumOfSeats(num);
                                 }
 
                                 database.add(new JSON.Airline(brandname, code, numOfPlanes, listOfPlanes, numOfPlanes));
@@ -411,7 +409,7 @@ public class Main {
                             case 2: // xóa một hãng hàng không 
                                 //exception mã hãng hàng không sai thì sao?
 
-                                System.out.print("Nhập mã hãng hàng không cần xóa: ");
+                                System.out.print("Nhap ma hang hang khong can xoa: ");
                                 sc.nextLine();
                                 code = sc.nextLine();
 
@@ -425,7 +423,7 @@ public class Main {
                                     }
                                 }
                                 if (check == 0) {
-                                    System.out.println("Không tìm thấy mã hãng hàng không cần xóa");
+                                    System.out.println("Khong tim thay ma hang hang khong can xoa");
                                 }
                                 write_airlines_file(Json_file_path, database);
 
