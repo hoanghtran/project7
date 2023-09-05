@@ -271,18 +271,18 @@ public class Main {
                     List<JSON.Airport> LAirport = read_json_file(Json_airport_file_path);
                     System.out.println("=========Danh sach san bay=========");
                     for (JSON.Airport item : LAirport) {
-                        System.out.print(stt + ".");
+                        System.out.print(stt + ". ");
                         System.out.println(item.toString());
                         stt++;
                     }
                     //Hiện menu cho khách chọn nơi xuất phát, nơi đến, ngày đi và ngày về (Đức Duy làm)
                     System.out.println("=======Menu======");
-                    System.out.print("Chon diem xuat phat(Chon theo stt): ");
+                    System.out.print("Chon diem xuat phat: ");
                     int departure = sc.nextInt();
-                    System.out.print("Chon diem den(Chon theo stt): ");
+                    System.out.print("Chon diem den: ");
                     int destination = sc.nextInt();
                     sc.nextLine();
-                    System.out.print("Nhap khoang thoi gian khoi hanh(Theo dinh dang dd/MM/yyyy) ");
+                    System.out.print("Nhap khoang thoi gian khoi hanh (Theo dinh dang dd/MM/yyyy) ");
 
                     System.out.println("Nhap moc thoi gian 1: ");
                     String ngayD1 = sc.nextLine();
@@ -365,8 +365,7 @@ public class Main {
                             break;
                     }
 
-                    //Sau khi khách chọn xong hiển thị giá vé và tính toán (Hoàng làm) 
-                    
+                    //Sau khi khách chọn xong hiển thị giá vé và tính toán (Huy làm)
                     
                     //Cùng lúc đấy tạo (mã) vé + hành khách vào chuyến bay (Đức Duy + Q.Huy làm)(đã xong)
                     
