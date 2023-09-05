@@ -157,33 +157,19 @@ public class Main {
 
     static void newEmptySeats(List<JSON.Seat> listOfSeats) {
 
-        for (int i = 1; i <= 200; i++) {
-
-            int x = i + 1;
+        for (int i = 1; i <= 20; i++) {
             String str = "";
-            if (i <= 50) {
+            if (i <= 10) {
                 if (i < 10) {
                     str = "A" + "0" + i;
                 } else {
                     str = "A" + i;
                 }
-            } else if (i <= 100) {
-                if (i % 50 < 10) {
-                    str = "B" + "0" + i % 50;
+            } else if (i <= 20) {
+                if (i % 10 < 10) {
+                    str = "B" + "0" + i % 10;
                 } else {
                     str = "B" + i;
-                }
-            } else if (i <= 150) {
-                if (i % 50 < 10) {
-                    str = "C" + "0" + i % 50;
-                } else {
-                    str = "C" + i;
-                }
-            } else if (i <= 200) {
-                if (i % 50 < 10) {
-                    str = "D" + "0" + i % 50;
-                } else {
-                    str = "D" + i;
                 }
             }
             listOfSeats.get(i).setSeatCode(str);
@@ -216,8 +202,8 @@ public class Main {
     }
 
     static void printAvailableSeats(List<JSON.Seat> listOfSeats) {
-        for (int i = 0; i < 200; i++) {
-            if (i % 50 == 0) {
+        for (int i = 0; i < 20; i++) {
+            if (i % 10 == 0) {
                 System.out.println("");
             }
             if (listOfSeats.get(i).getStatus() == 0) {
@@ -227,8 +213,8 @@ public class Main {
             }
 
         }
-        System.out.println("Hang pho thong: tu 01->25");
-        System.out.println("Hang thuong gia: tu 26->50");
+        System.out.println("Hang pho thong: tu 01->05");
+        System.out.println("Hang thuong gia: tu 06->10");
     }
 
     static int getIndexOfAirline(String code) throws IOException {// error
