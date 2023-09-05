@@ -4,6 +4,7 @@
  */
 package com.act.java06.project07.swing;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -131,6 +132,7 @@ public class Login extends javax.swing.JFrame {
             manHinhChinh_QuanLy menu = new manHinhChinh_QuanLy();
             menu.setVisible(true);
             menu.setLocationRelativeTo(null);
+            dispose();
         }
         else{
             JOptionPane.showMessageDialog(rootPane, "Tài khoản hoặc mật khẩu không đúng");
