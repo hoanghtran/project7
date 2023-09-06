@@ -59,29 +59,12 @@ public class Passenger {
         this.ticketCode = ticketCode;
     }
 
+    
+
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(Passenger.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
-        sb.append("id");
-        sb.append('=');
-        sb.append(((this.id == null) ? "<null>" : this.id));
-        sb.append(',');
-        sb.append("fullName");
-        sb.append('=');
-        sb.append(((this.fullName == null) ? "<null>" : this.fullName));
-        sb.append(',');
-        sb.append("ticketCode");
-        sb.append('=');
-        sb.append(((this.ticketCode == null) ? "<null>" : this.ticketCode));
-        sb.append(',');
-        if (sb.charAt((sb.length() - 1)) == ',') {
-            sb.setCharAt((sb.length() - 1), ']');
-        } else {
-            sb.append(']');
-        }
-        return sb.toString();
-
+        return "Passenger{" + "id=" + id + ", fullName=" + fullName + ", ticketCode=" + ticketCode + '}';
     }
+    
 
 }
