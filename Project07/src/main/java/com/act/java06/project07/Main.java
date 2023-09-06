@@ -82,17 +82,7 @@ public class Main {
         System.out.print("Vui long nhap lua chon cua ban: ");
     }
 
-    static void randomPlaneCode() {
-        System.out.println("============== Tao ngau nhien ==============");
-        System.out.println("Tao ngau nhien ma may bay (Y/N) ");
-        System.out.print("Vui long nhap lua chon cua ban: ");
-    }
-
-    static void randomFlightCode() {
-        System.out.println("============== Tao ngau nhien ==============");
-        System.out.println("Tao ngau nhien so hieu chuyen bay (Y/N) ");
-        System.out.print("Vui long nhap lua chon cua ban: ");
-    }
+    
 
     static <E> void show(List<E> list) {
         System.out.println("=========================");
@@ -101,15 +91,7 @@ public class Main {
         }
     }
 
-    static void menu_passenger_1() {
-        System.out.println("=============Menu_Passenger==========");
-        System.out.println("Tim chuyen bay theo: ");
-        System.out.println("1. Dia diem di");
-        System.out.println("2. Dia diem den");
-        System.out.println("3. Ngay di");
-        System.out.println("4. Ngay den");
-        System.out.print("Nhap lua chon cua ban: ");
-    }
+    
 
     static List read_json_file(String file_path) throws IOException {
 
@@ -328,9 +310,14 @@ public class Main {
                     System.out.println("=======Menu======");
                     System.out.print("Chon diem xuat phat: ");
                     int departure = sc.nextInt();
+                    
+                    
                     System.out.print("Chon diem den: ");
                     int destination = sc.nextInt();
-                    sc.nextLine();
+                    
+                    String departureString = LAirport.get(departure).getCity();
+                    String destinationString = LAirport.get(destination).getCity();
+                    
                     //Hiển thị ds các chuyến bay khả dụng với ngày đi và ngày về đó (Quốc Huy làm)
                     System.out.println("========MENU========");
                     System.out.println("1. Khu hoi");
@@ -368,8 +355,8 @@ public class Main {
                             } while (ex != null);
                             System.out.println("Danh sach cac chuyen bay di: ");
                             for (int i = 0; i < database.get(opt_for_airline_menu).getFlights().size(); i++) {
-                                if (database.get(opt_for_airline_menu).getFlights().get(i).getDeparture().equals(departure)
-                                        && database.get(opt_for_airline_menu).getFlights().get(i).getDestination().equals(destination)
+                                if (database.get(opt_for_airline_menu).getFlights().get(i).getDeparture().equals(departureString)
+                                        && database.get(opt_for_airline_menu).getFlights().get(i).getDestination().equals(destinationString)
                                         && (chuyenDateJsonThanhLocalDate(database.get(opt_for_airline_menu).getFlights().get(i).getDepartureTime().getDate().getYear(),
                                                 database.get(opt_for_airline_menu).getFlights().get(i).getDepartureTime().getDate().getMonth(),
                                                 database.get(opt_for_airline_menu).getFlights().get(i).getDepartureTime().getDate().getDay()).isAfter(dateD1)
@@ -410,8 +397,8 @@ public class Main {
                             themHanhKhachvaVe(database, Json_file_path, maChuyenBay);
                             System.out.println("Danh sach cac chuyen bay tro ve: ");
                             for (int i = 0; i < database.get(opt_for_airline_menu).getFlights().size(); i++) {
-                                if (database.get(opt_for_airline_menu).getFlights().get(i).getDeparture().equals(destination)
-                                        && database.get(opt_for_airline_menu).getFlights().get(i).getDestination().equals(departure)
+                                if (database.get(opt_for_airline_menu).getFlights().get(i).getDeparture().equals(destinationString)
+                                        && database.get(opt_for_airline_menu).getFlights().get(i).getDestination().equals(departureString)
                                         && (chuyenDateJsonThanhLocalDate(database.get(opt_for_airline_menu).getFlights().get(i).getArrivalTime().getDate().getYear(),
                                                 database.get(opt_for_airline_menu).getFlights().get(i).getArrivalTime().getDate().getMonth(),
                                                 database.get(opt_for_airline_menu).getFlights().get(i).getArrivalTime().getDate().getDay()).isAfter(dateA1)
@@ -454,8 +441,8 @@ public class Main {
                             break;
                         case 2:
                             for (int i = 0; i < database.get(opt_for_airline_menu).getFlights().size(); i++) {
-                                if (database.get(opt_for_airline_menu).getFlights().get(i).getDeparture().equals(destination)
-                                        && database.get(opt_for_airline_menu).getFlights().get(i).getDestination().equals(departure)) {
+                                if (database.get(opt_for_airline_menu).getFlights().get(i).getDeparture().equals(departureString)
+                                        && database.get(opt_for_airline_menu).getFlights().get(i).getDestination().equals(destinationString)) {
                                     listFlight.add(database.get(opt_for_airline_menu).getFlights().get(i));
                                 }
                             }
