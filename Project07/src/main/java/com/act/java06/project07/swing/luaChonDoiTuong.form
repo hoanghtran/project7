@@ -126,11 +126,6 @@
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Admin\OneDrive - actvn.edu.vn\Pictures\Saved Pictures\z4643593219688_898efd228736323a1cb3dcb2081b3d01.jpg"/>
-            </Property>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>
