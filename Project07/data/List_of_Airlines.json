@@ -52,6 +52,8 @@
             "nano": 0
           }
         },
+        "departure": "HAN",
+        "destination": "DAD",
         "departure": "Hanoi",
         "destination": "Ho Chi Minh city",
         "usedEconomySeats": 42,
