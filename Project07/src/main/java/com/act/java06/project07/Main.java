@@ -209,12 +209,13 @@ public class Main {
             if (listOfSeats.get(i).getStatus() == 0) {
                 System.out.print(listOfSeats.get(i).getSeatCode() + "\t");
             } else {
-                System.out.print("   \t");
+                System.out.print("(X)\t");
             }
 
         }
-        System.out.println("Hang pho thong tu A01->A10");
-        System.out.println("Hang thuong gia tu B01->B10");
+        System.out.println("\nHang pho thong: tu 01->05");
+        System.out.println("Hang thuong gia: tu 06->10");
+
     }
 
     static int getIndexOfAirline(String code) throws IOException {// error
@@ -271,7 +272,7 @@ public class Main {
                         printAvailableSeats(database.get(a).getFlights().get(b).getSeats());
                         System.out.print("Chon cho ngoi: ");
                         String choNgoi = sc.nextLine();
-                                                                       
+
                         for (int j = 0; j < database.get(a).getFlights().get(b).getSeats().size(); j++) {
                             if (choNgoi.equals(database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode())) {
                                 System.out.println("Cho ngoi da duoc dat");
@@ -768,6 +769,7 @@ public class Main {
                                                         if (checkFlCode == 0) {
                                                             System.out.println("Khong tim thay so hieu chuyen bay: " + soHieu);
                                                         }
+                                                        break;
                                                     case 4: {
                                                         int checkId = 0;
                                                         String cccd = "";
@@ -818,7 +820,7 @@ public class Main {
                                                         }
 
                                                     }
-
+                                                    break;
                                                     case 5:
                                                         // thoát chương trình                                                     
                                                         break;
@@ -826,7 +828,7 @@ public class Main {
                                                         break;
 
                                                 }
-                                            } while (opt_for_passenger != 4); // loop cho mục khách
+                                            } while (opt_for_passenger != 5); // loop cho mục khách
                                             break;                           // tier 4  
                                         case 4: // sua thong tin 1 chuyen bay
                                             airline_menu();
