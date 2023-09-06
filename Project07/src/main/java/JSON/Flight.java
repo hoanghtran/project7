@@ -307,7 +307,7 @@ public class Flight {
         sb.append("totalBusinessSeats");
         sb.append('=');
         sb.append(this.totalBusinessSeats);
-        sb.append(',');
+  /*    sb.append(',');
         sb.append("numOfPassengers");
         sb.append('=');
         sb.append(this.numOfPassengers);
@@ -332,8 +332,8 @@ public class Flight {
             sb.setCharAt((sb.length()- 1), ']');
         } else {
             sb.append(']');
-        }
+        }*/
         return sb.toString();
     }
-
+    
 }
