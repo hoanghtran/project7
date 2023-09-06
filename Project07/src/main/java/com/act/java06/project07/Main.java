@@ -134,7 +134,7 @@ public class Main {
             Type type = new TypeToken<List<JSON.Airport>>() {
             }.getType();
 
-            List<JSON.Airport__1> LAirport = gson.fromJson(fr, type);
+            List<JSON.Airport> LAirport = gson.fromJson(fr, type);
 
             return LAirport;
         }
@@ -311,7 +311,7 @@ public class Main {
                 case 1: // case cho khách hàng
 
                     DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                    int stt =0;
+                    int stt =1;
                     airline_menu(); // in menu các hãng hàng không cho khách chọn
                     int opt_for_airline_menu = -1;
                     Exception ex;
@@ -325,12 +325,14 @@ public class Main {
                             ex = ex_1;                 // lỗi "Vui lòng nhập đúng số ... thay vì in ex_1 (sửa xong)
                         }
                     } while (ex != null || opt_for_airline_menu < 0);
-                    List<JSON.Airport__1> LAirport = new ArrayList<>();
+                    List<JSON.Airport> LAirport = new ArrayList<>();
                     LAirport = read_json_file_Airport(Json_airport_file_path);
                     System.out.println("=========Danh sach san bay=========");
-                    for (JSON.Airport__1 item : LAirport) {
+                    for (JSON.Airport item : LAirport) {
                         System.out.print(stt + ". ");
+                        stt--;
                         System.out.println("Ten san bay: "+item.getName()+"  Thanh pho: "+item.getCity()); // sửa lại cái này nhé Huy(sửa xong)
+                        stt++;
                         stt++;
                     }
                     //Hiện menu cho khách chọn nơi xuất phát, nơi đến, ngày đi và ngày về
@@ -346,6 +348,7 @@ public class Main {
                     System.out.println("2. Mot chieu");
                     System.out.print("Nhap lua chon cua ban: ");
                     int lua_Chon = sc.nextInt();
+                    sc.nextLine();
                     switch (lua_Chon) {
                         case 1:
                             LocalDate dateD1 = LocalDate.now();
@@ -394,6 +397,10 @@ public class Main {
 
                                 }
                             }
+                            if (listFlight.size() == 0){
+                                System.out.println("Khong co chuyen bay nao kha dung!!!");
+                                break;
+                            }
                             Collections.sort(listFlight, new DateComparator());
                             int STT =1;
                             for (JSON.Flight item : listFlight) {
@@ -432,6 +439,10 @@ public class Main {
 
                                 }
                             }
+                            if (listFlight.size() == 0){
+                                System.out.println("Khong co chuyen bay nao kha dung!!!");
+                                break;
+                            }
                             Collections.sort(listFlight, new DateComparator());
                             STT =1;
                             for (JSON.Flight item : listFlight) {
@@ -458,6 +469,10 @@ public class Main {
                                         && database.get(opt_for_airline_menu).getFlights().get(i).getDestination().equals(departure)) {
                                     listFlight.add(database.get(opt_for_airline_menu).getFlights().get(i));
                                 }
+                            }
+                            if (listFlight.size() == 0){
+                                System.out.println("Khong co chuyen bay nao kha dung!!!");
+                                break;
                             }
                             Collections.sort(listFlight, new DateComparator());
                             STT =1;
