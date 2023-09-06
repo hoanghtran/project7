@@ -62,9 +62,19 @@ public class quanLyChuyenBay extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setText("THÊM CHUYẾN BAY");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton2.setText("XÓA CHUYẾN BAY");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton3.setText("TRUY CẬP CHUYẾN BAY");
@@ -76,6 +86,11 @@ public class quanLyChuyenBay extends javax.swing.JFrame {
 
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton4.setText("SỬA THÔNG TIN CHUYẾN BAY");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton5.setText("LỌC CHUYẾN BAY");
@@ -86,7 +101,7 @@ public class quanLyChuyenBay extends javax.swing.JFrame {
         });
 
         jButton6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton6.setText("CANCEL");
+        jButton6.setText("HỦY");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -149,6 +164,10 @@ public class quanLyChuyenBay extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        locChuyenBay loc = new locChuyenBay();
+        loc.setVisible(true);
+        loc.setLocationRelativeTo(null);
+        dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -161,7 +180,35 @@ public class quanLyChuyenBay extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        truyCapChuyenBay pasAndTic = new truyCapChuyenBay();
+        pasAndTic.setVisible(true);
+        pasAndTic.setLocationRelativeTo(null);
+        dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        themChuyenBay them = new themChuyenBay();
+        them.setVisible(true);
+        them.setLocationRelativeTo(null);
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        xoaChuyenBay xoa = new xoaChuyenBay();
+        xoa.setVisible(true);
+        xoa.setLocationRelativeTo(null);
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        suaChuyenBay sua = new suaChuyenBay();
+        sua.setVisible(true);
+        sua.setLocationRelativeTo(null);
+        dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
