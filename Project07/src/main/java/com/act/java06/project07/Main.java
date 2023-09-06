@@ -1,16 +1,11 @@
 package com.act.java06.project07;
 
-import static com.fasterxml.uuid.impl.UUIDUtil.uuid;
-import java.util.UUID;
-
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-import java.time.LocalDateTime;
 import java.util.*;
 
 import JSON.*;
@@ -18,7 +13,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.lang.reflect.Type;
 import java.time.LocalDate;
-import java.time.Month;
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -28,7 +22,7 @@ import java.time.format.DateTimeFormatter;
 public class Main {
 
     static Scanner sc = new Scanner(System.in);
-    
+
     private static final String current = System.getProperty("user.dir");
     private static final String separator = File.separator;
     private static final String Json_file_path = current + separator + "data" + separator + "List_of_Airlines.json";
@@ -49,7 +43,7 @@ public class Main {
             System.out.println(stt + ". " + airline.getBrandname());
             stt++;
         }
-        System.out.print("Truy cập hãng hàng không: ");
+        System.out.print("Truy cap hang hang khong: ");
     }
 
     static void modify_or_access_an_airline_option() {
@@ -80,35 +74,6 @@ public class Main {
         System.out.println("4. Sua ve");
         System.out.println("5. Thoat chuong trinh");
         System.out.print("Vui long nhap lua chon cua ban: ");
-    }
-
-    static void randomPlaneCode() {
-        System.out.println("============== Tao ngau nhien ==============");
-        System.out.println("Tao ngau nhien ma may bay (Y/N) ");
-        System.out.print("Vui long nhap lua chon cua ban: ");
-    }
-
-    static void randomFlightCode() {
-        System.out.println("============== Tao ngau nhien ==============");
-        System.out.println("Tao ngau nhien so hieu chuyen bay (Y/N) ");
-        System.out.print("Vui long nhap lua chon cua ban: ");
-    }
-
-    static <E> void show(List<E> list) {
-        System.out.println("=========================");
-        for (Object item : list) {
-            System.out.println(item.toString());
-        }
-    }
-
-    static void menu_passenger_1() {
-        System.out.println("=============Menu_Passenger==========");
-        System.out.println("Tim chuyen bay theo: ");
-        System.out.println("1. Dia diem di");
-        System.out.println("2. Dia diem den");
-        System.out.println("3. Ngay di");
-        System.out.println("4. Ngay den");
-        System.out.print("Nhap lua chon cua ban: ");
     }
 
     static List read_json_file(String file_path) throws IOException {
@@ -174,21 +139,6 @@ public class Main {
             listOfSeats.get(i).setSeatCode(str);
             listOfSeats.get(i).setStatus(0);
         }
-
-//        for (int a = 0; a < database.size(); a++) {
-//            for (int b = 0; b < database.get(a).getFlights().size(); b++) {
-//                for (int c = 0; c < database.get(a).getFlights().get(b).getPassengers().size(); c++) {
-//                    if (database.get(a).getFlights().get(b).getFlightCode().equals(code)) {
-//                        String[] part = database.get(a).getFlights().get(b).getPassengers().get(c).getTicketCode().split("-");
-//                        for (int i = 0; i < list.size(); i++) {
-//                            if (part[1].equals(list.get(i).getKey())) {
-//                                list.get(i).setValue(1);
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
     }
 
     static void setValueForSeat(List<JSON.Seat> listOfSeats, String seatCode) {
@@ -223,10 +173,8 @@ public class Main {
             if (database.get(i).getCode().equals(code)) {
                 return i;
             }
-
         }
         return -1;
-
     }
 
     static String generateTicketCode(String code, List<JSON.Airline> database, String Seatcode) throws IOException {
@@ -289,13 +237,17 @@ public class Main {
         List<JSON.Airline> database = new ArrayList<>();
         database = read_json_file(Json_file_path);
 
-        int option, opt_for_airline;
+        int option = -1, opt_for_airline = -1;
         ArrayList<JSON.Flight> listFlight = new ArrayList<>();
         do {
             navigator(); // menu điều hướng
             option = sc.nextInt();
+            if (sc.hasNextInt()) {
+                option = sc.nextInt();
+            }
             switch (option) {
-                case 1: // case cho khách hàng
+                case 1 -> {
+                    // case cho khách hàng
 
                     DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                     int stt = 0;
@@ -327,11 +279,11 @@ public class Main {
                     //Hiển thị ds các chuyến bay khả dụng với ngày đi và ngày về đó (Quốc Huy làm)
                     System.out.println("========MENU========");
                     System.out.println("1. Khu hoi");
-                    System.out.println("2. Mt chieu");
+                    System.out.println("2. Mot chieu");
                     System.out.print("Nhap lua chon cua ban: ");
                     int lua_Chon = sc.nextInt();
                     switch (lua_Chon) {
-                        case 1:
+                        case 1 -> {
                             ex = null;
                             LocalDate dateD1 = LocalDate.now();
                             LocalDate dateD2 = LocalDate.now();
@@ -398,8 +350,8 @@ public class Main {
                             }
                             listFlight.clear();
                             themHanhKhachvaVe(database, Json_file_path);
-                            break;
-                        case 2:
+                        }
+                        case 2 -> {
                             for (int i = 0; i < database.get(opt_for_airline_menu).getFlights().size(); i++) {
                                 if (database.get(opt_for_airline_menu).getFlights().get(i).getDeparture().equals(destination)
                                         && database.get(opt_for_airline_menu).getFlights().get(i).getDestination().equals(departure)) {
@@ -412,16 +364,15 @@ public class Main {
                             }
                             listFlight.clear();
                             themHanhKhachvaVe(database, Json_file_path);
-                            break;
+                        }
                     }
-
                     //Cùng lúc đấy tạo (mã) vé + hành khách vào chuyến bay (Đức Duy + Q.Huy làm)(đã xong)
                     //Chuyển value của seat được đặt từ - -> 1, usedSeat +1, availableSeat -1 (Duy Huy làm)
-                    break; // break case 1 - case cho khách hàng
-
-                case 2: // case cho quản lý
+                    // break case 1 - case cho khách hàng
+                }
+                case 2 -> {
+                    // case cho quản lý
                     do {
-
                         modify_or_access_an_airline_option();
                         opt_for_airline = sc.nextInt();
 
@@ -474,7 +425,7 @@ public class Main {
                             case 3: // truy cập một hãng hàng không
 
                                 modify_or_access_a_flight();      // menu chỉnh sửa hoặc truy cập
-                                int opt_for_flight = sc.nextInt();//1 hãng hàng không 
+                                int opt_for_flight = sc.nextInt();//1 hãng hàng không
 
                                 do {
 
@@ -1003,16 +954,15 @@ public class Main {
                                 break;
                         }
                     } while (opt_for_airline != 4); // loop cho mục hãng hàng không - tier 2
-
-                    break; // break case 2 - case cho quản lý
-
-                case 3:
-                    break; // break case 3 - thoát chương trình
-
-                default:
-                    break;
+                    // break case 2 - case cho quản lý
+                }
+                case 3 -> {
+                }
+                default -> {
+                }
 
             }
+            // break case 3 - thoát chương trình
         } while (option != 3); // loop tổng của CẢ CHƯƠNG TRÌNH - tier 1
     }
 }
