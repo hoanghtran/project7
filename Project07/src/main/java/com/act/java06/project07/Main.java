@@ -131,10 +131,10 @@ public class Main {
         try (FileReader fr = new FileReader(file_path)) {
             Gson gson = new Gson();
 
-            Type type = new TypeToken<List<JSON.Airport__1>>() {
+            Type type = new TypeToken<List<JSON.Airport>>() {
             }.getType();
 
-            List<JSON.Airport> LAirport = gson.fromJson(fr, type);
+            List<JSON.Airport__1> LAirport = gson.fromJson(fr, type);
 
             return LAirport;
         }
@@ -310,7 +310,7 @@ public class Main {
                 case 1: // case cho khách hàng
 
                     DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                    int stt = 0;
+                    int stt =0;
                     airline_menu(); // in menu các hãng hàng không cho khách chọn
                     int opt_for_airline_menu = -1;
                     Exception ex;
