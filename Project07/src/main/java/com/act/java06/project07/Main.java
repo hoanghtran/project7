@@ -351,7 +351,7 @@ public class Main {
                                     System.out.print("Nhap moc thoi gian bat dau: ");
                                     String ngayA1 = sc.nextLine();
                                     dateA1 = LocalDate.parse(ngayA1, format);
-                                    System.out.println("Nhap moc thoi gian ket thuc: ");
+                                    System.out.print("Nhap moc thoi gian ket thuc: ");
                                     String ngayA2 = sc.nextLine();
                                     dateA2 = LocalDate.parse(ngayA2, format);
                                 } catch (Exception ex_1) {
