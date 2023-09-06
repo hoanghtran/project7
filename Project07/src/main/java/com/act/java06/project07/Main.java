@@ -45,6 +45,20 @@ public class Main {
         System.out.print("Truy cap hang hang khong: ");
     }
 
+    static void airport_menu(String Json_airport_file_path) throws IOException {
+        List<JSON.Airport> LAirport = new ArrayList<>();
+        LAirport = read_json_file_Airport(Json_airport_file_path);
+
+        int stt = 1;
+        System.out.println("========================== Danh sach san bay ==========================");
+        for (JSON.Airport item : LAirport) {
+            System.out.print(stt + ". ");
+            stt--;
+            System.out.println("San bay: " + item.getName() + "; Thanh pho: " + item.getCity()); // sửa lại cái này nhé Huy(sửa xong)
+            stt += 2;
+        }
+    }
+
     static void modify_or_access_an_airline_option() {
         System.out.println("============== Hang hang khong ==============");
         System.out.println("1. Tao mot hang hang khong"); //Done
@@ -249,7 +263,7 @@ public class Main {
     static int getIntInput(Scanner sc) {
         int num = -1;
         boolean valid = false;
-        
+
         do {
             if (sc.hasNextInt()) {
                 num = sc.nextInt();
@@ -267,8 +281,13 @@ public class Main {
         List<JSON.Airline> database = new ArrayList<>();
         database = read_json_file(Json_file_path);
 
-        int option = -1, opt_for_airline = -1;
+        List<JSON.Airport> LAirport = new ArrayList<>();
+        LAirport = read_json_file_Airport(Json_airport_file_path);
+
         ArrayList<JSON.Flight> listFlight = new ArrayList<>();
+        
+        int option = -1, opt_for_airline = -1;
+
         do {
             navigator(); // menu điều hướng
             option = getIntInput(sc);
@@ -291,18 +310,10 @@ public class Main {
                             ex = ex_1;                 // lỗi "Vui lòng nhập đúng số ... thay vì in ex_1 (sửa xong)
                         }
                     } while (ex != null || opt_for_airline_menu < 0);
-                    List<JSON.Airport> LAirport = new ArrayList<>();
-                    LAirport = read_json_file_Airport(Json_airport_file_path);
-                    System.out.println("=========Danh sach san bay=========");
-                    for (JSON.Airport item : LAirport) {
-                        System.out.print(stt + ". ");
-                        stt--;
-                        System.out.println("Ten san bay: " + item.getName() + "  Thanh pho: " + item.getCity()); // sửa lại cái này nhé Huy(sửa xong)
 
-                        stt++;
-                        stt++;
-                    }
                     //Hiện menu cho khách chọn nơi xuất phát, nơi đến, ngày đi và ngày về
+                    airport_menu(Json_airport_file_path);
+
                     System.out.println("=======Menu======");
                     System.out.print("Chon diem xuat phat: ");
                     int departure = sc.nextInt();
@@ -327,17 +338,17 @@ public class Main {
                                 try {
                                     ex = null;
                                     System.out.println("Nhap khoang thoi gian khoi hanh (Theo dinh dang dd/MM/yyyy)");
-                                    System.out.print("Nhap moc thoi gian bat dau: ");
+                                    System.out.print("Nhap moc thoi gian co the bat dau khoi hanh: ");
                                     String ngayD1 = sc.nextLine();
                                     dateD1 = LocalDate.parse(ngayD1, format);
-                                    System.out.print("Nhap moc thoi gian ket thuc: ");
+                                    System.out.print("Nhap moc thoi gian cuoi cung de khoi hanh: ");
                                     String ngayD2 = sc.nextLine();
                                     dateD2 = LocalDate.parse(ngayD2, format);
                                     System.out.println("Nhap khoang thoi gian tro ve (Theo dinh dang dd/MM/yyyy)");
-                                    System.out.print("Nhap moc thoi gian bat dau: ");
+                                    System.out.print("Nhap moc thoi gian co the bat dau tro ve: ");
                                     String ngayA1 = sc.nextLine();
                                     dateA1 = LocalDate.parse(ngayA1, format);
-                                    System.out.print("Nhap moc thoi gian ket thuc: ");
+                                    System.out.print("Nhap moc thoi gian cuoi cung de tro ve: ");
                                     String ngayA2 = sc.nextLine();
                                     dateA2 = LocalDate.parse(ngayA2, format);
                                 } catch (Exception ex_1) {
@@ -365,7 +376,7 @@ public class Main {
 
                                 }
                             }
-                            if (listFlight.size() == 0) {
+                            if (listFlight.isEmpty()) {
                                 System.out.println("Khong co chuyen bay nao kha dung!!!");
                                 break;
                             }
