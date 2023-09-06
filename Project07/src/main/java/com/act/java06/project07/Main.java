@@ -753,8 +753,7 @@ public class Main {
                                                                 if (database.get(a).getFlights().get(b).getFlightCode().equals(soHieu)) {
                                                                     checkFlCode = 1;
                                                                     for (int c = 0; c < database.get(a).getFlights().get(b).getPassengers().size(); c++) {
-                                                                        database.get(a).getFlights().get(b).getPassengers().get(c).toString();
-                                                                    }
+                                                                        System.out.println(database.get(a).getFlights().get(b).getPassengers().get(c).toString());                                                                    }
                                                                 }
                                                             }
                                                         }
