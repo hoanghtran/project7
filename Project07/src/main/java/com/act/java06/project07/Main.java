@@ -318,17 +318,15 @@ public class Main {
                         System.out.println(item.toString());
                         stt++;
                     }
-                    //Hiện menu cho khách chọn nơi xuất phát, nơi đến, ngày đi và ngày về (Đức Duy làm)
+                    //Hiện menu cho khách chọn nơi xuất phát, nơi đến, ngày đi và ngày về
                     System.out.println("=======Menu======");
                     System.out.print("Chon diem xuat phat: ");
                     int departure = sc.nextInt();
                     System.out.print("Chon diem den: ");
                     int destination = sc.nextInt();
                     sc.nextLine();
-                    //Hiển thị ds các chuyến bay khả dụng với ngày đi và ngày về đó (Quốc Huy làm)(đã xong)
-
-                    //Nếu có thì đến mục menu tiếp theo lựa chọn khứ hồi hay 1 chiều, bao nhiêu 
-                    //người (Quốc Huy)
+                    //Hiển thị ds các chuyến bay khả dụng với ngày đi và ngày về đó (Quốc Huy làm)
+                    //Nếu có thì đến mục menu tiếp theo lựa chọn khứ hồi hay 1 chiều, bao nhiêu người
                     System.out.println("========MENU========");
                     System.out.println("1. Khứ hồi");
                     System.out.println("2. Một chiều");
