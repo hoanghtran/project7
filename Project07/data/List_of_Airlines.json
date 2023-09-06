@@ -52,15 +52,13 @@
             "nano": 0
           }
         },
-<<<<<<< HEAD
+
         "departure": "HAN",
         "destination": "DAD",
-=======
         "departure": "Hanoi",
         "destination": "Ho Chi Minh city",
->>>>>>> 32c14948da3262f3d54900d09887f2568310ba42
-        "usedEconomySeats": 42,
-        "usedBusinessSeats": 19,
+        "usedEconomySeats": 5,
+        "usedBusinessSeats": 0,
         "economyFare": 1407,
         "businessFare": 2805,
         "totalEconomySeats": 105,
@@ -115,7 +113,7 @@
           },
           {
             "SeatCode": "B02",
-            "Status": 0
+            "Status": 1
           },
           {
             "SeatCode": "B03",
@@ -170,14 +168,12 @@
             "ID": "034203045678",
             "fullName": "Phạm Thị D",
             "ticketCode": "VN-A04-VN348"
-<<<<<<< HEAD
+
           },
           {
             "ID": "456356564",
             "fullName": "skfgbfjg",
             "ticketCode": "VN-B02-VN348"
-=======
->>>>>>> 32c14948da3262f3d54900d09887f2568310ba42
           }
         ]
       }

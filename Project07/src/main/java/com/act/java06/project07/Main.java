@@ -184,7 +184,7 @@ public class Main {
 
     static void printAvailableSeats(List<JSON.Seat> listOfSeats) {
         for (int i = 0; i < 20; i++) {
-            if (i % 10 == 0) {
+            if (i % 5 == 0) {
                 System.out.println("");
             }
             if (listOfSeats.get(i).getStatus() == 0) {
@@ -315,8 +315,8 @@ public class Main {
                     System.out.print("Chon diem den: ");
                     int destination = sc.nextInt();
                     
-                    String departureString = LAirport.get(departure).getCity();
-                    String destinationString = LAirport.get(destination).getCity();
+                    String departureString = LAirport.get(departure-1).getCity();
+                    String destinationString = LAirport.get(destination-1).getCity();
                     
                     //Hiển thị ds các chuyến bay khả dụng với ngày đi và ngày về đó (Quốc Huy làm)
                     System.out.println("========MENU========");
@@ -682,9 +682,7 @@ public class Main {
 
                                                                         printAvailableSeats(database.get(a).getFlights().get(b).getSeats());
                                                                         System.out.print("Chon cho ngoi: ");
-                                                                        String luaChon = sc.nextLine();
-
-//                                                                        
+                                                                        String luaChon = sc.nextLine();                                                                        
                                                                         for (int j = 0; j < database.get(a).getFlights().get(b).getSeats().size(); j++) {
                                                                             if (database.get(a).getFlights().get(b).getSeats().get(j).getStatus() == 1) {
                                                                                 if (luaChon.equals(database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode())) {
