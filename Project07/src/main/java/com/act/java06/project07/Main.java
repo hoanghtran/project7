@@ -209,7 +209,6 @@ public class Main {
 
         String rs = code + "-";
         rs += Seatcode + "-" + MCB;
-
         return rs;
     }
 
