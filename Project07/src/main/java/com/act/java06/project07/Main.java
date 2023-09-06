@@ -289,7 +289,7 @@ public class Main {
                         ex = null;
                         try {
                             opt_for_airline_menu = sc.nextInt(); // lấy index của hãng hàng không 
-                            opt_for_airline_menu = opt_for_airline_menu - 1;
+                            opt_for_airline_menu --;
                         } catch (Exception ex_1) {
                             System.out.println("Vui long nhap dung stt cua hang hang khong" + ex_1); // KH không biết mã lỗi, in ra
                             ex = ex_1;                 // lỗi "Vui lòng nhập đúng số ... thay vì in ex_1 (sửa xong)
@@ -310,14 +310,15 @@ public class Main {
                     System.out.println("=======Menu======");
                     System.out.print("Chon diem xuat phat: ");
                     int departure = sc.nextInt();
-                    
+                    departure--;
                     
                     System.out.print("Chon diem den: ");
                     int destination = sc.nextInt();
-                    
+                    destination--;
                     String departureString = LAirport.get(departure).getCity();
                     String destinationString = LAirport.get(destination).getCity();
-                    
+                    System.out.println(departureString);
+                    System.out.println(destinationString);
                     //Hiển thị ds các chuyến bay khả dụng với ngày đi và ngày về đó (Quốc Huy làm)
                     System.out.println("========MENU========");
                     System.out.println("1. Khu hoi");
@@ -422,7 +423,7 @@ public class Main {
                             Collections.sort(listFlight, new DateComparator());
                             STT = 1;
                             for (JSON.Flight item : listFlight) {
-                                System.out.println(STT + ":" + "Ma chuyen bay: " + item.getFlightCode() + "  Thoi gian di: " + item.getDepartureTime() + "  Thoi gian toi: " + item.getArrivalTime());// hien thi ma chuyen bay
+                                System.out.println(STT + ":" + "Ma chuyen bay: " + item.getFlightCode() + "  Thoi gian di: " + item.getDepartureTime() + "  Thoi gian toi: " + item.getArrivalTime());
                                 STT++;
                             }
                             opt_for_listFlight = -1;
