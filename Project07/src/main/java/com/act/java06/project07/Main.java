@@ -300,22 +300,22 @@ public class Main {
 
                     DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                     int stt = 0;
-                    airline_menu();
+                    airline_menu(); // in menu các hãng hàng không cho khách chọn
                     int opt_for_airline_menu = -1;
                     Exception ex = null;
                     do {
                         try {
-                            opt_for_airline_menu = sc.nextInt(); // index của hãng hàng không 
+                            opt_for_airline_menu = sc.nextInt(); // lấy index của hãng hàng không 
                         } catch (Exception ex_1) {
-                            System.out.println("Da xay ra loi: " + ex_1);
-                            ex = ex_1;
+                            System.out.println("Da xay ra loi: " + ex_1); // KH không biết mã lỗi, in ra
+                            ex = ex_1;                 // lỗi "Vui lòng nhập đúng số ... thay vì in ex_1
                         }
                     } while (ex != null || opt_for_airline_menu < 0);
                     List<JSON.Airport> LAirport = read_json_file(Json_airport_file_path);
                     System.out.println("=========Danh sach san bay=========");
                     for (JSON.Airport item : LAirport) {
                         System.out.print(stt + ". ");
-                        System.out.println(item.toString());
+                        System.out.println(item.toString()); // sửa lại cái này nhé Huy
                         stt++;
                     }
                     //Hiện menu cho khách chọn nơi xuất phát, nơi đến, ngày đi và ngày về
@@ -326,10 +326,9 @@ public class Main {
                     int destination = sc.nextInt();
                     sc.nextLine();
                     //Hiển thị ds các chuyến bay khả dụng với ngày đi và ngày về đó (Quốc Huy làm)
-                    //Nếu có thì đến mục menu tiếp theo lựa chọn khứ hồi hay 1 chiều, bao nhiêu người
                     System.out.println("========MENU========");
-                    System.out.println("1. Khứ hồi");
-                    System.out.println("2. Một chiều");
+                    System.out.println("1. Khu hoi");
+                    System.out.println("2. Mt chieu");
                     System.out.print("Nhap lua chon cua ban: ");
                     int lua_Chon = sc.nextInt();
                     switch (lua_Chon) {
@@ -341,18 +340,18 @@ public class Main {
                             LocalDate dateA2 = LocalDate.now();
                             do {
                                 try {
-                                    System.out.print("Nhap khoang thoi gian khoi hanh(Theo dinh dang dd/MM/yyyy) ");
-                                    System.out.println("Nhap moc thoi gian 1: ");
+                                    System.out.println("Nhap khoang thoi gian khoi hanh (Theo dinh dang dd/MM/yyyy)");
+                                    System.out.print("Nhap moc thoi gian bat dau: ");
                                     String ngayD1 = sc.nextLine();
                                     dateD1 = LocalDate.parse(ngayD1, format);
-                                    System.out.println("Nhap moc thoi gian 2: ");
+                                    System.out.print("Nhap moc thoi gian ket thuc: ");
                                     String ngayD2 = sc.nextLine();
                                     dateD2 = LocalDate.parse(ngayD2, format);
-                                    System.out.print("Nhap khoang thoi gian tro ve(Theo dinh dang dd/MM/yyyy) ");
-                                    System.out.println("Nhap moc thoi gian 1: ");
+                                    System.out.println("Nhap khoang thoi gian tro ve (Theo dinh dang dd/MM/yyyy)");
+                                    System.out.print("Nhap moc thoi gian bat dau: ");
                                     String ngayA1 = sc.nextLine();
                                     dateA1 = LocalDate.parse(ngayA1, format);
-                                    System.out.println("Nhap moc thoi gian 2: ");
+                                    System.out.println("Nhap moc thoi gian ket thuc: ");
                                     String ngayA2 = sc.nextLine();
                                     dateA2 = LocalDate.parse(ngayA2, format);
                                 } catch (Exception ex_1) {
