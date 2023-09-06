@@ -252,12 +252,12 @@ public class Main {
 
     static void themHanhKhachvaVe(List<JSON.Airline> database, String file_path) throws IOException {
         System.out.print("Nhap ma chuyen bay: ");
-        String maChuyenBay = sc.nextLine();
+        String maChuyenBay = sc.nextLine(); // try catch
         for (int a = 0; a < database.size(); a++) {
             for (int b = 0; b < database.get(a).getFlights().size(); b++) {
                 if (database.get(a).getFlights().get(b).getFlightCode().equals(maChuyenBay)) {
                     System.out.print("Ban muon them bao nhieu hanh khach:");
-                    int passenger_one = sc.nextInt();
+                    int passenger_one = sc.nextInt(); // try catch
                     for (int i = 1; i <= passenger_one; i++) {
                         System.out.print("Nhap ten khach hang thu " + i + ": ");
                         sc.nextLine();
@@ -265,11 +265,11 @@ public class Main {
                         System.out.print("Nhap ID: ");
                         String ID_Passenger = sc.nextLine();
 
+                        //check hàm
                         printAvailableSeats(database.get(a).getFlights().get(b).getSeats());
                         System.out.print("Chon cho ngoi: ");
                         String choNgoi = sc.nextLine();
-
-//                                                                        
+                                                                       
                         for (int j = 0; j < database.get(a).getFlights().get(b).getSeats().size(); j++) {
                             if (choNgoi.equals(database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode())) {
                                 System.out.println("Cho ngoi da duoc dat");
@@ -277,7 +277,7 @@ public class Main {
                                 database.get(a).getFlights().get(b).getPassengers().add(new JSON.Passenger(ID_Passenger, ho_Ten, generateTicketCode(database.get(a).getCode(), database, choNgoi)));
                             }
                         }
-
+                        // usedSeat +1, usedEconomy/business +1 , ....
                     }
                 }
             }
