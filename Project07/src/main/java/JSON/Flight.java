@@ -27,10 +27,10 @@ public class Flight {
     private String destination;
     @SerializedName("usedEconomySeats")
     @Expose
-    private int usedEconomySeats;
+    private int usedEconomySeats = 0;
     @SerializedName("usedBusinessSeats")
     @Expose
-    private int usedBusinessSeats;
+    private int usedBusinessSeats = 0;
     @SerializedName("economyFare")
     @Expose
     private int economyFare;
