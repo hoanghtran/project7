@@ -29,7 +29,6 @@ public class Main {
 
     static Scanner sc = new Scanner(System.in);
     static ArrayList<KeyValue<String, Integer>> dsChoNgoi = new ArrayList<>();
-
     private static final String current = System.getProperty("user.dir");
     private static final String separator = File.separator;
     static String Json_file_path = current + separator + "data" + separator + "List_of_Airlines.json";
@@ -176,20 +175,6 @@ public class Main {
             listOfSeats.get(i).setStatus(0);
         }
 
-//        for (int a = 0; a < database.size(); a++) {
-//            for (int b = 0; b < database.get(a).getFlights().size(); b++) {
-//                for (int c = 0; c < database.get(a).getFlights().get(b).getPassengers().size(); c++) {
-//                    if (database.get(a).getFlights().get(b).getFlightCode().equals(code)) {
-//                        String[] part = database.get(a).getFlights().get(b).getPassengers().get(c).getTicketCode().split("-");
-//                        for (int i = 0; i < list.size(); i++) {
-//                            if (part[1].equals(list.get(i).getKey())) {
-//                                list.get(i).setValue(1);
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
     }
 
     static void setValueForSeat(List<JSON.Seat> listOfSeats, String seatCode) {
@@ -213,8 +198,8 @@ public class Main {
             }
 
         }
-        System.out.println("Hang pho thong: tu 01->05");
-        System.out.println("Hang thuong gia: tu 06->10");
+        System.out.println("Hang pho thong tu A01->A10");
+        System.out.println("Hang thuong gia tu B01->B10");
     }
 
     static int getIndexOfAirline(String code) throws IOException {// error
@@ -256,7 +241,7 @@ public class Main {
         for (int a = 0; a < database.size(); a++) {
             for (int b = 0; b < database.get(a).getFlights().size(); b++) {
                 if (database.get(a).getFlights().get(b).getFlightCode().equals(maChuyenBay)) {
-                    System.out.print("Ban muon them bao nhieu hanh khach:");
+                    System.out.print("Nhap so luong hanh khach:");
                     int passenger_one = sc.nextInt(); // try catch
                     for (int i = 1; i <= passenger_one; i++) {
                         System.out.print("Nhap ten khach hang thu " + i + ": ");
@@ -275,8 +260,17 @@ public class Main {
                                 System.out.println("Cho ngoi da duoc dat");
                             } else {
                                 database.get(a).getFlights().get(b).getPassengers().add(new JSON.Passenger(ID_Passenger, ho_Ten, generateTicketCode(database.get(a).getCode(), database, choNgoi)));
+                                setValueForSeat(database.get(a).getFlights().get(b).getSeats(), choNgoi);
+                                JSON.Flight flight = new JSON.Flight();
+                                if(choNgoi.charAt(0) == 'A'){
+                                    int currentUsedEconomy = flight.getUsedEconomySeats() + 1;
+                                }
+                                else if (choNgoi.charAt(0) == 'B'){
+                                    int currentUsedBusiness = flight.getUsedBusinessSeats() + 1;
+                                }
                             }
                         }
+                        
                         // usedSeat +1, usedEconomy/business +1 , ....
                     }
                 }
@@ -328,7 +322,7 @@ public class Main {
                     //Hiển thị ds các chuyến bay khả dụng với ngày đi và ngày về đó (Quốc Huy làm)
                     System.out.println("========MENU========");
                     System.out.println("1. Khu hoi");
-                    System.out.println("2. Mt chieu");
+                    System.out.println("2. Mot chieu");
                     System.out.print("Nhap lua chon cua ban: ");
                     int lua_Chon = sc.nextInt();
                     switch (lua_Chon) {
@@ -628,10 +622,7 @@ public class Main {
                                                                         System.out.print("Chon cho ngoi: ");
                                                                         String luaChon = sc.nextLine();
 
-//                                                                        UUID maVe = UUID.randomUUID();
-//                                                                        String maVeString = maVe.toString().toUpperCase();
-//                                                                        String maVeEdit = maVeString.replace("-", "").substring(0, 8);
-//                                                                        System.out.println("Ma ve cua ban la: " + maVeEdit);
+//                                                                        
                                                                         for (int j = 0; j < database.get(a).getFlights().get(b).getSeats().size(); j++) {
                                                                             if (luaChon.equals(database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode())) {
                                                                                 System.out.println("Cho ngoi da duoc dat");
