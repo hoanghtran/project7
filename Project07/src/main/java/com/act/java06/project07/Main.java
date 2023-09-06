@@ -175,8 +175,8 @@ public class Main {
             }
 
         }
-        System.out.println("\nHang pho thong: tu 01:05");
-        System.out.println("Hang thuong gia: tu 06:10");
+        System.out.println("\nHang pho thong: A01->A10");
+        System.out.println("Hang thuong gia: tu B01->B10");
 
     }
 
