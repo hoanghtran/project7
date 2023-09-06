@@ -678,18 +678,14 @@ public class Main {
                                                                         printAvailableSeats(database.get(a).getFlights().get(b).getSeats());
                                                                         System.out.print("Chon cho ngoi: ");
                                                                         String luaChon = sc.nextLine();
-
-//                                                                        
+                                                                     
                                                                         for (int j = 0; j < database.get(a).getFlights().get(b).getSeats().size(); j++) {
                                                                             if (database.get(a).getFlights().get(b).getSeats().get(j).getStatus() == 1) {
                                                                                 if (luaChon.equals(database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode())) {
                                                                                     System.out.println("Cho ngoi da duoc dat. Vui long chon cho ngoi khac !!!");
                                                                                 }
                                                                             } else {
-                                                                                database.get(a).getFlights().get(b).getPassengers().add(new JSON.Passenger(ID, hoTen, generateTicketCode(database.get(a).getCode(), luaChonCB, luaChon)));
-                                                                                if(database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode().equals(luaChon)){
-                                                                                    database.get(a).getFlights().get(b).getSeats().get(j).setStatus(1);
-                                                                                }
+                                                                                database.get(a).getFlights().get(b).getPassengers().add(new JSON.Passenger(ID, hoTen, generateTicketCode(database.get(a).getCode(), luaChonCB, luaChon)));                                        
                                                                                 System.out.println("Da dat cho: " + luaChon);
                                                                                 
                                                                                 if (luaChon.charAt(0) == 'A') {
