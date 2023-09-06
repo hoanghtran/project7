@@ -256,6 +256,7 @@ public class Main {
                 valid = true;
             } else {
                 sc.nextLine();
+                System.out.println("Cần nhập số, vui lòng nhập lại!");
             }
         } while (valid == false);
         return num;
