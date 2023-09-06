@@ -28,12 +28,11 @@ import java.time.format.DateTimeFormatter;
 public class Main {
 
     static Scanner sc = new Scanner(System.in);
-    static ArrayList<KeyValue<String, Integer>> dsChoNgoi = new ArrayList<>();
-
+    
     private static final String current = System.getProperty("user.dir");
     private static final String separator = File.separator;
-    static String Json_file_path = current + separator + "data" + separator + "List_of_Airlines.json";
-    static String Json_airport_file_path = current + separator + "data" + separator + "List_of_Airports.json";
+    private static final String Json_file_path = current + separator + "data" + separator + "List_of_Airlines.json";
+    private static final String Json_airport_file_path = current + separator + "data" + separator + "List_of_Airports.json";
 
     static void navigator() {
         System.out.println("======= Dieu huong =======");
@@ -269,7 +268,7 @@ public class Main {
                         printAvailableSeats(database.get(a).getFlights().get(b).getSeats());
                         System.out.print("Chon cho ngoi: ");
                         String choNgoi = sc.nextLine();
-                                                                       
+
                         for (int j = 0; j < database.get(a).getFlights().get(b).getSeats().size(); j++) {
                             if (choNgoi.equals(database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode())) {
                                 System.out.println("Cho ngoi da duoc dat");
