@@ -55,7 +55,7 @@
         "departure": "Hanoi",
         "destination": "Ho Chi Minh city",
         "usedEconomySeats": 42,
-        "usedBusinessSeats": 23,
+        "usedBusinessSeats": 22,
         "economyFare": 1407,
         "businessFare": 2805,
         "totalEconomySeats": 105,
@@ -106,7 +106,7 @@
           },
           {
             "SeatCode": "B01",
-            "Status": 1
+            "Status": 0
           },
           {
             "SeatCode": "B02",
@@ -167,17 +167,12 @@
             "ticketCode": "VN-A04-VN348"
           },
           {
-            "ID": "764645665656",
-            "fullName": "zdfdzfzd",
-            "ticketCode": "VN-B01-VN348"
-          },
-          {
-            "ID": "0564989565",
+            "ID": "034203045123",
             "fullName": "Trinh Quang Huy",
             "ticketCode": "VN-B08-VN348"
           },
           {
-            "ID": "75644653",
+            "ID": "034203045555",
             "fullName": "hhthh",
             "ticketCode": "VN-B09-VN348"
           }
