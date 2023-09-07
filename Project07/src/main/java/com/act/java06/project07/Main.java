@@ -345,6 +345,7 @@ public class Main {
                     airline_menu(); // in menu các hãng hàng không cho khách chọn
                     int opt_for_airline_menu = -1;
                     Exception ex;
+                    sc.nextLine();
                     do {
                         opt_for_airline_menu = getIntInput(sc);//
                         opt_for_airline_menu--;
@@ -355,12 +356,7 @@ public class Main {
                     } while (opt_for_airline_menu < 0);
 
                     LAirport = read_json_file_Airport(Json_airport_file_path);
-                    System.out.println("=========Danh sach san bay=========");
-                    for (JSON.Airport item : LAirport) {
-                        System.out.print(stt + ". ");
-                        stt--;
-                        System.out.println("Ten san bay: " + item.getName() + "  Thanh pho: " + item.getCity()); // sửa lại cái này nhé Huy(sửa xong)
-                    }
+                    
 
                     //Hiện menu cho khách chọn nơi xuất phát, nơi đến, ngày đi và ngày về
                     int departure;
@@ -369,6 +365,7 @@ public class Main {
 
                     System.out.println("=======Menu======");
                     System.out.print("Chon diem xuat phat: ");
+
                     do {
 
                         departure = getIntInput(sc);
@@ -380,6 +377,7 @@ public class Main {
                     departure--;
 
                     System.out.print("Chon diem den: ");
+
                     do {
 
                         destination = getIntInput(sc);
@@ -395,10 +393,10 @@ public class Main {
 
                     //Hiển thị ds các chuyến bay khả dụng với ngày đi và ngày về đó (Quốc Huy làm)
                     int lua_Chon;
-                    System.out.println("========MENU========");
                     System.out.println("1. Khu hoi");
                     System.out.println("2. Mot chieu");
                     System.out.print("Nhap lua chon cua ban: ");
+                    sc.nextLine();
                     do {
 
                         lua_Chon = getIntInput(sc);
@@ -407,13 +405,13 @@ public class Main {
                             System.out.print("Ban hay nhap lai: ");
                         }
                     } while (lua_Chon < 0);
-                    sc.nextLine();
                     switch (lua_Chon) {
                         case 1:
                             LocalDate dateD1 = LocalDate.now();
                             LocalDate dateD2 = LocalDate.now();
                             LocalDate dateA1 = LocalDate.now();
                             LocalDate dateA2 = LocalDate.now();
+                            sc.nextLine();
                             do {
                                 try {
                                     ex = null;
@@ -509,6 +507,7 @@ public class Main {
                                 System.out.println(STT + ":" + "Ma chuyen bay: " + listFlight.get(i).getFlightCode() + "  Thoi gian di: " + listFlight.get(i).getDepartureTime() + "  Thoi gian toi: " + listFlight.get(i).getArrivalTime());// hien thi ma chuyen bay
                                 STT++;
                             }
+
                             do {
 
                                 opt_for_listFlight = getIntInput(sc);
@@ -567,6 +566,7 @@ public class Main {
                     // case cho quản lý
                     do {
                         modify_or_access_an_airline_option();
+                        sc.nextLine();
                         do {
 
                             opt_for_airline = getIntInput(sc);
@@ -587,6 +587,7 @@ public class Main {
                                 System.out.print("Nhập so may bay hang so huu: ");
 
                                 int numOfPlanes;
+
                                 do {
                                     numOfPlanes = getIntInput(sc);
                                     if (numOfPlanes < 0) {
@@ -633,6 +634,7 @@ public class Main {
 
                                 modify_or_access_a_flight();      // menu chỉnh sửa hoặc truy cập
                                 int opt_for_flight;//1 hãng hàng không
+                                sc.nextLine();
                                 do {
                                     opt_for_flight = getIntInput(sc);
                                     if (opt_for_flight < 0) {
@@ -665,6 +667,7 @@ public class Main {
                                             airline_menu();
                                             System.out.print("Nhap lua chon cua ban: ");
                                             int p;
+
                                             do {
                                                 p = getIntInput(sc);
                                                 if (p < 0) {
@@ -675,6 +678,7 @@ public class Main {
                                             int n;
 
                                             System.out.print("Nhap so luong chuyen bay muon them: ");
+
                                             do {
                                                 n = getIntInput(sc);
                                                 if (n < 0) {
@@ -694,6 +698,7 @@ public class Main {
 
                                             System.out.print("Nhap diem den: ");
                                             String diemDen = sc.nextLine();
+
                                             do {
                                                 System.out.println("Nhap thoi gian di ");
                                                 System.out.print("Nhap nam, thang, ngay: ");
@@ -837,6 +842,7 @@ public class Main {
                                             // chèn code vào đây
                                             airline_menu();
                                             System.out.print("Nhap lua chon cua ban: ");
+                                            sc.nextLine();
                                             do {
                                                 p = getIntInput(sc);
 
