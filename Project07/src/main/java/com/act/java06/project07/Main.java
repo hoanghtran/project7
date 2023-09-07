@@ -619,8 +619,7 @@ public class Main {
                                                 }
                                             } while (n < 0);
                                             sc.nextLine();
-                                            
-                                            
+
                                             System.out.print("Nhap so hieu chuyen bay: ");
                                             String soHieuCb = sc.nextLine();
                                             System.out.print("Nhap so hieu may bay: ");
