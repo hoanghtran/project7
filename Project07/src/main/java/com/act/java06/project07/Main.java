@@ -395,7 +395,6 @@ public class Main {
 
                     //Hiển thị ds các chuyến bay khả dụng với ngày đi và ngày về đó (Quốc Huy làm)
                     int lua_Chon;
-                    System.out.println("========MENU========");
                     System.out.println("1. Khu hoi");
                     System.out.println("2. Mot chieu");
                     System.out.print("Nhap lua chon cua ban: ");
@@ -414,6 +413,7 @@ public class Main {
                             LocalDate dateD2 = LocalDate.now();
                             LocalDate dateA1 = LocalDate.now();
                             LocalDate dateA2 = LocalDate.now();
+                            sc.nextLine();
                             do {
                                 try {
                                     ex = null;
