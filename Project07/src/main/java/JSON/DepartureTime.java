@@ -50,7 +50,7 @@ public class DepartureTime {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(DepartureTime.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        //sb.append(DepartureTime.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("date");
         sb.append('=');
         sb.append(((this.date == null)?"<null>":this.date));
