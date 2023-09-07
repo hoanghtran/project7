@@ -1054,8 +1054,9 @@ public class Main {
                                                                     for (c = 0; c < database.get(a).getFlights().get(b).getPassengers().size(); c++) {
                                                                         do {
                                                                             for (int j = 0; j < database.get(a).getFlights().get(b).getSeats().size(); j++) {
-
-                                                                                if (database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode().equals(ghe_cu)) {
+                                                                                
+                                                                                if (database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode().equals(ghe_cu)
+                                                                                        && database.get(a).getFlights().get(b).getFlightCode().equals(ma_Ve.substring(7, 12))) {
                                                                                     kt = 1;
                                                                                     printAvailableSeats(database.get(a).getFlights().get(b).getSeats());
                                                                                     database.get(a).getFlights().get(b).getSeats().get(j).setStatus(0);
