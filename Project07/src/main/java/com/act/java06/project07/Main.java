@@ -320,6 +320,7 @@ public class Main {
                     airline_menu(); // in menu các hãng hàng không cho khách chọn
                     int opt_for_airline_menu = -1;
                     Exception ex;
+                    sc.nextLine();
                     do {
                         opt_for_airline_menu = getIntInput(sc);//
                         opt_for_airline_menu--;
@@ -344,6 +345,7 @@ public class Main {
 
                     System.out.println("=======Menu======");
                     System.out.print("Chon diem xuat phat: ");
+
                     do {
 
                         departure = getIntInput(sc);
@@ -355,6 +357,7 @@ public class Main {
                     departure--;
 
                     System.out.print("Chon diem den: ");
+
                     do {
 
                         destination = getIntInput(sc);
@@ -374,6 +377,7 @@ public class Main {
                     System.out.println("1. Khu hoi");
                     System.out.println("2. Mot chieu");
                     System.out.print("Nhap lua chon cua ban: ");
+                    sc.nextLine();
                     do {
 
                         lua_Chon = getIntInput(sc);
@@ -382,7 +386,6 @@ public class Main {
                             System.out.print("Ban hay nhap lai: ");
                         }
                     } while (lua_Chon < 0);
-                    sc.nextLine();
                     switch (lua_Chon) {
                         case 1:
                             LocalDate dateD1 = LocalDate.now();
@@ -484,6 +487,7 @@ public class Main {
                                 System.out.println(STT + ":" + "Ma chuyen bay: " + listFlight.get(i).getFlightCode() + "  Thoi gian di: " + listFlight.get(i).getDepartureTime() + "  Thoi gian toi: " + listFlight.get(i).getArrivalTime());// hien thi ma chuyen bay
                                 STT++;
                             }
+
                             do {
 
                                 opt_for_listFlight = getIntInput(sc);
@@ -542,6 +546,7 @@ public class Main {
                     // case cho quản lý
                     do {
                         modify_or_access_an_airline_option();
+                        sc.nextLine();
                         do {
 
                             opt_for_airline = getIntInput(sc);
@@ -562,6 +567,7 @@ public class Main {
                                 System.out.print("Nhập so may bay hang so huu: ");
 
                                 int numOfPlanes;
+
                                 do {
                                     numOfPlanes = getIntInput(sc);
                                     if (numOfPlanes < 0) {
@@ -608,6 +614,7 @@ public class Main {
 
                                 modify_or_access_a_flight();      // menu chỉnh sửa hoặc truy cập
                                 int opt_for_flight;//1 hãng hàng không
+                                sc.nextLine();
                                 do {
                                     opt_for_flight = getIntInput(sc);
                                     if (opt_for_flight < 0) {
@@ -640,6 +647,7 @@ public class Main {
                                             airline_menu();
                                             System.out.print("Nhap lua chon cua ban: ");
                                             int p;
+
                                             do {
                                                 p = getIntInput(sc);
                                                 if (p < 0) {
@@ -650,6 +658,7 @@ public class Main {
                                             int n;
 
                                             System.out.print("Nhap so luong chuyen bay muon them: ");
+
                                             do {
                                                 n = getIntInput(sc);
                                                 if (n < 0) {
@@ -669,6 +678,7 @@ public class Main {
 
                                             System.out.print("Nhap diem den: ");
                                             String diemDen = sc.nextLine();
+
                                             do {
                                                 System.out.println("Nhap thoi gian di ");
                                                 System.out.print("Nhap nam, thang, ngay: ");
@@ -812,6 +822,7 @@ public class Main {
                                             // chèn code vào đây
                                             airline_menu();
                                             System.out.print("Nhap lua chon cua ban: ");
+                                            sc.nextLine();
                                             do {
                                                 p = getIntInput(sc);
 
@@ -1352,7 +1363,7 @@ public class Main {
                                                             }
                                                         } while (day < 0);
                                                         dateDep = new JSON.Date(year, month, day);
-                                                    } while (kiemTraNgayThang(year, month, day, 0, 0)!=true);
+                                                    } while (kiemTraNgayThang(year, month, day, 0, 0) != true);
                                                     for (int i = 0; i < database.get(p).getFlights().size(); i++) {
                                                         if (database.get(p).getFlights().get(i).getDepartureTime().getDate().equals(dateDep)) {
                                                             list.add(database.get(p).getFlights().get(i));
@@ -1365,7 +1376,7 @@ public class Main {
                                                     list.clear();
                                                     break;
                                                 case 4:
-                                                   do {
+                                                    do {
                                                         do {
                                                             year = getIntInput(sc);
                                                             if (year < 0) {
@@ -1388,7 +1399,7 @@ public class Main {
                                                             }
                                                         } while (day < 0);
                                                         dateArr = new JSON.Date__1(year, month, day);
-                                                    } while (kiemTraNgayThang(year, month, day, 0, 0)!=true);
+                                                    } while (kiemTraNgayThang(year, month, day, 0, 0) != true);
                                                     for (int i = 0; i < database.get(p).getFlights().size(); i++) {
                                                         if (database.get(p).getFlights().get(i).getArrivalTime().getDate().equals(dateArr)) {
                                                             list.add(database.get(p).getFlights().get(i));
@@ -1403,18 +1414,18 @@ public class Main {
                                                 case 5:
                                                     do {
                                                         hour = getIntInput(sc);
-                                                        if (hour < 0 || hour >24) {
+                                                        if (hour < 0 || hour > 24) {
                                                             System.out.println("Khong the nhap so am!!!");
                                                             System.out.print("Ban hay nhap lai gio: ");
                                                         }
-                                                    } while (hour < 0 || hour>24);
+                                                    } while (hour < 0 || hour > 24);
                                                     do {
                                                         minute = getIntInput(sc);
-                                                        if (minute < 0 || minute>60) {
+                                                        if (minute < 0 || minute > 60) {
                                                             System.out.println("Khong the nhap so am!!!");
                                                             System.out.print("Ban hay nhap lai phut: ");
                                                         }
-                                                    } while (minute < 0 || minute>60);
+                                                    } while (minute < 0 || minute > 60);
                                                     second = 0;
                                                     nano = 0;
                                                     timeDep = new Time(hour, minute, second, nano);
@@ -1432,18 +1443,18 @@ public class Main {
                                                 case 6:
                                                     do {
                                                         hour = getIntInput(sc);
-                                                        if (hour < 0 || hour >24) {
+                                                        if (hour < 0 || hour > 24) {
                                                             System.out.println("Khong the nhap so am!!!");
                                                             System.out.print("Ban hay nhap lai gio: ");
                                                         }
-                                                    } while (hour < 0 || hour>24);
+                                                    } while (hour < 0 || hour > 24);
                                                     do {
                                                         minute = getIntInput(sc);
-                                                        if (minute < 0 || minute>60) {
+                                                        if (minute < 0 || minute > 60) {
                                                             System.out.println("Khong the nhap so am!!!");
                                                             System.out.print("Ban hay nhap lai phut: ");
                                                         }
-                                                    } while (minute < 0 || minute>60);
+                                                    } while (minute < 0 || minute > 60);
                                                     second = 0;
                                                     nano = 0;
                                                     timeArr = new Time__1(hour, minute, second, nano);
