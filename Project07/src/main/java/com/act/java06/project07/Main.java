@@ -356,7 +356,6 @@ public class Main {
                     } while (opt_for_airline_menu < 0);
 
                     LAirport = read_json_file_Airport(Json_airport_file_path);
-                    
 
                     //Hiện menu cho khách chọn nơi xuất phát, nơi đến, ngày đi và ngày về
                     int departure;
@@ -1047,28 +1046,27 @@ public class Main {
                                                             }
                                                         }
                                                         if (checkTC == 1) {
-                                                            
+
                                                             int kt = 0;
                                                             int a, b, c;
                                                             for (a = 0; a < database.size(); a++) {
                                                                 for (b = 0; b < database.get(a).getFlights().size(); b++) {
                                                                     for (c = 0; c < database.get(a).getFlights().get(b).getPassengers().size(); c++) {
-                                                                        printAvailableSeats(database.get(a).getFlights().get(b).getSeats());
-
                                                                         do {
                                                                             for (int j = 0; j < database.get(a).getFlights().get(b).getSeats().size(); j++) {
 
                                                                                 if (database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode().equals(ghe_cu)) {
                                                                                     kt = 1;
+                                                                                    printAvailableSeats(database.get(a).getFlights().get(b).getSeats());
                                                                                     database.get(a).getFlights().get(b).getSeats().get(j).setStatus(0);
                                                                                     if (ghe_cu.charAt(0) == 'A') {
                                                                                         database.get(a).getFlights().get(b).setUsedEconomySeats(database.get(a).getFlights().get(b).getUsedEconomySeats() - 1);
                                                                                     } else if (ghe_cu.charAt(0) == 'B') {
                                                                                         database.get(a).getFlights().get(b).setUsedBusinessSeats(database.get(a).getFlights().get(b).getUsedBusinessSeats() - 1);
                                                                                     }
-                                                                                    write_airlines_file(Json_file_path, database);
                                                                                     break;
                                                                                 }
+                                                                                break;
                                                                             }
                                                                             if (kt == 0) {
                                                                                 System.out.printf("Ma ve %s khong hop le!!!\n", ma_Ve);
@@ -1078,6 +1076,7 @@ public class Main {
                                                                         } while (kt != 1);
                                                                     }
                                                                 }
+                                                                write_airlines_file(Json_file_path, database);
                                                                 System.out.print("Nhap cho ngoi moi: ");
                                                                 cho_ngoi = sc.nextLine();
                                                                 int kt1 = 0;
@@ -1112,7 +1111,7 @@ public class Main {
                                                             }
 
                                                         }
-                                                        
+
                                                         break;
                                                     }
 
