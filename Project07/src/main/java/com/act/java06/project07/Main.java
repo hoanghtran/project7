@@ -707,14 +707,9 @@ public class Main {
 
                                             break;
                                         case 3: // truy cập một chuyến bay có sẵn
-                                             // menu thêm sửa xóa
                                             int opt_for_passenger; // một hành khách
                                             do {
-<<<<<<< HEAD
-                                                add_edit_remove_a_passenger();
-=======
                                                 add_edit_remove_a_passenger(); // menu thêm sửa xóa
->>>>>>> 0a18532836d3b857ad3802c04f652fff3afcd1f0
                                                 opt_for_passenger = sc.nextInt();
                                                 switch (opt_for_passenger) {
                                                     case 1: {
@@ -743,7 +738,6 @@ public class Main {
                                                                         for (int j = 0; j < database.get(a).getFlights().get(b).getSeats().size(); j++) {
                                                                             if (database.get(a).getFlights().get(b).getSeats().get(j).getStatus() == 1) {
                                                                                 if (luaChon.equals(database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode())) {
-<<<<<<< HEAD
                                                                                     System.out.println("Cho ngoi da duoc dat. Vui long chon cho ngoi khac");
                                                                                     break;
                                                                                 }
@@ -751,19 +745,13 @@ public class Main {
                                                                                 database.get(a).getFlights().get(b).getPassengers().add(new JSON.Passenger(ID, hoTen, generateTicketCode(database.get(a).getCode(), luaChonCB, luaChon)));
                                                                                 setValueForSeat(database.get(a).getFlights().get(b).getSeats(), luaChon);
                                                                                 System.out.println("Da dat cho: "+luaChon);
-=======
-                                                                                    System.out.println("Cho ngoi da duoc dat. Vui long chon cho ngoi khac !!!");
-                                                                                }
-                                                                            } else {
-                                                                                database.get(a).getFlights().get(b).getPassengers().add(new JSON.Passenger(ID, hoTen, generateTicketCode(database.get(a).getCode(), luaChonCB, luaChon)));
-                                                                                System.out.println("Da dat cho: " + luaChon);
+                                                                                    
 
                                                                                 if (luaChon.charAt(0) == 'A') {
                                                                                     database.get(a).getFlights().get(b).setUsedEconomySeats(database.get(a).getFlights().get(b).getUsedEconomySeats() + 1);
                                                                                 } else if (luaChon.charAt(0) == 'B') {
                                                                                     database.get(a).getFlights().get(b).setUsedBusinessSeats(database.get(a).getFlights().get(b).getUsedBusinessSeats() + 1);
                                                                                 }
->>>>>>> 0a18532836d3b857ad3802c04f652fff3afcd1f0
                                                                                 break;
                                                                             }
                                                                         }
