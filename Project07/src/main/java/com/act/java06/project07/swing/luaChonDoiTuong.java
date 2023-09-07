@@ -46,6 +46,11 @@ public class luaChonDoiTuong extends javax.swing.JFrame {
         passenger.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         passenger.setText("KHÁCH HÀNG");
         passenger.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        passenger.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passengerActionPerformed(evt);
+            }
+        });
 
         maneger.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         maneger.setText("QUẢN LÝ");
@@ -55,8 +60,6 @@ public class luaChonDoiTuong extends javax.swing.JFrame {
                 manegerActionPerformed(evt);
             }
         });
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\OneDrive - actvn.edu.vn\\Pictures\\Saved Pictures\\z4643593219688_898efd228736323a1cb3dcb2081b3d01.jpg")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -108,6 +111,14 @@ public class luaChonDoiTuong extends javax.swing.JFrame {
         login.setLocationRelativeTo(null);
         dispose();
     }//GEN-LAST:event_manegerActionPerformed
+
+    private void passengerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passengerActionPerformed
+        // TODO add your handling code here:
+        khachHang pas = new khachHang();
+        pas.setVisible(true);
+        pas.setLocationRelativeTo(null);
+        dispose();
+    }//GEN-LAST:event_passengerActionPerformed
 
     /**
      * @param args the command line arguments

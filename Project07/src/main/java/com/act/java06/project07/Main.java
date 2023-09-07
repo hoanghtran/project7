@@ -640,9 +640,10 @@ public class Main {
 
                                             break;
                                         case 3: // truy cập một chuyến bay có sẵn
-                                            add_edit_remove_a_passenger(); // menu thêm sửa xóa
+                                             // menu thêm sửa xóa
                                             int opt_for_passenger; // một hành khách
                                             do {
+                                                add_edit_remove_a_passenger();
                                                 opt_for_passenger = sc.nextInt();
                                                 switch (opt_for_passenger) {
                                                     case 1: {
@@ -670,11 +671,12 @@ public class Main {
                                                                             if (database.get(a).getFlights().get(b).getSeats().get(j).getStatus() == 1) {
                                                                                 if (luaChon.equals(database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode())) {
                                                                                     System.out.println("Cho ngoi da duoc dat. Vui long chon cho ngoi khac");
+                                                                                    break;
                                                                                 }
                                                                             } else {
                                                                                 database.get(a).getFlights().get(b).getPassengers().add(new JSON.Passenger(ID, hoTen, generateTicketCode(database.get(a).getCode(), luaChonCB, luaChon)));
                                                                                 setValueForSeat(database.get(a).getFlights().get(b).getSeats(), luaChon);
-                                                                                System.out.println("Da dat cho: " + luaChon);
+                                                                                System.out.println("Da dat cho: "+luaChon);
                                                                                 break;
                                                                             }
                                                                         }
@@ -687,6 +689,7 @@ public class Main {
                                                         if (checkCodeCB == 0) {
                                                             System.out.println("Khong tim thay ma chuyen bay");
                                                         }
+                                                        
                                                         break;
                                                     }
 
@@ -708,19 +711,17 @@ public class Main {
                                                                         if (database.get(a).getFlights().get(b).getPassengers().get(c).getId().equals(IDxoa)) {
                                                                             checkID = 1;
                                                                             for (int i = 0; i < database.get(a).getFlights().get(b).getSeats().size(); i++) {
-                                                                                if (database.get(a).getFlights().get(b).getSeats().get(i).getSeatCode().equals(database.get(a).getFlights().get(b).getPassengers().get(c).getTicketCode().substring(3, 5))) {
                                                                                     database.get(a).getFlights().get(b).getSeats().get(i).setStatus(0);
-
-                                                                                }
-
                                                                             }
                                                                             database.get(a).getFlights().get(b).getPassengers().remove(c);
                                                                         }
                                                                     }
                                                                 }
+                                                                
                                                                 break;
                                                             }
                                                         }
+                                                        write_airlines_file(Json_file_path, database);
                                                         if (checkID == 1) {
                                                             System.out.println("Da xoa ID : " + IDxoa);
                                                         } else {
@@ -751,6 +752,7 @@ public class Main {
                                                         String cccd = "";
                                                         String hoTen = "";
                                                         System.out.print("Nhap ID hanh khach muon sua: ");
+                                                        sc.nextLine();
                                                         String IDsua = sc.nextLine();
                                                         System.out.print("Nhap ma chuyen bay: ");
                                                         String macb = sc.nextLine();
