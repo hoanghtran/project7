@@ -293,7 +293,13 @@ public class Main {
 
         do {
             navigator(); // menu điều hướng
+            do{
             option = getIntInput(sc);
+            if (option < 0) {
+                            System.out.println("Khong the nhap so am!!!");
+                            System.out.print("Ban hay nhap lai: ");
+                        }
+            } while (option<0);
             switch (option) {
                 case 1:
 
@@ -495,7 +501,9 @@ public class Main {
                             Collections.sort(listFlight, new DateComparator());
                             STT = 1;
                             for (int i = 0; i < listFlight.size(); i++) {
-                                System.out.println(STT + ":" + "Ma chuyen bay: " + listFlight.get(i).getFlightCode() + "  Thoi gian di: " + listFlight.get(i).getDepartureTime() + "  Thoi gian toi: " + listFlight.get(i).getArrivalTime());// hien thi ma chuyen bay
+                                System.out.println(STT + ":" + "Ma chuyen bay: " + listFlight.get(i).getFlightCode() + "  Thoi gian di: " + listFlight.get(i).getDepartureTime() + "  Thoi gian toi: " + listFlight.get(i).getArrivalTime()+
+                                           "  So ve con lai cua hang thuong gia: " + (listFlight.get(i).getTotalBusinessSeats()-listFlight.get(i).getUsedBusinessSeats())+
+                                         "  So ve con lai cua hang pho thong: " + (listFlight.get(i).getTotalEconomySeats()-listFlight.get(i).getUsedEconomySeats()));// hien thi ma chuyen bay
                                 STT++;
                             }
                             do {
