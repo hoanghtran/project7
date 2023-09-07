@@ -619,8 +619,8 @@ public class Main {
                                                 }
                                             } while (n < 0);
                                             sc.nextLine();
-                                            String pattern = "yyyy-MM-dd HH:mm:ss";
-                                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
+                                            
+                                            
                                             System.out.print("Nhap so hieu chuyen bay: ");
                                             String soHieuCb = sc.nextLine();
                                             System.out.print("Nhap so hieu may bay: ");
@@ -815,9 +815,9 @@ public class Main {
                                                                 if (database.get(a).getFlights().get(b).getFlightCode().equals(soHieu)) {
                                                                     checkFlCode = 1;
                                                                     for (int c = 0; c < database.get(a).getFlights().get(b).getPassengers().size(); c++) {
-                           
+
                                                                         System.out.println(database.get(a).getFlights().get(b).getPassengers().get(c).toString());
-                                                                         
+
                                                                     }
                                                                 }
                                                             }
@@ -921,17 +921,17 @@ public class Main {
                                                         database.get(p).getFlights().get(pointEdit).setDestination(diemDen);
                                                         System.out.println("Nhap thoi gian di ");
                                                         System.out.print("Nhap nam, thang, ngay: ");
-                                                         year = sc.nextInt();
-                                                         month = sc.nextInt();
-                                                         day = sc.nextInt();
-                                                         dateDep = new JSON.Date(year, month, day);
+                                                        year = sc.nextInt();
+                                                        month = sc.nextInt();
+                                                        day = sc.nextInt();
+                                                        dateDep = new JSON.Date(year, month, day);
                                                         System.out.print("Nhap gio, phut: ");
-                                                         hour = sc.nextInt();
-                                                         minute = sc.nextInt();
-                                                         second = 0;
-                                                         nano = 0;
-                                                         timeDep = new Time(hour, minute, second, nano);
-                                                         tgDi = new JSON.DepartureTime(dateDep, timeDep);
+                                                        hour = sc.nextInt();
+                                                        minute = sc.nextInt();
+                                                        second = 0;
+                                                        nano = 0;
+                                                        timeDep = new Time(hour, minute, second, nano);
+                                                        tgDi = new JSON.DepartureTime(dateDep, timeDep);
 
                                                         database.get(p).getFlights().get(pointEdit).setDepartureTime(tgDi);
                                                         // tgian
@@ -940,27 +940,27 @@ public class Main {
                                                         year = sc.nextInt();
                                                         month = sc.nextInt();
                                                         day = sc.nextInt();
-                                                         dateArr = new JSON.Date__1(year, month, day);
+                                                        dateArr = new JSON.Date__1(year, month, day);
                                                         System.out.print("Nhap gio, phut: ");
                                                         hour = sc.nextInt();
                                                         minute = sc.nextInt();
                                                         second = sc.nextInt();
                                                         nano = 0;
-                                                         timeArr = new Time__1(hour, minute, second, nano);
+                                                        timeArr = new Time__1(hour, minute, second, nano);
                                                         tgDen = new JSON.ArrivalTime(dateArr, timeArr);
                                                         database.get(p).getFlights().get(pointEdit).setArrivalTime(tgDen);
                                                         //tgian
                                                         System.out.print("Nhap so luong cho ngoi hang thuong gia: ");
-                                                         soluongTg = sc.nextInt();
+                                                        soluongTg = sc.nextInt();
                                                         database.get(p).getFlights().get(pointEdit).setUsedBusinessSeats(soluongTg);
                                                         System.out.print("Nhap so luong cho ngoi hang pho thuong: ");
                                                         soluongPt = sc.nextInt();
                                                         database.get(p).getFlights().get(pointEdit).setUsedEconomySeats(soluongPt);
                                                         System.out.println("Nhap gia ve hang thuong gia: ");
-                                                         giaVeTg = sc.nextInt();
+                                                        giaVeTg = sc.nextInt();
                                                         database.get(p).getFlights().get(pointEdit).setBusinessFare(giaVeTg);
                                                         System.out.println("Nhap gia ve hang pho thong: ");
-                                                         giaVePt = sc.nextInt();
+                                                        giaVePt = sc.nextInt();
                                                         database.get(p).getFlights().get(pointEdit).setEconomyFare(giaVePt);
                                                         System.out.println("Thong bao thay doi den hanh khach co so hieu chuyen bay: " + ctFlightCode);
                                                         break;
@@ -980,7 +980,8 @@ public class Main {
                                             for (int i = 0; i < database.size(); i++) {
                                                 if (database.get(i).getCode().equals(code)) {
                                                     check = 1;
-                                                     month = 0; year = 0;
+                                                    month = 0;
+                                                    year = 0;
 
                                                     System.out.println("Tính doanh thu theo");
                                                     System.out.println("1. Tháng");
@@ -1053,10 +1054,10 @@ public class Main {
                                                     list.clear();
                                                     break;
                                                 case 3:
-                                                     year = sc.nextInt();
-                                                     month = sc.nextInt();
-                                                     day = sc.nextInt();
-                                                     dateDep = new JSON.Date(year, month, day);
+                                                    year = sc.nextInt();
+                                                    month = sc.nextInt();
+                                                    day = sc.nextInt();
+                                                    dateDep = new JSON.Date(year, month, day);
 
                                                     for (int i = 0; i < database.get(p).getFlights().size(); i++) {
                                                         if (database.get(p).getFlights().get(i).getDepartureTime().getDate().equals(dateDep)) {
@@ -1073,7 +1074,7 @@ public class Main {
                                                     year = sc.nextInt();
                                                     month = sc.nextInt();
                                                     day = sc.nextInt();
-                                                     dateArr = new JSON.Date__1(year, month, day);
+                                                    dateArr = new JSON.Date__1(year, month, day);
                                                     for (int i = 0; i < database.get(p).getFlights().size(); i++) {
                                                         if (database.get(p).getFlights().get(i).getArrivalTime().getDate().equals(dateArr)) {
                                                             list.add(database.get(p).getFlights().get(i));
@@ -1086,11 +1087,11 @@ public class Main {
                                                     list.clear();
                                                     break;
                                                 case 5:
-                                                     hour = sc.nextInt();
-                                                     minute = sc.nextInt();
-                                                     second = 0;
-                                                     nano = 0;
-                                                     timeDep = new Time(hour, minute, second, nano);
+                                                    hour = sc.nextInt();
+                                                    minute = sc.nextInt();
+                                                    second = 0;
+                                                    nano = 0;
+                                                    timeDep = new Time(hour, minute, second, nano);
                                                     for (int i = 0; i < database.get(p).getFlights().size(); i++) {
                                                         if (database.get(p).getFlights().get(i).getDepartureTime().getTime().equals(timeDep)) {
                                                             list.add(database.get(p).getFlights().get(i));
@@ -1107,7 +1108,7 @@ public class Main {
                                                     minute = sc.nextInt();
                                                     second = 0;
                                                     nano = 0;
-                                                     timeArr = new Time__1(hour, minute, second, nano);
+                                                    timeArr = new Time__1(hour, minute, second, nano);
                                                     for (int i = 0; i < database.get(p).getFlights().size(); i++) {
                                                         if (database.get(p).getFlights().get(i).getArrivalTime().getTime().equals(timeArr)) {
                                                             list.add(database.get(p).getFlights().get(i));
