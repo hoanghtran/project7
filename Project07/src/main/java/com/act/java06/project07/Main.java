@@ -358,12 +358,7 @@ public class Main {
                     } while (opt_for_airline_menu < 0);
 
                     LAirport = read_json_file_Airport(Json_airport_file_path);
-                    System.out.println("=========Danh sach san bay=========");
-                    for (JSON.Airport item : LAirport) {
-                        System.out.print(stt + ". ");
-                        stt--;
-                        System.out.println("Ten san bay: " + item.getName() + "  Thanh pho: " + item.getCity()); // sửa lại cái này nhé Huy(sửa xong)
-                    }
+                    
 
                     //Hiện menu cho khách chọn nơi xuất phát, nơi đến, ngày đi và ngày về
                     int departure;
