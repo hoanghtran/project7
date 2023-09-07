@@ -619,8 +619,6 @@ public class Main {
                                                 }
                                             } while (n < 0);
                                             sc.nextLine();
-                                            String pattern = "yyyy-MM-dd HH:mm:ss";
-                                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
                                             System.out.print("Nhap so hieu chuyen bay: ");
                                             String soHieuCb = sc.nextLine();
                                             System.out.print("Nhap so hieu may bay: ");
