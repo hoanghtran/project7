@@ -287,7 +287,7 @@ public class Main {
         List<JSON.Airport> LAirport = new ArrayList<>();
         LAirport = read_json_file_Airport(Json_airport_file_path);
 
-        ArrayList<JSON.Flight> listFlight = new ArrayList<>();
+        List<JSON.Flight> listFlight = new ArrayList<>();
 
         int option = -1, opt_for_airline = -1;
 
@@ -295,41 +295,76 @@ public class Main {
             navigator(); // menu điều hướng
             option = getIntInput(sc);
             switch (option) {
-                case 1: {
-                    // case cho khách hàng
+                case 1:
 
+                    // case cho khách hàng
                     DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                     int stt = 1;
                     airline_menu(); // in menu các hãng hàng không cho khách chọn
                     int opt_for_airline_menu = -1;
                     Exception ex;
                     do {
-                        ex = null;
-                        try {
-                            opt_for_airline_menu = sc.nextInt(); // lấy index của hãng hàng không 
-                            opt_for_airline_menu--;
-                        } catch (Exception ex_1) {
-                            System.out.println("Vui long nhap dung stt cua hang hang khong" + ex_1); // KH không biết mã lỗi, in ra
-                            ex = ex_1;                 // lỗi "Vui lòng nhập đúng số ... thay vì in ex_1 (sửa xong)
+                        opt_for_airline_menu = getIntInput(sc);//
+                        opt_for_airline_menu--;
+                        if (opt_for_airline_menu < 0) {
+                            System.out.println("Khong the nhap so am!!!");
+                            System.out.print("Ban hay nhap lai: ");
                         }
-                    } while (ex != null || opt_for_airline_menu < 0);
+                    } while (opt_for_airline_menu < 0);
+
+                    LAirport = read_json_file_Airport(Json_airport_file_path);
+                    System.out.println("=========Danh sach san bay=========");
+                    for (JSON.Airport item : LAirport) {
+                        System.out.print(stt + ". ");
+                        stt--;
+                        System.out.println("Ten san bay: " + item.getName() + "  Thanh pho: " + item.getCity()); // sửa lại cái này nhé Huy(sửa xong)
+                    }
 
                     //Hiện menu cho khách chọn nơi xuất phát, nơi đến, ngày đi và ngày về
+                    int departure;
+                    int destination;
                     airport_menu(Json_airport_file_path);
 
                     System.out.println("=======Menu======");
                     System.out.print("Chon diem xuat phat: ");
-                    int departure = sc.nextInt();
+                    do {
+
+                        departure = getIntInput(sc);
+                        if (departure < 0) {
+                            System.out.println("Khong the nhap so am!!!");
+                            System.out.print("Ban hay nhap lai: ");
+                        }
+                    } while (departure < 0);
+                    departure--;
+
                     System.out.print("Chon diem den: ");
-                    int destination = sc.nextInt();
-                    String departureString = LAirport.get(departure--).getCity();
-                    String destinationString = LAirport.get(destination--).getCity();
+                    do {
+
+                        destination = getIntInput(sc);
+                        if (destination < 0) {
+                            System.out.println("Khong the nhap so am!!!");
+                            System.out.print("Ban hay nhap lai: ");
+                        }
+                    } while (destination < 0);
+                    destination--;
+
+                    String departureString = LAirport.get(departure).getCity();
+                    String destinationString = LAirport.get(destination).getCity();
+
                     //Hiển thị ds các chuyến bay khả dụng với ngày đi và ngày về đó (Quốc Huy làm)
+                    int lua_Chon;
                     System.out.println("========MENU========");
                     System.out.println("1. Khu hoi");
                     System.out.println("2. Mot chieu");
                     System.out.print("Nhap lua chon cua ban: ");
-                    int lua_Chon = sc.nextInt();
+                    do {
+
+                        lua_Chon = getIntInput(sc);
+                        if (lua_Chon < 0) {
+                            System.out.println("Khong the nhap so am!!!");
+                            System.out.print("Ban hay nhap lai: ");
+                        }
+                    } while (lua_Chon < 0);
                     sc.nextLine();
                     switch (lua_Chon) {
                         case 1:
@@ -385,20 +420,21 @@ public class Main {
                             }
                             Collections.sort(listFlight, new DateComparator());
                             int STT = 1;
-                            for (JSON.Flight item : listFlight) {
-                                System.out.println(STT + ":" + "Ma chuyen bay: " + item.getFlightCode() + "  Thoi gian di: " + item.getDepartureTime() + "  Thoi gian toi: " + item.getArrivalTime());// hien thi ma chuyen bay
+                            for (int i = 0; i < listFlight.size(); i++) {
+                                System.out.println(STT + ":" + "Ma chuyen bay: " + listFlight.get(i).getFlightCode() + "  Thoi gian di: " + listFlight.get(i).getDepartureTime() + "  Thoi gian toi: " + listFlight.get(i).getArrivalTime());// hien thi ma chuyen bay
                                 STT++;
                             }
-                            int opt_for_listFlight = -1;
+                            int opt_for_listFlight;
                             do {
-                                try {
-                                    opt_for_listFlight = sc.nextInt();
-                                    opt_for_listFlight--;
-                                } catch (Exception ex_1) {
-                                    System.out.println("Vui long nhap dung stt chuyen bay" + ex_1);
-                                    ex = ex_1;
+
+                                opt_for_listFlight = getIntInput(sc);
+                                if (opt_for_listFlight < 0) {
+                                    System.out.println("Khong the nhap so am!!!");
+                                    System.out.print("Ban hay nhap lai: ");
                                 }
-                            } while (ex != null || opt_for_listFlight < 0);
+                            } while (opt_for_listFlight < 0);
+                            opt_for_listFlight--;
+
                             String maChuyenBay = listFlight.get(opt_for_listFlight).getFlightCode();
                             themHanhKhachvaVe(database, Json_file_path, maChuyenBay);
                             System.out.println("Danh sach cac chuyen bay tro ve: ");
@@ -427,20 +463,20 @@ public class Main {
                             }
                             Collections.sort(listFlight, new DateComparator());
                             STT = 1;
-                            for (JSON.Flight item : listFlight) {
-                                System.out.println(STT + ":" + "Ma chuyen bay: " + item.getFlightCode() + "  Thoi gian di: " + item.getDepartureTime() + "  Thoi gian toi: " + item.getArrivalTime());// hien thi ma chuyen bay
+                            for (int i = 0; i < listFlight.size(); i++) {
+                                System.out.println(STT + ":" + "Ma chuyen bay: " + listFlight.get(i).getFlightCode() + "  Thoi gian di: " + listFlight.get(i).getDepartureTime() + "  Thoi gian toi: " + listFlight.get(i).getArrivalTime());// hien thi ma chuyen bay
                                 STT++;
                             }
-                            opt_for_listFlight = -1;
                             do {
-                                try {
-                                    opt_for_listFlight = sc.nextInt();
-                                    opt_for_listFlight--;
-                                } catch (Exception ex_1) {
-                                    System.out.println("Vui long nhap dung stt chuyen bay" + ex_1);
-                                    ex = ex_1;
+
+                                opt_for_listFlight = getIntInput(sc);
+                                if (opt_for_listFlight < 0) {
+                                    System.out.println("Khong the nhap so am!!!");
+                                    System.out.print("Ban hay nhap lai: ");
                                 }
-                            } while (ex != null || opt_for_listFlight < 0);
+                            } while (opt_for_airline < 0);
+                            opt_for_listFlight--;
+
                             maChuyenBay = listFlight.get(opt_for_listFlight).getFlightCode();
                             themHanhKhachvaVe(database, Json_file_path, maChuyenBay);
                             listFlight.clear();
@@ -458,35 +494,43 @@ public class Main {
                             }
                             Collections.sort(listFlight, new DateComparator());
                             STT = 1;
-                            for (JSON.Flight item : listFlight) {
-                                System.out.println(STT + ":" + "Ma chuyen bay: " + item.getFlightCode() + "  Thoi gian di: " + item.getDepartureTime() + "  Thoi gian toi: " + item.getArrivalTime());// hien thi ma chuyen bay
+                            for (int i = 0; i < listFlight.size(); i++) {
+                                System.out.println(STT + ":" + "Ma chuyen bay: " + listFlight.get(i).getFlightCode() + "  Thoi gian di: " + listFlight.get(i).getDepartureTime() + "  Thoi gian toi: " + listFlight.get(i).getArrivalTime());// hien thi ma chuyen bay
                                 STT++;
                             }
-                            opt_for_listFlight = -1;
                             do {
-                                try {
-                                    opt_for_listFlight = sc.nextInt();
-                                    opt_for_listFlight--;
-                                } catch (Exception ex_1) {
-                                    System.out.println("Vui long nhap dung stt chuyen bay" + ex_1);
-                                    ex = ex_1;
+
+                                opt_for_listFlight = getIntInput(sc);
+                                if (opt_for_listFlight < 0) {
+                                    System.out.println("Khong the nhap so am!!!");
+                                    System.out.print("Ban hay nhap lai: ");
                                 }
-                            } while (ex != null || opt_for_listFlight < 0);
+                            } while (opt_for_listFlight < 0);
+                            opt_for_listFlight--;
+
                             maChuyenBay = listFlight.get(opt_for_listFlight).getFlightCode();
                             themHanhKhachvaVe(database, Json_file_path, maChuyenBay);
                             listFlight.clear();
                             break;
                     }
-                    //Cùng lúc đấy tạo (mã) vé + hành khách vào chuyến bay (Đức Duy + Q.Huy làm)(đã xong)
-                    //Chuyển value của seat được đặt từ - : 1, usedSeat +1, availableSeat -1 (Duy Huy làm)
-                    // break case 1 - case cho khách hàng
-                }
+
+                    break;
+                //Cùng lúc đấy tạo (mã) vé + hành khách vào chuyến bay (Đức Duy + Q.Huy làm)(đã xong)
+                //Chuyển value của seat được đặt từ - : 1, usedSeat +1, availableSeat -1 (Duy Huy làm)
+                // break case 1 - case cho khách hàng
+
                 case 2: {
                     // case cho quản lý
                     do {
                         modify_or_access_an_airline_option();
-                        opt_for_airline = sc.nextInt();
+                        do {
 
+                            opt_for_airline = getIntInput(sc);
+                            if (opt_for_airline < 0) {
+                                System.out.println("Khong the nhap so am!!!");
+                                System.out.print("Ban hay nhap lai: ");
+                            }
+                        } while (opt_for_airline < 0);
                         switch (opt_for_airline) {
                             case 1: // tạo một hãng hàng không 
                                 System.out.print("Nhap ten hang hang khong: ");
@@ -497,7 +541,15 @@ public class Main {
                                 String code = sc.nextLine();
 
                                 System.out.print("Nhập so may bay hang so huu: ");
-                                int numOfPlanes = sc.nextInt();
+
+                                int numOfPlanes;
+                                do {
+                                    numOfPlanes = getIntInput(sc);
+                                    if (numOfPlanes < 0) {
+                                        System.out.println("Khong the nhap so am!!!");
+                                        System.out.print("Ban hay nhap lai: ");
+                                    }
+                                } while (numOfPlanes < 0);
 
                                 List<JSON.Plane> listOfPlanes = new ArrayList<>();
                                 JSON.Plane plane = new JSON.Plane();
@@ -548,85 +600,80 @@ public class Main {
                                             // chèn code vào đây 
                                             airline_menu();
                                             System.out.print("Nhap lua chon cua ban: ");
-                                            int p = sc.nextInt();
+                                            int p;
+                                            do {
+                                                p = getIntInput(sc);
+                                                if (p < 0) {
+                                                    System.out.println("Khong the nhap so am!!!");
+                                                    System.out.print("Ban hay nhap lai: ");
+                                                }
+                                            } while (p < 0);
                                             int n;
-                                            try {
-                                                do {
-                                                    System.out.print("Nhap so luong chuyen bay muon them: ");
-                                                    n = sc.nextInt();
-                                                    sc.nextLine();
-                                                    String pattern = "yyyy-MM-dd HH:mm:ss";
-                                                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
-                                                    if (n > 0) {
-                                                        for (int i = 0; i < n; i++) {
-                                                            System.out.print("Nhap so hieu chuyen bay: ");
-                                                            String soHieuCb = sc.nextLine();
 
-                                                            System.out.print("Nhap so hieu may bay: ");
-                                                            String soHieuMb = sc.nextLine();
+                                            System.out.print("Nhap so luong chuyen bay muon them: ");
+                                            do {
+                                                n = getIntInput(sc);
+                                                if (n < 0) {
+                                                    System.out.println("Khong the nhap so am!!!");
+                                                    System.out.print("Ban hay nhap lai: ");
+                                                }
+                                            } while (n < 0);
+                                            sc.nextLine();
+                                            System.out.print("Nhap so hieu chuyen bay: ");
+                                            String soHieuCb = sc.nextLine();
+                                            System.out.print("Nhap so hieu may bay: ");
+                                            String soHieuMb = sc.nextLine();
 
-                                                            System.out.print("Nhap diem xuat phat: ");
-                                                            String diemXp = sc.nextLine();
+                                            System.out.print("Nhap diem xuat phat: ");
+                                            String diemXp = sc.nextLine();
 
-                                                            System.out.print("Nhap diem den: ");
-                                                            String diemDen = sc.nextLine();
+                                            System.out.print("Nhap diem den: ");
+                                            String diemDen = sc.nextLine();
 
-                                                            System.out.println("Nhap thoi gian di ");
-                                                            System.out.print("Nhap nam, thang, ngay: ");
+                                            System.out.println("Nhap thoi gian di ");
+                                            System.out.print("Nhap nam, thang, ngay: ");
 
-                                                            int year = sc.nextInt();
-                                                            int month = sc.nextInt();
-                                                            int day = sc.nextInt();
-                                                            JSON.Date dateDep = new JSON.Date(year, month, day);
-                                                            System.out.print("Nhap gio, phut, giay: ");
-                                                            int hour = sc.nextInt();
-                                                            int minute = sc.nextInt();
-                                                            int second = sc.nextInt();
-                                                            int nano = 0;
-                                                            JSON.Time timeDep = new Time(hour, minute, second, nano);
-                                                            JSON.DepartureTime tgDi = new JSON.DepartureTime(dateDep, timeDep);
-                                                            System.out.println("Nhap thoi gian den ");
-                                                            System.out.print("Nhap nam, thang, ngay: ");
-                                                            year = sc.nextInt();
-                                                            month = sc.nextInt();
-                                                            day = sc.nextInt();
-                                                            JSON.Date__1 dateArr = new JSON.Date__1(year, month, day);
-                                                            System.out.print("Nhập gio, phut, giay: ");
-                                                            hour = sc.nextInt();
-                                                            minute = sc.nextInt();
-                                                            second = sc.nextInt();
-                                                            nano = 0;
-                                                            JSON.Time__1 timeArr = new Time__1(hour, minute, second, nano);
-                                                            JSON.ArrivalTime tgDen = new JSON.ArrivalTime(dateArr, timeArr);
+                                            int year = sc.nextInt();
+                                            int month = sc.nextInt();
+                                            int day = sc.nextInt();
+                                            JSON.Date dateDep = new JSON.Date(year, month, day);
+                                            System.out.print("Nhap gio, phut: ");
+                                            int hour = sc.nextInt();
+                                            int minute = sc.nextInt();
+                                            int second = 0;
+                                            int nano = 0;
+                                            JSON.Time timeDep = new Time(hour, minute, second, nano);
+                                            JSON.DepartureTime tgDi = new JSON.DepartureTime(dateDep, timeDep);
+                                            System.out.println("Nhap thoi gian den ");
+                                            System.out.print("Nhap nam, thang, ngay: ");
+                                            year = sc.nextInt();
+                                            month = sc.nextInt();
+                                            day = sc.nextInt();
+                                            JSON.Date__1 dateArr = new JSON.Date__1(year, month, day);
+                                            System.out.print("Nhập gio, phut: ");
+                                            hour = sc.nextInt();
+                                            minute = sc.nextInt();
+                                            second = 0;
+                                            nano = 0;
+                                            JSON.Time__1 timeArr = new Time__1(hour, minute, second, nano);
+                                            JSON.ArrivalTime tgDen = new JSON.ArrivalTime(dateArr, timeArr);
+                                            System.out.print("Nhap so luong cho ngoi hang thuong gia: ");
+                                            int soluongTg = sc.nextInt();
+                                            System.out.print("Nhap so luong cho ngoi hang pho thuong: ");
+                                            int soluongPt = sc.nextInt();
 
-                                                            System.out.print("Nhap so luong cho ngoi hang thuong gia: ");
-                                                            int soluongTg = sc.nextInt();
+                                            System.out.print("Nhap gia ve hang thuong gia: ");
+                                            int giaVeTg = sc.nextInt();
 
-                                                            System.out.print("Nhap so luong cho ngoi hang pho thuong: ");
-                                                            int soluongPt = sc.nextInt();
+                                            System.out.println("Nhap gia ve hang pho thong: ");
+                                            int giaVePt = sc.nextInt();
 
-                                                            System.out.print("Nhap gia ve hang thuong gia: ");
-                                                            int giaVeTg = sc.nextInt();
-
-                                                            System.out.println("Nhap gia ve hang pho thong: ");
-                                                            int giaVePt = sc.nextInt();
-
-                                                            database.get(p).getFlights().add(new JSON.Flight(soHieuCb, soHieuMb, tgDi, tgDen, diemXp, diemDen, giaVeTg, giaVePt, soluongTg, soluongPt));
-                                                            ArrayList<Seat> seats = new ArrayList<>();
-                                                            newEmptySeats(seats);
-                                                            database.get(p).getFlights().get(database.get(p).getFlights().size() - 1).setSeats(seats);
-                                                            // thêm phần viết lại vào file
-                                                            //write_airlines_file(Json_file_path, database);
-                                                        }
-                                                    } else {
-                                                        System.out.println("Loi nhap so luong!!!!!!");
-                                                        System.out.println("So can nhap la so nguyen duong!!!!");
-                                                    }
-                                                } while (n < 0);
-                                            } catch (Exception ex_2) {
-                                                System.out.println("Da xay ra loi khi nhap 1 chuyen bay" + ex_2);
-
-                                            }
+                                            database.get(p).getFlights().add(new JSON.Flight(soHieuCb, soHieuMb, tgDi, tgDen, diemXp, diemDen, giaVeTg, giaVePt, soluongTg, soluongPt));
+                                            ArrayList<Seat> seats = new ArrayList<>();
+                                            newEmptySeats(seats);
+                                            database.get(p).getFlights().get(database.get(p).getFlights().size() - 1).setSeats(seats);
+                                            // thêm phần viết lại vào file
+                                            //write_airlines_file(Json_file_path, database);
 
                                             break;
                                         case 2: // xóa một chuyến bay
@@ -779,7 +826,9 @@ public class Main {
                                                                 if (database.get(a).getFlights().get(b).getFlightCode().equals(soHieu)) {
                                                                     checkFlCode = 1;
                                                                     for (int c = 0; c < database.get(a).getFlights().get(b).getPassengers().size(); c++) {
-                                                                        database.get(a).getFlights().get(b).getPassengers().get(c).toString();
+                           
+                                                                        System.out.println(database.get(a).getFlights().get(b).getPassengers().get(c).toString());
+                                                                         
                                                                     }
                                                                 }
                                                             }
@@ -877,24 +926,24 @@ public class Main {
                                                     if (database.get(p).getFlights().get(i).getFlightCode().equals(ctFlightCode)) {
                                                         pointEdit = i;
                                                         System.out.print("Nhap diem xuat phat: ");
-                                                        String diemXp = sc.nextLine();
+                                                        diemXp = sc.nextLine();
                                                         database.get(p).getFlights().get(pointEdit).setDeparture(diemXp);
                                                         System.out.print("Nhap diem den: ");
-                                                        String diemDen = sc.nextLine();
+                                                        diemDen = sc.nextLine();
                                                         database.get(p).getFlights().get(pointEdit).setDestination(diemDen);
                                                         System.out.println("Nhap thoi gian di ");
                                                         System.out.print("Nhap nam, thang, ngay: ");
-                                                        int year = sc.nextInt();
-                                                        int month = sc.nextInt();
-                                                        int day = sc.nextInt();
-                                                        JSON.Date dateDep = new JSON.Date(year, month, day);
-                                                        System.out.print("Nhap gio, phut, giay: ");
-                                                        int hour = sc.nextInt();
-                                                        int minute = sc.nextInt();
-                                                        int second = sc.nextInt();
-                                                        int nano = 0;
-                                                        JSON.Time timeDep = new Time(hour, minute, second, nano);
-                                                        JSON.DepartureTime tgDi = new JSON.DepartureTime(dateDep, timeDep);
+                                                         year = sc.nextInt();
+                                                         month = sc.nextInt();
+                                                         day = sc.nextInt();
+                                                         dateDep = new JSON.Date(year, month, day);
+                                                        System.out.print("Nhap gio, phut: ");
+                                                         hour = sc.nextInt();
+                                                         minute = sc.nextInt();
+                                                         second = 0;
+                                                         nano = 0;
+                                                         timeDep = new Time(hour, minute, second, nano);
+                                                         tgDi = new JSON.DepartureTime(dateDep, timeDep);
 
                                                         database.get(p).getFlights().get(pointEdit).setDepartureTime(tgDi);
                                                         // tgian
@@ -903,27 +952,27 @@ public class Main {
                                                         year = sc.nextInt();
                                                         month = sc.nextInt();
                                                         day = sc.nextInt();
-                                                        JSON.Date__1 dateArr = new JSON.Date__1(year, month, day);
-                                                        System.out.print("Nhap gio, phut, giay: ");
+                                                         dateArr = new JSON.Date__1(year, month, day);
+                                                        System.out.print("Nhap gio, phut: ");
                                                         hour = sc.nextInt();
                                                         minute = sc.nextInt();
                                                         second = sc.nextInt();
                                                         nano = 0;
-                                                        JSON.Time__1 timeArr = new Time__1(hour, minute, second, nano);
-                                                        JSON.ArrivalTime tgDen = new JSON.ArrivalTime(dateArr, timeArr);
+                                                         timeArr = new Time__1(hour, minute, second, nano);
+                                                        tgDen = new JSON.ArrivalTime(dateArr, timeArr);
                                                         database.get(p).getFlights().get(pointEdit).setArrivalTime(tgDen);
                                                         //tgian
                                                         System.out.print("Nhap so luong cho ngoi hang thuong gia: ");
-                                                        int soluongTg = sc.nextInt();
+                                                         soluongTg = sc.nextInt();
                                                         database.get(p).getFlights().get(pointEdit).setUsedBusinessSeats(soluongTg);
                                                         System.out.print("Nhap so luong cho ngoi hang pho thuong: ");
-                                                        int soluongPt = sc.nextInt();
+                                                        soluongPt = sc.nextInt();
                                                         database.get(p).getFlights().get(pointEdit).setUsedEconomySeats(soluongPt);
                                                         System.out.println("Nhap gia ve hang thuong gia: ");
-                                                        int giaVeTg = sc.nextInt();
+                                                         giaVeTg = sc.nextInt();
                                                         database.get(p).getFlights().get(pointEdit).setBusinessFare(giaVeTg);
                                                         System.out.println("Nhap gia ve hang pho thong: ");
-                                                        int giaVePt = sc.nextInt();
+                                                         giaVePt = sc.nextInt();
                                                         database.get(p).getFlights().get(pointEdit).setEconomyFare(giaVePt);
                                                         System.out.println("Thong bao thay doi den hanh khach co so hieu chuyen bay: " + ctFlightCode);
                                                         break;
@@ -943,7 +992,7 @@ public class Main {
                                             for (int i = 0; i < database.size(); i++) {
                                                 if (database.get(i).getCode().equals(code)) {
                                                     check = 1;
-                                                    int month = 0, year = 0;
+                                                     month = 0; year = 0;
 
                                                     System.out.println("Tính doanh thu theo");
                                                     System.out.println("1. Tháng");
@@ -979,8 +1028,8 @@ public class Main {
                                             System.out.println("2. Loc theo dia diem den");
                                             System.out.println("3. Loc theo ngay di(nam, thang, ngay)");
                                             System.out.println("4. Loc theo ngay den(nam, thang, ngay)");
-                                            System.out.println("5. Loc theo gio di(gio, phut, giay, nano)");
-                                            System.out.println("6. Loc theo gio den(gio, phut, giay, nano)");
+                                            System.out.println("5. Loc theo gio di(gio, phut)");
+                                            System.out.println("6. Loc theo gio den(gio, phut)");
                                             System.out.print("Nhap lua chon cua ban: ");
 
                                             ArrayList<JSON.Flight> list = new ArrayList<>();
@@ -1016,10 +1065,10 @@ public class Main {
                                                     list.clear();
                                                     break;
                                                 case 3:
-                                                    int year = sc.nextInt();
-                                                    int month = sc.nextInt();
-                                                    int day = sc.nextInt();
-                                                    JSON.Date dateDep = new JSON.Date(year, month, day);
+                                                     year = sc.nextInt();
+                                                     month = sc.nextInt();
+                                                     day = sc.nextInt();
+                                                     dateDep = new JSON.Date(year, month, day);
 
                                                     for (int i = 0; i < database.get(p).getFlights().size(); i++) {
                                                         if (database.get(p).getFlights().get(i).getDepartureTime().getDate().equals(dateDep)) {
@@ -1036,7 +1085,7 @@ public class Main {
                                                     year = sc.nextInt();
                                                     month = sc.nextInt();
                                                     day = sc.nextInt();
-                                                    JSON.Date__1 dateArr = new JSON.Date__1(year, month, day);
+                                                     dateArr = new JSON.Date__1(year, month, day);
                                                     for (int i = 0; i < database.get(p).getFlights().size(); i++) {
                                                         if (database.get(p).getFlights().get(i).getArrivalTime().getDate().equals(dateArr)) {
                                                             list.add(database.get(p).getFlights().get(i));
@@ -1049,11 +1098,11 @@ public class Main {
                                                     list.clear();
                                                     break;
                                                 case 5:
-                                                    int hour = sc.nextInt();
-                                                    int minute = sc.nextInt();
-                                                    int second = sc.nextInt();
-                                                    int nano = sc.nextInt();
-                                                    JSON.Time timeDep = new Time(hour, minute, second, nano);
+                                                     hour = sc.nextInt();
+                                                     minute = sc.nextInt();
+                                                     second = 0;
+                                                     nano = 0;
+                                                     timeDep = new Time(hour, minute, second, nano);
                                                     for (int i = 0; i < database.get(p).getFlights().size(); i++) {
                                                         if (database.get(p).getFlights().get(i).getDepartureTime().getTime().equals(timeDep)) {
                                                             list.add(database.get(p).getFlights().get(i));
@@ -1068,9 +1117,9 @@ public class Main {
                                                 case 6:
                                                     hour = sc.nextInt();
                                                     minute = sc.nextInt();
-                                                    second = sc.nextInt();
-                                                    nano = sc.nextInt();
-                                                    JSON.Time__1 timeArr = new Time__1(hour, minute, second, nano);
+                                                    second = 0;
+                                                    nano = 0;
+                                                     timeArr = new Time__1(hour, minute, second, nano);
                                                     for (int i = 0; i < database.get(p).getFlights().size(); i++) {
                                                         if (database.get(p).getFlights().get(i).getArrivalTime().getTime().equals(timeArr)) {
                                                             list.add(database.get(p).getFlights().get(i));
@@ -1091,6 +1140,7 @@ public class Main {
                                         default:
                                             break;
                                     }
+
                                 } while (opt_for_flight != 3); // loop cho mục chuyến bay - tier 3
 
                                 // chèn code vào đây 
@@ -1100,6 +1150,7 @@ public class Main {
                             default:
                                 break;
                         }
+
                     } while (opt_for_airline != 4); // loop cho mục hãng hàng không - tier 2
                     // break case 2 - case cho quản lý
                 }
@@ -1110,6 +1161,8 @@ public class Main {
 
             }
             // break case 3 - thoát chương trình
-        } while (option != 3); // loop tổng của CẢ CHƯƠNG TRÌNH - tier 1
+
+        } while (option
+                != 3); // loop tổng của CẢ CHƯƠNG TRÌNH - tier 1
     }
 }
