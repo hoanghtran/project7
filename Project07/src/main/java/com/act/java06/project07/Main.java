@@ -279,6 +279,33 @@ public class Main {
         return num;
     }
 
+    static int isID(String ID) {
+        if (ID.length() != 12) {
+            return 0;
+        } else {
+            try {
+                Double.parseDouble(ID);
+                return 1;
+            } catch (NumberFormatException e) {
+                System.out.println(e);
+                return 0;
+            }
+        }
+    }
+    
+    static int isSeat(String choNgoi){
+        if(choNgoi.length()!=3){
+            return 0;
+        }
+        else if(choNgoi.charAt(0)!='A' && choNgoi.charAt(0)!='B'){
+            return 0;
+        }
+        else if(Integer.parseInt(choNgoi.substring(1))>10){
+            return 0;
+        }
+        return 1;
+    }
+
     public static void main(String[] args) throws FileNotFoundException, IOException {
         //global variables:
         List<JSON.Airline> database = new ArrayList<>();
@@ -293,13 +320,13 @@ public class Main {
 
         do {
             navigator(); // menu điều hướng
-            do{
-            option = getIntInput(sc);
-            if (option < 0) {
-                            System.out.println("Khong the nhap so am!!!");
-                            System.out.print("Ban hay nhap lai: ");
-                        }
-            } while (option<0);
+            do {
+                option = getIntInput(sc);
+                if (option < 0) {
+                    System.out.println("Khong the nhap so am!!!");
+                    System.out.print("Ban hay nhap lai: ");
+                }
+            } while (option < 0);
             switch (option) {
                 case 1:
 
@@ -501,9 +528,9 @@ public class Main {
                             Collections.sort(listFlight, new DateComparator());
                             STT = 1;
                             for (int i = 0; i < listFlight.size(); i++) {
-                                System.out.println(STT + ":" + "Ma chuyen bay: " + listFlight.get(i).getFlightCode() + "  Thoi gian di: " + listFlight.get(i).getDepartureTime() + "  Thoi gian toi: " + listFlight.get(i).getArrivalTime()+
-                                           "  So ve con lai cua hang thuong gia: " + (listFlight.get(i).getTotalBusinessSeats()-listFlight.get(i).getUsedBusinessSeats())+
-                                         "  So ve con lai cua hang pho thong: " + (listFlight.get(i).getTotalEconomySeats()-listFlight.get(i).getUsedEconomySeats()));// hien thi ma chuyen bay
+                                System.out.println(STT + ":" + "Ma chuyen bay: " + listFlight.get(i).getFlightCode() + "  Thoi gian di: " + listFlight.get(i).getDepartureTime() + "  Thoi gian toi: " + listFlight.get(i).getArrivalTime()
+                                        + "  So ve con lai cua hang thuong gia: " + (listFlight.get(i).getTotalBusinessSeats() - listFlight.get(i).getUsedBusinessSeats())
+                                        + "  So ve con lai cua hang pho thong: " + (listFlight.get(i).getTotalEconomySeats() - listFlight.get(i).getUsedEconomySeats()));// hien thi ma chuyen bay
                                 STT++;
                             }
                             do {
@@ -731,7 +758,6 @@ public class Main {
                                                         for (int a = 0; a < database.size(); a++) {
                                                             for (int b = 0; b < database.get(a).getFlights().size(); b++) {
                                                                 if (database.get(a).getFlights().get(b).getFlightCode().equals(luaChonCB)) {
-
                                                                     checkCodeCB = 1;
                                                                     System.out.print("Ban muon them bao nhieu hanh khach: ");
                                                                     int passenger1 = sc.nextInt();
@@ -741,28 +767,37 @@ public class Main {
                                                                         String hoTen = sc.nextLine();
                                                                         System.out.print("Nhap ID: ");
                                                                         String ID = sc.nextLine();
-                                                                        printAvailableSeats(database.get(a).getFlights().get(b).getSeats());
-                                                                        System.out.print("Chon cho ngoi: ");
-                                                                        String luaChon = sc.nextLine();
-                                                                        for (int j = 0; j < database.get(a).getFlights().get(b).getSeats().size(); j++) {
-                                                                            if (database.get(a).getFlights().get(b).getSeats().get(j).getStatus() == 1) {
-                                                                                if (luaChon.equals(database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode())) {
-                                                                                    System.out.println("Cho ngoi da duoc dat. Vui long chon cho ngoi khac");
+                                                                        if (isID(ID) == 1) {
+                                                                            printAvailableSeats(database.get(a).getFlights().get(b).getSeats());
+                                                                            System.out.print("Chon cho ngoi: ");
+                                                                            String luaChon = sc.nextLine();
+                                                                            if(isSeat(luaChon)==1){
+                                                                            for (int j = 0; j < database.get(a).getFlights().get(b).getSeats().size(); j++) {
+                                                                                if (database.get(a).getFlights().get(b).getSeats().get(j).getStatus() == 1) {
+                                                                                    if (luaChon.equals(database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode())) {
+                                                                                        System.out.println("Cho ngoi da duoc dat. Vui long chon cho ngoi khac");
+                                                                                        break;
+                                                                                    }
+                                                                                } else {
+                                                                                    database.get(a).getFlights().get(b).getPassengers().add(new JSON.Passenger(ID, hoTen, generateTicketCode(database.get(a).getCode(), luaChonCB, luaChon)));
+                                                                                    setValueForSeat(database.get(a).getFlights().get(b).getSeats(), luaChon);
+                                                                                    System.out.println("Da dat cho: " + luaChon);
+                                                                                    if (luaChon.charAt(0) == 'A') {
+                                                                                        database.get(a).getFlights().get(b).setUsedEconomySeats(database.get(a).getFlights().get(b).getUsedEconomySeats() + 1);
+                                                                                    } else if (luaChon.charAt(0) == 'B') {
+                                                                                        database.get(a).getFlights().get(b).setUsedBusinessSeats(database.get(a).getFlights().get(b).getUsedBusinessSeats() + 1);
+                                                                                    }
                                                                                     break;
                                                                                 }
-                                                                            } else {
-                                                                                database.get(a).getFlights().get(b).getPassengers().add(new JSON.Passenger(ID, hoTen, generateTicketCode(database.get(a).getCode(), luaChonCB, luaChon)));
-                                                                                setValueForSeat(database.get(a).getFlights().get(b).getSeats(), luaChon);
-                                                                                System.out.println("Da dat cho: "+luaChon);
-                                                                                if (luaChon.charAt(0) == 'A') {
-                                                                                    database.get(a).getFlights().get(b).setUsedEconomySeats(database.get(a).getFlights().get(b).getUsedEconomySeats() + 1);
-                                                                                } else if (luaChon.charAt(0) == 'B') {
-                                                                                    database.get(a).getFlights().get(b).setUsedBusinessSeats(database.get(a).getFlights().get(b).getUsedBusinessSeats() + 1);
-                                                                                }
-                                                                                break;
                                                                             }
+                                                                            write_airlines_file(Json_file_path, database);
+                                                                            }
+                                                                            else{
+                                                                                System.out.println("Vi tri khong hop le");
+                                                                            }
+                                                                        } else {
+                                                                            System.out.println("ID khong hop le");
                                                                         }
-                                                                        write_airlines_file(Json_file_path, database);
                                                                     }
                                                                 }
                                                             }
@@ -771,50 +806,61 @@ public class Main {
                                                         if (checkCodeCB == 0) {
                                                             System.out.println("Khong tim thay ma chuyen bay!!!");
                                                         }
-                                                        
 
                                                         break;
                                                     }
 
                                                     case 2: // xóa 1 hành khách
                                                         // exception sai CCCD
-                                                        int checkID = 0;
+
                                                         System.out.print("Nhap ID hanh khach muon xoa: ");
                                                         sc.nextLine();
                                                         String IDxoa = sc.nextLine();
-                                                        System.out.print("Nhap ma chuyen bay: ");
-                                                        String maCB = sc.nextLine();
-                                                        for (int a = 0; a < database.size(); a++) {
+                                                        if (isID(IDxoa) == 1) {
+                                                            int checkID = 0;
+                                                            System.out.print("Nhap ma chuyen bay: ");
+                                                            String maCB = sc.nextLine();
+                                                            for (int a = 0; a < database.size(); a++) {
 
-                                                            for (int b = 0; b < database.get(a).getFlights().size(); b++) {
+                                                                for (int b = 0; b < database.get(a).getFlights().size(); b++) {
+                                                                    String maVeNe = "";
+                                                                    if (database.get(a).getFlights().get(b).getFlightCode().equals(maCB)) {
+                                                                        for (int c = 0; c < database.get(a).getFlights().get(b).getPassengers().size(); c++) {
+                                                                            
+                                                                            if (database.get(a).getFlights().get(b).getPassengers().get(c).getId().equals(IDxoa)) {
+                                                                                maVeNe = database.get(a).getFlights().get(b).getPassengers().get(c).getTicketCode().substring(3, 6);
+                                                                                database.get(a).getFlights().get(b).getPassengers().remove(c);
+                                                                                checkID = 1;
+                                                                            }
+                                                                        }
+                                                                        for (int i = 0; i < database.get(a).getFlights().get(b).getSeats().size(); i++) {
 
-                                                                if (database.get(a).getFlights().get(b).getFlightCode().equals(maCB)) {
-                                                                    for (int c = 0; c < database.get(a).getFlights().get(b).getPassengers().size(); c++) {
-
-                                                                        if (database.get(a).getFlights().get(b).getPassengers().get(c).getId().equals(IDxoa)) {
-                                                                            checkID = 1;
-                                                                            for (int i = 0; i < database.get(a).getFlights().get(b).getSeats().size(); i++) {
+                                                                            if (maVeNe.equals(database.get(a).getFlights().get(b).getSeats().get(i).getSeatCode())) {
                                                                                 database.get(a).getFlights().get(b).getSeats().get(i).setStatus(0);
                                                                                 if (database.get(a).getFlights().get(b).getSeats().get(i).getSeatCode().charAt(0) == 'A') {
                                                                                     database.get(a).getFlights().get(b).setUsedEconomySeats(database.get(a).getFlights().get(b).getUsedEconomySeats() - 1);
                                                                                 } else if (database.get(a).getFlights().get(b).getSeats().get(i).getSeatCode().charAt(0) == 'B') {
                                                                                     database.get(a).getFlights().get(b).setUsedBusinessSeats(database.get(a).getFlights().get(b).getUsedBusinessSeats() - 1);
                                                                                 }
+                                                                                
                                                                             }
-                                                                            database.get(a).getFlights().get(b).getPassengers().remove(c);
                                                                         }
+
                                                                     }
+
+                                                                    break;
                                                                 }
-                                                                
-                                                                break;
                                                             }
-                                                        }
-                                                        write_airlines_file(Json_file_path, database);
-                                                        if (checkID == 1) {
-                                                            System.out.println("Da xoa ID : " + IDxoa);
+                                                            write_airlines_file(Json_file_path, database);
+                                                            if (checkID == 1) {
+                                                                System.out.println("Da xoa ID : " + IDxoa);
+                                                            } else {
+                                                                System.out.println("Khong tim thay ID: " + IDxoa);
+                                                            }
                                                         } else {
-                                                            System.out.println("Khong tim thay ID: " + IDxoa);
+                                                            System.out.println("ID khong hop le");
                                                         }
+
                                                         break;
                                                     case 3:// chọn lọc hành khách của 1 chuyến bay
                                                         //exception sai ten chuyen bay
