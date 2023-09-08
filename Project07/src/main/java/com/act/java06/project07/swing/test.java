@@ -13,24 +13,32 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import JSON.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Admin
  */
 public class test extends javax.swing.JFrame {
+    DefaultTableModel model;
+    
+    
     private static final String current = System.getProperty("user.dir");
     private static final String separator = File.separator;
     private static final String Json_file_path = current + separator + "data" + separator + "List_of_Airlines.json";
     private static final String Json_airport_file_path = current + separator + "data" + separator + "List_of_Airports.json";
+    static List<JSON.Airline> database = new ArrayList<>();
     
+
     /**
      * Creates new form test
      */
     public test() {
         initComponents();
+        model = (DefaultTableModel) jTable1.getModel();
     }
+
     static List read_json_file(String file_path) throws IOException {
 
         try (FileReader fr = new FileReader(file_path)) {
@@ -44,6 +52,7 @@ public class test extends javax.swing.JFrame {
             return airlines;
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -55,7 +64,7 @@ public class test extends javax.swing.JFrame {
 
         AirlineTest = new javax.swing.JTextField();
         FlightTest = new javax.swing.JTextField();
-        pasengerTest = new javax.swing.JTextField();
+        passengerTest = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -87,7 +96,7 @@ public class test extends javax.swing.JFrame {
                 .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
-                    .addComponent(pasengerTest, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passengerTest, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(FlightTest, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(AirlineTest, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(84, 84, 84)
@@ -102,7 +111,7 @@ public class test extends javax.swing.JFrame {
                 .addGap(54, 54, 54)
                 .addComponent(FlightTest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54)
-                .addComponent(pasengerTest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(passengerTest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(62, 62, 62)
                 .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -114,26 +123,38 @@ public class test extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    int i=1;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        IOFile test = new IOFile();
+        int a = (int) Double.parseDouble(AirlineTest.getText());
+        int b = (int) Double.parseDouble(FlightTest.getText());
+        int c = (int) Double.parseDouble(passengerTest.getText());
         try {
-            // TODO add your handling code here:
-            List<JSON.Airline> database = new ArrayList<>();
-            database = read_json_file(Json_file_path);
+            showResult(test.getPassenger(a, b, c));
+        } catch (IOException ex) {
+            Logger.getLogger(test.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            System.out.println(test.getPassenger(a, b, c).toString());
         } catch (IOException ex) {
             Logger.getLogger(test.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    public void showResult(Passenger list){
+        model.addRow(new Object[]{
+            i++, list.getId(), list.getFullName(), list.getTicketCode()
+        });
+    }
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws IOException {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        database  = read_json_file(Json_file_path);
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -156,12 +177,7 @@ public class test extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new test().setVisible(true);
-                List<JSON.Airline> database = new ArrayList<>();
-                try {
-                    database = read_json_file(Json_file_path);
-                } catch (IOException ex) {
-                    Logger.getLogger(test.class.getName()).log(Level.SEVERE, null, ex);
-                }
+
             }
         });
     }
@@ -172,6 +188,6 @@ public class test extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField pasengerTest;
+    private javax.swing.JTextField passengerTest;
     // End of variables declaration//GEN-END:variables
 }
