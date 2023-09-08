@@ -626,7 +626,6 @@ public class Main {
                     // case cho quản lý
                     do {
                         modify_or_access_an_airline_option();
-                        sc.nextLine();
                         do {
 
                             opt_for_airline = getIntInput(sc);
