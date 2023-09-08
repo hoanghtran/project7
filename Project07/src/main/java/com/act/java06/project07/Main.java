@@ -645,11 +645,11 @@ public class Main {
                                 sc.nextLine();
                                 do {
                                     opt_for_flight = getIntInput(sc);
-                                    if (opt_for_flight < 0) {
+                                    if (opt_for_flight <= 0 || opt_for_flight > 6) {
                                         System.out.println("Khong the nhap so am!!!");
                                         System.out.print("Ban hay nhap lai: ");
                                     }
-                                } while (opt_for_flight < 0);
+                                } while (opt_for_flight <= 0 || opt_for_flight > 6);
 
                                 do {
 
@@ -673,16 +673,19 @@ public class Main {
                                             JSON.DepartureTime tgDi;
                                             JSON.ArrivalTime tgDen;
                                             airline_menu();
-                                            System.out.print("Nhap lua chon cua ban: ");
+                                            
                                             int p;
 
                                             do {
                                                 p = getIntInput(sc);
-                                                if (p < 0) {
+
+                                                if (p <= 0 || p>database.size()) {
                                                     System.out.println("Khong the nhap so am!!!");
-                                                    System.out.print("Ban hay nhap lai: ");
+                                                    System.out.print("Ban hay nhap lai stt: ");
                                                 }
-                                            } while (p < 0);
+
+                                            } while (p <= 0 || p>database.size());
+                                            p--;
                                             int n;
 
                                             System.out.print("Nhap so luong chuyen bay muon them: ");
@@ -849,18 +852,18 @@ public class Main {
 
                                             // chèn code vào đây
                                             airline_menu();
-                                            System.out.print("Nhap lua chon cua ban: ");
+                                            
                                             sc.nextLine();
                                             do {
                                                 p = getIntInput(sc);
 
-                                                if (p < 0) {
+                                                if (p <= 0 || p>database.size()) {
                                                     System.out.println("Khong the nhap so am!!!");
                                                     System.out.print("Ban hay nhap lai stt: ");
                                                 }
 
-                                            } while (p < 0);
-
+                                            } while (p <= 0 || p>database.size());
+                                            p--;
                                             System.out.print("Nhap so hieu chuyen bay can xoa: ");
                                             int pointRemote = -1;
                                             sc.nextLine();
@@ -892,12 +895,12 @@ public class Main {
                                                 do {
                                                     opt_for_passenger = getIntInput(sc);
 
-                                                    if (opt_for_passenger < 0) {
+                                                    if (opt_for_passenger <=0 || opt_for_passenger>5) {
                                                         System.out.println("Khong the nhap so am!!!");
                                                         System.out.print("Ban hay nhap lai stt: ");
                                                     }
 
-                                                } while (opt_for_passenger < 0);
+                                                } while (opt_for_passenger <= 0 || opt_for_passenger>5);
                                                 switch (opt_for_passenger) {
                                                     case 1: {
                                                         int checkCodeCB = 0;
@@ -1305,7 +1308,7 @@ public class Main {
                                                 System.out.println("Da xay ra loi khi nhap ma chuyen bay!!!");
                                             }
 
-                                            System.out.println("Nhập mã hãng hàng không cần tính doanh thu: ");
+                                            System.out.println("Nhap ma hang hang khong can tinh doanh thu: ");
                                             code = sc.nextLine();
                                             check = 0;
 
@@ -1315,10 +1318,10 @@ public class Main {
                                                     month = 0;
                                                     year = 0;
 
-                                                    System.out.println("Tính doanh thu theo");
-                                                    System.out.println("1. Tháng");
-                                                    System.out.println("2. Năm");
-                                                    System.out.println("Lựa chọn của bạn là: ");
+                                                    System.out.println("Tinh doanh thu theo");
+                                                    System.out.println("1. Thang");
+                                                    System.out.println("2. Nam");
+                                                    System.out.println("Lua chon cua ban la: ");
                                                     int x;
                                                     do {
                                                         x = getIntInput(sc);
@@ -1345,7 +1348,7 @@ public class Main {
                                                             }
                                                         } while (year < 0);
                                                     } else {
-                                                        System.out.println("Năm bạn cần tính doanh thu: ");
+                                                        System.out.println("Nam ban can tinh doanh thu: ");
                                                         do {
                                                             year = getIntInput(sc);
                                                             if (year < 0) {
@@ -1360,20 +1363,23 @@ public class Main {
                                                 }
                                             }
                                             if (check == 0) {
-                                                System.out.println("Không tìm thấy mã hãng hàng không cần tính");
+                                                System.out.println("Khong tim thay ma hang hang khong can tinh");
                                             }
                                             break;
 
                                         case 5: // loc thong tin 1 chuyen bay // Phan tra cuu thong tin
                                             airline_menu();
-                                            System.out.print("Nhap lua chon cua ban:  ");
+                                            
                                             do {
                                                 p = getIntInput(sc);
-                                                if (p < 0) {
+
+                                                if (p <= 0 || p>database.size()) {
                                                     System.out.println("Khong the nhap so am!!!");
-                                                    System.out.print("Ban hay nhap lai: ");
+                                                    System.out.print("Ban hay nhap lai stt: ");
                                                 }
-                                            } while (p < 0);
+
+                                            } while (p <= 0 || p>database.size());
+                                            p--;
 
                                             System.out.println("Vui long chon thong tin ban muon loc: ");
                                             System.out.println("1. Loc theo dia diem di");
