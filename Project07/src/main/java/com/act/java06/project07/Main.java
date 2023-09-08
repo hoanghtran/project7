@@ -818,7 +818,7 @@ public class Main {
 
                                             do {
                                                 System.out.println("Nhap thoi gian di ");
-                                                System.out.print("Nhap nam, thang, ngay: ");
+                                                System.out.print("Nhap nam, thang, ngay(yyyy MM dd): ");
                                                 do {
                                                     year = getIntInput(sc);
                                                     if (year < 0) {
@@ -865,7 +865,7 @@ public class Main {
                                                 timeDep = new Time(hour, minute, second, nano);
                                                 tgDi = new JSON.DepartureTime(dateDep, timeDep);
                                                 System.out.println("Nhap thoi gian den ");
-                                                System.out.print("Nhap nam, thang, ngay: ");
+                                                System.out.print("Nhap nam, thang, ngay(yyyy MM dd): ");
                                                 do {
                                                     year = getIntInput(sc);
                                                     if (year < 0) {
@@ -936,7 +936,7 @@ public class Main {
                                                     System.out.print("Ban hay nhap lai gia ve thuong gia: ");
                                                 }
                                             } while (giaVeTg < 0);
-                                            System.out.println("Nhap gia ve hang pho thong: ");
+                                            System.out.print("Nhap gia ve hang pho thong: ");
                                             int giaVePt;
                                             do {
                                                 giaVePt = getIntInput(sc);
@@ -1367,7 +1367,7 @@ public class Main {
                                                                 }
                                                             } while (day < 0);
                                                             dateArr = new JSON.Date__1(year, month, day);
-                                                            System.out.print("Nhập gio, phut: ");
+                                                            System.out.print("Nhap gio, phut: ");
                                                             do {
                                                                 hour = getIntInput(sc);
                                                                 if (hour < 0) {
