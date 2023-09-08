@@ -1088,7 +1088,6 @@ public class Main {
                                                             }
                                                         }
                                                         if (checkTC == 1) {
-1
                                                             int kt = 0;
                                                             int a, b, c;
                                                             for (a = 0; a < database.size(); a++) {
