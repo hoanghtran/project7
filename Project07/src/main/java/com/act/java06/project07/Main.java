@@ -32,7 +32,7 @@ public class Main {
     static void navigator() {
         System.out.println("======= Dieu huong =======");
         System.out.println("1. Khach hang\n2. Quan ly\n3. Thoat chuong trinh");
-        System.out.print("Ban la: ");
+        System.out.print("Truy cap: ");
     }
 
     static void airline_menu() throws IOException {
@@ -184,16 +184,24 @@ public class Main {
             if (i % 5 == 0) {
                 System.out.println("");
             }
+
             if (listOfSeats.get(i).getStatus() == 0) {
                 System.out.print(listOfSeats.get(i).getSeatCode() + "\t");
             } else {
                 System.out.print("(X)\t");
             }
+            if (i == 9) {
+                System.out.println("");
+                System.out.println("=====================================");
+                System.out.print("=====================================");
+
+            }
 
         }
+        System.out.println("");
         System.out.println("\nHang pho thong tu A01->A10");
         System.out.println("Hang thuong gia tu B01->B10");
-
+        System.out.println("");
     }
 
     static int getIndexOfAirline(String code) throws IOException {// error
@@ -1060,7 +1068,7 @@ public class Main {
                                                         String hoTen = "";
                                                         sc.nextLine();
                                                         System.out.print("Nhap ma ve: ");
-                                                        String ma_Ve = sc.nextLine();
+                                                        String ma_Ve = sc.nextLine().toUpperCase();
                                                         String ghe_cu = ma_Ve.substring(3, 6);
                                                         for (int a = 0; a < database.size(); a++) {
                                                             for (int b = 0; b < database.get(a).getFlights().size(); b++) {
@@ -1079,7 +1087,7 @@ public class Main {
                                                             }
                                                         }
                                                         if (checkTC == 1) {
-
+1
                                                             int kt = 0;
                                                             int a, b, c;
                                                             for (a = 0; a < database.size(); a++) {
@@ -1114,7 +1122,7 @@ public class Main {
                                                             }
                                                             write_airlines_file(Json_file_path, database);
                                                             System.out.print("Nhap cho ngoi moi: ");
-                                                            cho_ngoi = sc.nextLine();
+                                                            cho_ngoi = sc.nextLine().toUpperCase();
                                                             int kt1 = 0;
                                                             ////????
                                                             for (a = 0; a < database.size(); a++) {
@@ -1124,8 +1132,7 @@ public class Main {
                                                                             for (c = 0; c < database.get(a).getFlights().get(b).getPassengers().size(); c++) {
                                                                                 do {
                                                                                     for (int j = 0; j < database.get(a).getFlights().get(b).getSeats().size(); j++) {
-                                                                                        System.out.println(database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode());
-                                                                                        System.out.println(database.get(a).getFlights().get(b).getSeats().get(j).getStatus());
+                                                                                        
                                                                                         if (database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode().equals(cho_ngoi)
                                                                                                 && database.get(a).getFlights().get(b).getSeats().get(j).getStatus() == 0) {
                                                                                             kt1 = 1;
@@ -1139,10 +1146,10 @@ public class Main {
                                                                                             }
                                                                                             write_airlines_file(Json_file_path, database);
                                                                                             break;
-                                                                                        } else if(database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode().equals(cho_ngoi)){
+                                                                                        } else if (database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode().equals(cho_ngoi)) {
                                                                                             System.out.println("Cho ngoi da duoc dat. Vui long chon cho ngoi khac !!!");
                                                                                             System.out.print("Nhap lai ma ghe: ");
-                                                                                            cho_ngoi = sc.nextLine();
+                                                                                            cho_ngoi = sc.nextLine().toUpperCase();
                                                                                         }
                                                                                     }
                                                                                 } while (kt1 == 0);
