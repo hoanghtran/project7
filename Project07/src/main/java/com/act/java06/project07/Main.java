@@ -718,9 +718,8 @@ public class Main {
                                                 }
                                             } while (n < 0);
                                             sc.nextLine();
-
-                                            System.out.print("Nhap so hieu chuyen bay: ");
-                                            String soHieuCb = sc.nextLine();
+                                            
+                                            
                                             System.out.print("Nhap so hieu may bay: ");
                                             String soHieuMb = sc.nextLine();
                                             airport_menu(Json_airport_file_path);
@@ -878,6 +877,7 @@ public class Main {
                                                     System.out.print("Ban hay nhap lai gia ve pho thong: ");
                                                 }
                                             } while (giaVePt < 0);
+                                            String soHieuCb = sc.nextLine();
                                             database.get(p).getFlights().add(new JSON.Flight(soHieuCb, soHieuMb, tgDi, tgDen, diemXp, diemDen, giaVeTg, giaVePt, soluongTg, soluongPt));
                                             ArrayList<Seat> seats = new ArrayList<>();
                                             newEmptySeats(seats);
@@ -1640,6 +1640,7 @@ public class Main {
 
                     } while (opt_for_airline != 4); // loop cho mục hãng hàng không - tier 2
                     // break case 2 - case cho quản lý
+                    
                 }
 
                 case 3: {
