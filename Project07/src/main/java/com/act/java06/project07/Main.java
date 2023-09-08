@@ -558,7 +558,10 @@ public class Main {
                             } catch (Exception ex_1) {
                                 System.out.println("Khong co chuyen bay nao kha dung!!!");
                             }
-
+                            if(listFlight.size() == 0){
+                                System.out.println("Khong co chuyen bay kha dung!!!");
+                                break;
+                            }
                             Collections.sort(listFlight, new DateComparator());
                             int STT = 1;
                             for (int i = 0; i < listFlight.size(); i++) {
@@ -605,6 +608,10 @@ public class Main {
                                 }
                             } catch (Exception ex_1) {
                                 System.out.println("Khong co chuyen bay nao kha dung!!!");
+                            }
+                            if(listFlight.size() == 0){
+                                System.out.println("Khong co chuyen bay kha dung!!!");
+                                break;
                             }
                             Collections.sort(listFlight, new DateComparator());
                             STT = 1;
