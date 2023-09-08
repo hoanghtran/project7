@@ -1051,12 +1051,18 @@ public class Main {
                                                         String ghe_cu = ma_Ve.substring(3, 6);
                                                         for (int a = 0; a < database.size(); a++) {
                                                             for (int b = 0; b < database.get(a).getFlights().size(); b++) {
-
                                                                 for (int c = 0; c < database.get(a).getFlights().get(b).getPassengers().size(); c++) {
                                                                     if (database.get(a).getFlights().get(b).getPassengers().get(c).getTicketCode().equals(ma_Ve)) {
                                                                         checkTC = 1;
+                                                                        break;
                                                                     }
                                                                 }
+                                                                if(checkTC == 1){
+                                                                    break;
+                                                                }
+                                                            }
+                                                            if(checkTC == 1){
+                                                                break;
                                                             }
                                                         }
                                                         if (checkTC == 1) {
