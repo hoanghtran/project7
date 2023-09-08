@@ -1628,6 +1628,7 @@ public class Main {
 
                                             break;
                                         case 6: { // tinh doanh thu
+                                            sc.nextLine();
                                             System.out.print("Nhap ma hang hang khong can tinh doanh thu: ");
                                             code = sc.nextLine();
                                             check = 0;
@@ -1683,8 +1684,11 @@ public class Main {
                                                                     getFlights(), x, month, year);
 
                                                     String output = String.format("%,d", (int) doanh_thu);
-
-                                                    System.out.printf("Doanh thu cua thang %d nam %d la: %s dollars\n", month, year, output);
+                                                    if (x == 1) {
+                                                        System.out.printf("Doanh thu cua thang %d nam %d la: %s dollars\n", month, year, output);
+                                                    } else {
+                                                        System.out.printf("Doanh thu cua nam %d la: %s dollars\n", year, output);
+                                                    }
                                                     break;
                                                 }
                                             }
