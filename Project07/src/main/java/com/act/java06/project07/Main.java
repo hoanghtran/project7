@@ -82,7 +82,7 @@ public class Main {
         System.out.println("2. Xoa mot chuyen bay");
         System.out.println("3. Truy cap mot chuyen bay");
         System.out.println("4. Sua thong tin mot chuyen bay");
-        System.out.println("5. Loc thong tin cac chuyen bay(theo dia diem di/den, thoi gian di/den)");
+        System.out.println("5. Loc thong tin cac chuyen bay");
         System.out.println("6. Tinh doanh thu");
         System.out.println("7. Thoat chuong trinh");
         System.out.print("Vui long nhap lua chon cua ban: ");
@@ -191,6 +191,7 @@ public class Main {
                 } else {
                     str = "A" + i;
                 }
+                
             } else if (i <= 20) {
                 if (i % 10 < 10) {
                     str = "B" + "0" + i % 10;
@@ -198,8 +199,7 @@ public class Main {
                     str = "B" + i;
                 }
             }
-            listOfSeats.get(i).setSeatCode(str);
-            listOfSeats.get(i).setStatus(0);
+            listOfSeats.add(i-1, new Seat(str, 0));//
         }
     }
 
@@ -821,7 +821,7 @@ public class Main {
 
                                             do {
                                                 System.out.println("Nhap thoi gian di ");
-                                                System.out.print("Nhap nam, thang, ngay: ");
+                                                System.out.print("Nhap nam, thang, ngay(yyyy mm dd): ");
                                                 do {
                                                     year = getIntInput(sc);
                                                     if (year < 0) {
@@ -846,7 +846,7 @@ public class Main {
                                                     }
                                                 } while (day < 0);
                                                 dateDep = new JSON.Date(year, month, day);
-                                                System.out.print("Nhap gio, phut: ");
+                                                System.out.print("Nhap gio, phut(hh mm): ");
 
                                                 do {
                                                     hour = getIntInput(sc);
@@ -868,7 +868,7 @@ public class Main {
                                                 timeDep = new Time(hour, minute, second, nano);
                                                 tgDi = new JSON.DepartureTime(dateDep, timeDep);
                                                 System.out.println("Nhap thoi gian den ");
-                                                System.out.print("Nhap nam, thang, ngay: ");
+                                                System.out.print("Nhap nam, thang, ngay(yyyy mm dd): ");
                                                 do {
                                                     year = getIntInput(sc);
                                                     if (year < 0) {
@@ -1281,7 +1281,7 @@ public class Main {
                                                         database.get(p).getFlights().get(pointEdit).setDestination(diemDen);
                                                         do {
                                                             System.out.println("Nhap thoi gian di ");
-                                                            System.out.print("Nhap nam, thang, ngay: ");
+                                                            System.out.print("Nhap nam, thang, ngay(yyyy mm dd): ");
                                                             do {
                                                                 year = getIntInput(sc);
                                                                 if (year < 0) {
@@ -1306,7 +1306,7 @@ public class Main {
                                                                 }
                                                             } while (day < 0);
                                                             dateDep = new JSON.Date(year, month, day);
-                                                            System.out.print("Nhap gio, phut: ");
+                                                            System.out.print("Nhap gio, phut(hh mm): ");
 
                                                             do {
                                                                 hour = getIntInput(sc);
@@ -1328,7 +1328,7 @@ public class Main {
                                                             timeDep = new Time(hour, minute, second, nano);
                                                             tgDi = new JSON.DepartureTime(dateDep, timeDep);
                                                             System.out.println("Nhap thoi gian den ");
-                                                            System.out.print("Nhap nam, thang, ngay: ");
+                                                            System.out.print("Nhap nam, thang, ngay(yyyy mm dd): ");
                                                             do {
                                                                 year = getIntInput(sc);
                                                                 if (year < 0) {
@@ -1426,7 +1426,7 @@ public class Main {
                                         case 5: // loc thong tin 1 chuyen bay // Phan tra cuu thong tin
 
                                             
-
+                                            System.out.println("");
                                             System.out.println("Vui long chon thong tin ban muon loc: ");
                                             System.out.println("1. Loc theo dia diem di");
                                             System.out.println("2. Loc theo dia diem den");
@@ -1440,10 +1440,11 @@ public class Main {
                                             int luaChon = sc.nextInt();
                                             sc.nextLine();
                                             System.out.print("Nhap thong tin muon loc: ");
-
+                                            System.out.println("");
                                             switch (luaChon) {
                                                 case 1:
                                                     String information = sc.nextLine();
+                                                    airport_menu(Json_airport_file_path);
                                                     for (int i = 0; i < database.get(p).getFlights().size(); i++) {
                                                         if (database.get(p).getFlights().get(i).getDeparture().equals(information)) {
                                                             list.add(database.get(p).getFlights().get(i));
@@ -1457,6 +1458,7 @@ public class Main {
                                                     break;
                                                 case 2:
                                                     information = sc.nextLine();
+                                                    airport_menu(Json_airport_file_path);
                                                     for (int i = 0; i < database.get(p).getFlights().size(); i++) {
                                                         if (database.get(p).getFlights().get(i).getDestination().equals(information)) {
                                                             list.add(database.get(p).getFlights().get(i));
