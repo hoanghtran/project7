@@ -275,7 +275,7 @@ public class Main {
                 valid = true;
             } else {
                 sc.nextLine();
-                System.out.println("Cần nhập số, vui lòng nhập lại!");
+                System.out.println("Can nhap so, vui long nhap lai!");
             }
         } while (valid == false);
         return num;
@@ -1139,7 +1139,7 @@ public class Main {
                                             break;                           // tier 4  
                                         case 4: // sua thong tin 1 chuyen bay
                                             airline_menu();
-                                            System.out.print("Nhap lua chon cua ban:  ");
+                                            
                                             do {
                                                 p = getIntInput(sc);
 
