@@ -77,7 +77,8 @@ public class Main {
         System.out.println("3. Truy cap mot chuyen bay");
         System.out.println("4. Sua thong tin mot chuyen bay");
         System.out.println("5. Loc thong tin cac chuyen bay(theo dia diem di/den, thoi gian di/den)");
-        System.out.println("6. Thoat chuong trinh");
+        System.out.println("6. Tinh doanh thu");
+        System.out.println("7. Thoat chuong trinh");
         System.out.print("Vui long nhap lua chon cua ban: ");
     }
 
@@ -1139,7 +1140,7 @@ public class Main {
                                                                                             }
                                                                                             write_airlines_file(Json_file_path, database);
                                                                                             break;
-                                                                                        } else if(database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode().equals(cho_ngoi)){
+                                                                                        } else if (database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode().equals(cho_ngoi)) {
                                                                                             System.out.println("Cho ngoi da duoc dat. Vui long chon cho ngoi khac !!!");
                                                                                             System.out.print("Nhap lai ma ghe: ");
                                                                                             cho_ngoi = sc.nextLine();
@@ -1178,7 +1179,6 @@ public class Main {
                                             break;                           // tier 4  
                                         case 4: // sua thong tin 1 chuyen bay
                                             airline_menu();
-
                                             do {
                                                 p = getIntInput(sc);
 
@@ -1344,63 +1344,6 @@ public class Main {
                                                 System.out.println("Da xay ra loi khi nhap ma chuyen bay!!!");
                                             }
                                             write_airlines_file(Json_file_path, database);
-                                            System.out.println("Nhap ma hang hang khong can tinh doanh thu: ");
-                                            code = sc.nextLine();
-                                            check = 0;
-
-                                            for (int i = 0; i < database.size(); i++) {
-                                                if (database.get(i).getCode().equals(code)) {
-                                                    check = 1;
-                                                    month = 0;
-                                                    year = 0;
-
-                                                    System.out.println("Tinh doanh thu theo");
-                                                    System.out.println("1. Thang");
-                                                    System.out.println("2. Nam");
-                                                    System.out.println("Lua chon cua ban la: ");
-                                                    int x;
-                                                    do {
-                                                        x = getIntInput(sc);
-                                                        if (x < 0) {
-                                                            System.out.println("Khong the nhap so am!!!");
-                                                            System.out.print("Ban hay nhap lai stt: ");
-                                                        }
-                                                    } while (x < 0);
-                                                    if (x == 1) {
-                                                        System.out.println("Tháng bạn cần tính doanh thu: ");
-                                                        do {
-                                                            month = getIntInput(sc);
-                                                            if (month < 1 || month > 12) {
-                                                                System.out.println("Khong the nhap so am!!!");
-                                                                System.out.print("Ban hay nhap lai thang: ");
-                                                            }
-                                                        } while (month < 1 || month > 12);
-                                                        System.out.println("Năm bạn cần tính doanh thu: ");
-                                                        do {
-                                                            year = getIntInput(sc);
-                                                            if (year < 0) {
-                                                                System.out.println("Khong the nhap so am!!!");
-                                                                System.out.print("Ban hay nhap lai nam: ");
-                                                            }
-                                                        } while (year < 0);
-                                                    } else {
-                                                        System.out.println("Nam ban can tinh doanh thu: ");
-                                                        do {
-                                                            year = getIntInput(sc);
-                                                            if (year < 0) {
-                                                                System.out.println("Khong the nhap so am!!!");
-                                                                System.out.print("Ban hay nhap lai nam: ");
-                                                            }
-                                                        } while (year < 0);
-                                                    }
-
-                                                    database.get(i).statisticize_turnOver(database.get(i).getFlights(), check, month, year);
-                                                    break;
-                                                }
-                                            }
-                                            if (check == 0) {
-                                                System.out.println("Khong tim thay ma hang hang khong can tinh");
-                                            }
                                             break;
 
                                         case 5: // loc thong tin 1 chuyen bay // Phan tra cuu thong tin
@@ -1593,7 +1536,68 @@ public class Main {
                                             }
 
                                             break;
-                                        case 6: //thoat chuong trinh
+                                        case 6: { // tinh doanh thu
+                                            System.out.print("Nhap ma hang hang khong can tinh doanh thu: ");
+                                            sc.nextLine();
+                                            code = sc.nextLine();
+                                            check = 0;
+
+                                            for (int i = 0; i < database.size(); i++) {
+                                                if (database.get(i).getCode().equals(code)) {
+                                                    check = 1;
+                                                    month = 0;
+                                                    year = 0;
+
+                                                    System.out.println("Tinh doanh thu theo");
+                                                    System.out.println("1. Thang");
+                                                    System.out.println("2. Nam");
+                                                    System.out.print("Lua chon cua ban la: ");
+                                                    int x;
+                                                    do {
+                                                        x = getIntInput(sc);
+                                                        if (x < 0) {
+                                                            System.out.println("Khong the nhap so am!!!");
+                                                            System.out.print("Ban hay nhap lai stt: ");
+                                                        }
+                                                    } while (x < 0);
+                                                    if (x == 1) {
+                                                        System.out.print("Thang ban can tinh doanh thu: ");
+                                                        do {
+                                                            month = getIntInput(sc);
+                                                            if (month < 1 || month > 12) {
+                                                                System.out.println("Khong the nhap so am!!!");
+                                                                System.out.print("Ban hay nhap lai thang: ");
+                                                            }
+                                                        } while (month < 1 || month > 12);
+                                                        System.out.print("Nam ban can tinh doanh thu: ");
+                                                        do {
+                                                            year = getIntInput(sc);
+                                                            if (year < 0) {
+                                                                System.out.println("Khong the nhap so am!!!");
+                                                                System.out.print("Ban hay nhap lai nam: ");
+                                                            }
+                                                        } while (year < 0);
+                                                    } else {
+                                                        System.out.print("Nam ban can tinh doanh thu: ");
+                                                        do {
+                                                            year = getIntInput(sc);
+                                                            if (year < 0) {
+                                                                System.out.println("Khong the nhap so am!!!");
+                                                                System.out.print("Ban hay nhap lai nam: ");
+                                                            }
+                                                        } while (year < 0);
+                                                    }
+
+                                                    double doanh_thu = database.get(i).statisticize_turnOver(database.get(i).getFlights(), check, month, year);
+                                                    System.out.printf("Doanh thu cua thang %d nam %d la: %.0f\n", month, year, doanh_thu);
+                                                    break;
+                                                }
+                                            }
+                                            if (check == 0) {
+                                                System.out.print("Khong tim thay ma hang hang khong can tinh");
+                                            }
+                                        }
+                                        case 7: //thoat chuong trinh
                                         default:
                                             break;
                                     }
@@ -1622,7 +1626,6 @@ public class Main {
             }
             // break case 3 - thoát chương trình
 
-        } while (option
-                != 3); // loop tổng của CẢ CHƯƠNG TRÌNH - tier 1
+        } while (option != 3); // loop tổng của CẢ CHƯƠNG TRÌNH - tier 1
     }
 }
