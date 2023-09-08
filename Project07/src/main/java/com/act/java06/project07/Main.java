@@ -539,7 +539,8 @@ public class Main {
 
                             String maChuyenBay = listFlight.get(opt_for_listFlight).getFlightCode();
                             themHanhKhachvaVe(database, Json_file_path, maChuyenBay);
-                            System.out.println("Lua chon cac chuyen bay chieuS ve: ");
+                            
+                            System.out.println("Lua chon cac chuyen bay chieu ve: ");
                             try {
                                 for (int i = 0; i < database.get(opt_for_airline_menu).getFlights().size(); i++) {
                                     if (database.get(opt_for_airline_menu).getFlights().get(i).getDeparture().equals(destinationString)
@@ -590,6 +591,7 @@ public class Main {
                             dateD1 = LocalDate.now();
                             dateD2 = LocalDate.now();
                             ex = null;
+                            sc.nextLine();
                             do {
                                 try {
                                     ex = null;
