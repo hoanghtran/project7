@@ -1509,12 +1509,12 @@ public class Main {
                                             ArrayList<JSON.Flight> list = new ArrayList<>();
                                             int luaChon = sc.nextInt();
                                             sc.nextLine();
-                                            System.out.print("Nhap thong tin muon loc: ");
                                             System.out.println("");
                                             switch (luaChon) {
                                                 case 1:
-                                                    String information = sc.nextLine();
                                                     airport_menu(Json_airport_file_path);
+                                                    System.out.print("Nhap thong tin muon loc: ");
+                                                    String information = sc.nextLine();
                                                     for (int i = 0; i < database.get(p).getFlights().size(); i++) {
                                                         if (database.get(p).getFlights().get(i).getDeparture().equals(information)) {
                                                             list.add(database.get(p).getFlights().get(i));
@@ -1527,8 +1527,9 @@ public class Main {
                                                     list.clear();
                                                     break;
                                                 case 2:
-                                                    information = sc.nextLine();
                                                     airport_menu(Json_airport_file_path);
+                                                    System.out.print("Nhap thong tin muon loc: ");
+                                                    String information = sc.nextLine();
                                                     for (int i = 0; i < database.get(p).getFlights().size(); i++) {
                                                         if (database.get(p).getFlights().get(i).getDestination().equals(information)) {
                                                             list.add(database.get(p).getFlights().get(i));
@@ -1541,6 +1542,7 @@ public class Main {
                                                     list.clear();
                                                     break;
                                                 case 3:
+                                                    System.out.println("Nhap thong tin nam, thang, ngay(yyyy mm dd): ");
                                                     do {
                                                         do {
                                                             year = getIntInput(sc);
@@ -1577,6 +1579,7 @@ public class Main {
                                                     list.clear();
                                                     break;
                                                 case 4:
+                                                    System.out.println("Nhap thong tin nam, thang, ngay(yyyy mm dd): ");
                                                     do {
                                                         do {
                                                             year = getIntInput(sc);
@@ -1613,6 +1616,7 @@ public class Main {
                                                     list.clear();
                                                     break;
                                                 case 5:
+                                                    System.out.println("Nhap thong tin gio, phut(hh mm): ");
                                                     do {
                                                         hour = getIntInput(sc);
                                                         if (hour < 0 || hour > 24) {
@@ -1642,6 +1646,7 @@ public class Main {
                                                     list.clear();
                                                     break;
                                                 case 6:
+                                                    System.out.println("Nhap thong tin gio, phut(hh mm): ");
                                                     do {
                                                         hour = getIntInput(sc);
                                                         if (hour < 0 || hour > 24) {
