@@ -421,6 +421,16 @@ public class Main {
                                     System.out.print("Nhap moc thoi gian cuoi cung de khoi hanh: ");
                                     String ngayD2 = sc.nextLine();
                                     dateD2 = LocalDate.parse(ngayD2, format);
+                                    
+                                } catch (Exception ex_1) {
+                                    System.out.println("Co loi xay ra voi dinh dang thoi gian: " + ex_1);
+                                    ex = ex_1;
+                                }
+                            } while (ex != null);
+                            ex = null;
+                            do {
+                                try {
+                                    ex = null;
                                     System.out.println("Nhap khoang thoi gian tro ve (Theo dinh dang dd/MM/yyyy)");
                                     System.out.print("Nhap moc thoi gian co the bat dau tro ve: ");
                                     String ngayA1 = sc.nextLine();
@@ -433,6 +443,10 @@ public class Main {
                                     ex = ex_1;
                                 }
                             } while (ex != null);
+                            
+                            
+                            
+                            
                             System.out.println("Danh sach cac chuyen bay di: ");
                             for (int i = 0; i < database.get(opt_for_airline_menu).getFlights().size(); i++) {
                                 if (database.get(opt_for_airline_menu).getFlights().get(i).getDeparture().equals(departureString)
@@ -844,7 +858,8 @@ public class Main {
                                             newEmptySeats(seats);
                                             database.get(p).getFlights().get(database.get(p).getFlights().size() - 1).setSeats(seats);
                                             // thêm phần viết lại vào file
-                                            //write_airlines_file(Json_file_path, database);
+                                            database.get(p).setNumOfFlights(database.get(p).getNumOfFlights()+1);
+                                            write_airlines_file(Json_file_path, database);
 
                                             break;
                                         case 2: // xóa một chuyến bay
@@ -874,6 +889,7 @@ public class Main {
                                                         pointRemote = i;
 
                                                         database.get(p).getFlights().remove(pointRemote);
+                                                        database.get(p).setNumOfFlights(database.get(p).getNumOfFlights()-1);
                                                         break;
                                                     }
                                                 }
@@ -884,7 +900,7 @@ public class Main {
                                             } catch (ExceptionInInitializerError ex_3) {
                                                 System.out.println("Da xay ra loi khi nhap ma chuyen bay" + ex_3);
                                             }
-
+                                            write_airlines_file(Json_file_path, database);
                                             break;
                                         case 3: // truy cập một chuyến bay có sẵn=======
                                             // menu thêm sửa xóa
@@ -1307,7 +1323,7 @@ public class Main {
                                             } catch (Exception ex_4) {
                                                 System.out.println("Da xay ra loi khi nhap ma chuyen bay!!!");
                                             }
-
+                                            write_airlines_file(Json_file_path, database);
                                             System.out.println("Nhap ma hang hang khong can tinh doanh thu: ");
                                             code = sc.nextLine();
                                             check = 0;
