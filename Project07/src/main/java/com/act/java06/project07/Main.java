@@ -34,7 +34,7 @@ public class Main {
     static void navigator() {
         System.out.println("======= Dieu huong =======");
         System.out.println("1. Khach hang\n2. Quan ly\n3. Thoat chuong trinh");
-        System.out.print("Ban la: ");
+        System.out.print("Truy cap: ");
     }
 
     static void airline_menu() throws IOException {
@@ -97,6 +97,19 @@ public class Main {
         System.out.println("4. Sua ve");
         System.out.println("5. Thoat chuong trinh");
         System.out.print("Vui long nhap lua chon cua ban: ");
+    }
+
+    static void show_planes(List<JSON.Airline> database, int airplaneIndex) {
+        int stt = 1;
+
+        System.out.println("");
+        System.out.println("====== Danh sach so hieu cac may bay ======");
+        for (JSON.Plane plane : database.get(airplaneIndex).getPlanes()) {
+            System.out.println(stt + ". " + plane.getPlaneCode());
+
+        }
+
+        System.out.print("Nhap stt cua may bay: ");
     }
 
     static List read_json_file(String file_path) throws IOException {
@@ -192,16 +205,24 @@ public class Main {
             if (i % 5 == 0) {
                 System.out.println("");
             }
+
             if (listOfSeats.get(i).getStatus() == 0) {
                 System.out.print(listOfSeats.get(i).getSeatCode() + "\t");
             } else {
                 System.out.print("(X)\t");
             }
+            if (i == 9) {
+                System.out.println("");
+                System.out.println("=====================================");
+                System.out.print("=====================================");
+
+            }
 
         }
+        System.out.println("");
         System.out.println("\nHang pho thong tu A01->A10");
         System.out.println("Hang thuong gia tu B01->B10");
-
+        System.out.println("");
     }
 
     static int getIndexOfAirline(String code) throws IOException {// error
@@ -518,7 +539,7 @@ public class Main {
 
                                 }
                             }
-                            if (listFlight.size() == 0) {
+                            if (listFlight.isEmpty()) {
                                 System.out.println("Khong co chuyen bay nao kha dung!!!");
                                 break;
                             }
@@ -559,8 +580,8 @@ public class Main {
                             Collections.sort(listFlight, new DateComparator());
                             STT = 1;
                             for (int i = 0; i < listFlight.size(); i++) {
-                                System.out.println(STT + ":" + "Ma chuyen bay: " + listFlight.get(i).getFlightCode() + "  Thoi gian di: " + listFlight.get(i).getDepartureTime() + "  Thoi gian toi: " + listFlight.get(i).getArrivalTime()
-                                        + "  So ve con lai cua hang thuong gia: " + (listFlight.get(i).getTotalBusinessSeats() - listFlight.get(i).getUsedBusinessSeats())
+                                System.out.println(STT + ". " + listFlight.get(i).to_String());
+                                System.out.println("  So ve con lai cua hang thuong gia: " + (listFlight.get(i).getTotalBusinessSeats() - listFlight.get(i).getUsedBusinessSeats())
                                         + "  So ve con lai cua hang pho thong: " + (listFlight.get(i).getTotalEconomySeats() - listFlight.get(i).getUsedEconomySeats()));// hien thi ma chuyen bay
                                 STT++;
                             }
@@ -611,7 +632,7 @@ public class Main {
                                 System.out.print("Nhap ma hang hang khong: ");
                                 String code = sc.nextLine();
 
-                                System.out.print("Nhập so may bay hang so huu: ");
+                                System.out.print("Nhap so may bay hang so huu: ");
 
                                 int numOfPlanes;
 
@@ -632,7 +653,7 @@ public class Main {
                                     plane.setPlaneCode(PlaneCode);
                                 }
 
-                                database.add(new JSON.Airline(brandname, code, numOfPlanes, listOfPlanes, numOfPlanes));
+                                database.add(new JSON.Airline(brandname, code, numOfPlanes, listOfPlanes));
                                 write_airlines_file(Json_file_path, database);
                                 break;
                             case 2: // xóa một hãng hàng không 
@@ -716,9 +737,10 @@ public class Main {
                                             } while (n < 0);
                                             sc.nextLine();
 
-                                            System.out.print("Nhap so hieu chuyen bay: ");
-                                            String soHieuCb = sc.nextLine();
-                                            System.out.print("Nhap so hieu may bay: ");
+                                            System.out.print("So hieu chuyen bay: ");
+                                            String soHieuCb = sc.nextLine(); // gọi hàm generate ở đây
+
+                                            show_planes(database, opt_for_airline);
                                             String soHieuMb = sc.nextLine();
 
                                             System.out.print("Nhap diem xuat phat: ");
@@ -1066,7 +1088,7 @@ public class Main {
                                                         String hoTen = "";
                                                         sc.nextLine();
                                                         System.out.print("Nhap ma ve: ");
-                                                        String ma_Ve = sc.nextLine();
+                                                        String ma_Ve = sc.nextLine().toUpperCase();
                                                         String ghe_cu = ma_Ve.substring(3, 6);
                                                         for (int a = 0; a < database.size(); a++) {
                                                             for (int b = 0; b < database.get(a).getFlights().size(); b++) {
@@ -1085,7 +1107,6 @@ public class Main {
                                                             }
                                                         }
                                                         if (checkTC == 1) {
-
                                                             int kt = 0;
                                                             int a, b, c;
                                                             for (a = 0; a < database.size(); a++) {
@@ -1120,7 +1141,7 @@ public class Main {
                                                             }
                                                             write_airlines_file(Json_file_path, database);
                                                             System.out.print("Nhap cho ngoi moi: ");
-                                                            cho_ngoi = sc.nextLine();
+                                                            cho_ngoi = sc.nextLine().toUpperCase();
                                                             int kt1 = 0;
                                                             ////????
                                                             for (a = 0; a < database.size(); a++) {
@@ -1146,7 +1167,7 @@ public class Main {
                                                                                         } else if (database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode().equals(cho_ngoi)) {
                                                                                             System.out.println("Cho ngoi da duoc dat. Vui long chon cho ngoi khac !!!");
                                                                                             System.out.print("Nhap lai ma ghe: ");
-                                                                                            cho_ngoi = sc.nextLine();
+                                                                                            cho_ngoi = sc.nextLine().toUpperCase();
                                                                                         }
                                                                                     }
                                                                                 } while (kt1 == 0);
@@ -1592,7 +1613,7 @@ public class Main {
 
                                                     double doanh_thu = database.get(i)
                                                             .statisticize_turnOver(database.get(i).
-                                                                    getFlights(), check, month, year);
+                                                                    getFlights(), x, month, year);
 
                                                     String output = String.format("%,d", (int) doanh_thu);
 
