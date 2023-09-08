@@ -666,6 +666,7 @@ public class Main {
 
                                 database.add(new JSON.Airline(brandname, code, numOfPlanes, listOfPlanes));
                                 write_airlines_file(Json_file_path, database);
+                                System.out.println("Đa them thanh cang!");
                                 break;
                             case 2: // xóa một hãng hàng không 
                                 //exception mã hãng hàng không sai thì sao?
@@ -687,7 +688,7 @@ public class Main {
                                     System.out.println("Khong tim thay ma hang hang khong can xoa");
                                 }
                                 write_airlines_file(Json_file_path, database);
-
+                                System.out.println("Da xaa thanh cong!");
                                 break;
                             case 3: // truy cập một hãng hàng không
                                 int opt_for_flight;
