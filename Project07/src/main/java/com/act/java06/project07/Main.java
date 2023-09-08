@@ -275,7 +275,7 @@ public class Main {
                 valid = true;
             } else {
                 sc.nextLine();
-                System.out.println("Cần nhập số, vui lòng nhập lại!");
+                System.out.println("Can nhap so, vui long nhap lai!");
             }
         } while (valid == false);
         return num;
@@ -332,7 +332,7 @@ public class Main {
             do {
                 option = getIntInput(sc);
                 if (option < 0) {
-                    System.out.println("Khong the nhap so am!!!");
+                    System.out.println("Hay nhap so nguyen duong!!!");
                     System.out.print("Ban hay nhap lai: ");
                 }
             } while (option < 0);
@@ -349,14 +349,13 @@ public class Main {
                     do {
                         opt_for_airline_menu = getIntInput(sc);//
                         opt_for_airline_menu--;
-                        if (opt_for_airline_menu < 0) {
-                            System.out.println("Khong the nhap so am!!!");
+                        if (opt_for_airline_menu < 0 || opt_for_airline_menu >= database.size()) {
+                            System.out.println("Ban da nhap sai so voi menu!!!");
                             System.out.print("Ban hay nhap lai: ");
                         }
-                    } while (opt_for_airline_menu < 0);
+                    } while (opt_for_airline_menu < 0 || opt_for_airline_menu >= database.size());
 
                     LAirport = read_json_file_Airport(Json_airport_file_path);
-                    
 
                     //Hiện menu cho khách chọn nơi xuất phát, nơi đến, ngày đi và ngày về
                     int departure;
@@ -365,15 +364,15 @@ public class Main {
 
                     System.out.println("=======Menu======");
                     System.out.print("Chon diem xuat phat: ");
-
+                    sc.nextLine();
                     do {
 
                         departure = getIntInput(sc);
-                        if (departure < 0) {
-                            System.out.println("Khong the nhap so am!!!");
+                        if (departure <= 0 || departure > LAirport.size()) {
+                            System.out.println("Ban da nhap sai so voi menu!!!");
                             System.out.print("Ban hay nhap lai: ");
                         }
-                    } while (departure < 0);
+                    } while (departure <= 0 || departure > LAirport.size());
                     departure--;
 
                     System.out.print("Chon diem den: ");
@@ -381,11 +380,11 @@ public class Main {
                     do {
 
                         destination = getIntInput(sc);
-                        if (destination < 0) {
-                            System.out.println("Khong the nhap so am!!!");
+                        if (destination <= 0 || destination > LAirport.size()) {
+                            System.out.println("Ban da nhap sai so voi menu!!!");
                             System.out.print("Ban hay nhap lai: ");
                         }
-                    } while (destination < 0);
+                    } while (destination <= 0 || destination > LAirport.size());
                     destination--;
 
                     String departureString = LAirport.get(departure).getCity();
@@ -400,11 +399,11 @@ public class Main {
                     do {
 
                         lua_Chon = getIntInput(sc);
-                        if (lua_Chon < 0) {
-                            System.out.println("Khong the nhap so am!!!");
+                        if (lua_Chon <= 0 || lua_Chon > 2) {
+                            System.out.println("hay nhap dung menu nhu tren!!!");
                             System.out.print("Ban hay nhap lai: ");
                         }
-                    } while (lua_Chon < 0);
+                    } while (lua_Chon <= 0 || lua_Chon > 2);
                     switch (lua_Chon) {
                         case 1:
                             LocalDate dateD1 = LocalDate.now();
@@ -461,18 +460,21 @@ public class Main {
                             Collections.sort(listFlight, new DateComparator());
                             int STT = 1;
                             for (int i = 0; i < listFlight.size(); i++) {
-                                System.out.println(STT + ":" + "Ma chuyen bay: " + listFlight.get(i).getFlightCode() + "  Thoi gian di: " + listFlight.get(i).getDepartureTime() + "  Thoi gian toi: " + listFlight.get(i).getArrivalTime());// hien thi ma chuyen bay
+                                System.out.println(STT + ":" + "Ma chuyen bay: " + listFlight.get(i).getFlightCode() + "  Thoi gian di: " + listFlight.get(i).getDepartureTime() + "  Thoi gian toi: " + listFlight.get(i).getArrivalTime()
+                                        + "  So ve con lai cua hang thuong gia: " + (listFlight.get(i).getTotalBusinessSeats() - listFlight.get(i).getUsedBusinessSeats())
+                                        + "  So ve con lai cua hang pho thong: " + (listFlight.get(i).getTotalEconomySeats() - listFlight.get(i).getUsedEconomySeats()));
                                 STT++;
                             }
                             int opt_for_listFlight;
+                            System.out.print("Nhap lua chon cua ban: ");
                             do {
 
                                 opt_for_listFlight = getIntInput(sc);
-                                if (opt_for_listFlight < 0) {
-                                    System.out.println("Khong the nhap so am!!!");
+                                if (opt_for_listFlight <= 0 || opt_for_listFlight > listFlight.size()) {
+                                    System.out.println("Hay nhap stt nhu danh sach!!!");
                                     System.out.print("Ban hay nhap lai: ");
                                 }
-                            } while (opt_for_listFlight < 0);
+                            } while (opt_for_listFlight <= 0 || opt_for_listFlight > listFlight.size());
                             opt_for_listFlight--;
 
                             String maChuyenBay = listFlight.get(opt_for_listFlight).getFlightCode();
@@ -504,18 +506,20 @@ public class Main {
                             Collections.sort(listFlight, new DateComparator());
                             STT = 1;
                             for (int i = 0; i < listFlight.size(); i++) {
-                                System.out.println(STT + ":" + "Ma chuyen bay: " + listFlight.get(i).getFlightCode() + "  Thoi gian di: " + listFlight.get(i).getDepartureTime() + "  Thoi gian toi: " + listFlight.get(i).getArrivalTime());// hien thi ma chuyen bay
+                                System.out.println(STT + ":" + "Ma chuyen bay: " + listFlight.get(i).getFlightCode() + "  Thoi gian di: " + listFlight.get(i).getDepartureTime() + "  Thoi gian toi: " + listFlight.get(i).getArrivalTime()
+                                        + "  So ve con lai cua hang thuong gia: " + (listFlight.get(i).getTotalBusinessSeats() - listFlight.get(i).getUsedBusinessSeats())
+                                        + "  So ve con lai cua hang pho thong: " + (listFlight.get(i).getTotalEconomySeats() - listFlight.get(i).getUsedEconomySeats()));// hien thi ma chuyen bay
                                 STT++;
                             }
-
+                            System.out.print("Nhap lua chon cua ban: ");
                             do {
 
                                 opt_for_listFlight = getIntInput(sc);
-                                if (opt_for_listFlight < 0) {
-                                    System.out.println("Khong the nhap so am!!!");
+                                if (opt_for_listFlight <= 0 || opt_for_listFlight > listFlight.size()) {
+                                    System.out.println("Hay nhap stt nhu danh sach!!!");
                                     System.out.print("Ban hay nhap lai: ");
                                 }
-                            } while (opt_for_airline < 0);
+                            } while (opt_for_airline <= 0 || opt_for_listFlight > listFlight.size());
                             opt_for_listFlight--;
 
                             maChuyenBay = listFlight.get(opt_for_listFlight).getFlightCode();
@@ -541,20 +545,24 @@ public class Main {
                                         + "  So ve con lai cua hang pho thong: " + (listFlight.get(i).getTotalEconomySeats() - listFlight.get(i).getUsedEconomySeats()));// hien thi ma chuyen bay
                                 STT++;
                             }
+                            System.out.print("Nhap lua chon cua ban: ");
                             do {
 
                                 opt_for_listFlight = getIntInput(sc);
-                                if (opt_for_listFlight < 0) {
-                                    System.out.println("Khong the nhap so am!!!");
+                                if (opt_for_listFlight <= 0 || opt_for_listFlight > listFlight.size()) {
+                                    System.out.println("Ban hay nhap dung stt chuyen bay!!!");
                                     System.out.print("Ban hay nhap lai: ");
                                 }
-                            } while (opt_for_listFlight < 0);
+                            } while (opt_for_listFlight <= 0 || opt_for_listFlight > listFlight.size());
                             opt_for_listFlight--;
 
                             maChuyenBay = listFlight.get(opt_for_listFlight).getFlightCode();
                             themHanhKhachvaVe(database, Json_file_path, maChuyenBay);
                             listFlight.clear();
                             break;
+                        default:
+                            System.out.println("Vui long nhap dung dinh dang!!!");
+                            System.out.println("");
                     }
 
                     break;
@@ -570,11 +578,11 @@ public class Main {
                         do {
 
                             opt_for_airline = getIntInput(sc);
-                            if (opt_for_airline < 0) {
-                                System.out.println("Khong the nhap so am!!!");
+                            if (opt_for_airline <= 0 || opt_for_airline>4) {
+                                System.out.println("Ban da nhap sai so voi menu!!!");
                                 System.out.print("Ban hay nhap lai: ");
                             }
-                        } while (opt_for_airline < 0);
+                        } while (opt_for_airline <= 0 || opt_for_airline>4);
                         switch (opt_for_airline) {
                             case 1: // tạo một hãng hàng không 
                                 System.out.print("Nhap ten hang hang khong: ");
@@ -637,11 +645,11 @@ public class Main {
                                 sc.nextLine();
                                 do {
                                     opt_for_flight = getIntInput(sc);
-                                    if (opt_for_flight < 0) {
+                                    if (opt_for_flight <= 0 || opt_for_flight > 6) {
                                         System.out.println("Khong the nhap so am!!!");
                                         System.out.print("Ban hay nhap lai: ");
                                     }
-                                } while (opt_for_flight < 0);
+                                } while (opt_for_flight <= 0 || opt_for_flight > 6);
 
                                 do {
 
@@ -665,16 +673,19 @@ public class Main {
                                             JSON.DepartureTime tgDi;
                                             JSON.ArrivalTime tgDen;
                                             airline_menu();
-                                            System.out.print("Nhap lua chon cua ban: ");
+                                            
                                             int p;
 
                                             do {
                                                 p = getIntInput(sc);
-                                                if (p < 0) {
+
+                                                if (p <= 0 || p>database.size()) {
                                                     System.out.println("Khong the nhap so am!!!");
-                                                    System.out.print("Ban hay nhap lai: ");
+                                                    System.out.print("Ban hay nhap lai stt: ");
                                                 }
-                                            } while (p < 0);
+
+                                            } while (p <= 0 || p>database.size());
+                                            p--;
                                             int n;
 
                                             System.out.print("Nhap so luong chuyen bay muon them: ");
@@ -841,18 +852,18 @@ public class Main {
 
                                             // chèn code vào đây
                                             airline_menu();
-                                            System.out.print("Nhap lua chon cua ban: ");
+                                            
                                             sc.nextLine();
                                             do {
                                                 p = getIntInput(sc);
 
-                                                if (p < 0) {
+                                                if (p <= 0 || p>database.size()) {
                                                     System.out.println("Khong the nhap so am!!!");
                                                     System.out.print("Ban hay nhap lai stt: ");
                                                 }
 
-                                            } while (p < 0);
-
+                                            } while (p <= 0 || p>database.size());
+                                            p--;
                                             System.out.print("Nhap so hieu chuyen bay can xoa: ");
                                             int pointRemote = -1;
                                             sc.nextLine();
@@ -884,12 +895,12 @@ public class Main {
                                                 do {
                                                     opt_for_passenger = getIntInput(sc);
 
-                                                    if (opt_for_passenger < 0) {
+                                                    if (opt_for_passenger <=0 || opt_for_passenger>5) {
                                                         System.out.println("Khong the nhap so am!!!");
                                                         System.out.print("Ban hay nhap lai stt: ");
                                                     }
 
-                                                } while (opt_for_passenger < 0);
+                                                } while (opt_for_passenger <= 0 || opt_for_passenger>5);
                                                 switch (opt_for_passenger) {
                                                     case 1: {
                                                         int checkCodeCB = 0;
@@ -916,7 +927,9 @@ public class Main {
                                                                                 for (int j = 0; j < database.get(a).getFlights().get(b).getSeats().size(); j++) {
                                                                                     if (database.get(a).getFlights().get(b).getSeats().get(j).getStatus() == 1) {
                                                                                         if (luaChon.equals(database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode())) {
+
                                                                                             System.out.println("Cho ngoi da duoc dat. Vui long chon cho ngoi khac !!!");
+
                                                                                             break;
                                                                                         }
                                                                                     } else {
@@ -1047,79 +1060,81 @@ public class Main {
                                                             }
                                                         }
                                                         if (checkTC == 1) {
-                                                            
+
                                                             int kt = 0;
                                                             int a, b, c;
                                                             for (a = 0; a < database.size(); a++) {
-                                                                for (b = 0; b < database.get(a).getFlights().size(); b++) {
-                                                                    for (c = 0; c < database.get(a).getFlights().get(b).getPassengers().size(); c++) {
-                                                                        printAvailableSeats(database.get(a).getFlights().get(b).getSeats());
-
-                                                                        do {
-                                                                            for (int j = 0; j < database.get(a).getFlights().get(b).getSeats().size(); j++) {
-
-                                                                                if (database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode().equals(ghe_cu)) {
-                                                                                    kt = 1;
-                                                                                    database.get(a).getFlights().get(b).getSeats().get(j).setStatus(0);
-                                                                                    if (ghe_cu.charAt(0) == 'A') {
-                                                                                        database.get(a).getFlights().get(b).setUsedEconomySeats(database.get(a).getFlights().get(b).getUsedEconomySeats() - 1);
-                                                                                    } else if (ghe_cu.charAt(0) == 'B') {
-                                                                                        database.get(a).getFlights().get(b).setUsedBusinessSeats(database.get(a).getFlights().get(b).getUsedBusinessSeats() - 1);
-                                                                                    }
-                                                                                    write_airlines_file(Json_file_path, database);
-                                                                                    break;
-                                                                                }
-                                                                            }
-                                                                            if (kt == 0) {
-                                                                                System.out.printf("Ma ve %s khong hop le!!!\n", ma_Ve);
-                                                                                System.out.print("Nhap lai: ");
-                                                                                ma_Ve = sc.nextLine();
-                                                                            }
-                                                                        } while (kt != 1);
-                                                                    }
-                                                                }
-                                                                System.out.print("Nhap cho ngoi moi: ");
-                                                                cho_ngoi = sc.nextLine();
-                                                                int kt1 = 0;
-                                                                for (a = 0; a < database.size(); a++) {
+                                                                if (database.get(a).getCode().equals(ma_Ve.substring(0, 2))) {
                                                                     for (b = 0; b < database.get(a).getFlights().size(); b++) {
-                                                                        for (c = 0; c < database.get(a).getFlights().get(b).getPassengers().size(); c++) {
-                                                                            for (int j = 0; j < database.get(a).getFlights().get(b).getSeats().size(); j++) {
-                                                                                do {
-                                                                                    if (database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode().equals(cho_ngoi)
-                                                                                            && database.get(a).getFlights().get(b).getSeats().get(j).getStatus() == 1) {
-                                                                                        System.out.println("Cho ngoi da duoc dat. Vui long chon cho ngoi khac !!!");
-                                                                                        System.out.print("Nhap lai ma ghe: ");
-                                                                                        cho_ngoi = sc.nextLine();
-                                                                                    } else {
-                                                                                        kt1 = 1;
-                                                                                        setValueForSeat(database.get(a).getFlights().get(b).getSeats(), cho_ngoi);
-                                                                                        write_airlines_file(Json_file_path, database);
-                                                                                        System.out.println("Da dat cho: " + cho_ngoi);
-                                                                                        database.get(a).getFlights().get(b).getPassengers().get(c).setTicketCode(generateTicketCode(database.get(a).getCode(), database.get(a).getFlights().get(b).getFlightCode(), cho_ngoi));
-                                                                                        if (cho_ngoi.charAt(0) == 'A') {
-                                                                                            database.get(a).getFlights().get(b).setUsedEconomySeats(database.get(a).getFlights().get(b).getUsedEconomySeats() + 1);
-                                                                                        } else if (cho_ngoi.charAt(0) == 'B') {
-                                                                                            database.get(a).getFlights().get(b).setUsedBusinessSeats(database.get(a).getFlights().get(b).getUsedBusinessSeats() + 1);
+                                                                        if (database.get(a).getFlights().get(b).getFlightCode()
+                                                                                .equals(ma_Ve.substring(7, 12))) {
+                                                                            do {
+                                                                                for (int j = 0; j < database.get(a).getFlights().get(b).getSeats().size(); j++) {
+
+                                                                                    if (database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode()
+                                                                                            .equals(ghe_cu)) {
+                                                                                        kt = 1;
+                                                                                        printAvailableSeats(database.get(a).getFlights().get(b).getSeats());
+                                                                                        database.get(a).getFlights().get(b).getSeats().get(j).setStatus(0);
+                                                                                        if (ghe_cu.charAt(0) == 'A') {
+                                                                                            database.get(a).getFlights().get(b).setUsedEconomySeats(database.get(a).getFlights().get(b).getUsedEconomySeats() - 1);
+                                                                                        } else if (ghe_cu.charAt(0) == 'B') {
+                                                                                            database.get(a).getFlights().get(b).setUsedBusinessSeats(database.get(a).getFlights().get(b).getUsedBusinessSeats() - 1);
                                                                                         }
-                                                                                        break;
                                                                                     }
-                                                                                } while (kt1 != 0);
-                                                                            }
+                                                                                }
+                                                                                if (kt == 0) {
+                                                                                    System.out.printf("Ma ve %s khong hop le!!!\n", ma_Ve);
+                                                                                    System.out.print("Nhap lai: ");
+                                                                                    ma_Ve = sc.nextLine();
+                                                                                }
+                                                                            } while (kt == 0);
                                                                         }
                                                                     }
                                                                 }
                                                             }
-
+                                                            write_airlines_file(Json_file_path, database);
+                                                            System.out.print("Nhap cho ngoi moi: ");
+                                                            cho_ngoi = sc.nextLine();
+                                                            int kt1 = 0;
+                                                            for (a = 0; a < database.size(); a++) {
+                                                                for (b = 0; b < database.get(a).getFlights().size(); b++) {
+                                                                    for (c = 0; c < database.get(a).getFlights().get(b).getPassengers().size(); c++) {
+                                                                        for (int j = 0; j < database.get(a).getFlights().get(b).getSeats().size(); j++) {
+                                                                            do {
+                                                                                if (database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode().equals(cho_ngoi)
+                                                                                        && database.get(a).getFlights().get(b).getSeats().get(j).getStatus() == 1) {
+                                                                                    System.out.println("Cho ngoi da duoc dat. Vui long chon cho ngoi khac !!!");
+                                                                                    System.out.print("Nhap lai ma ghe: ");
+                                                                                    cho_ngoi = sc.nextLine();
+                                                                                } else {
+                                                                                    kt1 = 1;
+                                                                                    setValueForSeat(database.get(a).getFlights().get(b).getSeats(), cho_ngoi);
+                                                                                    write_airlines_file(Json_file_path, database);
+                                                                                    System.out.println("Da dat cho: " + cho_ngoi);
+                                                                                    database.get(a).getFlights().get(b).getPassengers().get(c).setTicketCode(generateTicketCode(database.get(a).getCode(), database.get(a).getFlights().get(b).getFlightCode(), cho_ngoi));
+                                                                                    if (cho_ngoi.charAt(0) == 'A') {
+                                                                                        database.get(a).getFlights().get(b).setUsedEconomySeats(database.get(a).getFlights().get(b).getUsedEconomySeats() + 1);
+                                                                                    } else if (cho_ngoi.charAt(0) == 'B') {
+                                                                                        database.get(a).getFlights().get(b).setUsedBusinessSeats(database.get(a).getFlights().get(b).getUsedBusinessSeats() + 1);
+                                                                                    }
+                                                                                    break;
+                                                                                }
+                                                                            } while (kt1 != 0);
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else {
+                                                            System.out.println("Ma ve khong hop ve");
                                                         }
-                                                        
                                                         break;
                                                     }
-
                                                     case 5:
                                                         // thoát chương trình                                                     
                                                         break;
                                                     default:
+                                                        System.out.println("Hay nhap lai so dung voi menu!!!");
                                                         break;
                                                 }
 
@@ -1127,16 +1142,16 @@ public class Main {
                                             break;                           // tier 4  
                                         case 4: // sua thong tin 1 chuyen bay
                                             airline_menu();
-                                            System.out.print("Nhap lua chon cua ban:  ");
+                                            
                                             do {
                                                 p = getIntInput(sc);
 
-                                                if (p < 0) {
+                                                if (p < 0 || p>=database.size()) {
                                                     System.out.println("Khong the nhap so am!!!");
                                                     System.out.print("Ban hay nhap lai stt: ");
                                                 }
 
-                                            } while (p < 0);
+                                            } while (p < 0 || p>=database.size());
                                             sc.nextLine();
                                             int pointEdit = -1;
                                             System.out.print("Nhap so hieu chuyen bay can sua: ");
@@ -1293,7 +1308,7 @@ public class Main {
                                                 System.out.println("Da xay ra loi khi nhap ma chuyen bay!!!");
                                             }
 
-                                            System.out.println("Nhập mã hãng hàng không cần tính doanh thu: ");
+                                            System.out.println("Nhap ma hang hang khong can tinh doanh thu: ");
                                             code = sc.nextLine();
                                             check = 0;
 
@@ -1303,10 +1318,10 @@ public class Main {
                                                     month = 0;
                                                     year = 0;
 
-                                                    System.out.println("Tính doanh thu theo");
-                                                    System.out.println("1. Tháng");
-                                                    System.out.println("2. Năm");
-                                                    System.out.println("Lựa chọn của bạn là: ");
+                                                    System.out.println("Tinh doanh thu theo");
+                                                    System.out.println("1. Thang");
+                                                    System.out.println("2. Nam");
+                                                    System.out.println("Lua chon cua ban la: ");
                                                     int x;
                                                     do {
                                                         x = getIntInput(sc);
@@ -1333,7 +1348,7 @@ public class Main {
                                                             }
                                                         } while (year < 0);
                                                     } else {
-                                                        System.out.println("Năm bạn cần tính doanh thu: ");
+                                                        System.out.println("Nam ban can tinh doanh thu: ");
                                                         do {
                                                             year = getIntInput(sc);
                                                             if (year < 0) {
@@ -1348,20 +1363,23 @@ public class Main {
                                                 }
                                             }
                                             if (check == 0) {
-                                                System.out.println("Không tìm thấy mã hãng hàng không cần tính");
+                                                System.out.println("Khong tim thay ma hang hang khong can tinh");
                                             }
                                             break;
 
                                         case 5: // loc thong tin 1 chuyen bay // Phan tra cuu thong tin
                                             airline_menu();
-                                            System.out.print("Nhap lua chon cua ban:  ");
+                                            
                                             do {
                                                 p = getIntInput(sc);
-                                                if (p < 0) {
+
+                                                if (p <= 0 || p>database.size()) {
                                                     System.out.println("Khong the nhap so am!!!");
-                                                    System.out.print("Ban hay nhap lai: ");
+                                                    System.out.print("Ban hay nhap lai stt: ");
                                                 }
-                                            } while (p < 0);
+
+                                            } while (p <= 0 || p>database.size());
+                                            p--;
 
                                             System.out.println("Vui long chon thong tin ban muon loc: ");
                                             System.out.println("1. Loc theo dia diem di");
@@ -1561,11 +1579,14 @@ public class Main {
                 case 3: {
                 }
                 default: {
+                    System.out.println("Vui long nhap dung menu!!!");
+                    System.out.println("");
                 }
 
             }
             // break case 3 - thoát chương trình
 
-        } while (option != 3); // loop tổng của CẢ CHƯƠNG TRÌNH - tier 1
+        } while (option
+                != 3); // loop tổng của CẢ CHƯƠNG TRÌNH - tier 1
     }
 }
