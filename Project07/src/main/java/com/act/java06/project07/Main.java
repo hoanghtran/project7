@@ -1128,6 +1128,9 @@ public class Main {
                                                                                             System.out.println("Cho ngoi da duoc dat. Vui long chon cho ngoi khac !!!");
                                                                                             System.out.print("Nhap lai ma ghe: ");
                                                                                             cho_ngoi = sc.nextLine();
+                                                                                            System.out.println(database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode());
+                                                                                            System.out.println(cho_ngoi);
+                                                                                            System.out.println(database.get(a).getFlights().get(b).getSeats().get(j).getStatus());
                                                                                             if (database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode().equals(cho_ngoi)
                                                                                                     && database.get(a).getFlights().get(b).getSeats().get(j).getStatus() == 0) {
                                                                                                 kt1 = 1;
