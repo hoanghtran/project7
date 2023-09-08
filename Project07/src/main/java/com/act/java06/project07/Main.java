@@ -60,7 +60,7 @@ public class Main {
         for (JSON.Airport item : LAirport) {
             System.out.print(stt + ". ");
             stt--;
-            System.out.println("San bay: " + item.getName() + "; Thanh pho: " + item.getCity()); // sửa lại cái này nhé Huy(sửa xong)
+            System.out.println("San bay: " + item.getName()); // sửa lại cái này nhé Huy(sửa xong)
             stt += 2;
         }
     }
@@ -110,6 +110,18 @@ public class Main {
         }
 
         System.out.print("Nhap stt cua may bay: ");
+    }
+
+    static String generate_FlightCode(List<JSON.Airline> database, int p, int year, int month, int day) {
+        String MCB = "";
+        Random rd = new Random();
+        int randomNum = rd.nextInt(9000) + 1000;
+        String strRd = String.valueOf(randomNum);
+        String strMonth = String.valueOf(month);
+        String strDay = String.valueOf(day);
+        String strYear = String.valueOf(year).substring(2);
+        MCB = database.get(p).getCode() + "-" + strYear + strMonth + strDay + strRd;
+        return MCB;
     }
 
     static List read_json_file(String file_path) throws IOException {
@@ -690,7 +702,6 @@ public class Main {
                                             System.out.print("Ban hay nhap lai: ");
                                         }
                                     } while (opt_for_flight <= 0 || opt_for_flight > 6);
-                                    sc.nextLine();
                                     switch (opt_for_flight) {
                                         case 1: // thêm chuyến bay - cho quản lý điền thêm
                                             // bao nhiêu chuyến bay nhé, không phải chỉ thêm 1 đâu
@@ -742,12 +753,31 @@ public class Main {
 
                                             show_planes(database, opt_for_airline);
                                             String soHieuMb = sc.nextLine();
-
-                                            System.out.print("Nhap diem xuat phat: ");
-                                            String diemXp = sc.nextLine();
-
-                                            System.out.print("Nhap diem den: ");
-                                            String diemDen = sc.nextLine();
+                                            airport_menu(Json_airport_file_path);
+                                            int check_1 = 0;
+                                            String diemXp;
+                                            String diemDen;
+                                            do {
+                                                System.out.print("Nhap diem xuat phat: ");
+                                                diemXp = sc.nextLine();
+                                                for (int i = 0; i < LAirport.size(); i++) {
+                                                    if (LAirport.get(i).getCity().equals(diemXp)) {
+                                                        check_1 = 1;
+                                                        break;
+                                                    }
+                                                }
+                                            } while (check_1 == 0);
+                                            check_1 = 0;
+                                            do {
+                                                System.out.print("Nhap diem den: ");
+                                                diemDen = sc.nextLine();
+                                                for (int i = 0; i < LAirport.size(); i++) {
+                                                    if (LAirport.get(i).getCity().equals(diemDen)) {
+                                                        check_1 = 1;
+                                                        break;
+                                                    }
+                                                }
+                                            } while (check_1 == 0);
 
                                             do {
                                                 System.out.println("Nhap thoi gian di ");
@@ -889,11 +919,10 @@ public class Main {
                                             break;
                                         case 2: // xóa một chuyến bay
                                             //exception mã chuyến bay sai thì sao?
-
+                                            
                                             // chèn code vào đây
                                             airline_menu();
 
-                                            sc.nextLine();
                                             do {
                                                 p = getIntInput(sc);
 
@@ -1643,6 +1672,7 @@ public class Main {
 
                     } while (opt_for_airline != 4); // loop cho mục hãng hàng không - tier 2
                     // break case 2 - case cho quản lý
+                    break;
                 }
 
                 case 3: {
