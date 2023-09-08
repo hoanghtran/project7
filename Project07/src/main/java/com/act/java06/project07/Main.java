@@ -1529,7 +1529,7 @@ public class Main {
                                                 case 2:
                                                     airport_menu(Json_airport_file_path);
                                                     System.out.print("Nhap thong tin muon loc: ");
-                                                    String information = sc.nextLine();
+                                                    information = sc.nextLine();
                                                     for (int i = 0; i < database.get(p).getFlights().size(); i++) {
                                                         if (database.get(p).getFlights().get(i).getDestination().equals(information)) {
                                                             list.add(database.get(p).getFlights().get(i));
