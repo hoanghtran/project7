@@ -1602,6 +1602,7 @@ public class Main {
                                             if (check == 0) {
                                                 System.out.print("Khong tim thay ma hang hang khong can tinh");
                                             }
+                                            break;
                                         }
                                         case 7: //thoat chuong trinh
                                         default:
