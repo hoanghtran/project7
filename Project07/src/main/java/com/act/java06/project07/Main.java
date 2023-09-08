@@ -259,6 +259,19 @@ public class Main {
         return LocalDate.of(y, m, d);
     }
 
+    public static String generatePlaneCode(int num) {
+        if (num < 0 || num > 17575) {
+            throw new IllegalArgumentException("Only numbers between 0 and 17575 are supported");
+        }
+        StringBuilder s = new StringBuilder("AAA");
+        for (int pos = 2; pos >= 0 && num > 0; pos--) {
+            char letter = (char) ('A' + num % 26);
+            s.setCharAt(pos, letter);
+            num = num / 26;
+        }
+        return s.toString();
+    }
+
     static void themHanhKhachvaVe(List<JSON.Airline> database, String file_path, String maChuyenBay) throws IOException {
 
         for (int a = 0; a < database.size(); a++) {
@@ -700,10 +713,33 @@ public class Main {
                                 List<JSON.Plane> listOfPlanes = new ArrayList<>();
                                 JSON.Plane plane = new JSON.Plane();
                                 for (int n = 0; n < numOfPlanes; n++) {
-                                    sc.nextLine();
-                                    System.out.print("Nhap ma may bay: ");
-                                    String PlaneCode = sc.nextLine();
-                                    plane.setPlaneCode(PlaneCode);
+                                    System.out.println("Lua chon nhap ma may bay theo: ");
+                                    System.out.println("1. Gan ma may bay thu cong");
+                                    System.out.println("2. Tu tao ma may bay");
+                                    int tmp;
+                                    String tmp_code;
+                                    do {
+                                        tmp = getIntInput(sc);
+
+                                        if (tmp <= 0 || tmp > database.size()) {
+                                            System.out.println("Khong the nhap so am!!!");
+                                            System.out.print("Ban hay nhap lai: ");
+                                        }
+
+                                    } while (tmp <= 0 || tmp > database.size());
+                                    if (tmp == 1) {
+                                        System.out.print("Nhap ma may bay: ");
+                                        sc.nextLine();
+                                        tmp_code = sc.nextLine();
+                                        plane.setPlaneCode(tmp_code);
+                                    }else{
+                                        for(JSON.Airline airline: database){ // lay so luong plane hien co
+                                            if(airline.getCode().equals(code)){
+                                                plane.setPlaneCode(generatePlaneCode(airline.getNumOfPlanes()));
+                                            }
+                                        }
+                                    }
+                                   
                                 }
 
                                 database.add(new JSON.Airline(brandname, code, numOfPlanes, listOfPlanes));
@@ -776,7 +812,7 @@ public class Main {
                                             JSON.Time__1 timeArr;
                                             JSON.DepartureTime tgDi;
                                             JSON.ArrivalTime tgDen;
-                                            
+
                                             int n;
 
                                             System.out.print("Nhap so luong chuyen bay muon them: ");
@@ -964,7 +1000,6 @@ public class Main {
                                             //exception mã chuyến bay sai thì sao?
 
                                             // chèn code vào đây
-                                            
                                             System.out.print("Nhap so hieu chuyen bay can xoa: ");
                                             int pointRemote = -1;
                                             sc.nextLine();
@@ -1264,7 +1299,7 @@ public class Main {
                                             } while (opt_for_passenger != 5); // loop cho mục khách
                                             break;                           // tier 4  
                                         case 4: // sua thong tin 1 chuyen bay
-                                            
+
                                             sc.nextLine();
                                             int pointEdit = -1;
                                             System.out.print("Nhap so hieu chuyen bay can sua: ");
@@ -1424,8 +1459,6 @@ public class Main {
                                             break;
 
                                         case 5: // loc thong tin 1 chuyen bay // Phan tra cuu thong tin
-
-                                            
 
                                             System.out.println("Vui long chon thong tin ban muon loc: ");
                                             System.out.println("1. Loc theo dia diem di");
