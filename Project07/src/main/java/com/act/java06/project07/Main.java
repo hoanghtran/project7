@@ -16,6 +16,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 /**
  *
@@ -36,6 +38,7 @@ public class Main {
     }
 
     static void airline_menu() throws IOException {
+        System.out.println("");
         System.out.println("====== Hang hang khong ======");
         //Hàm duyệt hiển thị các hãng hàng không
         List<JSON.Airline> list = read_json_file(Json_file_path);
@@ -48,6 +51,7 @@ public class Main {
     }
 
     static void airport_menu(String Json_airport_file_path) throws IOException {
+        System.out.println("");
         List<JSON.Airport> LAirport = new ArrayList<>();
         LAirport = read_json_file_Airport(Json_airport_file_path);
 
@@ -62,6 +66,7 @@ public class Main {
     }
 
     static void modify_or_access_an_airline_option() {
+        System.out.println("");
         System.out.println("============== Hang hang khong ==============");
         System.out.println("1. Tao mot hang hang khong"); //Done
         System.out.println("2. Xoa mot hang hang khong"); //Done
@@ -71,6 +76,7 @@ public class Main {
     }
 
     static void modify_or_access_a_flight() {
+        System.out.println("");
         System.out.println("============== Chuyen bay ==============");
         System.out.println("1. Them chuyen bay");
         System.out.println("2. Xoa mot chuyen bay");
@@ -83,6 +89,7 @@ public class Main {
     }
 
     static void add_edit_remove_a_passenger() {
+        System.out.println("");
         System.out.println("============== Hanh khach va Ve ==============");
         System.out.println("1. Them hanh khach ");
         System.out.println("2. Xoa mot hanh khach");
@@ -651,20 +658,18 @@ public class Main {
 
                                 break;
                             case 3: // truy cập một hãng hàng không
-
-                                modify_or_access_a_flight();      // menu chỉnh sửa hoặc truy cập
-                                int opt_for_flight;//1 hãng hàng không
-                                sc.nextLine();
+                                int opt_for_flight;
                                 do {
-                                    opt_for_flight = getIntInput(sc);
-                                    if (opt_for_flight <= 0 || opt_for_flight > 6) {
-                                        System.out.println("Khong the nhap so am!!!");
-                                        System.out.print("Ban hay nhap lai: ");
-                                    }
-                                } while (opt_for_flight <= 0 || opt_for_flight > 6);
-
-                                do {
-
+                                    modify_or_access_a_flight();      // menu chỉnh sửa hoặc truy cập
+                                    //1 hãng hàng không
+                                    do {
+                                        opt_for_flight = getIntInput(sc);
+                                        if (opt_for_flight <= 0 || opt_for_flight > 6) {
+                                            System.out.println("Khong the nhap so am!!!");
+                                            System.out.print("Ban hay nhap lai: ");
+                                        }
+                                    } while (opt_for_flight <= 0 || opt_for_flight > 6);
+                                    sc.nextLine();
                                     switch (opt_for_flight) {
                                         case 1: // thêm chuyến bay - cho quản lý điền thêm
                                             // bao nhiêu chuyến bay nhé, không phải chỉ thêm 1 đâu
@@ -1125,8 +1130,6 @@ public class Main {
                                                                             for (c = 0; c < database.get(a).getFlights().get(b).getPassengers().size(); c++) {
                                                                                 do {
                                                                                     for (int j = 0; j < database.get(a).getFlights().get(b).getSeats().size(); j++) {
-                                                                                        System.out.println(database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode());
-                                                                                        System.out.println(database.get(a).getFlights().get(b).getSeats().get(j).getStatus());
                                                                                         if (database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode().equals(cho_ngoi)
                                                                                                 && database.get(a).getFlights().get(b).getSeats().get(j).getStatus() == 0) {
                                                                                             kt1 = 1;
@@ -1538,7 +1541,6 @@ public class Main {
                                             break;
                                         case 6: { // tinh doanh thu
                                             System.out.print("Nhap ma hang hang khong can tinh doanh thu: ");
-                                            sc.nextLine();
                                             code = sc.nextLine();
                                             check = 0;
 
@@ -1559,7 +1561,7 @@ public class Main {
                                                             System.out.println("Khong the nhap so am!!!");
                                                             System.out.print("Ban hay nhap lai stt: ");
                                                         }
-                                                    } while (x < 0);
+                                                    } while (x < 0 && x > 2);
                                                     if (x == 1) {
                                                         System.out.print("Thang ban can tinh doanh thu: ");
                                                         do {
@@ -1588,21 +1590,27 @@ public class Main {
                                                         } while (year < 0);
                                                     }
 
-                                                    double doanh_thu = database.get(i).statisticize_turnOver(database.get(i).getFlights(), check, month, year);
-                                                    System.out.printf("Doanh thu cua thang %d nam %d la: %.0f\n", month, year, doanh_thu);
+                                                    double doanh_thu = database.get(i)
+                                                            .statisticize_turnOver(database.get(i).
+                                                                    getFlights(), check, month, year);
+
+                                                    String output = String.format("%,d", (int) doanh_thu);
+
+                                                    System.out.printf("Doanh thu cua thang %d nam %d la: %s dollars\n", month, year, output);
                                                     break;
                                                 }
                                             }
                                             if (check == 0) {
-                                                System.out.print("Khong tim thay ma hang hang khong can tinh");
+                                                System.out.println("Khong tim thay ma hang hang khong can tinh");
                                             }
+                                            break;
                                         }
                                         case 7: //thoat chuong trinh
                                         default:
                                             break;
                                     }
 
-                                } while (opt_for_flight != 3); // loop cho mục chuyến bay - tier 3
+                                } while (opt_for_flight != 7); // loop cho mục chuyến bay - tier 3
 
                                 // chèn code vào đây 
                                 break;
