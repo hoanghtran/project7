@@ -362,7 +362,23 @@ public class Main {
             return false;
         }
     }
-
+    static void danhSachMb(List<JSON.Airline> database, int p){
+        System.out.println("");
+        System.out.println("=========MA MAY BAY=========");
+        for (int i=0; i< database.get(p).getPlanes().size();i++ ){
+            System.out.println((i+1)+". "+database.get(p).getPlanes().get(i).getPlaneCode());
+        }
+    }
+    static int checkThongTin(List<JSON.Plane> listPlanes, String maMb){
+        int check =0;
+        for(int i=0;i<listPlanes.size();i++){
+            if(listPlanes.get(i).getPlaneCode().equals(maMb)){
+                check =1;
+                break;
+            }
+        }
+        return check;
+    }
     public static void main(String[] args) throws FileNotFoundException, IOException {
         //global variables:
         List<JSON.Airline> database = new ArrayList<>();
@@ -779,7 +795,7 @@ public class Main {
                                             JSON.Time__1 timeArr;
                                             JSON.DepartureTime tgDi;
                                             JSON.ArrivalTime tgDen;
-                                            
+                                            String soHieuMb;
                                             int n;
 
                                             System.out.print("Nhap so luong chuyen bay muon them: ");
@@ -792,10 +808,14 @@ public class Main {
                                                 }
                                             } while (n < 0);
                                             sc.nextLine();
-
+                                            danhSachMb(database, p);
+                                            do{
                                             System.out.print("Nhap so hieu may bay: ");
-
-                                            String soHieuMb = sc.nextLine();
+                                            soHieuMb = sc.nextLine();
+                                            if(checkThongTin(database.get(p).getPlanes(), soHieuMb)==0){
+                                                System.out.println("Vui long nhap dung so hieu may bay!!!");
+                                            }
+                                            }while (checkThongTin(database.get(p).getPlanes(), soHieuMb)==0);
                                             airport_menu(Json_airport_file_path);
                                             int check_1 = 0;
                                             String diemXp;
