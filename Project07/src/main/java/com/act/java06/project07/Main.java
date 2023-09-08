@@ -117,10 +117,22 @@ public class Main {
         Random rd = new Random();
         int randomNum = rd.nextInt(9000) + 1000;
         String strRd = String.valueOf(randomNum);
-        String strMonth = String.valueOf(month);
-        String strDay = String.valueOf(day);
+        String strMonth = "";
+        if(month<10){
+        strMonth = "0"+String.valueOf(month);
+        }
+        else{
+            strMonth = String.valueOf(month);
+        }
+        String strDay = "";
+        if(day<10){
+        strDay = String.valueOf(day);
+        }
+        else{
+            strDay = String.valueOf(day);
+        }
         String strYear = String.valueOf(year).substring(2);
-        MCB = database.get(p).getCode() + "-" + strYear + strMonth + strDay + strRd;
+        MCB = database.get(p).getCode() + strYear + strMonth + strDay + strRd;
         return MCB;
     }
 
@@ -257,6 +269,19 @@ public class Main {
 
     static LocalDate chuyenDateJsonThanhLocalDate(int y, int m, int d) {
         return LocalDate.of(y, m, d);
+    }
+
+    public static String generatePlaneCode(int num) {
+        if (num < 0 || num > 17575) {
+            throw new IllegalArgumentException("Only numbers between 0 and 17575 are supported");
+        }
+        StringBuilder s = new StringBuilder("AAA");
+        for (int pos = 2; pos >= 0 && num > 0; pos--) {
+            char letter = (char) ('A' + num % 26);
+            s.setCharAt(pos, letter);
+            num = num / 26;
+        }
+        return s.toString();
     }
 
     static void themHanhKhachvaVe(List<JSON.Airline> database, String file_path, String maChuyenBay) throws IOException {
@@ -555,7 +580,7 @@ public class Main {
 
                             String maChuyenBay = listFlight.get(opt_for_listFlight).getFlightCode();
                             themHanhKhachvaVe(database, Json_file_path, maChuyenBay);
-
+                            listFlight = new ArrayList<>();
                             System.out.println("Lua chon chuyen bay o chieu ve: ");
                             try {
                                 for (int i = 0; i < database.get(opt_for_airline_menu).getFlights().size(); i++) {
@@ -716,10 +741,33 @@ public class Main {
                                 List<JSON.Plane> listOfPlanes = new ArrayList<>();
                                 JSON.Plane plane = new JSON.Plane();
                                 for (int n = 0; n < numOfPlanes; n++) {
-                                    sc.nextLine();
-                                    System.out.print("Nhap ma may bay: ");
-                                    String PlaneCode = sc.nextLine();
-                                    plane.setPlaneCode(PlaneCode);
+                                    System.out.println("Lua chon nhap ma may bay theo: ");
+                                    System.out.println("1. Gan ma may bay thu cong");
+                                    System.out.println("2. Tu tao ma may bay");
+                                    int tmp;
+                                    String tmp_code;
+                                    do {
+                                        tmp = getIntInput(sc);
+
+                                        if (tmp <= 0 || tmp > database.size()) {
+                                            System.out.println("Khong the nhap so am!!!");
+                                            System.out.print("Ban hay nhap lai: ");
+                                        }
+
+                                    } while (tmp <= 0 || tmp > database.size());
+                                    if (tmp == 1) {
+                                        System.out.print("Nhap ma may bay: ");
+                                        sc.nextLine();
+                                        tmp_code = sc.nextLine();
+                                        plane.setPlaneCode(tmp_code);
+                                    }else{
+                                        for(JSON.Airline airline: database){ // lay so luong plane hien co
+                                            if(airline.getCode().equals(code)){
+                                                plane.setPlaneCode(generatePlaneCode(airline.getNumOfPlanes()));
+                                            }
+                                        }
+                                    }
+                                   
                                 }
 
                                 database.add(new JSON.Airline(brandname, code, numOfPlanes, listOfPlanes));
@@ -796,6 +844,7 @@ public class Main {
                                             JSON.DepartureTime tgDi;
                                             JSON.ArrivalTime tgDen;
                                             String soHieuMb;
+
                                             int n;
 
                                             System.out.print("Nhap so luong chuyen bay muon them: ");
@@ -844,7 +893,7 @@ public class Main {
 
                                             do {
                                                 System.out.println("Nhap thoi gian di ");
-                                                System.out.print("Nhap nam, thang, ngay(yyyy mm dd): ");
+                                                System.out.print("Nhap nam, thang, ngay(yyyy MM dd): ");
                                                 do {
                                                     year1 = getIntInput(sc);
                                                     if (year1 < 0) {
@@ -891,7 +940,7 @@ public class Main {
                                                 timeDep = new Time(hour, minute, second, nano);
                                                 tgDi = new JSON.DepartureTime(dateDep, timeDep);
                                                 System.out.println("Nhap thoi gian den ");
-                                                System.out.print("Nhap nam, thang, ngay(yyyy mm dd): ");
+                                                System.out.print("Nhap nam, thang, ngay(yyyy MM dd): ");
                                                 do {
                                                     year = getIntInput(sc);
                                                     if (year < 0) {
@@ -962,7 +1011,7 @@ public class Main {
                                                     System.out.print("Ban hay nhap lai gia ve thuong gia: ");
                                                 }
                                             } while (giaVeTg < 0);
-                                            System.out.println("Nhap gia ve hang pho thong: ");
+                                            System.out.print("Nhap gia ve hang pho thong: ");
                                             int giaVePt;
                                             do {
                                                 giaVePt = getIntInput(sc);
@@ -987,7 +1036,6 @@ public class Main {
                                             //exception mã chuyến bay sai thì sao?
 
                                             // chèn code vào đây
-                                            
                                             System.out.print("Nhap so hieu chuyen bay can xoa: ");
                                             int pointRemote = -1;
                                             sc.nextLine();
@@ -1287,7 +1335,7 @@ public class Main {
                                             } while (opt_for_passenger != 5); // loop cho mục khách
                                             break;                           // tier 4  
                                         case 4: // sua thong tin 1 chuyen bay
-                                            
+
                                             sc.nextLine();
                                             int pointEdit = -1;
                                             System.out.print("Nhap so hieu chuyen bay can sua: ");
@@ -1374,7 +1422,7 @@ public class Main {
                                                                 }
                                                             } while (day < 0);
                                                             dateArr = new JSON.Date__1(year, month, day);
-                                                            System.out.print("Nhập gio, phut: ");
+                                                            System.out.print("Nhap gio, phut: ");
                                                             do {
                                                                 hour = getIntInput(sc);
                                                                 if (hour < 0) {
@@ -1448,7 +1496,6 @@ public class Main {
 
                                         case 5: // loc thong tin 1 chuyen bay // Phan tra cuu thong tin
 
-                                            
                                             System.out.println("");
                                             System.out.println("Vui long chon thong tin ban muon loc: ");
                                             System.out.println("1. Loc theo dia diem di");
