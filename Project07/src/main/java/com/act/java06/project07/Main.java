@@ -118,17 +118,15 @@ public class Main {
         int randomNum = rd.nextInt(9000) + 1000;
         String strRd = String.valueOf(randomNum);
         String strMonth = "";
-        if(month<10){
-        strMonth = "0"+String.valueOf(month);
-        }
-        else{
+        if (month < 10) {
+            strMonth = "0" + String.valueOf(month);
+        } else {
             strMonth = String.valueOf(month);
         }
         String strDay = "";
-        if(day<10){
-        strDay = String.valueOf(day);
-        }
-        else{
+        if (day < 10) {
+            strDay = String.valueOf(day);
+        } else {
             strDay = String.valueOf(day);
         }
         String strYear = String.valueOf(year).substring(2);
@@ -203,7 +201,7 @@ public class Main {
                 } else {
                     str = "A" + i;
                 }
-                
+
             } else if (i <= 20) {
                 if (i % 10 < 10) {
                     str = "B" + "0" + i % 10;
@@ -211,7 +209,7 @@ public class Main {
                     str = "B" + i;
                 }
             }
-            listOfSeats.add(i-1, new Seat(str, 0));//
+            listOfSeats.add(i - 1, new Seat(str, 0));//
         }
     }
 
@@ -706,9 +704,18 @@ public class Main {
                                 System.out.print("Nhap ten hang hang khong: ");
                                 sc.nextLine();
                                 String brandname = sc.nextLine();
-
-                                System.out.print("Nhap ma hang hang khong: ");
-                                String code = sc.nextLine();
+                                String code;
+                                int check = 1;
+                                do {
+                                    System.out.print("Nhap ma hang hang khong: ");
+                                    code = sc.nextLine();
+                                    for (JSON.Airline airline : database) {
+                                        if (airline.getCode().equals(code)) {
+                                            check = 0;
+                                            System.out.println("Da ton tai ma hang hang khong nay, vui long nhap lai!");
+                                        }
+                                    }
+                                } while (check == 1);
 
                                 System.out.print("Nhap so may bay hang so huu: ");
 
@@ -723,11 +730,13 @@ public class Main {
                                 } while (numOfPlanes < 0);
 
                                 List<JSON.Plane> listOfPlanes = new ArrayList<>();
+
                                 JSON.Plane plane = new JSON.Plane();
                                 for (int n = 0; n < numOfPlanes; n++) {
-                                    System.out.println("Lua chon nhap ma may bay theo: ");
+                                    System.out.println("Nhap ma may bay theo: ");
                                     System.out.println("1. Gan ma may bay thu cong");
                                     System.out.println("2. Tu tao ma may bay");
+                                    System.out.print("Nhap lua chon cua ban: ");
                                     int tmp;
                                     String tmp_code;
                                     do {
@@ -744,19 +753,22 @@ public class Main {
                                         sc.nextLine();
                                         tmp_code = sc.nextLine();
                                         plane.setPlaneCode(tmp_code);
-                                    }else{
-                                        for(JSON.Airline airline: database){ // lay so luong plane hien co
-                                            if(airline.getCode().equals(code)){
-                                                plane.setPlaneCode(generatePlaneCode(airline.getNumOfPlanes()));
+                                    } else {
+                                        for (JSON.Airline airline : database) { // lay so luong plane hien co
+                                            if (airline.getCode().equals(code)) {
+                                                int x = airline.getNumOfPlanes();
+                                                plane.setPlaneCode(generatePlaneCode(x));
+                                                System.out.println("Ma may bay duoc tao la: " + generatePlaneCode(x));
                                             }
                                         }
                                     }
-                                   
+                                    listOfPlanes.add(plane);
+
                                 }
 
                                 database.add(new JSON.Airline(brandname, code, numOfPlanes, listOfPlanes));
                                 write_airlines_file(Json_file_path, database);
-                                System.out.println("Đa them thanh cang!");
+                                System.out.println("Da them hang hang khong thanh cang!");
                                 break;
                             case 2: // xóa một hãng hàng không 
                                 //exception mã hãng hàng không sai thì sao?
@@ -765,20 +777,20 @@ public class Main {
                                 sc.nextLine();
                                 code = sc.nextLine();
 
-                                int check = 0;
+                                int CHECK = 0;
 
                                 for (int i = 0; i < database.size(); i++) {
                                     if (database.get(i).getCode().equals(code)) {
                                         database.remove(i);
-                                        check = 1;
+                                        CHECK = 1;
                                         break;
                                     }
                                 }
-                                if (check == 0) {
+                                if (CHECK == 0) {
                                     System.out.println("Khong tim thay ma hang hang khong can xoa");
                                 }
                                 write_airlines_file(Json_file_path, database);
-                                System.out.println("Da xaa thanh cong!");
+                                System.out.println("Da xoa thanh cong!");
                                 break;
                             case 3: // truy cập một hãng hàng không
 

@@ -5,19 +5,19 @@
     "numOfPlanes": 4,
     "Planes": [
       {
-        "planeCode": "ZQX",
+        "planeCode": "AAA",
         "numOfSeats": 20
       },
       {
-        "planeCode": "QYH",
+        "planeCode": "AAB",
         "numOfSeats": 20
       },
       {
-        "planeCode": "XZC",
+        "planeCode": "AAC",
         "numOfSeats": 20
       },
       {
-        "planeCode": "JQW",
+        "planeCode": "AAD",
         "numOfSeats": 20
       }
     ],
@@ -25,7 +25,7 @@
     "Flights": [
       {
         "flightCode": "VN2309251234",
-        "planeCode": "ZQX",
+        "planeCode": "AAB",
         "departureTime": {
           "date": {
             "year": 2023,
@@ -170,7 +170,7 @@
       },
       {
         "flightCode": "VN2309303624",
-        "planeCode": "ZQX",
+        "planeCode": "AAC",
         "departureTime": {
           "date": {
             "year": 2023,
@@ -299,19 +299,19 @@
     "numOfPlanes": 4,
     "Planes": [
       {
-        "planeCode": "VJA",
+        "planeCode": "AAA",
         "numOfSeats": 20
       },
       {
-        "planeCode": "VJB",
+        "planeCode": "AAB",
         "numOfSeats": 20
       },
       {
-        "planeCode": "VJC",
+        "planeCode": "AAC",
         "numOfSeats": 20
       },
       {
-        "planeCode": "VJD",
+        "planeCode": "AAD",
         "numOfSeats": 20
       }
     ],
@@ -319,7 +319,7 @@
     "Flights": [
       {
         "flightCode": "VJ2309262345",
-        "planeCode": "VJA",
+        "planeCode": "AAA",
         "departureTime": {
           "date": {
             "year": 2023,
@@ -470,19 +470,19 @@
     "numOfPlanes": 4,
     "Planes": [
       {
-        "planeCode": "QHA",
+        "planeCode": "AAA",
         "numOfSeats": 20
       },
       {
-        "planeCode": "QHB",
+        "planeCode": "AAB",
         "numOfSeats": 20
       },
       {
-        "planeCode": "QHC",
+        "planeCode": "AAC",
         "numOfSeats": 20
       },
       {
-        "planeCode": "QHD",
+        "planeCode": "AAD",
         "numOfSeats": 20
       }
     ],
@@ -490,7 +490,7 @@
     "Flights": [
       {
         "flightCode": "QH2309279876",
-        "planeCode": "QHA",
+        "planeCode": "AAD",
         "departureTime": {
           "date": {
             "year": 2023,
@@ -641,19 +641,19 @@
     "numOfPlanes": 4,
     "Planes": [
       {
-        "planeCode": "BLA",
+        "planeCode": "AAA",
         "numOfSeats": 20
       },
       {
-        "planeCode": "BLB",
+        "planeCode": "AAB",
         "numOfSeats": 20
       },
       {
-        "planeCode": "BLC",
+        "planeCode": "AAC",
         "numOfSeats": 20
       },
       {
-        "planeCode": "BLD",
+        "planeCode": "AAD",
         "numOfSeats": 20
       }
     ],
@@ -661,7 +661,7 @@
     "Flights": [
       {
         "flightCode": "BL2309286523",
-        "planeCode": "BLA",
+        "planeCode": "AAB",
         "departureTime": {
           "date": {
             "year": 2023,
