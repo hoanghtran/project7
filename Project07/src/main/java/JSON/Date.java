@@ -63,20 +63,15 @@ public class Date {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(Date.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
-        sb.append("year");
-        sb.append('=');
+        //sb.append(Date.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append('[');
         sb.append(this.year);
-        sb.append(',');
-        sb.append("month");
-        sb.append('=');
+        sb.append('/');
         sb.append(this.month);
-        sb.append(',');
-        sb.append("day");
-        sb.append('=');
+        sb.append('/');
         sb.append(this.day);
-        sb.append(',');
-        if (sb.charAt((sb.length()- 1)) == ',') {
+        sb.append('/');
+        if (sb.charAt((sb.length()- 1)) == '/') {
             sb.setCharAt((sb.length()- 1), ']');
         } else {
             sb.append(']');
