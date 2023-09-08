@@ -1501,8 +1501,7 @@ public class Main {
                                             System.out.println("Vui long chon thong tin ban muon loc: ");
                                             System.out.println("1. Loc theo diem di va ngay di");
                                             System.out.println("2. Loc theo diem den va ngay den");
-
-                                            System.out.print("Nhap lua chon cua ban: ");
+                                            
 
                                             ArrayList<JSON.Flight> list = new ArrayList<>();
                                             int luaChon;
@@ -1607,8 +1606,11 @@ public class Main {
                                                     }
                                                     list.clear();
                                                     break;
+                                                default:
+                                                    break;
+                                            }
 
-                                                
+                                            break;
                                         case 6: { // tinh doanh thu
                                             System.out.print("Nhap ma hang hang khong can tinh doanh thu: ");
                                             code = sc.nextLine();
