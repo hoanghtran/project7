@@ -715,7 +715,7 @@ public class Main {
                                             System.out.println("Da ton tai ma hang hang khong nay, vui long nhap lai!");
                                         }
                                     }
-                                } while (check == 1);
+                                } while (check == 0);
 
                                 System.out.print("Nhap so may bay hang so huu: ");
 
@@ -731,44 +731,17 @@ public class Main {
 
                                 List<JSON.Plane> listOfPlanes = new ArrayList<>();
 
-                                JSON.Plane plane = new JSON.Plane();
                                 for (int n = 0; n < numOfPlanes; n++) {
-                                    System.out.println("Nhap ma may bay theo: ");
-                                    System.out.println("1. Gan ma may bay thu cong");
-                                    System.out.println("2. Tu tao ma may bay");
-                                    System.out.print("Nhap lua chon cua ban: ");
-                                    int tmp;
-                                    String tmp_code;
-                                    do {
-                                        tmp = getIntInput(sc);
-
-                                        if (tmp <= 0 || tmp > database.size()) {
-                                            System.out.println("Khong the nhap so am!!!");
-                                            System.out.print("Ban hay nhap lai: ");
-                                        }
-
-                                    } while (tmp <= 0 || tmp > database.size());
-                                    if (tmp == 1) {
-                                        System.out.print("Nhap ma may bay: ");
-                                        sc.nextLine();
-                                        tmp_code = sc.nextLine();
-                                        plane.setPlaneCode(tmp_code);
-                                    } else {
-                                        for (JSON.Airline airline : database) { // lay so luong plane hien co
-                                            if (airline.getCode().equals(code)) {
-                                                int x = airline.getNumOfPlanes();
-                                                plane.setPlaneCode(generatePlaneCode(x));
-                                                System.out.println("Ma may bay duoc tao la: " + generatePlaneCode(x));
-                                            }
-                                        }
-                                    }
+                                    JSON.Plane plane = new JSON.Plane();
+                                    System.out.println("Ma may bay thu " + (n+1) + " da duoc tao !");
+                                    plane.setPlaneCode(generatePlaneCode(n));
+                                    System.out.println("Ma may bay duoc tao la: " + generatePlaneCode(n));
                                     listOfPlanes.add(plane);
-
                                 }
 
                                 database.add(new JSON.Airline(brandname, code, numOfPlanes, listOfPlanes));
                                 write_airlines_file(Json_file_path, database);
-                                System.out.println("Da them hang hang khong thanh cang!");
+                                System.out.println("Da them hang hang khong thanh cong!");
                                 break;
                             case 2: // xóa một hãng hàng không 
                                 //exception mã hãng hàng không sai thì sao?
