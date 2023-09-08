@@ -421,7 +421,7 @@ public class Main {
                                     System.out.print("Nhap moc thoi gian cuoi cung de khoi hanh: ");
                                     String ngayD2 = sc.nextLine();
                                     dateD2 = LocalDate.parse(ngayD2, format);
-                                    
+
                                 } catch (Exception ex_1) {
                                     System.out.println("Co loi xay ra voi dinh dang thoi gian: " + ex_1);
                                     ex = ex_1;
@@ -443,10 +443,7 @@ public class Main {
                                     ex = ex_1;
                                 }
                             } while (ex != null);
-                            
-                            
-                            
-                            
+
                             System.out.println("Danh sach cac chuyen bay di: ");
                             for (int i = 0; i < database.get(opt_for_airline_menu).getFlights().size(); i++) {
                                 if (database.get(opt_for_airline_menu).getFlights().get(i).getDeparture().equals(departureString)
@@ -858,7 +855,7 @@ public class Main {
                                             newEmptySeats(seats);
                                             database.get(p).getFlights().get(database.get(p).getFlights().size() - 1).setSeats(seats);
                                             // thêm phần viết lại vào file
-                                            database.get(p).setNumOfFlights(database.get(p).getNumOfFlights()+1);
+                                            database.get(p).setNumOfFlights(database.get(p).getNumOfFlights() + 1);
                                             write_airlines_file(Json_file_path, database);
 
                                             break;
@@ -889,7 +886,7 @@ public class Main {
                                                         pointRemote = i;
 
                                                         database.get(p).getFlights().remove(pointRemote);
-                                                        database.get(p).setNumOfFlights(database.get(p).getNumOfFlights()-1);
+                                                        database.get(p).setNumOfFlights(database.get(p).getNumOfFlights() - 1);
                                                         break;
                                                     }
                                                 }
@@ -1125,48 +1122,30 @@ public class Main {
                                                                     for (b = 0; b < database.get(a).getFlights().size(); b++) {
                                                                         if (database.get(a).getFlights().get(b).getFlightCode().equals(ma_Ve.substring(7))) {
                                                                             for (c = 0; c < database.get(a).getFlights().get(b).getPassengers().size(); c++) {
-                                                                                for (int j = 0; j < database.get(a).getFlights().get(b).getSeats().size(); j++) {
-                                                                                    if (database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode().equals(cho_ngoi)
-                                                                                            && database.get(a).getFlights().get(b).getSeats().get(j).getStatus() == 0) {
-                                                                                        kt1 = 1;
-                                                                                        setValueForSeat(database.get(a).getFlights().get(b).getSeats(), cho_ngoi);
-                                                                                        System.out.println("Da dat cho: " + cho_ngoi);
-                                                                                        database.get(a).getFlights().get(b).getPassengers().get(c).setTicketCode(generateTicketCode(database.get(a).getCode(), database.get(a).getFlights().get(b).getFlightCode(), cho_ngoi));
-                                                                                        if (cho_ngoi.charAt(0) == 'A') {
-                                                                                            database.get(a).getFlights().get(b).setUsedEconomySeats(database.get(a).getFlights().get(b).getUsedEconomySeats() + 1);
-                                                                                        } else if (cho_ngoi.charAt(0) == 'B') {
-                                                                                            database.get(a).getFlights().get(b).setUsedBusinessSeats(database.get(a).getFlights().get(b).getUsedBusinessSeats() + 1);
-                                                                                        }
-                                                                                        write_airlines_file(Json_file_path, database);
-                                                                                        break;
-                                                                                    } else {
-                                                                                        do {
+                                                                                do {
+                                                                                    for (int j = 0; j < database.get(a).getFlights().get(b).getSeats().size(); j++) {
+                                                                                        System.out.println(database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode());
+                                                                                        System.out.println(database.get(a).getFlights().get(b).getSeats().get(j).getStatus());
+                                                                                        if (database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode().equals(cho_ngoi)
+                                                                                                && database.get(a).getFlights().get(b).getSeats().get(j).getStatus() == 0) {
+                                                                                            kt1 = 1;
+                                                                                            setValueForSeat(database.get(a).getFlights().get(b).getSeats(), cho_ngoi);
+                                                                                            System.out.println("Da dat cho: " + cho_ngoi);
+                                                                                            database.get(a).getFlights().get(b).getPassengers().get(c).setTicketCode(generateTicketCode(database.get(a).getCode(), database.get(a).getFlights().get(b).getFlightCode(), cho_ngoi));
+                                                                                            if (cho_ngoi.charAt(0) == 'A') {
+                                                                                                database.get(a).getFlights().get(b).setUsedEconomySeats(database.get(a).getFlights().get(b).getUsedEconomySeats() + 1);
+                                                                                            } else if (cho_ngoi.charAt(0) == 'B') {
+                                                                                                database.get(a).getFlights().get(b).setUsedBusinessSeats(database.get(a).getFlights().get(b).getUsedBusinessSeats() + 1);
+                                                                                            }
+                                                                                            write_airlines_file(Json_file_path, database);
+                                                                                            break;
+                                                                                        } else if(database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode().equals(cho_ngoi)){
                                                                                             System.out.println("Cho ngoi da duoc dat. Vui long chon cho ngoi khac !!!");
                                                                                             System.out.print("Nhap lai ma ghe: ");
                                                                                             cho_ngoi = sc.nextLine();
-                                                                                            System.out.println(database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode());
-                                                                                            System.out.println(cho_ngoi);
-                                                                                            System.out.println(database.get(a).getFlights().get(b).getSeats().get(j).getStatus());
-                                                                                            if (database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode().equals(cho_ngoi)
-                                                                                                    && database.get(a).getFlights().get(b).getSeats().get(j).getStatus() == 0) {
-                                                                                                kt1 = 1;
-                                                                                                setValueForSeat(database.get(a).getFlights().get(b).getSeats(), cho_ngoi);
-                                                                                                System.out.println("Da dat cho: " + cho_ngoi);
-                                                                                                database.get(a).getFlights().get(b).getPassengers().get(c).setTicketCode(generateTicketCode(database.get(a).getCode(), database.get(a).getFlights().get(b).getFlightCode(), cho_ngoi));
-                                                                                                if (cho_ngoi.charAt(0) == 'A') {
-                                                                                                    database.get(a).getFlights().get(b).setUsedEconomySeats(database.get(a).getFlights().get(b).getUsedEconomySeats() + 1);
-                                                                                                } else if (cho_ngoi.charAt(0) == 'B') {
-                                                                                                    database.get(a).getFlights().get(b).setUsedBusinessSeats(database.get(a).getFlights().get(b).getUsedBusinessSeats() + 1);
-                                                                                                }
-                                                                                                write_airlines_file(Json_file_path, database);
-                                                                                                break;
-                                                                                            }
-                                                                                        } while (kt1 == 0);
+                                                                                        }
                                                                                     }
-                                                                                    if (kt1 == 1) {
-                                                                                        break;
-                                                                                    }
-                                                                                }
+                                                                                } while (kt1 == 0);
                                                                                 if (kt1 == 1) {
                                                                                     break;
                                                                                 }
