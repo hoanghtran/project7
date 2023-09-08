@@ -723,12 +723,31 @@ public class Main {
                                             String soHieuCb = sc.nextLine();
                                             System.out.print("Nhap so hieu may bay: ");
                                             String soHieuMb = sc.nextLine();
-
+                                            airport_menu(Json_airport_file_path);
+                                            int check_1=0;
+                                            String diemXp;
+                                            String diemDen;
+                                            do{
                                             System.out.print("Nhap diem xuat phat: ");
-                                            String diemXp = sc.nextLine();
-
+                                            diemXp = sc.nextLine();
+                                            for(int i=0;i<LAirport.size();i++){
+                                                if(LAirport.get(i).getCity().equals(diemXp)){
+                                                    check_1=1;
+                                                    break;
+                                                }
+                                            }
+                                            } while (check_1==0);
+                                            check_1=0;
+                                             do{
                                             System.out.print("Nhap diem den: ");
-                                            String diemDen = sc.nextLine();
+                                            diemDen = sc.nextLine();
+                                            for(int i=0;i<LAirport.size();i++){
+                                                if(LAirport.get(i).getCity().equals(diemDen)){
+                                                    check_1=1;
+                                                    break;
+                                                }
+                                            }
+                                            } while (check_1==0);
 
                                             do {
                                                 System.out.println("Nhap thoi gian di ");
