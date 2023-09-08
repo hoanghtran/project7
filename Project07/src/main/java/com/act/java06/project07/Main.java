@@ -816,11 +816,11 @@ public class Main {
                                     //1 hãng hàng không
                                     do {
                                         opt_for_flight = getIntInput(sc);
-                                        if (opt_for_flight <= 0 || opt_for_flight > 6) {
-                                            System.out.println("Khong the nhap so am!!!");
+                                        if (opt_for_flight <= 0 || opt_for_flight > 7) {
+                                            System.out.println("Nhap khong hop le!!!");
                                             System.out.print("Ban hay nhap lai: ");
                                         }
-                                    } while (opt_for_flight <= 0 || opt_for_flight > 6);
+                                    } while (opt_for_flight <= 0 || opt_for_flight > &);
                                     switch (opt_for_flight) {
                                         case 1: // thêm chuyến bay - cho quản lý điền thêm
                                             // bao nhiêu chuyến bay nhé, không phải chỉ thêm 1 đâu
@@ -1573,6 +1573,7 @@ public class Main {
                                                         }
                                                     }
                                                     Collections.sort(list, new NameComparator());
+                                                    System.out.println(list.size());//test tí
                                                     for (int i = 0; i < list.size(); i++) {
                                                         System.out.println(list.get(i).getFlightCode());
                                                     }
