@@ -256,9 +256,10 @@ public class Flight {
         this.passengers = passengers;
     }
 
+
     
     public String to_String() {
-        return "Flight{" + "flightCode=" + flightCode + ", departureTime=" + departureTime + ", arrivalTime=" + arrivalTime + ", economyFare=" + economyFare + ", businessFare=" + businessFare + '}';
+        return "{" + "Ma chuyen bay: " + flightCode + ", thoi gian di: " + departureTime + ", thoi gian den: " + arrivalTime + ", gia ve pho thong: " + economyFare + ", gia ve thuong gia: " + businessFare + '}';
     }
 
     

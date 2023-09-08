@@ -56,7 +56,7 @@ public class Main {
         for (JSON.Airport item : LAirport) {
             System.out.print(stt + ". ");
             stt--;
-            System.out.println("San bay: " + item.getName() + "; Thanh pho: " + item.getCity()); // sửa lại cái này nhé Huy(sửa xong)
+            System.out.println("San bay: " + item.getName()); // sửa lại cái này nhé Huy(sửa xong)
             stt += 2;
         }
     }
@@ -735,12 +735,31 @@ public class Main {
                                             String soHieuCb = sc.nextLine();
                                             System.out.print("Nhap so hieu may bay: ");
                                             String soHieuMb = sc.nextLine();
-
+                                            airport_menu(Json_airport_file_path);
+                                            int check_1=0;
+                                            String diemXp;
+                                            String diemDen;
+                                            do{
                                             System.out.print("Nhap diem xuat phat: ");
-                                            String diemXp = sc.nextLine();
-
+                                            diemXp = sc.nextLine();
+                                            for(int i=0;i<LAirport.size();i++){
+                                                if(LAirport.get(i).getCity().equals(diemXp)){
+                                                    check_1=1;
+                                                    break;
+                                                }
+                                            }
+                                            } while (check_1==0);
+                                            check_1=0;
+                                             do{
                                             System.out.print("Nhap diem den: ");
-                                            String diemDen = sc.nextLine();
+                                            diemDen = sc.nextLine();
+                                            for(int i=0;i<LAirport.size();i++){
+                                                if(LAirport.get(i).getCity().equals(diemDen)){
+                                                    check_1=1;
+                                                    break;
+                                                }
+                                            }
+                                            } while (check_1==0);
 
                                             do {
                                                 System.out.println("Nhap thoi gian di ");
@@ -1614,6 +1633,7 @@ public class Main {
                                             if (check == 0) {
                                                 System.out.print("Khong tim thay ma hang hang khong can tinh");
                                             }
+                                            break;
                                         }
                                         case 7: //thoat chuong trinh
                                         default:
