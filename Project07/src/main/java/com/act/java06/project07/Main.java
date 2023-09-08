@@ -820,7 +820,7 @@ public class Main {
                                             System.out.println("Nhap khong hop le!!!");
                                             System.out.print("Ban hay nhap lai: ");
                                         }
-                                    } while (opt_for_flight <= 0 || opt_for_flight > &);
+                                    } while (opt_for_flight <= 0 || opt_for_flight > 7);
                                     switch (opt_for_flight) {
                                         case 1: // thêm chuyến bay - cho quản lý điền thêm
                                             // bao nhiêu chuyến bay nhé, không phải chỉ thêm 1 đâu
