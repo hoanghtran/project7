@@ -1,62 +1,62 @@
 [
   {
-    "name": "Noi Bai International Airport",
-    "city": "Hanoi"
+    "name": "Noi Bai International Airport - Ha Noi",
+    "city": "HAN"
   },
   {
-    "name": "Tan Son Nhat International Airport",
-    "city": "Ho Chi Minh city"
+    "name": "Tan Son Nhat International Airport - Ho Chi Minh",
+    "city": "SGN"
   },
   {
-    "name": "Da Nang International Airport",
-    "city": "Da Nang"
+    "name": "Da Nang International Airport - Da Nang",
+    "city": "DAD"
   },
   {
-    "name": "Cam Ranh International Airport",
-    "city": "Nha Trang"
+    "name": "Cam Ranh International Airport - Nha Trang",
+    "city": "CXR"
   },
   {
-    "name": "Cat Bi International Airport",
-    "city": "Hai Phong"
+    "name": "Cat Bi International Airport - Hai Phong",
+    "city": "HPH"
   },
   {
-    "name": "Phu Bai International Airport",
-    "city": "Hue"
+    "name": "Phu Bai International Airport - Hue",
+    "city": "HUI"
   },
   {
-    "name": "Can Tho International Airport",
-    "city": "Can Tho"
+    "name": "Can Tho International Airport - Can Tho",
+    "city": "VCA"
   },
   {
-    "name": "Lien Khuong Airport",
-    "city": "Da Lat"
+    "name": "Lien Khuong Airport - Da Lat",
+    "city": "DLI"
   },
   {
-    "name": "Phu Quoc International Airport",
-    "city": "Phu Quoc"
+    "name": "Phu Quoc International Airport - Phu Quoc",
+    "city": "PQC"
   },
   {
     "name": "Buon Ma Thuot Airport",
-    "city": "Buon Ma Thuot"
+    "city": "BMV"
   },
   {
-    "name": "Chu Lai International Airport",
-    "city": "Quang Nam"
+    "name": "Chu Lai International Airport - Quang Nam",
+    "city": "QNH"
   },
   {
-    "name": "Dong Hoi Airport",
-    "city": "Dong Hoi"
+    "name": "Dong Hoi Airport - Dong Hoi",
+    "city": "VDH"
   },
   {
-    "name": "Pleiku Airport",
-    "city": "Pleiku"
+    "name": "Pleiku Airport - Pleiku",
+    "city": "PXU"
   },
   {
-    "name": "Rach Gia Airport",
-    "city": "Rach Gia"
+    "name": "Rach Gia Airport - Rach Gia",
+    "city": "VKG"
   },
   {
-    "name": "Vinh International Airport",
-    "city": "Vinh"
+    "name": "Vinh International Airport - Vinh",
+    "city": "VII"
   }
 ]

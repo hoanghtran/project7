@@ -76,24 +76,15 @@ public class Time {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(Time.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
-        sb.append("hour");
-        sb.append('=');
+        //sb.append(Time.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append('[');
         sb.append(this.hour);
-        sb.append(',');
-        sb.append("minute");
-        sb.append('=');
+        sb.append(':');
         sb.append(this.minute);
-        sb.append(',');
-        sb.append("second");
-        sb.append('=');
+        sb.append(':');
         sb.append(this.second);
-        sb.append(',');
-        sb.append("nano");
-        sb.append('=');
-        sb.append(this.nano);
-        sb.append(',');
-        if (sb.charAt((sb.length()- 1)) == ',') {
+        sb.append(':');
+        if (sb.charAt((sb.length()- 1)) == ':') {
             sb.setCharAt((sb.length()- 1), ']');
         } else {
             sb.append(']');

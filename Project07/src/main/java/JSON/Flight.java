@@ -256,84 +256,12 @@ public class Flight {
         this.passengers = passengers;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(Flight.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
-        sb.append("flightCode");
-        sb.append('=');
-        sb.append(((this.flightCode == null)?"<null>":this.flightCode));
-        sb.append(',');
-        sb.append("planeCode");
-        sb.append('=');
-        sb.append(((this.planeCode == null)?"<null>":this.planeCode));
-        sb.append(',');
-        sb.append("departureTime");
-        sb.append('=');
-        sb.append(((this.departureTime == null)?"<null>":this.departureTime));
-        sb.append(',');
-        sb.append("arrivalTime");
-        sb.append('=');
-        sb.append(((this.arrivalTime == null)?"<null>":this.arrivalTime));
-        sb.append(',');
-        sb.append("departure");
-        sb.append('=');
-        sb.append(((this.departure == null)?"<null>":this.departure));
-        sb.append(',');
-        sb.append("destination");
-        sb.append('=');
-        sb.append(((this.destination == null)?"<null>":this.destination));
-        sb.append(',');
-        sb.append("usedEconomySeats");
-        sb.append('=');
-        sb.append(this.usedEconomySeats);
-        sb.append(',');
-        sb.append("usedBusinessSeats");
-        sb.append('=');
-        sb.append(this.usedBusinessSeats);
-        sb.append(',');
-        sb.append("economyFare");
-        sb.append('=');
-        sb.append(this.economyFare);
-        sb.append(',');
-        sb.append("businessFare");
-        sb.append('=');
-        sb.append(this.businessFare);
-        sb.append(',');
-        sb.append("totalEconomySeats");
-        sb.append('=');
-        sb.append(this.totalEconomySeats);
-        sb.append(',');
-        sb.append("totalBusinessSeats");
-        sb.append('=');
-        sb.append(this.totalBusinessSeats);
-  /*    sb.append(',');
-        sb.append("numOfPassengers");
-        sb.append('=');
-        sb.append(this.numOfPassengers);
-        sb.append(',');
-        sb.append("numOfBusiness");
-        sb.append('=');
-        sb.append(this.numOfBusiness);
-        sb.append(',');
-        sb.append("numOfEconomic");
-        sb.append('=');
-        sb.append(this.numOfEconomic);
-        sb.append(',');
-        sb.append("seats");
-        sb.append('=');
-        sb.append(((this.seats == null)?"<null>":this.seats));
-        sb.append(',');
-        sb.append("passengers");
-        sb.append('=');
-        sb.append(((this.passengers == null)?"<null>":this.passengers));
-        sb.append(',');
-        if (sb.charAt((sb.length()- 1)) == ',') {
-            sb.setCharAt((sb.length()- 1), ']');
-        } else {
-            sb.append(']');
-        }*/
-        return sb.toString();
+
+    
+    public String to_String() {
+        return "{" + "Ma chuyen bay: " + flightCode + ", thoi gian di: " + departureTime + ", thoi gian den: " + arrivalTime + ", gia ve pho thong: " + economyFare + ", gia ve thuong gia: " + businessFare + '}';
     }
+
+    
     
 }
