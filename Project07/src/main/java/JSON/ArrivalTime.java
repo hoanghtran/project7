@@ -51,19 +51,17 @@ public class ArrivalTime {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         //sb.append(ArrivalTime.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
-        sb.append('[');
-        sb.append("date");
-        sb.append('=');
+        
         sb.append(((this.date == null)?"<null>":this.date));
-        sb.append(',');
-        sb.append("time");
-        sb.append('=');
+       
+        
+        sb.append(' ');
         sb.append(((this.time == null)?"<null>":this.time));
         sb.append(',');
         if (sb.charAt((sb.length()- 1)) == ',') {
-            sb.setCharAt((sb.length()- 1), ']');
+            sb.setCharAt((sb.length()- 1), ' ');
         } else {
-            sb.append(']');
+            
         }
         return sb.toString();
     }
