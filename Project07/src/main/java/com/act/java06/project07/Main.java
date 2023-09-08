@@ -92,6 +92,18 @@ public class Main {
         System.out.print("Vui long nhap lua chon cua ban: ");
     }
 
+    static String generate_FlightCode(List<JSON.Airline> database, int p, int year, int month, int day) {
+        String MCB = "";
+        Random rd = new Random();
+        int randomNum = rd.nextInt(9000) + 1000;
+        String strRd = String.valueOf(randomNum);
+        String strMonth = String.valueOf(month);
+        String strDay = String.valueOf(day);
+        String strYear = String.valueOf(year).substring(2);
+        MCB = database.get(p).getCode() + "-" + strYear + strMonth + strDay + strRd;
+        return MCB;
+    }
+
     static List read_json_file(String file_path) throws IOException {
 
         try (FileReader fr = new FileReader(file_path)) {
@@ -560,7 +572,7 @@ public class Main {
                             Collections.sort(listFlight, new DateComparator());
                             STT = 1;
                             for (int i = 0; i < listFlight.size(); i++) {
-                                System.out.println(STT+ ". "+listFlight.get(i).to_String());
+                                System.out.println(STT + ". " + listFlight.get(i).to_String());
                                 System.out.println("  So ve con lai cua hang thuong gia: " + (listFlight.get(i).getTotalBusinessSeats() - listFlight.get(i).getUsedBusinessSeats())
                                         + "  So ve con lai cua hang pho thong: " + (listFlight.get(i).getTotalEconomySeats() - listFlight.get(i).getUsedEconomySeats()));// hien thi ma chuyen bay
                                 STT++;
@@ -1132,7 +1144,7 @@ public class Main {
                                                                             for (c = 0; c < database.get(a).getFlights().get(b).getPassengers().size(); c++) {
                                                                                 do {
                                                                                     for (int j = 0; j < database.get(a).getFlights().get(b).getSeats().size(); j++) {
-                                                                                        
+
                                                                                         if (database.get(a).getFlights().get(b).getSeats().get(j).getSeatCode().equals(cho_ngoi)
                                                                                                 && database.get(a).getFlights().get(b).getSeats().get(j).getStatus() == 0) {
                                                                                             kt1 = 1;
