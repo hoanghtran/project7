@@ -1,4 +1,3 @@
-
 package JSON;
 
 import java.util.List;
@@ -21,24 +20,23 @@ public class Airline {
     private List<Plane> planes;
     @SerializedName("numOfFlights")
     @Expose
-    private int numOfFlights;
+    private int numOfFlights = 0;
     @SerializedName("Flights")
     @Expose
     private List<Flight> flights;
 
-    public Airline(String brandname, String code, int numOfPlanes, List<Plane> planes, int numOfFlights) {
+    public Airline(String brandname, String code, int numOfPlanes, List<Plane> planes) {
         this.brandname = brandname;
         this.code = code;
         this.numOfPlanes = numOfPlanes;
         this.planes = planes;
-        this.numOfFlights = numOfFlights;
     }
 
     public Airline() {
     }
 
     /**
-     * 
+     *
      * @param numOfPlanes
      * @param code
      * @param planes
@@ -110,11 +108,11 @@ public class Airline {
         sb.append(Airline.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("brandname");
         sb.append('=');
-        sb.append(((this.brandname == null)?"<null>":this.brandname));
+        sb.append(((this.brandname == null) ? "<null>" : this.brandname));
         sb.append(',');
         sb.append("code");
         sb.append('=');
-        sb.append(((this.code == null)?"<null>":this.code));
+        sb.append(((this.code == null) ? "<null>" : this.code));
         sb.append(',');
         sb.append("numOfPlanes");
         sb.append('=');
@@ -122,7 +120,7 @@ public class Airline {
         sb.append(',');
         sb.append("planes");
         sb.append('=');
-        sb.append(((this.planes == null)?"<null>":this.planes));
+        sb.append(((this.planes == null) ? "<null>" : this.planes));
         sb.append(',');
         sb.append("numOfFlights");
         sb.append('=');
@@ -130,19 +128,18 @@ public class Airline {
         sb.append(',');
         sb.append("flights");
         sb.append('=');
-        sb.append(((this.flights == null)?"<null>":this.flights));
+        sb.append(((this.flights == null) ? "<null>" : this.flights));
         sb.append(',');
-        if (sb.charAt((sb.length()- 1)) == ',') {
-            sb.setCharAt((sb.length()- 1), ']');
+        if (sb.charAt((sb.length() - 1)) == ',') {
+            sb.setCharAt((sb.length() - 1), ']');
         } else {
             sb.append(']');
         }
         return sb.toString();
     }
-    
+
     public double statisticize_turnOver(List<JSON.Flight> fl, int choose, int month, int year) {
         double turnOver = 0;
-
         for (JSON.Flight flight : fl) {
             if (choose == 1) { // tinh doanh thu theo thang
                 if (flight.getArrivalTime().getDate().getYear() == year
@@ -152,6 +149,8 @@ public class Airline {
                 }
 
             } else if (choose == 2) { // tinh doanh thu theo nam
+                System.out.println(flight.getArrivalTime().getDate().getYear());
+                System.out.println(year);
                 if (flight.getArrivalTime().getDate().getYear() == year) {
                     turnOver += flight.getUsedEconomySeats() * flight.getEconomyFare()
                             + flight.getUsedBusinessSeats() * flight.getBusinessFare();
