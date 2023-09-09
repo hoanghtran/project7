@@ -60,7 +60,7 @@ public class Main {
         for (JSON.Airport item : LAirport) {
             System.out.print(stt + ". ");
             stt--;
-            System.out.println("San bay: " + item.getName() + "; Ma thanh pho: " + item.getCity()); // sửa lại cái này nhé Huy(sửa xong)
+            System.out.println("San bay: " + item.getName() + "; Ma cang hang khong: " + item.getCity()); // sửa lại cái này nhé Huy(sửa xong)
             stt += 2;
         }
     }
@@ -478,7 +478,7 @@ public class Main {
                     int departure;
                     int destination;
                     airport_menu(Json_airport_file_path);
-
+                    System.out.println("");
                     System.out.println("=======Menu======");
                     System.out.print("Chon diem xuat phat: ");
                     sc.nextLine();
@@ -527,14 +527,16 @@ public class Main {
                             LocalDate dateD2 = LocalDate.now();
                             LocalDate dateA1 = LocalDate.now();
                             LocalDate dateA2 = LocalDate.now();
+                            sc.nextLine();
                             do {
                                 try {
                                     ex = null;
+
                                     System.out.println("Nhap khoang thoi gian khoi hanh (Theo dinh dang dd/MM/yyyy)");
                                     System.out.print("Nhap moc thoi gian co the bat dau khoi hanh: ");
-                                    sc.nextLine();
                                     String ngayD1 = sc.nextLine();
                                     dateD1 = LocalDate.parse(ngayD1, format);
+
                                     System.out.print("Nhap moc thoi gian cuoi cung de khoi hanh: ");
                                     String ngayD2 = sc.nextLine();
                                     dateD2 = LocalDate.parse(ngayD2, format);
@@ -592,10 +594,11 @@ public class Main {
                             Collections.sort(listFlight, new DateComparator());
                             int STT = 1;
                             for (int i = 0; i < listFlight.size(); i++) {
+                                System.out.println("");
                                 System.out.println(STT + ". " + "Ma chuyen bay: " + listFlight.get(i).getFlightCode());
-                                System.out.println("Thoi gian di: " + listFlight.get(i).getDepartureTime() + ",  Thoi gian toi: " + listFlight.get(i).getArrivalTime());
+                                System.out.println("Thoi gian di: " + listFlight.get(i).getDepartureTime() + "    ||  Thoi gian toi: " + listFlight.get(i).getArrivalTime());
                                 System.out.println("So ve con lai cua hang thuong gia: " + (listFlight.get(i).getTotalBusinessSeats() - listFlight.get(i).getUsedBusinessSeats())
-                                        + ", So ve con lai cua hang pho thong: " + (listFlight.get(i).getTotalEconomySeats() - listFlight.get(i).getUsedEconomySeats()));
+                                        + " || So ve con lai cua hang pho thong: " + (listFlight.get(i).getTotalEconomySeats() - listFlight.get(i).getUsedEconomySeats()));
 
                                 STT++;
                             }
@@ -645,10 +648,11 @@ public class Main {
                             Collections.sort(listFlight, new DateComparator());
                             STT = 1;
                             for (int i = 0; i < listFlight.size(); i++) {
+                                System.out.println("");
                                 System.out.println(STT + ". " + "Ma chuyen bay: " + listFlight.get(i).getFlightCode());
-                                System.out.println("Thoi gian di: " + listFlight.get(i).getDepartureTime() + ",  Thoi gian toi: " + listFlight.get(i).getArrivalTime());
+                                System.out.println("Thoi gian di: " + listFlight.get(i).getDepartureTime() + "    ||  Thoi gian toi: " + listFlight.get(i).getArrivalTime());
                                 System.out.println("So ve con lai cua hang thuong gia: " + (listFlight.get(i).getTotalBusinessSeats() - listFlight.get(i).getUsedBusinessSeats())
-                                        + ", So ve con lai cua hang pho thong: " + (listFlight.get(i).getTotalEconomySeats() - listFlight.get(i).getUsedEconomySeats()));
+                                        + " || So ve con lai cua hang pho thong: " + (listFlight.get(i).getTotalEconomySeats() - listFlight.get(i).getUsedEconomySeats()));
 
                                 STT++;
                             }
@@ -714,10 +718,11 @@ public class Main {
                             Collections.sort(listFlight, new DateComparator());
                             STT = 1;
                             for (int i = 0; i < listFlight.size(); i++) {
+                                System.out.println("");
                                 System.out.println(STT + ". " + "Ma chuyen bay: " + listFlight.get(i).getFlightCode());
-                                System.out.println("Thoi gian di: " + listFlight.get(i).getDepartureTime() + ",  Thoi gian toi: " + listFlight.get(i).getArrivalTime());
+                                System.out.println("Thoi gian di: " + listFlight.get(i).getDepartureTime() + "    ||  Thoi gian toi: " + listFlight.get(i).getArrivalTime());
                                 System.out.println("So ve con lai cua hang thuong gia: " + (listFlight.get(i).getTotalBusinessSeats() - listFlight.get(i).getUsedBusinessSeats())
-                                        + ", So ve con lai cua hang pho thong: " + (listFlight.get(i).getTotalEconomySeats() - listFlight.get(i).getUsedEconomySeats()));
+                                        + " || So ve con lai cua hang pho thong: " + (listFlight.get(i).getTotalEconomySeats() - listFlight.get(i).getUsedEconomySeats()));
 
                                 STT++;
                             }
@@ -922,7 +927,7 @@ public class Main {
                                             String diemXp;
                                             String diemDen;
                                             do {
-                                                System.out.print("Nhap diem xuat phat: ");
+                                                System.out.print("Nhap diem xuat phat (Ma thanh pho/ tinh): ");
                                                 diemXp = sc.nextLine();
                                                 for (int i = 0; i < LAirport.size(); i++) {
                                                     if (LAirport.get(i).getCity().equals(diemXp)) {
@@ -933,7 +938,7 @@ public class Main {
                                             } while (check_1 == 0);
                                             check_1 = 0;
                                             do {
-                                                System.out.print("Nhap diem den: ");
+                                                System.out.print("Nhap diem den (Ma thanh pho/ tinh): ");
                                                 diemDen = sc.nextLine();
                                                 for (int i = 0; i < LAirport.size(); i++) {
                                                     if (LAirport.get(i).getCity().equals(diemDen)) {
@@ -1422,10 +1427,11 @@ public class Main {
                                                 for (int i = 0; i < database.get(p).getFlights().size(); i++) {
                                                     if (database.get(p).getFlights().get(i).getFlightCode().equals(ctFlightCode)) {
                                                         pointEdit = i;
-                                                        System.out.print("Nhap diem xuat phat: ");
+                                                        airport_menu(Json_airport_file_path);
+                                                        System.out.print("Nhap diem xuat phat(ma cang hang khong): ");
                                                         diemXp = sc.nextLine();
                                                         database.get(p).getFlights().get(pointEdit).setDeparture(diemXp);
-                                                        System.out.print("Nhap diem den: ");
+                                                        System.out.print("Nhap diem den(ma cang hang khong): ");
                                                         diemDen = sc.nextLine();
                                                         database.get(p).getFlights().get(pointEdit).setDestination(diemDen);
                                                         do {
@@ -1595,7 +1601,7 @@ public class Main {
                                             switch (luaChon) {
                                                 case 1:
                                                     airport_menu(Json_airport_file_path);
-                                                    System.out.print("Nhap diem di theo ma thanh pho: ");
+                                                    System.out.print("Nhap diem di theo ma cang hang khong: ");
                                                     String information = sc.nextLine();
                                                     System.out.print("Nhap thong tin nam, thang, ngay(yyyy mm dd): ");
                                                     do {
@@ -1649,7 +1655,7 @@ public class Main {
                                                     break;
                                                 case 2:
                                                     airport_menu(Json_airport_file_path);
-                                                    System.out.print("Nhap thong tin muon loc: ");
+                                                    System.out.print("Nhap diem den theo ma cang hang khong: ");
                                                     information = sc.nextLine();
                                                     System.out.print("Nhap thong tin nam, thang, ngay(yyyy mm dd): ");
                                                     do {
