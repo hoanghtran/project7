@@ -77,7 +77,7 @@ public class Time__1 {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         //sb.append(Time__1 .class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
-        sb.append('[');
+        
          sb.append(this.hour);
         sb.append(':');
         sb.append(this.minute);
@@ -85,9 +85,9 @@ public class Time__1 {
         sb.append(this.second);
         sb.append(':');
         if (sb.charAt((sb.length()- 1)) == ':') {
-            sb.setCharAt((sb.length()- 1), ']');
+            sb.setCharAt((sb.length()- 1), ' ');
         } else {
-            sb.append(']');
+            
         }
         return sb.toString();
     }

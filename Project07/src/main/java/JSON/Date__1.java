@@ -64,7 +64,7 @@ public class Date__1 {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         //sb.append(Date__1 .class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
-        sb.append('[');
+        
         sb.append(this.year);
         sb.append('/');
         sb.append(this.month);
@@ -72,9 +72,9 @@ public class Date__1 {
         sb.append(this.day);
         sb.append('/');
         if (sb.charAt((sb.length()- 1)) == '/') {
-            sb.setCharAt((sb.length()- 1), ']');
+            sb.setCharAt((sb.length()- 1), ' ');
         } else {
-            sb.append(']');
+            
         }
         return sb.toString();
     }

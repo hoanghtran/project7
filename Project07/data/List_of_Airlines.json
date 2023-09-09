@@ -315,7 +315,7 @@
         "numOfSeats": 20
       }
     ],
-    "numOfFlights": 8,
+    "numOfFlights": 9,
     "Flights": [
       {
         "flightCode": "VJ2309262345",
@@ -459,6 +459,129 @@
             "ID": "034203020343",
             "fullName": "Pham Thi H",
             "ticketCode": "VJ-B09-VJ2309262345"
+          }
+        ]
+      },
+      {
+        "flightCode": "VJ2310014457",
+        "planeCode": "AAD",
+        "departureTime": {
+          "date": {
+            "year": 2023,
+            "month": 10,
+            "day": 1
+          },
+          "time": {
+            "hour": 14,
+            "minute": 30,
+            "second": 0,
+            "nano": 0
+          }
+        },
+        "arrivalTime": {
+          "date": {
+            "year": 2023,
+            "month": 10,
+            "day": 1
+          },
+          "time": {
+            "hour": 16,
+            "minute": 0,
+            "second": 0,
+            "nano": 0
+          }
+        },
+        "departure": "HUI",
+        "destination": "SGN",
+        "usedEconomySeats": 0,
+        "usedBusinessSeats": 0,
+        "economyFare": 600,
+        "businessFare": 800,
+        "totalEconomySeats": 10,
+        "totalBusinessSeats": 10,
+        "numOfPassengers": 0,
+        "numOfBusiness": 0,
+        "numOfEconomic": 0,
+        "Seats": [
+          {
+            "SeatCode": "A01",
+            "Status": 0
+          },
+          {
+            "SeatCode": "A02",
+            "Status": 0
+          },
+          {
+            "SeatCode": "A03",
+            "Status": 0
+          },
+          {
+            "SeatCode": "A04",
+            "Status": 0
+          },
+          {
+            "SeatCode": "A05",
+            "Status": 0
+          },
+          {
+            "SeatCode": "A06",
+            "Status": 0
+          },
+          {
+            "SeatCode": "A07",
+            "Status": 0
+          },
+          {
+            "SeatCode": "A08",
+            "Status": 0
+          },
+          {
+            "SeatCode": "A09",
+            "Status": 0
+          },
+          {
+            "SeatCode": "A10",
+            "Status": 0
+          },
+          {
+            "SeatCode": "B01",
+            "Status": 0
+          },
+          {
+            "SeatCode": "B02",
+            "Status": 0
+          },
+          {
+            "SeatCode": "B03",
+            "Status": 0
+          },
+          {
+            "SeatCode": "B04",
+            "Status": 0
+          },
+          {
+            "SeatCode": "B05",
+            "Status": 0
+          },
+          {
+            "SeatCode": "B06",
+            "Status": 0
+          },
+          {
+            "SeatCode": "B07",
+            "Status": 0
+          },
+          {
+            "SeatCode": "B08",
+            "Status": 0
+          },
+          {
+            "SeatCode": "B09",
+            "Status": 0
+          },
+          {
+            "SeatCode": "B00",
+            "Status": 0
           }
         ]
       }
