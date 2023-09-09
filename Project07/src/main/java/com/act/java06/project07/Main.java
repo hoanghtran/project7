@@ -558,7 +558,10 @@ public class Main {
                             } catch (Exception ex_1) {
                                 System.out.println("Khong co chuyen bay nao kha dung!!!");
                             }
-
+                            if (listFlight.size() == 0) {
+                                System.out.println("Khong co chuyen bay kha dung!!!");
+                                break;
+                            }
                             Collections.sort(listFlight, new DateComparator());
                             int STT = 1;
                             for (int i = 0; i < listFlight.size(); i++) {
@@ -605,6 +608,10 @@ public class Main {
                                 }
                             } catch (Exception ex_1) {
                                 System.out.println("Khong co chuyen bay nao kha dung!!!");
+                            }
+                            if (listFlight.size() == 0) {
+                                System.out.println("Khong co chuyen bay kha dung!!!");
+                                break;
                             }
                             Collections.sort(listFlight, new DateComparator());
                             STT = 1;
@@ -1061,6 +1068,7 @@ public class Main {
 
                                                         database.get(p).getFlights().remove(pointRemote);
                                                         database.get(p).setNumOfFlights(database.get(p).getNumOfFlights() - 1);
+                                                        System.out.println("Da xoa thanh cong");
                                                         break;
                                                     }
                                                 }
@@ -1519,13 +1527,15 @@ public class Main {
                                             System.out.println("1. Loc theo diem di va ngay di");
                                             System.out.println("2. Loc theo diem den va ngay den");
 
-                                            ArrayList<JSON.Flight> list = new ArrayList<>();
+                                            List<JSON.Flight> list = new ArrayList<>();
                                             int luaChon;
                                             do {
+                                                System.out.print("Nhap lua chon cua ban: ");
+
                                                 luaChon = getIntInput(sc);
                                                 if (luaChon <= 0 || luaChon > 3) {
                                                     System.out.println("Vui long nhap stt như tren!!!");
-                                                    System.out.print("Nhap lai lua chon cua ban: ");
+                                                    
                                                 }
                                             } while (luaChon <= 0 || luaChon > 3);
                                             sc.nextLine();
@@ -1535,7 +1545,7 @@ public class Main {
                                                     airport_menu(Json_airport_file_path);
                                                     System.out.print("Nhap diem di theo ma thanh pho: ");
                                                     String information = sc.nextLine();
-                                                    System.out.println("Nhap thong tin nam, thang, ngay(yyyy mm dd): ");
+                                                    System.out.print("Nhap thong tin nam, thang, ngay(yyyy mm dd): ");
                                                     do {
                                                         do {
                                                             year = getIntInput(sc);
@@ -1558,13 +1568,21 @@ public class Main {
                                                                 System.out.print("Ban hay nhap lai ngay: ");
                                                             }
                                                         } while (day < 0);
-                                                        dateDep = new JSON.Date(year, month, day);
                                                     } while (kiemTraNgayThang(year, month, day, 0, 0) != true);
 
                                                     for (int i = 0; i < database.get(p).getFlights().size(); i++) {
-                                                        if (database.get(p).getFlights().get(i).getDeparture().equals(information) && database.get(p).getFlights().get(i).getDepartureTime().getDate().equals(dateDep)) {
+                                                        if (database.get(p).getFlights().get(i).getDeparture().equals(information)
+                                                                && (chuyenDateJsonThanhLocalDate(database.get(p).getFlights().get(i).getDepartureTime().getDate().getYear(),
+                                                                        database.get(p).getFlights().get(i).getDepartureTime().getDate().getMonth(),
+                                                                        database.get(p).getFlights().get(i).getDepartureTime().getDate().getDay()).equals(chuyenDateJsonThanhLocalDate(year, month, day)))) {
                                                             list.add(database.get(p).getFlights().get(i));
+                                                            System.out.println(i);
                                                         }
+                                                    }
+
+                                                    if (list.size() == 0) {
+                                                        System.out.println("Khong tim thay chuyen bay phu hop!!!");
+                                                        break;
                                                     }
                                                     Collections.sort(list, new DateComparator());
                                                     for (int i = 0; i < list.size(); i++) {
@@ -1581,7 +1599,7 @@ public class Main {
                                                     airport_menu(Json_airport_file_path);
                                                     System.out.print("Nhap thong tin muon loc: ");
                                                     information = sc.nextLine();
-                                                    System.out.println("Nhap thong tin nam, thang, ngay(yyyy mm dd): ");
+                                                    System.out.print("Nhap thong tin nam, thang, ngay(yyyy mm dd): ");
                                                     do {
                                                         do {
                                                             year = getIntInput(sc);
@@ -1604,12 +1622,19 @@ public class Main {
                                                                 System.out.print("Ban hay nhap lai ngay: ");
                                                             }
                                                         } while (day < 0);
-                                                        dateArr = new JSON.Date__1(year, month, day);
+                                                        
                                                     } while (kiemTraNgayThang(year, month, day, 0, 0) != true);
                                                     for (int i = 0; i < database.get(p).getFlights().size(); i++) {
-                                                        if (database.get(p).getFlights().get(i).getDestination().equals(information) && database.get(p).getFlights().get(i).getArrivalTime().getDate().equals(dateArr)) {
+                                                        if (database.get(p).getFlights().get(i).getDestination().equals(information)
+                                                                && (chuyenDateJsonThanhLocalDate(database.get(p).getFlights().get(i).getArrivalTime().getDate().getYear(),
+                                                                        database.get(p).getFlights().get(i).getArrivalTime().getDate().getMonth(),
+                                                                        database.get(p).getFlights().get(i).getArrivalTime().getDate().getDay()).equals(chuyenDateJsonThanhLocalDate(year, month, day)))) {
                                                             list.add(database.get(p).getFlights().get(i));
                                                         }
+                                                    }
+                                                    if (list.size() == 0) {
+                                                        System.out.println("Khong tim thay chuyen bay phu hop!!!");
+                                                        break;
                                                     }
                                                     Collections.sort(list, new DateComparator());
                                                     for (int i = 0; i < list.size(); i++) {
