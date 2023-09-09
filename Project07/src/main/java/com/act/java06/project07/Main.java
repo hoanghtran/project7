@@ -346,7 +346,7 @@ public class Main {
                 valid = true;
             } else {
                 sc.nextLine();
-                System.out.println("Can nhap so, vui long nhap lai ");;
+                System.out.print("Can nhap so, vui long nhap lai: ");;
             }
         } while (valid == false);
         return num;
