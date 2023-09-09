@@ -346,7 +346,7 @@ public class Main {
                 valid = true;
             } else {
                 sc.nextLine();
-                System.out.println("Can nhap so, vui long nhap lai!");
+                System.out.println("Can nhap so, vui long nhap lai ");;
             }
         } while (valid == false);
         return num;
@@ -466,7 +466,7 @@ public class Main {
                     departure--;
 
                     System.out.print("Chon diem den: ");
-
+                    sc.nextLine();
                     do {
 
                         destination = getIntInput(sc);
@@ -485,9 +485,9 @@ public class Main {
                     System.out.println("1. Khu hoi");
                     System.out.println("2. Mot chieu");
                     System.out.print("Nhap lua chon cua ban: ");
-                    sc.nextLine();
+                    
                     do {
-
+                        sc.nextLine();
                         lua_Chon = getIntInput(sc);
                         if (lua_Chon <= 0 || lua_Chon > 2) {
                             System.out.println("hay nhap dung menu nhu tren!!!");
@@ -565,9 +565,11 @@ public class Main {
                             Collections.sort(listFlight, new DateComparator());
                             int STT = 1;
                             for (int i = 0; i < listFlight.size(); i++) {
-                                System.out.println(STT + ". " + "Ma chuyen bay: " + listFlight.get(i).getFlightCode() + "  Thoi gian di: " + listFlight.get(i).getDepartureTime() + "  Thoi gian toi: " + listFlight.get(i).getArrivalTime()
-                                        + "  So ve con lai cua hang thuong gia: " + (listFlight.get(i).getTotalBusinessSeats() - listFlight.get(i).getUsedBusinessSeats())
-                                        + "  So ve con lai cua hang pho thong: " + (listFlight.get(i).getTotalEconomySeats() - listFlight.get(i).getUsedEconomySeats()));
+                                System.out.println(STT + ". " + "Ma chuyen bay: " + listFlight.get(i).getFlightCode());
+                                System.out.println("Thoi gian di: " + listFlight.get(i).getDepartureTime() + ",  Thoi gian toi: " + listFlight.get(i).getArrivalTime());
+                                System.out.println("So ve con lai cua hang thuong gia: " + (listFlight.get(i).getTotalBusinessSeats() - listFlight.get(i).getUsedBusinessSeats())
+                                        + ", So ve con lai cua hang pho thong: " + (listFlight.get(i).getTotalEconomySeats() - listFlight.get(i).getUsedEconomySeats()));
+                                        
                                 STT++;
                             }
                             int opt_for_listFlight;
@@ -616,9 +618,11 @@ public class Main {
                             Collections.sort(listFlight, new DateComparator());
                             STT = 1;
                             for (int i = 0; i < listFlight.size(); i++) {
-                                System.out.println(STT + ". " + "Ma chuyen bay: " + listFlight.get(i).getFlightCode() + "  Thoi gian di: " + listFlight.get(i).getDepartureTime() + "  Thoi gian toi: " + listFlight.get(i).getArrivalTime()
-                                        + "  So ve con lai cua hang thuong gia: " + (listFlight.get(i).getTotalBusinessSeats() - listFlight.get(i).getUsedBusinessSeats())
-                                        + "  So ve con lai cua hang pho thong: " + (listFlight.get(i).getTotalEconomySeats() - listFlight.get(i).getUsedEconomySeats()));// hien thi ma chuyen bay
+                                System.out.println(STT + ". " + "Ma chuyen bay: " + listFlight.get(i).getFlightCode());
+                                System.out.println("Thoi gian di: " + listFlight.get(i).getDepartureTime() + ",  Thoi gian toi: " + listFlight.get(i).getArrivalTime());
+                                System.out.println("So ve con lai cua hang thuong gia: " + (listFlight.get(i).getTotalBusinessSeats() - listFlight.get(i).getUsedBusinessSeats())
+                                        + ", So ve con lai cua hang pho thong: " + (listFlight.get(i).getTotalEconomySeats() - listFlight.get(i).getUsedEconomySeats()));
+                                        
                                 STT++;
                             }
                             System.out.print("Nhap lua chon cua ban: ");
@@ -683,9 +687,11 @@ public class Main {
                             Collections.sort(listFlight, new DateComparator());
                             STT = 1;
                             for (int i = 0; i < listFlight.size(); i++) {
-                                System.out.println(STT + ". " + listFlight.get(i).to_String());
-                                System.out.println("  So ve con lai cua hang thuong gia: " + (listFlight.get(i).getTotalBusinessSeats() - listFlight.get(i).getUsedBusinessSeats())
-                                        + "  So ve con lai cua hang pho thong: " + (listFlight.get(i).getTotalEconomySeats() - listFlight.get(i).getUsedEconomySeats()));// hien thi ma chuyen bay
+                                System.out.println(STT + ". " + "Ma chuyen bay: " + listFlight.get(i).getFlightCode());
+                                System.out.println("Thoi gian di: " + listFlight.get(i).getDepartureTime() + ",  Thoi gian toi: " + listFlight.get(i).getArrivalTime());
+                                System.out.println("So ve con lai cua hang thuong gia: " + (listFlight.get(i).getTotalBusinessSeats() - listFlight.get(i).getUsedBusinessSeats())
+                                        + ", So ve con lai cua hang pho thong: " + (listFlight.get(i).getTotalEconomySeats() - listFlight.get(i).getUsedEconomySeats()));
+                                        
                                 STT++;
                             }
                             System.out.print("Nhap lua chon cua ban: ");
