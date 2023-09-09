@@ -1422,17 +1422,17 @@ public class Main {
                                             sc.nextLine();
                                             int pointEdit = -1;
                                             System.out.print("Nhap so hieu chuyen bay can sua: ");
-                                            String ctFlightCode = sc.nextLine();
+                                            String ctFlightCode = sc.nextLine().toUpperCase();
                                             try {
                                                 for (int i = 0; i < database.get(p).getFlights().size(); i++) {
                                                     if (database.get(p).getFlights().get(i).getFlightCode().equals(ctFlightCode)) {
                                                         pointEdit = i;
                                                         airport_menu(Json_airport_file_path);
                                                         System.out.print("Nhap diem xuat phat(ma cang hang khong): ");
-                                                        diemXp = sc.nextLine();
+                                                        diemXp = sc.nextLine().toUpperCase();
                                                         database.get(p).getFlights().get(pointEdit).setDeparture(diemXp);
                                                         System.out.print("Nhap diem den(ma cang hang khong): ");
-                                                        diemDen = sc.nextLine();
+                                                        diemDen = sc.nextLine().toUpperCase();
                                                         database.get(p).getFlights().get(pointEdit).setDestination(diemDen);
                                                         do {
                                                             System.out.println("Nhap thoi gian di ");
