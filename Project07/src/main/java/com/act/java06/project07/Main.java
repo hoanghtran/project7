@@ -759,13 +759,10 @@ public class Main {
 
                                 for (int n = 0; n < numOfPlanes; n++) {
                                     JSON.Plane plane = new JSON.Plane();
-                                    System.out.println("Ma may bay thu " + (n + 1) + " da duoc tao !");
-                                    plane.setPlaneCode(generatePlaneCode(n));
-                                    System.out.println("Ma may bay duoc tao la: " + generatePlaneCode(n));
-                                    listOfPlanes.add(plane);
-                                    System.out.println("Lua chon nhap ma may bay theo: ");
+                                    System.out.println("Gan ma may bay " + (n + 1) + " theo: ");
                                     System.out.println("1. Gan ma may bay thu cong");
-                                    System.out.println("2. Tu tao ma may bay");
+                                    System.out.println("2. He thong tu gan ma may bay");
+                                    System.out.print("Lua chon cua ban la: ");
                                     int tmp;
                                     String tmp_code;
                                     do {
@@ -777,18 +774,18 @@ public class Main {
                                         }
 
                                     } while (tmp <= 0 || tmp > database.size());
+                                    System.out.println("");
                                     if (tmp == 1) {
                                         System.out.print("Nhap ma may bay: ");
-                                        sc.nextLine();
                                         tmp_code = sc.nextLine();
                                         plane.setPlaneCode(tmp_code);
+                                        System.out.println("Ma may bay " + (n + 1) + " da duoc tao !\n");
                                     } else {
-                                        for (JSON.Airline airline : database) { // lay so luong plane hien co
-                                            if (airline.getCode().equals(code)) {
-                                                plane.setPlaneCode(generatePlaneCode(airline.getNumOfPlanes()));
-                                            }
-                                        }
+                                        System.out.println("Ma may bay " + (n + 1) + " da duoc tao !");
+                                        plane.setPlaneCode(generatePlaneCode(n));
+                                        System.out.println("Ma may bay duoc tao la: " + generatePlaneCode(n) + "\n");
                                     }
+                                    listOfPlanes.add(plane);
                                 }
 
                                 database.add(new JSON.Airline(brandname, code, numOfPlanes, listOfPlanes));
@@ -811,11 +808,12 @@ public class Main {
                                         break;
                                     }
                                 }
+                                write_airlines_file(Json_file_path, database);
                                 if (CHECK == 0) {
                                     System.out.println("Khong tim thay ma hang hang khong can xoa");
-                                }
-                                write_airlines_file(Json_file_path, database);
-                                System.out.println("Da xoa thanh cong!");
+                                }else{
+                                    System.out.println("Da xoa thanh cong!");
+                                }                   
                                 break;
                             case 3: // truy cập một hãng hàng không
 
@@ -1535,7 +1533,7 @@ public class Main {
                                                 luaChon = getIntInput(sc);
                                                 if (luaChon <= 0 || luaChon > 3) {
                                                     System.out.println("Vui long nhap stt như tren!!!");
-                                                    
+
                                                 }
                                             } while (luaChon <= 0 || luaChon > 3);
                                             sc.nextLine();
@@ -1622,7 +1620,7 @@ public class Main {
                                                                 System.out.print("Ban hay nhap lai ngay: ");
                                                             }
                                                         } while (day < 0);
-                                                        
+
                                                     } while (kiemTraNgayThang(year, month, day, 0, 0) != true);
                                                     for (int i = 0; i < database.get(p).getFlights().size(); i++) {
                                                         if (database.get(p).getFlights().get(i).getDestination().equals(information)
