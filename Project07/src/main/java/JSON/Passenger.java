@@ -63,7 +63,7 @@ public class Passenger {
 
     @Override
     public String toString() {
-        return "Passenger{" + "id=" + id + ", fullName=" + fullName + ", ticketCode=" + ticketCode + '}';
+        return "\tHo ten: "+getFullName()+"\n\tID: "+getId()+"\n\tMa ve: "+getTicketCode();
     }
     
 
