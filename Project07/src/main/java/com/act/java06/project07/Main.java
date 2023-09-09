@@ -60,7 +60,7 @@ public class Main {
         for (JSON.Airport item : LAirport) {
             System.out.print(stt + ". ");
             stt--;
-            System.out.println("San bay: " + item.getName() + "; Ma thanh pho: " + item.getCity()); // sửa lại cái này nhé Huy(sửa xong)
+            System.out.println("San bay: " + item.getName() + "; Ma cang hang khong: " + item.getCity()); // sửa lại cái này nhé Huy(sửa xong)
             stt += 2;
         }
     }
@@ -1394,10 +1394,10 @@ public class Main {
                                                     if (database.get(p).getFlights().get(i).getFlightCode().equals(ctFlightCode)) {
                                                         pointEdit = i;
                                                         airport_menu(Json_airport_file_path);
-                                                        System.out.print("Nhap diem xuat phat: ");
+                                                        System.out.print("Nhap diem xuat phat(ma cang hang khong): ");
                                                         diemXp = sc.nextLine();
                                                         database.get(p).getFlights().get(pointEdit).setDeparture(diemXp);
-                                                        System.out.print("Nhap diem den: ");
+                                                        System.out.print("Nhap diem den(ma cang hang khong): ");
                                                         diemDen = sc.nextLine();
                                                         database.get(p).getFlights().get(pointEdit).setDestination(diemDen);
                                                         do {
@@ -1567,7 +1567,7 @@ public class Main {
                                             switch (luaChon) {
                                                 case 1:
                                                     airport_menu(Json_airport_file_path);
-                                                    System.out.print("Nhap diem di theo ma thanh pho: ");
+                                                    System.out.print("Nhap diem di theo ma cang hang khong: ");
                                                     String information = sc.nextLine();
                                                     System.out.print("Nhap thong tin nam, thang, ngay(yyyy mm dd): ");
                                                     do {
@@ -1621,7 +1621,7 @@ public class Main {
                                                     break;
                                                 case 2:
                                                     airport_menu(Json_airport_file_path);
-                                                    System.out.print("Nhap thong tin muon loc: ");
+                                                    System.out.print("Nhap diem den theo ma cang hang khong: ");
                                                     information = sc.nextLine();
                                                     System.out.print("Nhap thong tin nam, thang, ngay(yyyy mm dd): ");
                                                     do {
