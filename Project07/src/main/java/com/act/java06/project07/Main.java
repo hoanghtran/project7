@@ -371,7 +371,7 @@ public class Main {
                 valid = true;
             } else {
                 sc.nextLine();
-                System.out.println("Can nhap so, vui long nhap lai ");;
+                System.out.println("Can nhap so, vui long nhap lai ");
             }
         } while (valid == false);
         return num;
@@ -1521,6 +1521,9 @@ public class Main {
                                                             nano = 0;
                                                             timeArr = new Time__1(hour, minute, second, nano);
                                                             tgDen = new JSON.ArrivalTime(dateArr, timeArr);
+                                                            if(kiemTraNgayThang(year, month, day, hour, minute) != true){
+                                                                System.out.println("Loi thoi gian. Vui long nhap lai: ");
+                                                            }
                                                         } while (kiemTraNgayThang(year, month, day, hour, minute) != true);
                                                         database.get(p).getFlights().get(pointEdit).setDepartureTime(tgDi);
                                                         database.get(p).getFlights().get(pointEdit).setArrivalTime(tgDen);
@@ -1541,7 +1544,7 @@ public class Main {
                                                                 System.out.println("Khong the nhap so am!!!");
                                                                 System.out.print("Ban hay nhap lai soluong pho thong: ");
                                                             }
-                                                        } while (soluongPt < 0);;
+                                                        } while (soluongPt < 0);
                                                         database.get(p).getFlights().get(pointEdit).setUsedEconomySeats(soluongPt);
                                                         System.out.println("Nhap gia ve hang thuong gia: ");
                                                         do {
