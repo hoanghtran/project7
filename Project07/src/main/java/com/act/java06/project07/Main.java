@@ -371,7 +371,7 @@ public class Main {
                 valid = true;
             } else {
                 sc.nextLine();
-                System.out.println("Can nhap so, vui long nhap lai!");
+                System.out.println("Can nhap so, vui long nhap lai ");;
             }
         } while (valid == false);
         return num;
@@ -491,7 +491,7 @@ public class Main {
                     departure--;
 
                     System.out.print("Chon diem den: ");
-
+                    sc.nextLine();
                     do {
 
                         destination = getIntInput(sc);
@@ -510,9 +510,9 @@ public class Main {
                     System.out.println("1. Khu hoi");
                     System.out.println("2. Mot chieu");
                     System.out.print("Nhap lua chon cua ban: ");
-                    sc.nextLine();
+                    
                     do {
-
+                        sc.nextLine();
                         lua_Chon = getIntInput(sc);
                         if (lua_Chon <= 0 || lua_Chon > 2) {
                             System.out.println("hay nhap dung menu nhu tren!!!");
@@ -590,9 +590,11 @@ public class Main {
                             Collections.sort(listFlight, new DateComparator());
                             int STT = 1;
                             for (int i = 0; i < listFlight.size(); i++) {
-                                System.out.println(STT + ". " + "Ma chuyen bay: " + listFlight.get(i).getFlightCode() + "  Thoi gian di: " + listFlight.get(i).getDepartureTime() + "  Thoi gian toi: " + listFlight.get(i).getArrivalTime()
-                                        + "  So ve con lai cua hang thuong gia: " + (listFlight.get(i).getTotalBusinessSeats() - listFlight.get(i).getUsedBusinessSeats())
-                                        + "  So ve con lai cua hang pho thong: " + (listFlight.get(i).getTotalEconomySeats() - listFlight.get(i).getUsedEconomySeats()));
+                                System.out.println(STT + ". " + "Ma chuyen bay: " + listFlight.get(i).getFlightCode());
+                                System.out.println("Thoi gian di: " + listFlight.get(i).getDepartureTime() + ",  Thoi gian toi: " + listFlight.get(i).getArrivalTime());
+                                System.out.println("So ve con lai cua hang thuong gia: " + (listFlight.get(i).getTotalBusinessSeats() - listFlight.get(i).getUsedBusinessSeats())
+                                        + ", So ve con lai cua hang pho thong: " + (listFlight.get(i).getTotalEconomySeats() - listFlight.get(i).getUsedEconomySeats()));
+                                        
                                 STT++;
                             }
                             int opt_for_listFlight;
@@ -641,9 +643,11 @@ public class Main {
                             Collections.sort(listFlight, new DateComparator());
                             STT = 1;
                             for (int i = 0; i < listFlight.size(); i++) {
-                                System.out.println(STT + ". " + "Ma chuyen bay: " + listFlight.get(i).getFlightCode() + "  Thoi gian di: " + listFlight.get(i).getDepartureTime() + "  Thoi gian toi: " + listFlight.get(i).getArrivalTime()
-                                        + "  So ve con lai cua hang thuong gia: " + (listFlight.get(i).getTotalBusinessSeats() - listFlight.get(i).getUsedBusinessSeats())
-                                        + "  So ve con lai cua hang pho thong: " + (listFlight.get(i).getTotalEconomySeats() - listFlight.get(i).getUsedEconomySeats()));// hien thi ma chuyen bay
+                                System.out.println(STT + ". " + "Ma chuyen bay: " + listFlight.get(i).getFlightCode());
+                                System.out.println("Thoi gian di: " + listFlight.get(i).getDepartureTime() + ",  Thoi gian toi: " + listFlight.get(i).getArrivalTime());
+                                System.out.println("So ve con lai cua hang thuong gia: " + (listFlight.get(i).getTotalBusinessSeats() - listFlight.get(i).getUsedBusinessSeats())
+                                        + ", So ve con lai cua hang pho thong: " + (listFlight.get(i).getTotalEconomySeats() - listFlight.get(i).getUsedEconomySeats()));
+                                        
                                 STT++;
                             }
                             System.out.print("Nhap lua chon cua ban: ");
@@ -708,9 +712,11 @@ public class Main {
                             Collections.sort(listFlight, new DateComparator());
                             STT = 1;
                             for (int i = 0; i < listFlight.size(); i++) {
-                                System.out.println(STT + ". " + listFlight.get(i).to_String());
-                                System.out.println("  So ve con lai cua hang thuong gia: " + (listFlight.get(i).getTotalBusinessSeats() - listFlight.get(i).getUsedBusinessSeats())
-                                        + "  So ve con lai cua hang pho thong: " + (listFlight.get(i).getTotalEconomySeats() - listFlight.get(i).getUsedEconomySeats()));// hien thi ma chuyen bay
+                                System.out.println(STT + ". " + "Ma chuyen bay: " + listFlight.get(i).getFlightCode());
+                                System.out.println("Thoi gian di: " + listFlight.get(i).getDepartureTime() + ",  Thoi gian toi: " + listFlight.get(i).getArrivalTime());
+                                System.out.println("So ve con lai cua hang thuong gia: " + (listFlight.get(i).getTotalBusinessSeats() - listFlight.get(i).getUsedBusinessSeats())
+                                        + ", So ve con lai cua hang pho thong: " + (listFlight.get(i).getTotalEconomySeats() - listFlight.get(i).getUsedEconomySeats()));
+                                        
                                 STT++;
                             }
                             System.out.print("Nhap lua chon cua ban: ");
@@ -784,13 +790,10 @@ public class Main {
 
                                 for (int n = 0; n < numOfPlanes; n++) {
                                     JSON.Plane plane = new JSON.Plane();
-                                    System.out.println("Ma may bay thu " + (n + 1) + " da duoc tao !");
-                                    plane.setPlaneCode(generatePlaneCode(n));
-                                    System.out.println("Ma may bay duoc tao la: " + generatePlaneCode(n));
-                                    listOfPlanes.add(plane);
-                                    System.out.println("Lua chon nhap ma may bay theo: ");
+                                    System.out.println("Gan ma may bay " + (n + 1) + " theo: ");
                                     System.out.println("1. Gan ma may bay thu cong");
-                                    System.out.println("2. Tu tao ma may bay");
+                                    System.out.println("2. He thong tu gan ma may bay");
+                                    System.out.print("Lua chon cua ban la: ");
                                     int tmp;
                                     String tmp_code;
                                     do {
@@ -802,18 +805,18 @@ public class Main {
                                         }
 
                                     } while (tmp <= 0 || tmp > database.size());
+                                    System.out.println("");
                                     if (tmp == 1) {
                                         System.out.print("Nhap ma may bay: ");
-                                        sc.nextLine();
                                         tmp_code = sc.nextLine();
                                         plane.setPlaneCode(tmp_code);
+                                        System.out.println("Ma may bay " + (n + 1) + " da duoc tao !\n");
                                     } else {
-                                        for (JSON.Airline airline : database) { // lay so luong plane hien co
-                                            if (airline.getCode().equals(code)) {
-                                                plane.setPlaneCode(generatePlaneCode(airline.getNumOfPlanes()));
-                                            }
-                                        }
+                                        System.out.println("Ma may bay " + (n + 1) + " da duoc tao !");
+                                        plane.setPlaneCode(generatePlaneCode(n));
+                                        System.out.println("Ma may bay duoc tao la: " + generatePlaneCode(n) + "\n");
                                     }
+                                    listOfPlanes.add(plane);
                                 }
 
                                 database.add(new JSON.Airline(brandname, code, numOfPlanes, listOfPlanes));
@@ -836,11 +839,12 @@ public class Main {
                                         break;
                                     }
                                 }
+                                write_airlines_file(Json_file_path, database);
                                 if (CHECK == 0) {
                                     System.out.println("Khong tim thay ma hang hang khong can xoa");
-                                }
-                                write_airlines_file(Json_file_path, database);
-                                System.out.println("Da xoa thanh cong!");
+                                }else{
+                                    System.out.println("Da xoa thanh cong!");
+                                }                   
                                 break;
                             case 3: // truy cập một hãng hàng không
 
