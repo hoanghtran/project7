@@ -149,8 +149,6 @@ public class Airline {
                 }
 
             } else if (choose == 2) { // tinh doanh thu theo nam
-                System.out.println(flight.getArrivalTime().getDate().getYear());
-                System.out.println(year);
                 if (flight.getArrivalTime().getDate().getYear() == year) {
                     turnOver += flight.getUsedEconomySeats() * flight.getEconomyFare()
                             + flight.getUsedBusinessSeats() * flight.getBusinessFare();
